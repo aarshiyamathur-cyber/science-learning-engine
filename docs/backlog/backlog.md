@@ -44,37 +44,70 @@ Each item: unique ID, title, description, dependencies, priority, status, accept
 - **Estimate:** —
 - **Notes:** See [ADR 0005](decisions/0005-local-ollama-as-default-ai-backend.md).
 
-## Next (proposed for Sprint 1 — pending Product Owner approval)
+## Next (Sprint 1 — approved by Product Owner via `management/CURRENT_SPRINT.md`)
 
-### BL-005 — SQLite persistence layer
+Sprint 1 goal: build the curriculum and learning engine foundation (core models, knowledge graph, lesson model, learner profile, progression engine). No gameplay/UI work this sprint.
 
-- **Description:** Wire up SQLite (likely via `better-sqlite3` or Drizzle) for learner progress, mastery state, and attempt history.
+### BL-010 — Core domain models: Learner profile & attempt record
+
+- **Description:** `packages/learning-engine` with typed models for `LearnerProfile`, `MasteryState` (per concept), and `AttemptRecord` (a single quiz/assessment attempt).
 - **Dependencies:** BL-002
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** Zod schemas + TypeScript types; unit tests for valid/invalid shapes, consistent with `@aarshiya/curriculum-schema` conventions.
+- **Estimate:** TBD
+- **Notes:** Foundation for BL-013 and BL-014.
+
+### BL-011 — Knowledge graph traversal engine
+
+- **Description:** Given the concept graph (prerequisites/unlocks edges from `@aarshiya/curriculum-schema`), provide traversal operations: cycle detection, "what's unlocked given a set of mastered concepts," topological ordering.
+- **Dependencies:** BL-002
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** Pure functions, no I/O; unit tests including a cyclic-graph rejection case.
+- **Estimate:** TBD
+- **Notes:** Operates on data already defined by the curriculum schema; no new data format.
+
+### BL-012 — Lesson model runtime loader
+
+- **Description:** A loader that reads validated Lesson YAML (via the existing `validate:curriculum` pipeline) and returns typed `Lesson` objects ready for consumption by any future UI or engine code.
+- **Dependencies:** BL-003
 - **Priority:** P1
 - **Status:** Not started
-- **Acceptance criteria:** TBD once the first piece of runtime state (e.g. quiz attempts) is defined.
+- **Acceptance criteria:** Given a curriculum directory, returns an indexed map of lessons by id; throws a typed error on an unresolvable reference.
 - **Estimate:** TBD
-- **Notes:** Deferred from Sprint 0 — see [ADR 0004](decisions/0004-defer-sqlite-persistence.md).
+
+### BL-013 — Learner profile persistence
+
+- **Description:** Wire up SQLite (via `better-sqlite3` or Drizzle) to persist `LearnerProfile`, `MasteryState`, and `AttemptRecord` from BL-010.
+- **Dependencies:** BL-010
+- **Priority:** P1
+- **Status:** Not started
+- **Acceptance criteria:** CRUD for the three model types; unit tests against a temp SQLite file.
+- **Estimate:** TBD
+- **Notes:** Supersedes the original BL-005 placeholder now that the concrete state to persist is defined — see [ADR 0004](decisions/0004-defer-sqlite-persistence.md).
+
+### BL-014 — Progression engine v0
+
+- **Description:** Given a `LearnerProfile` and the knowledge graph, compute per-concept mastery against `masteryThreshold` from a stream of `AttemptRecord`s, and recommend the next unlocked concept(s).
+- **Dependencies:** BL-011, BL-013
+- **Priority:** P1
+- **Status:** Not started
+- **Acceptance criteria:** TBD — scoring model needs Product Owner input before finalizing.
+- **Estimate:** TBD
+- **Notes:** Supersedes the original BL-007 placeholder; this is the core of the learning engine per the project vision.
+
+## Later / Deferred (not in Sprint 1 scope)
 
 ### BL-006 — First reusable UI component: Quiz Card
 
 - **Description:** A reusable quiz-card component driven entirely by an `AssessmentQuestion` object.
 - **Dependencies:** BL-002
-- **Priority:** P1
+- **Priority:** P2
 - **Status:** Not started
 - **Acceptance criteria:** Renders multiple-choice and short-answer question types; no question content hardcoded in the component.
 - **Estimate:** TBD
-- **Notes:** First proof that "curriculum is data" holds at the UI layer.
-
-### BL-007 — Learning engine v0: mastery tracking
-
-- **Description:** Given a stream of attempt results, compute per-concept mastery against `masteryThreshold`.
-- **Dependencies:** BL-005
-- **Priority:** P2
-- **Status:** Not started
-- **Acceptance criteria:** TBD
-- **Estimate:** TBD
-- **Notes:** Core of the learning engine; needs Product Owner input on scoring model.
+- **Notes:** Deferred — Sprint 1 is engine-only, no gameplay/UI work per `management/CURRENT_SPRINT.md`.
 
 ### BL-008 — Resolve npm audit findings
 
@@ -84,7 +117,7 @@ Each item: unique ID, title, description, dependencies, priority, status, accept
 - **Status:** Not started
 - **Acceptance criteria:** `npm audit` clean, or documented as accepted risk with reasoning.
 - **Estimate:** Small
-- **Notes:** Not blocking Sprint 0 — no user-facing surface exists yet.
+- **Notes:** Not blocking — no user-facing surface exists yet.
 
 ### BL-009 — Git hooks for lint/format-on-commit
 
