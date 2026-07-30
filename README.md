@@ -2,7 +2,7 @@
 
 A curriculum-driven Science Learning Operating System for one learner (Aarshiya), covering the NSW Years 7–10 Science curriculum. The game is the first interface; the curriculum, knowledge graph, and learning engine are the core product. Not a commercial product — every decision optimises for maintainability, adaptability, and learning effectiveness over feature velocity.
 
-See [docs/architecture/overview.md](docs/architecture/overview.md) for the full vision, principles, and architecture, and [docs/decisions](docs/decisions) for the reasoning behind each technical choice.
+See [docs/architecture/overview.md](docs/architecture/overview.md) for the full vision, principles, and architecture, [docs/decisions](docs/decisions) for the reasoning behind each technical choice, and [docs/product-owner-briefing.md](docs/product-owner-briefing.md) for the current status handoff to the Product Owner.
 
 ## Status
 

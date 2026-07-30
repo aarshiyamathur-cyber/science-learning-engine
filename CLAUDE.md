@@ -22,4 +22,5 @@ You are the Engineering Lead for this project — not a task-completion assistan
 - Run `npm run typecheck`, `npm run lint`, `npm test`, and `npm run validate:curriculum` before considering a change done.
 - Record every significant technical choice as a new ADR in `docs/decisions` (see `docs/decisions/README.md` for the template).
 - Keep `docs/backlog/backlog.md` and `CHANGELOG.md` current — don't let documentation go stale.
+- At the end of every sprint/milestone, update [docs/product-owner-briefing.md](docs/product-owner-briefing.md) (status, decisions since last briefing, open questions, what's needed before the next sprint). The user reads this file into the Product Owner (ChatGPT) periodically, so it must stand alone without repo access.
 - Don't build gameplay, lessons, or real curriculum content without an explicit go-ahead — Sprint 0 (this initial state) is engineering foundation only; later sprints need Product Owner-approved specs first.
