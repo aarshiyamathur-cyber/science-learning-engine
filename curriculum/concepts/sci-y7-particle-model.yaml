@@ -1,0 +1,26 @@
+# EXAMPLE curriculum data — proves the schema/validation pipeline, not final content.
+id: sci-y7-particle-model
+title: The Particle Model of Matter
+description: >
+  All matter is made of tiny particles that are in constant motion. The
+  arrangement and movement of these particles differs between solids,
+  liquids, and gases.
+learningObjectives:
+  - Describe the particle model of matter
+  - Explain how particle arrangement differs between states of matter
+misconceptions:
+  - id: particles-touch
+    description: Students think particles in a gas are touching each other.
+    correction: Gas particles are far apart with large, mostly empty spaces between them.
+  - id: particles-stop-moving
+    description: Students think particles in a solid are not moving at all.
+    correction: Particles in a solid vibrate in place; they do not stop moving entirely.
+prerequisites: []
+unlocks:
+  - sci-y7-states-of-matter
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs:
+  - lesson-particle-model-intro
+assessmentRefs:
+  - assessment-particle-model-quiz

@@ -1,0 +1,17 @@
+# EXAMPLE curriculum data — proves the schema/validation pipeline, not final content.
+- id: q-particle-model-01
+  conceptId: sci-y7-particle-model
+  prompt: In a gas, the particles are...
+  type: multiple-choice
+  options:
+    - touching each other tightly
+    - far apart with empty space between them
+    - arranged in a fixed pattern
+  correctAnswer: far apart with empty space between them
+  difficulty: 0.3
+- id: q-particle-model-02
+  conceptId: sci-y7-particle-model
+  prompt: Do particles in a solid stop moving completely? Explain.
+  type: short-answer
+  correctAnswer: "No — they vibrate in place around a fixed position."
+  difficulty: 0.5

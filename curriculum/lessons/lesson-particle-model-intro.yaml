@@ -1,0 +1,9 @@
+# EXAMPLE curriculum data — proves the schema/validation pipeline, not final content.
+id: lesson-particle-model-intro
+conceptId: sci-y7-particle-model
+title: Introducing the Particle Model
+summary: A first look at how particles explain the behaviour of matter.
+content: >
+  Everything around you is made of particles too small to see. This lesson
+  introduces the particle model and how it explains why solids hold their
+  shape, liquids flow, and gases spread out to fill their container.

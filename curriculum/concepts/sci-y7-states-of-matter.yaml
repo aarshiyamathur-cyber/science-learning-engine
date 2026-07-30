@@ -1,0 +1,20 @@
+# EXAMPLE curriculum data — proves the schema/validation pipeline, not final content.
+id: sci-y7-states-of-matter
+title: States of Matter and Changes of State
+description: >
+  Matter exists as solid, liquid, or gas, and can change between these
+  states when energy is added or removed.
+learningObjectives:
+  - Identify the three common states of matter
+  - Explain melting, freezing, evaporation, and condensation in terms of particle energy
+misconceptions:
+  - id: melting-creates-new-substance
+    description: Students think melting or freezing creates a new substance.
+    correction: Changes of state are physical changes; the substance's identity does not change.
+prerequisites:
+  - sci-y7-particle-model
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
