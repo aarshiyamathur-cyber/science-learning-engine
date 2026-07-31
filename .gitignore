@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local learner progress database (per-machine runtime state, not source)
+/data/*.db
+
 # vercel
 .vercel
 
