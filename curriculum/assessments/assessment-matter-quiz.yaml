@@ -1,0 +1,42 @@
+- id: q-matter-01
+  conceptId: sci-y7-matter
+  prompt: Which of these best defines matter?
+  type: multiple-choice
+  options:
+    - Anything that has mass and takes up space
+    - Anything that is solid
+    - Anything you can see
+  correctAnswer: Anything that has mass and takes up space
+  difficulty: 0.2
+- id: q-matter-02
+  conceptId: sci-y7-matter
+  prompt: Is the air in a balloon matter? Explain why.
+  type: short-answer
+  correctAnswer: "Yes — air has mass and takes up space, even though it can't be seen."
+  difficulty: 0.4
+- id: q-matter-03
+  conceptId: sci-y7-matter
+  prompt: Which of these is NOT one of the three common states of matter?
+  type: multiple-choice
+  options:
+    - Solid
+    - Liquid
+    - Energy
+    - Gas
+  correctAnswer: Energy
+  difficulty: 0.2
+- id: q-matter-04
+  conceptId: sci-y7-matter
+  prompt: Name one example of matter from your everyday life.
+  type: short-answer
+  correctAnswer: "Any real object or substance with mass, e.g. water, a book, air."
+  difficulty: 0.3
+- id: q-matter-05
+  conceptId: sci-y7-matter
+  prompt: A rock and a puddle of water are both examples of matter.
+  type: multiple-choice
+  options:
+    - "True"
+    - "False"
+  correctAnswer: "True"
+  difficulty: 0.1

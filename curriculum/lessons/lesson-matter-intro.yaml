@@ -1,0 +1,29 @@
+id: lesson-matter-intro
+conceptId: sci-y7-matter
+title: What Is Matter?
+summary: An introduction to matter and its basic properties.
+steps:
+  - type: explanation
+    body: >
+      Matter is anything that has mass and takes up space. That includes
+      things you can hold, like a rock or a book, but also things you
+      can't easily see, like the air around you.
+  - type: example
+    body: >
+      Water, air, and a wooden chair are all matter — even though they
+      look and feel completely different, they all have mass and take up
+      space.
+  - type: question
+    questionId: q-matter-01
+  - type: question
+    questionId: q-matter-02
+  - type: question
+    questionId: q-matter-03
+  - type: question
+    questionId: q-matter-04
+  - type: question
+    questionId: q-matter-05
+  - type: summary
+    body: >
+      Matter is anything with mass that takes up space, and it commonly
+      exists as a solid, liquid, or gas.

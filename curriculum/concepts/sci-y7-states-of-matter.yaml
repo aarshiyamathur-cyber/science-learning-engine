@@ -18,3 +18,4 @@ masteryThreshold: 0.8
 revisionStrategy: spaced-repetition
 lessonRefs: []
 assessmentRefs: []
+xpReward: 50

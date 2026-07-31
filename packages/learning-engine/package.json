@@ -1,5 +1,5 @@
 {
-  "name": "@aarshiya/curriculum-schema",
+  "name": "@aarshiya/learning-engine",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,13 +7,9 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./loader": "./src/loader.ts"
+    "./persistence": "./src/persistence.ts"
   },
   "dependencies": {
-    "zod": "^3",
-    "js-yaml": "^4"
-  },
-  "devDependencies": {
-    "@types/js-yaml": "^4"
+    "zod": "^3"
   }
 }

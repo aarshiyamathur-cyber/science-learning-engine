@@ -1,0 +1,22 @@
+id: sci-y7-matter
+title: Matter
+description: >
+  Matter is anything that has mass and takes up space. This concept
+  introduces what matter is and the three states it commonly takes.
+learningObjectives:
+  - Define matter
+  - Identify examples of matter in everyday life
+  - Name the three common states of matter
+misconceptions:
+  - id: air-is-not-matter
+    description: Students think air and other gases are not matter because they can't be seen.
+    correction: Gases have mass and take up space, so they are matter too.
+prerequisites: []
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs:
+  - lesson-matter-intro
+assessmentRefs:
+  - assessment-matter-quiz
+xpReward: 50

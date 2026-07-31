@@ -36,15 +36,44 @@ export const ConceptSchema = z.object({
   revisionStrategy: RevisionStrategySchema,
   lessonRefs: z.array(z.string()).default([]),
   assessmentRefs: z.array(z.string()).default([]),
+  xpReward: z.number().min(0),
 });
 export type Concept = z.infer<typeof ConceptSchema>;
+
+export const ExplanationStepSchema = z.object({
+  type: z.literal("explanation"),
+  body: z.string().min(1),
+});
+
+export const ExampleStepSchema = z.object({
+  type: z.literal("example"),
+  body: z.string().min(1),
+});
+
+export const QuestionStepSchema = z.object({
+  type: z.literal("question"),
+  questionId: z.string().min(1),
+});
+
+export const SummaryStepSchema = z.object({
+  type: z.literal("summary"),
+  body: z.string().min(1),
+});
+
+export const LessonStepSchema = z.discriminatedUnion("type", [
+  ExplanationStepSchema,
+  ExampleStepSchema,
+  QuestionStepSchema,
+  SummaryStepSchema,
+]);
+export type LessonStep = z.infer<typeof LessonStepSchema>;
 
 export const LessonSchema = z.object({
   id: z.string().min(1),
   conceptId: z.string().min(1),
   title: z.string().min(1),
   summary: z.string().min(1),
-  content: z.string().min(1),
+  steps: z.array(LessonStepSchema).min(1),
 });
 export type Lesson = z.infer<typeof LessonSchema>;
 
@@ -58,6 +87,42 @@ export const AssessmentQuestionSchema = z.object({
   difficulty: z.number().min(0).max(1),
 });
 export type AssessmentQuestion = z.infer<typeof AssessmentQuestionSchema>;
+
+export type ResolvedLessonStep =
+  | ExplanationStep
+  | ExampleStep
+  | { type: "question"; question: AssessmentQuestion }
+  | SummaryStep;
+type ExplanationStep = z.infer<typeof ExplanationStepSchema>;
+type ExampleStep = z.infer<typeof ExampleStepSchema>;
+type SummaryStep = z.infer<typeof SummaryStepSchema>;
+
+export class UnresolvedQuestionRefError extends Error {
+  constructor(
+    readonly lessonId: string,
+    readonly questionId: string,
+  ) {
+    super(`Lesson "${lessonId}" references unknown question id "${questionId}"`);
+    this.name = "UnresolvedQuestionRefError";
+  }
+}
+
+/**
+ * Resolves a Lesson's ordered steps into a form ready for rendering: each
+ * "question" step's questionId is replaced with the full AssessmentQuestion
+ * object, so a lesson player never needs to look up questions itself.
+ */
+export function resolveLessonSteps(
+  lesson: Lesson,
+  questionsById: ReadonlyMap<string, AssessmentQuestion>,
+): ResolvedLessonStep[] {
+  return lesson.steps.map((step) => {
+    if (step.type !== "question") return step;
+    const question = questionsById.get(step.questionId);
+    if (!question) throw new UnresolvedQuestionRefError(lesson.id, step.questionId);
+    return { type: "question", question };
+  });
+}
 
 export const KnowledgeGraphEdgeSchema = z.object({
   from: z.string().min(1),

@@ -39,16 +39,7 @@ for (const { file, data } of concepts) {
   conceptIds.add(result.data.id);
 }
 
-for (const { file, data } of loadYamlFiles("lessons")) {
-  const result = LessonSchema.safeParse(data);
-  if (!result.success) {
-    report(file, result.error.message);
-    continue;
-  }
-  if (!conceptIds.has(result.data.conceptId)) {
-    report(file, `references unknown conceptId "${result.data.conceptId}"`);
-  }
-}
+const questionIds = new Set<string>();
 
 for (const { file, data } of loadYamlFiles("assessments")) {
   const questions = Array.isArray(data) ? data : [data];
@@ -60,6 +51,23 @@ for (const { file, data } of loadYamlFiles("assessments")) {
     }
     if (!conceptIds.has(result.data.conceptId)) {
       report(file, `references unknown conceptId "${result.data.conceptId}"`);
+    }
+    questionIds.add(result.data.id);
+  }
+}
+
+for (const { file, data } of loadYamlFiles("lessons")) {
+  const result = LessonSchema.safeParse(data);
+  if (!result.success) {
+    report(file, result.error.message);
+    continue;
+  }
+  if (!conceptIds.has(result.data.conceptId)) {
+    report(file, `references unknown conceptId "${result.data.conceptId}"`);
+  }
+  for (const step of result.data.steps) {
+    if (step.type === "question" && !questionIds.has(step.questionId)) {
+      report(file, `question step references unknown questionId "${step.questionId}"`);
     }
   }
 }

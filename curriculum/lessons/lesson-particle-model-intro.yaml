@@ -3,7 +3,22 @@ id: lesson-particle-model-intro
 conceptId: sci-y7-particle-model
 title: Introducing the Particle Model
 summary: A first look at how particles explain the behaviour of matter.
-content: >
-  Everything around you is made of particles too small to see. This lesson
-  introduces the particle model and how it explains why solids hold their
-  shape, liquids flow, and gases spread out to fill their container.
+steps:
+  - type: explanation
+    body: >
+      Everything around you is made of particles too small to see. This
+      lesson introduces the particle model and how it explains why solids
+      hold their shape, liquids flow, and gases spread out to fill their
+      container.
+  - type: example
+    body: >
+      A block of ice, a puddle of water, and steam are all the same
+      substance — only the arrangement and motion of its particles differ.
+  - type: question
+    questionId: q-particle-model-01
+  - type: question
+    questionId: q-particle-model-02
+  - type: summary
+    body: >
+      Solids, liquids, and gases are all made of the same kind of particles;
+      what differs is how closely packed and how freely those particles move.
