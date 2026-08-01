@@ -1,4 +1,3 @@
-# EXAMPLE curriculum data — proves the schema/validation pipeline, not final content.
 id: sci-y7-states-of-matter
 title: States of Matter and Changes of State
 description: >
@@ -16,6 +15,8 @@ prerequisites:
 unlocks: []
 masteryThreshold: 0.8
 revisionStrategy: spaced-repetition
-lessonRefs: []
-assessmentRefs: []
+lessonRefs:
+  - lesson-states-of-matter-intro
+assessmentRefs:
+  - assessment-states-of-matter-quiz
 xpReward: 50

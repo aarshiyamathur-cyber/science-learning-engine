@@ -1,0 +1,59 @@
+- id: q-states-of-matter-01
+  conceptId: sci-y7-states-of-matter
+  prompt: What are the three common states of matter?
+  type: multiple-choice
+  options:
+    - Solid, liquid, and gas
+    - Hot, warm, and cold
+    - Heavy, light, and weightless
+  correctAnswer: Solid, liquid, and gas
+  difficulty: 0.1
+  hint: Think about ice, water, and steam — three different forms of the same substance.
+  explanation: Solid, liquid, and gas are the three common states of matter. The same substance can exist as any of the three, depending on how much energy its particles have.
+- id: q-states-of-matter-02
+  conceptId: sci-y7-states-of-matter
+  prompt: An ice cube melts into water on a warm bench. What is happening to its particles?
+  type: multiple-choice
+  options:
+    - They gain energy and start moving fast enough to slide past each other
+    - They turn into completely different particles
+    - They lose energy and stop moving
+  correctAnswer: They gain energy and start moving fast enough to slide past each other
+  difficulty: 0.3
+  hint: The bench is warmer than the freezer — think about what heat energy does to particles.
+  explanation: Heat from the room gives the ice's particles more energy. They vibrate hard enough to break free of their fixed positions and can now slide past each other, which is what makes the ice a liquid.
+- id: q-states-of-matter-03
+  conceptId: sci-y7-states-of-matter
+  prompt: >
+    A puddle of water dries up over a sunny afternoon. Explain what happens
+    to the water's particles as this happens, and what the puddle turns into.
+  type: short-answer
+  correctAnswer: >
+    The water particles gain energy from the sun's heat and move fast enough
+    to escape from the liquid into the air as water vapour, a gas — this is
+    evaporation.
+  difficulty: 0.4
+  hint: The puddle doesn't disappear — think about where the water goes and what state it's in once it's gone.
+  explanation: Sunlight heats the surface of the puddle, giving the water particles enough energy to break away from the liquid entirely and spread out as a gas. This is evaporation — the water hasn't vanished, it's now water vapour in the air.
+- id: q-states-of-matter-04
+  conceptId: sci-y7-states-of-matter
+  prompt: A cold glass of lemonade develops water droplets on the outside on a humid day. Where does this water come from, and why does it appear?
+  type: short-answer
+  correctAnswer: >
+    It comes from water vapour in the air. The vapour loses energy when it
+    touches the cold glass, slows down, and condenses back into tiny liquid
+    droplets.
+  difficulty: 0.5
+  hint: The droplets form on the outside of the glass, not the inside — so the water isn't leaking from the lemonade.
+  explanation: Water vapour in the air loses energy when it touches the cold glass. Losing energy makes the particles slow down and clump together as a liquid again — that's condensation, and it's evaporation happening in reverse.
+- id: q-states-of-matter-05
+  conceptId: sci-y7-states-of-matter
+  prompt: When water freezes into ice, a new substance is created.
+  type: multiple-choice
+  options:
+    - "True"
+    - "False"
+  correctAnswer: "False"
+  difficulty: 0.6
+  hint: Think about what you get if you melt the ice again — is it still water?
+  explanation: Freezing is a physical change, not a chemical one. The water's particles don't change into anything new — they just lose energy and pack into a fixed arrangement. It's still the same substance, H2O, whether it's ice, water, or steam.

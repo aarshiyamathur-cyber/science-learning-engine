@@ -1,0 +1,54 @@
+id: lesson-states-of-matter-intro
+conceptId: sci-y7-states-of-matter
+title: States of Matter and Changes of State
+summary: How and why matter changes between solid, liquid, and gas.
+steps:
+  - type: explanation
+    body: >
+      Matter can change from one state to another — solid to liquid, liquid
+      to gas, and back again. These changes happen when a substance gains or
+      loses energy, usually as heat. Adding heat gives particles more energy,
+      so they move faster and spread out. Removing heat takes energy away, so
+      particles slow down and pack closer together. The particles themselves
+      never change — only how much energy they have and how they're arranged.
+      This means melting, freezing, evaporation, and condensation are
+      physical changes: the substance is still the same substance before and
+      after, just in a different state.
+  - type: example
+    body: >
+      Leave an ice cube on the bench and it melts into a puddle of water —
+      the solid gains heat energy from the room, its particles vibrate hard
+      enough to break free of their fixed positions, and they can now slide
+      past each other as a liquid. Leave that puddle a while longer and it
+      evaporates: particles at the surface gain enough energy to escape into
+      the air completely, becoming water vapour, a gas. Put the water in a
+      freezer and the opposite happens — it loses heat energy, its particles
+      slow down and lock into place, and it freezes solid again. Condensation
+      is evaporation in reverse too: water vapour in the air loses energy
+      when it touches a cold glass of lemonade, so it slows down enough to
+      clump back into tiny liquid droplets on the outside of the glass. In
+      every case, it's still the same water — H2O before, during, and after.
+  - type: interactive
+    widget: particle-state-explorer
+    prompt: >
+      Tap Solid, Liquid, and Gas and watch how the particles are packed and
+      how fast they move. Melting is what happens when a solid gains enough
+      energy to jump to the liquid arrangement; evaporation is what happens
+      when a liquid gains enough energy to jump to the gas arrangement.
+  - type: question
+    questionId: q-states-of-matter-01
+  - type: question
+    questionId: q-states-of-matter-02
+  - type: question
+    questionId: q-states-of-matter-03
+  - type: question
+    questionId: q-states-of-matter-04
+  - type: question
+    questionId: q-states-of-matter-05
+  - type: summary
+    body: >
+      Matter changes state when it gains or loses energy, usually as heat.
+      Melting and evaporation happen when energy is added; freezing and
+      condensation happen when energy is removed. These are physical
+      changes — the substance's particles never change into something else,
+      only how tightly packed and how fast-moving they are.

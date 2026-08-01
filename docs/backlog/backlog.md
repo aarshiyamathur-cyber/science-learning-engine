@@ -242,9 +242,10 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Description:** This concept (`sci-y7-states-of-matter`) currently has zero lesson content and zero questions despite being defined in the knowledge graph as part of the Matter topic (prerequisite: Particle Model). Write it from scratch: melting, freezing, evaporation, condensation, explained via particle energy — matching the quality bar of the other two Matter lessons.
 - **Dependencies:** BL-030, BL-031 (same content pattern to follow)
 - **Priority:** P0
-- **Status:** Dispatched
+- **Status:** Done
 - **Acceptance criteria:** New `curriculum/lessons/lesson-states-of-matter-intro.yaml` and `curriculum/assessments/assessment-states-of-matter-quiz.yaml`; `sci-y7-states-of-matter.yaml`'s `lessonRefs`/`assessmentRefs` populated; reuses the existing `particle-state-explorer` widget for an interactive step; 4-5 questions with hints and explanations covering the concept's misconception ("melting creates a new substance"); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
 - **Estimate:** Medium
+- **Notes:** Built `lesson-states-of-matter-intro.yaml` (explanation → example → interactive `particle-state-explorer` step → 5 questions → summary) covering melting, freezing, evaporation, and condensation in terms of particles gaining/losing energy, plus `assessment-states-of-matter-quiz.yaml` with 5 questions (mixed multiple-choice/short-answer, difficulty 0.1-0.6) including a true/false question directly targeting the "melting creates a new substance" misconception. Populated `sci-y7-states-of-matter.yaml`'s `lessonRefs`/`assessmentRefs` and removed its stale "EXAMPLE data" comment; no other fields changed. `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (62/62 tests) all pass.
 
 ### BL-033 — Illustrations for Particle Model and States of Matter
 
