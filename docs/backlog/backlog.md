@@ -282,6 +282,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Status:** Not started
 - **Estimate:** Medium
 
+## Product Command Centre
+
+### CC-001 — Command Centre framework, navigation, and routing
+
+- **Description:** Scaffold a new, fully independent Next.js app at `apps/command-centre/` — an internal dashboard for the Product Owner and Engineering Lead to track this project (separate from the learning app at the repo root). Framework, navigation shell, and routing only; page content is a later worker's job.
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** New workspace at `apps/command-centre/` with its own `package.json`, `tsconfig.json`, `next.config.ts`, and `eslint.config.mjs` (Next 16.x App Router, React 19.x, TypeScript, Tailwind v4), running on port 3001 via `dev`/`start` scripts so it doesn't collide with the root app's port 3000; a persistent nav shell (`app/components/Nav.tsx`) present on every page linking to `/`, `/roadmap`, `/sprint-history`, `/release-centre`, `/question-bank`, `/engineering`, with the active route visually indicated; each of the 6 routes is a real page component with an `<h1>` title and one sentence of genuine descriptive text (no "TODO"/"Coming soon"); basic Tailwind visual design (spacing, type hierarchy, distinct nav/content colours); `dev`, `build`, `start`, `lint`, `typecheck`, `test` scripts all present and passing; at least one Vitest + Testing Library test asserting all 6 nav links render with correct hrefs; `README.md` explaining what the app is and how to run it; root `npm install` picks up the new workspace and root `typecheck`/`lint`/`vitest run` remain unaffected (still 62 tests, 10 files).
+- **Estimate:** Medium
+- **Notes:** New workspace `apps/command-centre/` (package name `@aarshiya/command-centre`) mirrors the root app's Next/React/Tailwind versions but is otherwise fully self-contained — own `vitest.config.ts`/`vitest.setup.ts` mirroring the root's pattern, own `.gitignore` (root `.gitignore`'s `/.next/` pattern is anchored to the repo root and doesn't cover nested app build output, so a scoped one was added). Nav is a client component (`usePathname`) rendering the 6 links with `aria-current="page"` on the active route. Root `vitest.config.ts` had its `exclude` list extended with `apps/**` so the root test runner doesn't also pick up this app's tests (each app runs its own suite independently) — this was the one change made outside `apps/command-centre` itself, needed to keep the root suite at exactly 62 tests/10 files as required. All 6 pages are static placeholder text only, per scope — no data-fetching or metrics logic. `typecheck`/`lint`/`build`/`test` all pass inside `apps/command-centre`; root `npm install`/`typecheck`/`lint`/`vitest run` (62/62 tests, 10 files) all still pass.
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine
