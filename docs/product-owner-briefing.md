@@ -1,6 +1,6 @@
 # Product Owner Briefing
 
-_Last updated: 2026-08-01 — Sprint 4 (in progress)_
+_Last updated: 2026-08-01 — Sprint 4 (stop condition reached)_
 
 This file is the standing handoff document between the Engineering Lead (Claude Code, working in this repo) and the Product Owner (ChatGPT, supplying curriculum/gameplay specs). It is updated at the end of every sprint/milestone so it can be read on its own, without repo access, to know where things stand. There is no direct technical link between Claude Code and ChatGPT — this file, plus `management/*.md`, is the coordination channel; the user relays between the two.
 
@@ -8,14 +8,16 @@ If you are the Product Owner reading this for the first time: the full project v
 
 ---
 
-## Current status: Sprint 4 in progress — first interactive widget shipped (Atom Builder, BL-028)
+## Current status: Sprint 4 stop condition reached — a real interactive widget is live in the lesson
 
-Sprint 4's theme is "Interactive Science": replace reading with discovery, via reusable widgets a learner can touch, drag, build, or explore. This update covers just one scoped piece of that sprint, **BL-028 — Atom Builder**, done in isolation per explicit instruction (BL-026/027/029 are separate, not-yet-started work):
+Sprint 4's theme is "Interactive Science": replace reading with discovery, via reusable widgets a learner can touch, drag, build, or explore. Three of the sprint's four items are now built and merged:
 
-- **Atom Builder widget** (`app/components/widgets/AtomBuilder.tsx`) — +/- controls for protons, neutrons, and electrons, each starting at 0, with a live SVG atom model that updates on every click: protons and neutrons cluster into a nucleus (color-coded rose/zinc), electrons fill three simplified shells (2, then 8, then the remainder) as dashed rings of dots. A live "Mass number / Charge" readout is derived from the three counts.
-- Built entirely from the existing design system (`Card`/`Badge`/`Button`, the `brand`/`danger`/`neutral`/`info` tone roles) — no new visual language introduced.
-- Standalone and reusable: it takes no props and needs no lesson-specific or curriculum data, so it can be dropped into any future lesson once BL-026 (interactive lesson step type) lands. It is **not** wired into the existing "Matter" lesson — that lesson is about states of matter, not atomic structure, so forcing it in would be incoherent (see DEC-004 in `management/DECISIONS.md`).
-- 6 new unit tests (Vitest + Testing Library) click every control and assert the resulting counts, SVG visual state (circle counts by color), and shell-overflow behavior; `typecheck`/`lint`/`test`/`build` all pass. Also verified interactively in a real browser (Playwright click-through + before/after screenshots) before removing the temporary preview route used for that check.
+- **Interactive lesson step type** (BL-026) — the lesson schema now supports a step that embeds a widget (`{ type: "interactive", widget: "<id>", prompt: "..." }`). `LessonPlayer` looks the widget up by id, so adding a new widget in future never requires touching the curriculum schema itself.
+- **Particle State Explorer** (BL-027) — a tap Solid/Liquid/Gas widget where the particles visibly rearrange and change motion speed (tight+barely-vibrating for a solid, up to spread+fast for a gas). **This one is live inside the real "Matter" lesson** — right after the Example step, before the first Question — so it's the first genuinely interactive moment inside an actual lesson, not just a standalone demo.
+- **Atom Builder widget** (BL-028) — +/- controls for protons, neutrons, and electrons, each starting at 0, with a live SVG atom model that updates on every click: protons and neutrons cluster into a nucleus (color-coded rose/zinc), electrons fill three simplified shells (2, then 8, then the remainder) as dashed rings of dots. A live "Mass number / Charge" readout is derived from the three counts. Built entirely from the existing design system, no new visual language introduced. Standalone and reusable — it takes no props and needs no lesson-specific data, so it can be dropped into any future atomic-structure lesson via BL-026's step type. It is **not** wired into the existing "Matter" lesson — that lesson is about states of matter, not atomic structure, so forcing it in would be incoherent (see DEC-004 in `management/DECISIONS.md`).
+- This is the **second successful OpenClaw delegation** the project has had (BL-028 was built by a headless OpenClaw worker while BL-026/027 were built directly, since they had a tight sequential dependency on each other). It merged into `master` with zero conflicts.
+- **BL-029 (Force Simulator, drag-based)** has not been started — the sprint's stop condition is already met without it (see below), so it's being left for explicit Product direction rather than assumed.
+- All 53 tests passing (up from 47 before this work — new tests cover both widgets); `typecheck`/`lint`/`build` all pass. Verified live against the actual production tunnel URL: tapping "Liquid" on the Particle State Explorer correctly swaps the caption to "Particles stay close together but slide and drift past each other," confirming the interaction genuinely works end-to-end, not just in local dev.
 
 ## Previously: Sprint 3 delivered — visual polish + fixed interaction, live for testing
 
@@ -35,10 +37,11 @@ Aarshiya's exact feedback: "needs colour," "needs graphics and illustrations," "
 ## Demo instructions
 
 1. **Open:** https://divx-ips-resistance-acoustic.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
-2. **Click:** "Start Lesson," then step through explanation → example → 5 questions → summary → finish.
-3. **Try answering a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question (works on most Chrome/Edge/Safari; shows a clear message if your browser doesn't support it).
-4. **Expected behaviour:** progress bar, XP, and colored feedback update live; reloading the page keeps your progress (it's saved server-side, not just in the browser).
-5. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected to the internet. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
+2. **Click:** "Start Lesson," then step through explanation → example → **🧪 Try it yourself (new!)** → 5 questions → summary → finish.
+3. **On the new interactive step**, tap "Solid," "Liquid," and "Gas" and watch the particles change speed and spacing, and the caption update to match.
+4. **Try answering a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question (works on most Chrome/Edge/Safari; shows a clear message if your browser doesn't support it).
+5. **Expected behaviour:** progress bar, XP, and colored feedback update live; reloading the page keeps your progress (it's saved server-side, not just in the browser).
+6. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected to the internet. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
 
 ## Decisions since last briefing
 
@@ -49,15 +52,15 @@ Aarshiya's exact feedback: "needs colour," "needs graphics and illustrations," "
 
 ## Open questions for the Product Owner
 
-1. **Sprint 4 direction:** continue polishing this same loop (more concepts/content) or focus on closing the Automation Ratio gap directly (currently ~6% against a 70% target — see `management/WORKER_DASHBOARD.md` for why, it's a task-shape problem more than a capability problem)?
-2. **A bigger delegation test:** now that BL-020 proved OpenClaw can complete real, well-reviewed work, is there interest in delegating a larger, more independent feature next sprint as a further test?
+1. **Is BL-029 (Force Simulator) wanted before Sprint 5?** It's the one Sprint 4 item not attempted — a good delegation candidate (standalone, drag-based) if you'd like Sprint 4 fully closed out first.
+2. **A bigger delegation test:** two delegations have now succeeded cleanly (BL-020, BL-028) — both were standalone, self-contained tasks. Is there interest in delegating a larger, more independent feature next sprint as a further test, now that the pattern for what delegates well is clearer?
 3. **Hosting:** still a Cloudflare tunnel to the dev machine, per your "trial locally first" call. Revisit cloud hosting (previously scoped: libSQL/Turso + Vercel) if this needs to be more permanent than an ad hoc tunnel.
-4. **Content:** what's the first slice of real curriculum content beyond the single "Matter" demo concept?
+4. **Content:** what's the first slice of real curriculum content beyond the single "Matter" demo concept? (Now especially relevant since Atom Builder is ready and waiting for an atomic-structure lesson to use it in.)
 5. **Scoring model:** the deferred progression engine (mastery-based "what's next" recommendation) still needs your input on the scoring model before it's built.
 
 ## Status per the handoff protocol
 
-BL-028 was a single, explicitly scoped work item ("only BL-028, no other backlog item"), now complete and committed. Sprint 4's overall stop condition ("a demonstrably more interactive lesson ready for Aarshiya to test") is **not yet met** — Atom Builder is built and tested but not yet wired into a lesson (by design; see above), and BL-026/027/029 haven't started. Stopping here per instruction, awaiting review before further Sprint 4 work.
+Sprint 4's stop condition ("a demonstrably more interactive lesson ready for Aarshiya to test") **is met**: BL-026 (interactive step type) and BL-027 (Particle State Explorer) are merged, live inside the real "Matter" lesson, and verified working against the production URL — a learner-driven interaction now sits between the Example and the first Question. BL-028 (Atom Builder) is also merged as a standalone widget ready for a future lesson. BL-029 (Force Simulator) was not started; the sprint could stop here or continue into it, per your call. Stopping here per instruction, awaiting review before BL-029 or Sprint 5.
 
 ## How to keep this current
 

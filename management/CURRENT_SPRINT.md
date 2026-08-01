@@ -30,4 +30,12 @@ Continue committing frequently; update `docs/product-owner-briefing.md` after ea
 
 ## In Progress
 
+- BL-029 (Force Simulator) — not started.
+
 ## Done
+
+- BL-026 (interactive lesson step type) — merged to `master`.
+- BL-027 (Particle State Explorer) — merged to `master`, verified live in the "Matter" lesson.
+- BL-028 (Atom Builder) — delegated to OpenClaw, merged to `master` with zero conflicts.
+
+**Stop condition reached (2026-08-01):** the "Matter" lesson now has a real, learner-driven interactive step (BL-027) between its Example and first Question, verified live against the production tunnel. Standing by for Product Owner review before BL-029 or Sprint 5.

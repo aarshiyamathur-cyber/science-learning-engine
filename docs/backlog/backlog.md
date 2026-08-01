@@ -180,18 +180,20 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Description:** Add an `"interactive"` variant to `LessonStep` (alongside explanation/example/question/summary): `{ type: "interactive", widget: <known widget id>, prompt: string }`. This is a capability addition to the schema, not new curriculum content.
 - **Dependencies:** BL-016
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** Schema + loader + `resolveLessonSteps` all handle the new step type; unit tests cover it; `LessonPlayer` dispatches to a widget renderer by id.
 - **Estimate:** Small
+- **Notes:** `InteractiveStepSchema` added to `packages/curriculum-schema/src/index.ts` as `{ type: "interactive", widget: z.string().min(1), prompt: string }` — `widget` is a loose string, not a closed enum, so widget registration stays entirely in the UI layer (`LessonPlayer`'s `WIDGET_REGISTRY` map) and adding a widget never touches the schema package. `resolveLessonSteps` needed no changes since non-question steps already pass through unchanged. Verified live: renders as a "🧪 Try it yourself" card with the widget's prompt and a "Next →" control.
 
 ### BL-027 — Particle State Explorer widget
 
 - **Description:** A reusable, generic component: tap Solid/Liquid/Gas and watch particles visibly rearrange and move at different speeds (tight+jittering, loose+drifting, spread+fast). Wired into the existing "Matter" lesson as a new interactive step, replacing/supplementing the current static example step.
 - **Dependencies:** BL-026
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** Learner-initiated state changes (tap), not an autoplay animation; component takes no science-specific props beyond what's needed to be reusable (the states-of-matter domain is inherent to what this widget is, same as `LessonPlayer` inherently renders lesson steps); verified live.
 - **Estimate:** Medium
+- **Notes:** `app/components/widgets/ParticleStateExplorer.tsx` — 3 tap-to-select state buttons, 12 particles per state at hand-placed positions, CSS `@keyframes` jitter animations in `app/globals.css` scaled by state (barely-there vibration for solid, fast wide motion for gas). Wired into `curriculum/lessons/lesson-matter-intro.yaml` as a real interactive step between the "example" and first "question" steps. 3 new unit tests. Verified live against the production tunnel: tapping "Liquid" correctly swaps the caption to "Particles stay close together but slide and drift past each other."
 
 ### BL-028 — Atom Builder widget
 

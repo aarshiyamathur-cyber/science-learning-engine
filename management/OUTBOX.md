@@ -2,6 +2,35 @@
 
 Written at the end of every work cycle: what was completed, what's in progress, risks, questions for Product, and the recommended next action.
 
+## 2026-08-01 — Sprint 4 implementation cycle (stop condition reached)
+
+**Completed**
+
+- BL-026 (interactive lesson step type) — `InteractiveStepSchema` added to the curriculum schema; `LessonPlayer` dispatches to a widget by id via a `WIDGET_REGISTRY` map, kept out of the schema package so adding widgets never requires a schema change.
+- BL-027 (Particle State Explorer) — a tap Solid/Liquid/Gas widget with real CSS-animated particle motion, wired into the live "Matter" lesson as a genuine interactive step (not just a demo component).
+- BL-028 (Atom Builder) — delegated to an OpenClaw headless worker, completed successfully and merged with **zero conflicts** — the second successful delegation this project has had (after BL-020). Standalone +/- proton/neutron/electron builder with a live SVG atom model; deliberately not wired into the Matter lesson since that lesson is about states of matter, not atomic structure (see DEC-004).
+- Fixed two real bugs found during this work: a React warning from mixing the `animation` shorthand with `animationDelay` in inline styles, and a genuine test-isolation gap (`@testing-library/react`'s `cleanup()` was never being called between Vitest tests) — fixed globally via `vitest.setup.ts`, not patched around.
+- Rebuilt and redeployed the production server behind the Cloudflare tunnel; verified BL-026/027 live via direct JS-driven interaction against the actual public URL (tapping "Liquid" correctly swaps the caption) and BL-028 via the delegated worker's own test pass plus code review.
+- All 53 tests passing, typecheck/lint/build clean, merge commit pushed to `origin/master`.
+
+**Currently being worked on**
+
+- Nothing — stop condition reached. BL-029 (Force Simulator) has not been started; leaving it for the next work cycle or explicit Product direction, per the sprint's stop condition ("stop when there is a demonstrably more interactive lesson ready for Aarshiya to test") which is already met by BL-026/027.
+
+**Risks**
+
+- Automation Ratio is now ~9.5% cumulative (2/21) against the 70% target — trending up but still well under. The pattern holds from Sprint 3: delegation works cleanly for standalone tasks (BL-020, BL-028), not for tightly sequential same-sprint work (BL-026/027 depended on each other and on shared lesson content).
+- BL-029 (Force Simulator) is the one Sprint 4 item not attempted. It's a good delegation candidate (standalone, drag-based, no shared-file dependency) if Product wants Sprint 4 fully closed out before moving on.
+
+**Questions for Product Owner**
+
+1. Is the current state (one interactive widget live in the lesson, one standalone widget ready for a future lesson) sufficient to call Sprint 4's stop condition met, or is BL-029 (Force Simulator) wanted before moving to Sprint 5?
+2. Same open question as last briefing: what's the first slice of real curriculum content beyond the single "Matter" demo concept, and is there a scoring-model direction for the deferred mastery/progression engine?
+
+**Recommended next action**
+
+Product review of the live demo (same URL, now showing the interactive particle widget mid-lesson), then a decision on BL-029 vs. Sprint 5 scope.
+
 ## 2026-08-01 — Sprint 3 implementation cycle (stop condition reached)
 
 **Completed**

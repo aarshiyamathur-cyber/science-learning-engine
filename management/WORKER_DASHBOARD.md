@@ -4,6 +4,21 @@ _Last updated: 2026-08-01 by Claude Code_
 
 Tracking starts with Sprint 2 (the delegation-first directive was introduced mid-Sprint-2).
 
+## Sprint 4 (in progress)
+
+| Metric                      | Value                                             |
+| ---------------------------- | -------------------------------------------------- |
+| Number of Tasks              | 4 (BL-026–BL-029)                                  |
+| Delegated Tasks              | 1 (BL-028 — succeeded, zero merge conflicts)       |
+| Tasks Completed by OpenClaw  | 1 (BL-028 — Atom Builder)                          |
+| Tasks Completed by Claude    | 2 (BL-026 — interactive step type, BL-027 — Particle State Explorer) |
+| Tasks Not Started            | 1 (BL-029 — Force Simulator)                       |
+| Tasks Waiting Review         | 0                                                  |
+| Idle Workers                 | 1 (`aarshiya-dev`)                                 |
+| Busy Workers                 | 0                                                  |
+
+BL-026 and BL-027 were built directly rather than delegated because they were being developed in tight sequence with each other (the widget registry pattern in BL-026 had to exist before BL-027 could wire into it, and both landed in the same lesson content file) while BL-028 ran as a fully independent, standalone-scoped delegation in parallel — the same "independent and well-scoped vs. tightly sequential" split identified in Sprint 3. This is the second successful OpenClaw delegation the project has had, and it merged into `master` with **zero conflicts**, validating the conflict-avoidance strategy (loose string `widget` id instead of a shared enum, delegated worker kept out of `LessonPlayer.tsx`).
+
 ## Sprint 3 (closed — stop condition reached)
 
 | Metric                      | Value                                      |
@@ -31,15 +46,15 @@ BL-021–BL-025 were built directly rather than delegated: BL-021 (assets) and B
 
 ```
 Automation Ratio = Tasks completed by OpenClaw / Total implementation tasks
-                  = 1 / 18
-                  = ~6%
+                  = 2 / 21
+                  = ~9.5%
 ```
 
-Target per the engineering operating model: **70%** for implementation-heavy sprints. Still well under target. BL-020's success proved the pipeline works when the network is healthy and the task is well-scoped and independent — the harder problem going forward is tasks with tight sequential dependencies on each other (like most of Sprint 3 after BL-020), where a multi-hour delegation turnaround doesn't fit the pace of active development. Sprint 4 should look for genuinely independent, well-scoped tasks to delegate rather than treating delegation as mandatory for every task regardless of shape.
+Target per the engineering operating model: **70%** for implementation-heavy sprints. Still well under target, but trending the right way — two consecutive successful delegations now (BL-020, BL-028), both zero-conflict merges, both genuinely independent/standalone-scoped tasks. The pattern is consistent: delegation succeeds cleanly when a task can be scoped to its own new file(s) with no shared central file touched (no `LessonPlayer.tsx`, no shared enum); it's still impractical for tasks in a tight sequential chain with active same-sprint work (BL-026/BL-027 here). Sprint 5+ should keep looking for standalone, addable-in-isolation work to delegate rather than treating delegation as mandatory regardless of task shape.
 
 ## Workers
 
 | Worker                     | Type                                                               | State  | Notes                                                                                  |
 | -------------------------- | ------------------------------------------------------------------ | ------ | -------------------------------------------------------------------------------------- |
-| aarshiya-dev               | OpenClaw local agent (deterministic script → headless Claude Code) | Idle   | Available for the next well-scoped, independent task                                   |
-| Claude Code (this session) | Direct implementation + review                                     | Active | Sprint 3 complete; stopped per the sprint's stop condition, waiting for Product review |
+| aarshiya-dev               | OpenClaw local agent (deterministic script → headless Claude Code) | Idle   | Available for the next well-scoped, independent task (e.g. BL-029 Force Simulator)     |
+| Claude Code (this session) | Direct implementation + review                                     | Active | Sprint 4 BL-026/027/028 merged and verified live; BL-029 not started; stop condition reached, awaiting Product review |
