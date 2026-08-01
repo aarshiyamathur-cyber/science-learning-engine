@@ -1,4 +1,4 @@
-import type { CardStatus, RoadmapStatus } from "./sample-data";
+import type { CardStatus, ReleaseStatus, RoadmapStatus } from "./sample-data";
 
 /**
  * Single source of truth for the status colour convention used across the
@@ -28,5 +28,14 @@ export function roadmapStatusToCardStatus(status: RoadmapStatus): CardStatus {
       return "warning";
     case "Not started":
       return "neutral";
+  }
+}
+
+export function releaseStatusToCardStatus(status: ReleaseStatus): CardStatus {
+  switch (status) {
+    case "Live":
+      return "good";
+    case "In progress":
+      return "warning";
   }
 }
