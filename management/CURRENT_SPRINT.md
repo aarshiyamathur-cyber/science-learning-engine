@@ -35,3 +35,5 @@ Reporting: update `management/OUTBOX.md`, `management/LIVE_FACTORY.md`, and `man
 ## In Progress
 
 ## Done
+
+- **BL-020 — Visual design system foundation.** Semantic design tokens (`app/globals.css`) + `app/components/ui/` primitives (Card, Badge, Button, ProgressBar); `ContinueLearningScreen` reworked to use them. See [ADR 0007](../docs/decisions/0007-semantic-design-tokens-and-ui-primitives.md). Next up: BL-021 (asset library), then BL-022 (apply the system to both screens, including `LessonPlayer`).

@@ -2,6 +2,15 @@
 
 All notable changes to this project are recorded here. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] — Sprint 3: learner-experience polish — 2026-08-01
+
+### Added
+
+- Semantic design-token layer in `app/globals.css` (BL-020): color roles `brand`/`accent`/`success`/`warning`/`danger`/`info`/`neutral`, each aliasing an existing Tailwind color ramp, plus a named typography scale (`text-display` … `text-caption`) aliasing Tailwind's existing type scale.
+- `app/components/ui/` shared primitives library: `Card`, `Badge`, `Button`, `ProgressBar`, all driven by the new `tone` roles instead of raw color names.
+- `ContinueLearningScreen` reworked to use the new primitives (first real-screen usage).
+- ADR 0007 documenting the design-token/primitives approach.
+
 ## [Unreleased] — Sprint 0: engineering foundation — 2026-07-30
 
 ### Added

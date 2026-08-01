@@ -108,7 +108,7 @@ Sprint 2 goal: the first playable learning loop — one complete, reusable learn
 - **Acceptance criteria:** Passes `npm run validate:curriculum`; exercised end-to-end through BL-018.
 - **Estimate:** Small
 
-## Next (Sprint 3 — approved by Product Owner, driven by Aarshiya's Sprint 2 feedback)
+## Sprint 3 (in progress — approved by Product Owner, driven by Aarshiya's Sprint 2 feedback)
 
 Sprint 3 goal: improve the learner experience — visuals, clarity of interaction, and immediate feedback. No new curriculum, no new game mechanics, no new infrastructure. Every item must pass: "Will this make Aarshiya more likely to complete another lesson?"
 
@@ -117,10 +117,10 @@ Sprint 3 goal: improve the learner experience — visuals, clarity of interactio
 - **Description:** Reusable design tokens (color palette, typography scale, spacing) as Tailwind theme config, plus a small shared primitives library (`app/components/ui/`: Card, Badge, ProgressBar, Button) so every screen draws from one consistent visual language instead of ad hoc classes per component.
 - **Dependencies:** none
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** All colors/spacing/type sizes are tokens, not one-off hex/px values; primitives are used by at least one real screen; no visual regression in existing tests.
 - **Estimate:** Medium
-- **Notes:** Candidate for OpenClaw delegation — well-scoped, mechanical, low ambiguity.
+- **Notes:** Semantic color roles (`brand`/`accent`/`success`/`warning`/`danger`/`info`/`neutral`) alias Tailwind's existing palette rather than inventing new hex values — see [ADR 0007](decisions/0007-semantic-design-tokens-and-ui-primitives.md). Spacing deliberately left as Tailwind's default numeric scale (already token-based). `ContinueLearningScreen` is the first consumer of the new primitives; `LessonPlayer` migration is scoped to BL-022. **Delegated to and completed by an OpenClaw headless worker** — the first successful delegation this project has had; reviewed and merged by Claude Code. See `management/WORKER_DASHBOARD.md` and `management/TASK_LEDGER.md`.
 
 ### BL-021 — Icon and illustration asset library
 
