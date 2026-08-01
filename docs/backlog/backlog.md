@@ -167,9 +167,49 @@ Sprint 3 goal: improve the learner experience — visuals, clarity of interactio
 - **Description:** After each meaningful Sprint 3 milestone, rebuild and restart the production server behind the existing Cloudflare tunnel so the public demo always reflects the latest commit.
 - **Dependencies:** BL-022, BL-023, BL-024
 - **Priority:** P1
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** Tunnel URL serves the latest build after each milestone, not just at sprint end.
 - **Estimate:** Small
+
+## Sprint 4 (approved by Product Owner — theme "Interactive Science")
+
+Mission: replace reading with discovery. Every implementation must answer "Can Aarshiya touch, drag, build, experiment with, or explore this concept?" — if no, redesign it. No new curriculum, no infrastructure, no complex game mechanics.
+
+### BL-026 — Interactive lesson step type
+
+- **Description:** Add an `"interactive"` variant to `LessonStep` (alongside explanation/example/question/summary): `{ type: "interactive", widget: <known widget id>, prompt: string }`. This is a capability addition to the schema, not new curriculum content.
+- **Dependencies:** BL-016
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** Schema + loader + `resolveLessonSteps` all handle the new step type; unit tests cover it; `LessonPlayer` dispatches to a widget renderer by id.
+- **Estimate:** Small
+
+### BL-027 — Particle State Explorer widget
+
+- **Description:** A reusable, generic component: tap Solid/Liquid/Gas and watch particles visibly rearrange and move at different speeds (tight+jittering, loose+drifting, spread+fast). Wired into the existing "Matter" lesson as a new interactive step, replacing/supplementing the current static example step.
+- **Dependencies:** BL-026
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** Learner-initiated state changes (tap), not an autoplay animation; component takes no science-specific props beyond what's needed to be reusable (the states-of-matter domain is inherent to what this widget is, same as `LessonPlayer` inherently renders lesson steps); verified live.
+- **Estimate:** Medium
+
+### BL-028 — Atom Builder widget
+
+- **Description:** A reusable component: +/- controls for protons/neutrons/electrons, with a live-updating simple atom visualization (nucleus size/color, electron shells). Tactile, build-a-thing interaction.
+- **Dependencies:** BL-026
+- **Priority:** P1
+- **Status:** Not started
+- **Acceptance criteria:** Every control click immediately updates the visual; standalone reusable component (works with no lesson-specific data).
+- **Estimate:** Medium
+
+### BL-029 — Force Simulator widget
+
+- **Description:** A reusable component: drag an object to apply force, release to see it move and decelerate (simple friction). Directly satisfies "drag" from the filter question.
+- **Dependencies:** BL-026
+- **Priority:** P1
+- **Status:** Not started
+- **Acceptance criteria:** Real drag-and-release interaction (not click-only); standalone reusable component.
+- **Estimate:** Medium
 
 ## Later / Deferred
 
