@@ -5,6 +5,7 @@ import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import { ExampleIcon, ExplanationIcon, QuestionIcon, SummaryIcon } from "./icons";
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
+import { AtomBuilder } from "./widgets/AtomBuilder";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 
 /**
@@ -14,6 +15,7 @@ import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
  */
 const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "particle-state-explorer": ParticleStateExplorer,
+  "atom-builder": AtomBuilder,
 };
 
 interface LessonPlayerProps {

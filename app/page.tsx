@@ -8,15 +8,17 @@ import { DEMO_LEARNER_ID, getOrCreateProfile, getProgressStore } from "./lib/pro
 export const dynamic = "force-dynamic";
 
 /**
- * The "Matter" topic, in teaching order. A concept is only shown once it has
- * real lesson content (lessonRefs populated) — this is how a concept that
- * hasn't been authored yet (e.g. before its lesson lands) simply doesn't
- * appear, with no placeholder needed.
+ * The full science course so far, in teaching order across topics (Matter,
+ * then Atomic Structure, ...). A concept is only shown once it has real
+ * lesson content (lessonRefs populated) — this is how a concept that hasn't
+ * been authored yet (e.g. before its lesson lands) simply doesn't appear,
+ * with no placeholder needed.
  */
-const MATTER_TOPIC_CONCEPT_IDS = [
+const SCIENCE_TOPIC_CONCEPT_IDS = [
   "sci-y7-matter",
   "sci-y7-particle-model",
   "sci-y7-states-of-matter",
+  "sci-y7-atomic-structure",
 ];
 
 function isConceptCompleted(concept: Concept, completedLessons: string[]): boolean {
@@ -42,7 +44,7 @@ export default function Home() {
   const profile = getOrCreateProfile(DEMO_LEARNER_ID);
   const progressStore = getProgressStore();
 
-  const lessonEntries: LessonEntry[] = MATTER_TOPIC_CONCEPT_IDS.flatMap((conceptId) => {
+  const lessonEntries: LessonEntry[] = SCIENCE_TOPIC_CONCEPT_IDS.flatMap((conceptId) => {
     const concept = concepts.get(conceptId);
     if (!concept || concept.lessonRefs.length === 0) return [];
 

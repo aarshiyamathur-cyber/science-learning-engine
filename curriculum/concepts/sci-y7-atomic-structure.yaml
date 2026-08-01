@@ -1,0 +1,26 @@
+id: sci-y7-atomic-structure
+title: Atomic Structure
+description: >
+  All matter is made of atoms, and atoms themselves are made of even
+  smaller particles: protons, neutrons, and electrons. The number and
+  arrangement of these particles determines what element an atom is and
+  how it behaves.
+learningObjectives:
+  - Identify protons, neutrons, and electrons and where each is found in an atom
+  - Explain how atomic number and mass number are calculated from particle counts
+  - Describe how electrons are arranged in shells around the nucleus
+misconceptions:
+  - id: atoms-are-indivisible
+    description: Students think "atom" means a solid, indivisible ball with no internal structure.
+    correction: Atoms are made of smaller particles (protons, neutrons, electrons) arranged with a nucleus at the centre and electrons around it.
+  - id: mass-number-is-atomic-number
+    description: Students confuse atomic number (protons) with mass number (protons + neutrons).
+    correction: Atomic number counts protons only; mass number counts protons and neutrons together.
+prerequisites:
+  - sci-y7-states-of-matter
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50

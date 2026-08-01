@@ -4,6 +4,16 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-01 — Product Owner Decision: infrastructure freeze, curriculum-first
+
+Effective immediately:
+- **80% of engineering capacity to learner-facing work, 20% maximum to infrastructure.**
+- **Command Centre is frozen at its current MVP** (CC-001 through CC-006, all done and deployed) — "good enough" until at least three curriculum topics have shipped. No further Command Centre enhancements without explicit Product Owner approval.
+- **No further work on:** orchestration improvements, dashboard enhancements, workflow optimisation, task system redesign, process automation — unless explicitly approved. (The YAML task-model work from the Engineering Operating Agreement's steps 3-5 is paused, not abandoned — see the commit pausing `packages/task-schema`.)
+- **All OpenClaw workers/worktrees redirect to Aarshiya's application.** Both managed worktrees (`openclaw/aarshiya-auto`, `openclaw/command-centre`) are now dispatched against curriculum/app work, not Command Centre work.
+- **KPI is completed curriculum topics Aarshiya can use, not engineering progress.**
+- **Immediate priority:** Matter topic is complete (Sprint 5). Begin the next topic: **Atomic Structure.**
+
 ### 2026-08-01 — Sprint 5 directive: Complete the "Matter" topic (supersedes Sprint 4 remainder)
 
 - **Mission:** finish the "Matter" topic end-to-end — all three concepts (Matter, Particle Model, States of Matter), not just the one already-polished lesson. Do not begin another science topic. Do not add infrastructure. Do not redesign the learning engine.
