@@ -1,0 +1,6 @@
+# Sponsor-set caps for the Execution Budget (see management/OPERATING_AGREEMENT.md).
+# These are placeholder defaults — the Sponsor should adjust them to actual
+# comfortable daily limits. Nothing here is fabricated: the Engineering
+# Dashboard measures real dispatch data against whatever is set here.
+dailyTaskCap: 12
+dailyMinutesCap: 240
