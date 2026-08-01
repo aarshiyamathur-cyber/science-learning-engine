@@ -337,6 +337,16 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** `typecheck`/`lint`/`vitest run`/`build` all pass inside `apps/command-centre` (26 tests across 12 files, up from 22 across 9); manually ran the dev server and fetched every route's rendered HTML to confirm `PageHeader`/`Section`/`TaskSplitBar` markup and the responsive `Nav`/body classes are present after the refactor. Root `typecheck`/`lint`/`vitest run` still pass unchanged at 64/64 tests, 10 files (the `apps/command-centre/.next` build artifact from the local `npm run build` verification was removed before the root lint check, since it isn't part of the repo).
 
+### CC-006 — Deploy Command Centre with its own public URL
+
+- **Description:** Give the Command Centre a live, publicly reachable URL, following the same supervised-process pattern already proven for the main learning app rather than inventing a new deployment approach.
+- **Dependencies:** CC-001 through CC-005
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** Command Centre production server (port 3001) and a Cloudflare quick tunnel both run as Windows Scheduled Tasks with restart-on-failure, mirroring `AarshiyaAppServer`/`AarshiyaTunnel`; the tunnel script auto-records the current URL into `management/COMMAND_CENTRE.md` and commits/pushes it on every restart, since quick tunnels mint a new hostname each time; verified live.
+- **Estimate:** Small
+- **Notes:** Added `scripts/deploy/start-command-centre-server.ps1` and `start-command-centre-tunnel.ps1`, and extended `register-startup-tasks.ps1` to register `AarshiyaCommandCentreServer`/`AarshiyaCommandCentreTunnel` alongside the existing main-app tasks. This is explicitly **not** a permanent URL — per the Engineering Operating Agreement, a genuinely permanent address needs a Cloudflare account with a named tunnel on an owned domain, or a hosting-platform account (e.g. Vercel), both of which require the Sponsor to create an account; this automation doesn't do that on their behalf. The current URL is stable only for as long as the underlying process keeps running without crashing or the machine restarting — same durability characteristic the main app's URL has had all along. Done directly by Claude (not delegated), since deployment/infrastructure is always High Risk per the Operating Agreement's risk classification.
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine

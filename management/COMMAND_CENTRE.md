@@ -35,18 +35,25 @@ Product Owner directive (2026-08-01): build a "Product Command Centre" — an in
 | CC-003 | Sprint History + Release Centre + Question Bank dashboard | OpenClaw (Worker 3) | Done — merged |
 | CC-004 | Engineering Dashboard + repository readers + metrics/automation stats | OpenClaw (Worker 4) | Done — merged |
 | CC-005 | Visual design, charts, responsive layout polish | OpenClaw (Worker 5) | Done — merged |
-| CC-006 | Deploy Command Centre with its own public URL | Claude (deployment/infra, same pattern as the learning app's Cloudflare tunnel) | Not started |
+| CC-006 | Deploy Command Centre with its own public URL | Claude (deployment/infra, same pattern as the learning app's Cloudflare tunnel) | Done — `AarshiyaCommandCentreServer`/`AarshiyaCommandCentreTunnel` Scheduled Tasks, restart-on-failure, current URL in "Live URL" below |
 
 CC-002 through CC-005 depend on CC-001 (framework/routing) landing first — dispatched sequentially within the `openclaw/command-centre` worktree once each prior task is reviewed and merged, same one-task-at-a-time constraint as the Matter-topic worktree.
 
 ## Automation Ratio (Command Centre only)
 
-Tracked separately from the project-wide ratio in `management/WORKER_DASHBOARD.md`, since this initiative has its own explicit 80% target per the directive. Will be reported as `<OpenClaw-authored commits> / <total Command Centre commits>` once there's more than the initial scaffold to measure.
+Tracked separately from the project-wide ratio in `management/WORKER_DASHBOARD.md`, since this initiative has its own explicit 80% target per the directive.
+
+```
+5 OpenClaw-delegated tasks (CC-001–CC-005) / 6 total tasks (CC-001–CC-006)
+= ~83%
+```
+
+CC-006 (deployment/infra) was Claude's per the Engineering Operating Agreement's risk classification — deployment is always High Risk. Every content/UI task was delegated and merged with zero conflicts, comfortably clearing the 80% target.
 
 ## Status
 
-In progress — CC-001 dispatched, awaiting completion.
+**MVP complete.** All 6 tasks done and merged; live and deployed. Per the Engineering Operating Agreement (`management/OPERATING_AGREEMENT.md`), this completes step 1 of the agreed sequence. Continuing to step 3 (YAML task model).
 
 ## Live URL
 
-https://used-starter-formation-trying.trycloudflare.com (ephemeral Cloudflare quick tunnel - see caveat in start-command-centre-tunnel.ps1)
+https://used-starter-formation-trying.trycloudflare.com (ephemeral Cloudflare quick tunnel, kept alive by a supervised Scheduled Task with restart-on-failure — see `scripts/deploy/start-command-centre-tunnel.ps1`. Stable as long as the underlying process doesn't crash or the machine doesn't restart; not a permanent address. A truly permanent URL needs a Cloudflare account + named tunnel on an owned domain, or a hosting platform account — both require the Sponsor to create an account, which this automation does not do.)
