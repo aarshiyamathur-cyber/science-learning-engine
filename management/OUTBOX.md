@@ -2,6 +2,37 @@
 
 Written at the end of every work cycle: what was completed, what's in progress, risks, questions for Product, and the recommended next action.
 
+## 2026-08-01 — Sprint 3 implementation cycle (stop condition reached)
+
+**Completed**
+
+- BL-020 (design tokens + `ui/` primitives) — delegated to and completed by an OpenClaw headless worker, reviewed and merged by Claude Code. First successful delegation this project has had.
+- BL-021 (icon/illustration asset library) — 6 hand-authored SVGs, no external downloads.
+- BL-022 (design system applied to both screens) — `LessonPlayer` migrated off its own ad hoc accent-class map onto the shared primitives.
+- BL-023 (explicit voice-answer mode) — Web Speech API for short-answer questions, with a visible "listening" state and a visible fallback on unsupported browsers.
+- BL-024 (immediate feedback + retry) — `explanation` field added to questions; correct/incorrect feedback with a working "Try again" that resets the question, plus a "Skip to next" so no one gets stuck.
+- BL-025 — live demo rebuilt and redeployed with all of the above.
+- Root-caused and resolved DEC-003 (the Sprint 2 27-hour hang): confirmed to be the TPG per-device network block, not a broken pipeline. Increased the cron's no-output timeout from 600s to 1500s since `--print` mode doesn't stream progress.
+- Verified live against the actual public demo URL (not just locally): color/icon design system, the retry flow on a wrong answer, correct-answer feedback, the short-answer text box, and the voice-answer button all confirmed working via direct interaction, with no console errors.
+
+**Currently being worked on**
+
+- Nothing — stop condition reached per `management/CURRENT_SPRINT.md` ("when there is a significantly improved visual lesson experience ready for Aarshiya to test, stop"). Waiting for Product review before Sprint 4.
+
+**Risks**
+
+- Automation Ratio is still low (~6% cumulative) against the 70% target. BL-020's success shows the pipeline works for well-scoped, independent tasks; most of Sprint 3 after BL-020 had tight sequential dependencies on files each other step touched, which doesn't suit a multi-hour delegation turnaround mid-sprint. Not treated as a failure — see `management/WORKER_DASHBOARD.md` for the reasoning per task.
+- Full interactive browser click-through (screenshots, visual layout confirmation) wasn't possible this session — the Browser pane wasn't compositing frames. Functional verification was still done via direct JS-driven interaction against the live URL (real clicks, real state transitions, real DOM assertions), which is real signal, but a visual/screenshot pass on an actual device (the point of the demo) would still be worth doing.
+
+**Questions for Product Owner**
+
+1. Sprint 4 priorities: continue polishing Sprint 3's loop (e.g. real curriculum content, more concepts) or address the automation-ratio gap directly (e.g. explicitly scope Sprint 4 tasks to be independently delegable)?
+2. Now that DEC-003 is resolved and BL-020 proved the pipeline works, is there an appetite for a longer-running delegation (a whole feature, not just a design-system layer) as the next test of the 70% target?
+
+**Recommended next action**
+
+Product review of the live demo (ideally on Aarshiya's actual iPad, matching the original "highest priority" ask), then approval to begin Sprint 4.
+
 ## 2026-08-01 — Sprint 2 implementation cycle
 
 **Completed**

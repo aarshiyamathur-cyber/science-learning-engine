@@ -36,4 +36,11 @@ Reporting: update `management/OUTBOX.md`, `management/LIVE_FACTORY.md`, and `man
 
 ## Done
 
-- **BL-020 — Visual design system foundation.** Semantic design tokens (`app/globals.css`) + `app/components/ui/` primitives (Card, Badge, Button, ProgressBar); `ContinueLearningScreen` reworked to use them. See [ADR 0007](../docs/decisions/0007-semantic-design-tokens-and-ui-primitives.md). Next up: BL-021 (asset library), then BL-022 (apply the system to both screens, including `LessonPlayer`).
+- **BL-020 — Visual design system foundation.** Semantic design tokens (`app/globals.css`) + `app/components/ui/` primitives (Card, Badge, Button, ProgressBar); `ContinueLearningScreen` reworked to use them. See [ADR 0007](../docs/decisions/0007-semantic-design-tokens-and-ui-primitives.md). Delegated to and completed by an OpenClaw worker — first successful delegation this project has had.
+- **BL-021 — Icon and illustration asset library.** 6 hand-authored SVGs under `/assets` (4 step-type icons, 2 illustrations), consumed via `app/components/icons/`.
+- **BL-022 — Design system applied to both screens.** `LessonPlayer` migrated off its own accent-class map onto the shared primitives.
+- **BL-023 — Explicit voice-answer mode.** Web Speech API for short-answer questions, with a visible "listening" state and a visible fallback on unsupported browsers.
+- **BL-024 — Immediate feedback + retry.** `explanation` field on questions; correct/incorrect feedback with a working "Try again."
+- **BL-025 — Live demo kept current.** Rebuilt and redeployed; verified live via direct interaction (retry flow, feedback, voice button, no console errors).
+
+**Stop condition reached.** A significantly improved visual lesson experience is live at https://divx-ips-resistance-acoustic.trycloudflare.com. Stopping here for Product review before Sprint 4.

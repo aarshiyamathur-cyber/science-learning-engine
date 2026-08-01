@@ -1,6 +1,6 @@
 # Product Owner Briefing
 
-_Last updated: 2026-08-01 — Sprint 2_
+_Last updated: 2026-08-01 — Sprint 3_
 
 This file is the standing handoff document between the Engineering Lead (Claude Code, working in this repo) and the Product Owner (ChatGPT, supplying curriculum/gameplay specs). It is updated at the end of every sprint/milestone so it can be read on its own, without repo access, to know where things stand. There is no direct technical link between Claude Code and ChatGPT — this file, plus `management/*.md`, is the coordination channel; the user relays between the two.
 
@@ -8,46 +8,47 @@ If you are the Product Owner reading this for the first time: the full project v
 
 ---
 
-## Current status: Sprint 2 delivered — first playable lesson, live for testing
+## Current status: Sprint 3 delivered — visual polish + fixed interaction, live for testing
 
-**The first playable learning loop exists and is live right now:** https://divx-ips-resistance-acoustic.trycloudflare.com
+**The live demo (still the same URL) now has real color, illustrations, an unambiguous way to answer every question, and immediate feedback:** https://divx-ips-resistance-acoustic.trycloudflare.com
 
-- `packages/curriculum-schema` — Concept (now with `xpReward`), Lesson (ordered typed steps: explanation/example/question/summary), AssessmentQuestion, KnowledgeGraph; a shared YAML loader used by both the app and the validation pipeline.
-- `packages/learning-engine` — LearnerProfile (id, XP, score, completed lessons, last completed), MasteryState, AttemptRecord, backed by SQLite (`node:sqlite`, no native build toolchain required — ADR 0006).
-- A real UI: one screen (Science → Continue Learning → concept → Start Lesson → step-by-step lesson player → completion), colorful and icon-coded per step type, with a working answer box for both multiple-choice and short-answer questions.
-- Sample content: one concept ("Matter"), one lesson, five questions — demonstration content, not real curriculum.
-- Full repo: `github.com/aarshiyamathur-cyber/science-learning-engine`, `master` branch. Rationale for every technical choice is in [docs/decisions](decisions) (ADRs 0001–0006).
+Sprint 3 was driven directly by Aarshiya's feedback on Sprint 2 ("needs colour," "needs graphics," "not obvious how to answer," "no box to type an answer," voice input needs to be explicit). Every item below traces to that feedback:
 
-### What changed based on real feedback
+- **Visual design system** — semantic color tokens (`brand`/`accent`/`success`/`warning`/`danger`/`info`/`neutral`, each aliasing an existing Tailwind color ramp) and a shared `Card`/`Badge`/`Button`/`ProgressBar` primitives library, so the whole app draws from one consistent visual language — [ADR 0007](decisions/0007-semantic-design-tokens-and-ui-primitives.md).
+- **Icon and illustration library** — 6 hand-authored SVGs (no external downloads, no licensing questions): an icon per lesson-step type, plus illustrations for the concept card and the completion screen.
+- **Unambiguous answering** — multiple-choice is tap-to-answer; short-answer questions now have an actual text box (the Sprint 2 gap Aarshiya specifically flagged); and there's an explicit voice-answer option (Web Speech API) that clearly shows "🎤 Listening — say your answer now" while active, with a visible message on browsers that don't support it rather than a silently broken button.
+- **Immediate feedback** — every answer shows "✓ Nice work" or "✗ Not quite" plus a short explanation right away; a wrong answer gets a "Try again" that resets just that question for a fresh attempt (plus a lower-emphasis "Skip to next" so no one gets stuck).
 
-Aarshiya tried Sprint 2's first version and reported it was visually flat (no color) and short-answer questions had no way to actually type an answer. Both were fixed and re-verified in a real browser before being shipped to the live URL: short-answer questions now have a real text box (type → submit → compare against a reference answer → self-assess, since free-text auto-grading is out of scope for now), and the whole UI is color-coded and icon-driven instead of grayscale.
+## What changed based on real feedback (Sprint 2 → Sprint 3)
+
+Aarshiya's exact feedback: "needs colour," "needs graphics and illustrations," "not obvious how to answer questions," "there should be a visible text box for typed answers," "if voice input is supported, it must clearly tell the learner to speak," "needs to feel more engaging." All of it was addressed above and verified live (see Demo Instructions).
 
 ## Demo instructions
 
 1. **Open:** https://divx-ips-resistance-acoustic.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
 2. **Click:** "Start Lesson," then step through explanation → example → 5 questions → summary → finish.
-3. **Expected behaviour:** progress bar and XP update live; reloading the page keeps your progress (it's saved server-side, not just in the browser).
-4. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected to the internet. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
+3. **Try answering a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question (works on most Chrome/Edge/Safari; shows a clear message if your browser doesn't support it).
+4. **Expected behaviour:** progress bar, XP, and colored feedback update live; reloading the page keeps your progress (it's saved server-side, not just in the browser).
+5. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected to the internet. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
 
 ## Decisions since last briefing
 
-- Sprint 1's original scope (knowledge graph traversal, general progression engine) was narrowed and partly superseded once Sprint 2 defined a concrete first playable loop — see the backlog's "Later / Deferred" section.
-- Learner-progress persistence uses Node's built-in `node:sqlite`, not `better-sqlite3` as originally planned, since this dev machine has no C++ build toolchain — [ADR 0006](decisions/0006-node-sqlite-over-better-sqlite3.md).
-- The OpenClaw autonomous coding pipeline's "decide what to do" step was moved from a local Ollama model to a deterministic script, after local models (llama3, then qwen2.5:3b) proved unreliable or incapable of tool-calling — `management/DECISIONS.md` DEC-002.
-- **Open reliability issue (DEC-003):** the one real OpenClaw delegation attempt hung for 27 hours before an outer timeout killed it. Root cause traced to the dev machine's network (see below), not yet independently confirmed fixed.
-- Adopted a delegation-first operating model: Claude Code as Engineering Manager, OpenClaw as the implementation workforce, tracked in `management/WORKER_DASHBOARD.md` (Automation Ratio) and `management/TASK_LEDGER.md`. Currently at 0% against a 70% target — see "Open questions" below for why.
-- **Network finding:** the dev machine's home ISP (TPG) appears to block this specific Windows device (likely a MAC-level rule on the router — a MacBook on the same network is unaffected), causing IPv4 to fail while IPv6 still works. This explains the DEC-003 hang and repeated push failures. Mobile hotspot is a working bypass; the router-side cause hasn't been resolved.
+- **DEC-003 resolved.** The Sprint 2 27-hour delegation hang was confirmed to be the TPG network issue below, not a broken pipeline. A subsequent delegation (BL-020) completed successfully once the network was healthy — the first successful OpenClaw delegation this project has had.
+- **Network finding, now understood and worked around.** The dev machine's home ISP (TPG) blocks this specific Windows device at roughly the IPv4/DHCP level (a MacBook on the same network is unaffected); IPv6 still works, which is why the live tunnel kept working through the outage even when `git push` couldn't. Mobile hotspot is a reliable bypass when needed.
+- Increased the OpenClaw cron job's no-output timeout from 600s to 1500s — `--print` mode doesn't stream progress, so a substantial task can look silent for a while without actually being stuck.
+- "XP earned" in the per-question feedback is shown as encouragement text, not a fabricated new number — XP stays a lesson-completion-only mechanic (unchanged), per Sprint 3's explicit "no new game mechanics" constraint.
 
 ## Open questions for the Product Owner
 
-1. **Automation Ratio (70% target, currently 0%):** blocked by the network issue above (a delegated OpenClaw worker needs internet, same as a push) and by the unresolved DEC-003 reliability issue. Acceptable to keep building directly until both are resolved, or is there a preference for pausing feature work until delegation is reliable?
-2. **Hosting:** the live demo is a Cloudflare tunnel to the dev machine (chosen for a quick trial, per your instruction) — data stays local (`node:sqlite`). Move to real cloud hosting (would need a persistence swap to a hosted database, e.g. Turso/libSQL, plus a Vercel deploy) if the trial goes well, or keep the tunnel approach?
-3. **Content:** what's the first slice of real curriculum content beyond the single "Matter" demo concept? A recommended next step is one full NSW Year 7 topic authored for real.
-4. **Scoring model:** the deferred progression engine (mastery-based "what's next" recommendation) needs your input on the scoring/mastery model before it's built.
+1. **Sprint 4 direction:** continue polishing this same loop (more concepts/content) or focus on closing the Automation Ratio gap directly (currently ~6% against a 70% target — see `management/WORKER_DASHBOARD.md` for why, it's a task-shape problem more than a capability problem)?
+2. **A bigger delegation test:** now that BL-020 proved OpenClaw can complete real, well-reviewed work, is there interest in delegating a larger, more independent feature next sprint as a further test?
+3. **Hosting:** still a Cloudflare tunnel to the dev machine, per your "trial locally first" call. Revisit cloud hosting (previously scoped: libSQL/Turso + Vercel) if this needs to be more permanent than an ad hoc tunnel.
+4. **Content:** what's the first slice of real curriculum content beyond the single "Matter" demo concept?
+5. **Scoring model:** the deferred progression engine (mastery-based "what's next" recommendation) still needs your input on the scoring model before it's built.
 
-## Status per the Sprint 2 handoff protocol
+## Status per the handoff protocol
 
-Per `management/HANDOFF.md`, engineering stops and waits for Product review after each sprint. Sprint 2 is complete and live — awaiting your review before Sprint 3 begins.
+Per `management/HANDOFF.md` and Sprint 3's explicit stop condition ("when there is a significantly improved visual lesson experience ready for Aarshiya to test, stop"): that condition is met. Stopping here, awaiting your review before Sprint 4.
 
 ## How to keep this current
 
