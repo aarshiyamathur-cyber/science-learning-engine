@@ -1,5 +1,5 @@
-import { resolveLessonSteps } from "@aarshiya/curriculum-schema";
-import { ContinueLearningScreen } from "./components/ContinueLearningScreen";
+import { resolveLessonSteps, type Concept } from "@aarshiya/curriculum-schema";
+import { ContinueLearningScreen, type LessonEntry } from "./components/ContinueLearningScreen";
 import { getCurriculum } from "./lib/curriculum";
 import { DEMO_LEARNER_ID, getOrCreateProfile, getProgressStore } from "./lib/progress";
 
@@ -7,35 +7,66 @@ import { DEMO_LEARNER_ID, getOrCreateProfile, getProgressStore } from "./lib/pro
 // prerendered, or every visitor would see whatever state existed at build time.
 export const dynamic = "force-dynamic";
 
-const DEMO_CONCEPT_ID = "sci-y7-matter";
-const DEMO_LESSON_ID = "lesson-matter-intro";
+/**
+ * The "Matter" topic, in teaching order. A concept is only shown once it has
+ * real lesson content (lessonRefs populated) — this is how a concept that
+ * hasn't been authored yet (e.g. before its lesson lands) simply doesn't
+ * appear, with no placeholder needed.
+ */
+const MATTER_TOPIC_CONCEPT_IDS = [
+  "sci-y7-matter",
+  "sci-y7-particle-model",
+  "sci-y7-states-of-matter",
+];
+
+function isConceptCompleted(concept: Concept, completedLessons: string[]): boolean {
+  return (
+    concept.lessonRefs.length > 0 &&
+    concept.lessonRefs.every((id) => completedLessons.includes(id))
+  );
+}
+
+function isConceptLocked(
+  concept: Concept,
+  allConcepts: ReadonlyMap<string, Concept>,
+  completedLessons: string[],
+): boolean {
+  return concept.prerequisites.some((prereqId) => {
+    const prereq = allConcepts.get(prereqId);
+    return prereq ? !isConceptCompleted(prereq, completedLessons) : false;
+  });
+}
 
 export default function Home() {
   const { concepts, lessons, questions } = getCurriculum();
-  const concept = concepts.get(DEMO_CONCEPT_ID);
-  const lesson = lessons.get(DEMO_LESSON_ID);
-  if (!concept || !lesson) {
-    throw new Error(
-      `Demo content missing: expected concept "${DEMO_CONCEPT_ID}" and lesson "${DEMO_LESSON_ID}"`,
-    );
-  }
-
-  const steps = resolveLessonSteps(lesson, questions);
   const profile = getOrCreateProfile(DEMO_LEARNER_ID);
-  const mastery = getProgressStore().getMasteryState(DEMO_LEARNER_ID, DEMO_CONCEPT_ID);
+  const progressStore = getProgressStore();
+
+  const lessonEntries: LessonEntry[] = MATTER_TOPIC_CONCEPT_IDS.flatMap((conceptId) => {
+    const concept = concepts.get(conceptId);
+    if (!concept || concept.lessonRefs.length === 0) return [];
+
+    const lesson = lessons.get(concept.lessonRefs[0]);
+    if (!lesson) return [];
+
+    const mastery = progressStore.getMasteryState(DEMO_LEARNER_ID, conceptId);
+    return [
+      {
+        conceptId: concept.id,
+        conceptTitle: concept.title,
+        lessonId: lesson.id,
+        lessonTitle: lesson.title,
+        steps: resolveLessonSteps(lesson, questions),
+        initialMasteryScore: mastery?.masteryScore ?? 0,
+        alreadyCompleted: profile.completedLessons.includes(lesson.id),
+        locked: isConceptLocked(concept, concepts, profile.completedLessons),
+      },
+    ];
+  });
 
   return (
     <div className="flex flex-1 flex-col font-sans">
-      <ContinueLearningScreen
-        conceptId={concept.id}
-        conceptTitle={concept.title}
-        lessonId={lesson.id}
-        lessonTitle={lesson.title}
-        steps={steps}
-        initialXp={profile.xp}
-        initialMasteryScore={mastery?.masteryScore ?? 0}
-        alreadyCompleted={profile.completedLessons.includes(lesson.id)}
-      />
+      <ContinueLearningScreen lessons={lessonEntries} initialXp={profile.xp} />
     </div>
   );
 }

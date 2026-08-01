@@ -210,11 +210,22 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Description:** A reusable component: drag an object to apply force, release to see it move and decelerate (simple friction). Directly satisfies "drag" from the filter question.
 - **Dependencies:** BL-026
 - **Priority:** P1
-- **Status:** Not started
+- **Status:** Dropped for now
 - **Acceptance criteria:** Real drag-and-release interaction (not click-only); standalone reusable component.
 - **Estimate:** Medium
+- **Notes:** Explicitly dropped by the Sprint 5 Product Owner directive ("Complete the Matter topic... do not begin another topic") — this widget belongs to a future Forces topic, not Matter. Revisit whenever Forces is scheduled.
 
 ## Sprint 5
+
+### BL-030 — `hint` field on questions + LessonPlayer hint UI
+
+- **Description:** Add a required `hint` field to `AssessmentQuestionSchema` (shown to the learner before answering, distinct from `explanation` which shows after) and render it in `LessonPlayer` behind a "💡 Need a hint?" reveal.
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** Schema requires `hint` on every question; all existing curriculum content updated to include one; `LessonPlayer` shows a hint-reveal control before a question is answered, which disappears once answered; covered by tests.
+- **Estimate:** Small
+- **Notes:** Backfilled hint text into all 7 pre-existing questions (5 Matter, 2 Particle Model). Added `app/components/LessonPlayer.test.tsx` — the first real test coverage `LessonPlayer` has had (8 tests: step navigation, both question types, retry flow, hint reveal/disappearance). 62/62 tests passing after this change (was 53).
 
 ### BL-031 — Complete the Particle Model lesson
 
@@ -224,7 +235,51 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Status:** Done
 - **Acceptance criteria:** `lesson-particle-model-intro.yaml` no longer marked as example data and reuses the existing `particle-state-explorer` widget via an interactive step; `assessment-particle-model-quiz.yaml` has 4-5 questions covering the concept's learning objectives and misconceptions, each with `hint` and `explanation`; `sci-y7-particle-model.yaml` no longer marked as example data; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` all pass.
 - **Estimate:** Small
-- **Notes:** Rewrote `curriculum/lessons/lesson-particle-model-intro.yaml` with a fuller explanation/example, an `interactive` step reusing the existing `particle-state-explorer` widget (no widget code touched), and 5 question steps. Expanded `curriculum/assessments/assessment-particle-model-quiz.yaml` from 2 to 5 questions — kept `q-particle-model-01`/`02` (revised wording) covering the "particles touch" and "particles stop moving" misconceptions, and added `q-particle-model-03` (liquid particle arrangement), `q-particle-model-04` (what actually changes between states), and `q-particle-model-05` (heat and particle speed), mixing multiple-choice and short-answer per `assessment-matter-quiz.yaml`'s style. Removed the "EXAMPLE curriculum data" comment headers from both the lesson and `curriculum/concepts/sci-y7-particle-model.yaml` now that this is real content. `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (62/62 tests, 10 files) all pass.
+- **Notes:** Rewrote `curriculum/lessons/lesson-particle-model-intro.yaml` with a fuller explanation/example, an `interactive` step reusing the existing `particle-state-explorer` widget (no widget code touched), and 5 question steps. Expanded `curriculum/assessments/assessment-particle-model-quiz.yaml` from 2 to 5 questions — kept `q-particle-model-01`/`02` (revised wording) covering the "particles touch" and "particles stop moving" misconceptions, and added `q-particle-model-03` (liquid particle arrangement), `q-particle-model-04` (what actually changes between states), and `q-particle-model-05` (heat and particle speed), mixing multiple-choice and short-answer per `assessment-matter-quiz.yaml`'s style. Removed the "EXAMPLE curriculum data" comment headers from both the lesson and `curriculum/concepts/sci-y7-particle-model.yaml` now that this is real content. `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (62/62 tests, 10 files) all pass. Delegated to and completed by an OpenClaw headless worker; reviewed and merged by Claude Code with zero conflicts.
+
+### BL-032 — Write "States of Matter and Changes of State" lesson + assessment
+
+- **Description:** This concept (`sci-y7-states-of-matter`) currently has zero lesson content and zero questions despite being defined in the knowledge graph as part of the Matter topic (prerequisite: Particle Model). Write it from scratch: melting, freezing, evaporation, condensation, explained via particle energy — matching the quality bar of the other two Matter lessons.
+- **Dependencies:** BL-030, BL-031 (same content pattern to follow)
+- **Priority:** P0
+- **Status:** Dispatched
+- **Acceptance criteria:** New `curriculum/lessons/lesson-states-of-matter-intro.yaml` and `curriculum/assessments/assessment-states-of-matter-quiz.yaml`; `sci-y7-states-of-matter.yaml`'s `lessonRefs`/`assessmentRefs` populated; reuses the existing `particle-state-explorer` widget for an interactive step; 4-5 questions with hints and explanations covering the concept's misconception ("melting creates a new substance"); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Medium
+
+### BL-033 — Illustrations for Particle Model and States of Matter
+
+- **Description:** New hand-authored SVG illustrations supporting BL-031/BL-032, matching the existing inline-SVG style (see `app/components/icons/Illustrations.tsx`, BL-021). No external/downloaded assets.
+- **Dependencies:** BL-032 (so the illustrations match the final lesson content)
+- **Priority:** P1
+- **Status:** Not started
+- **Acceptance criteria:** New illustration(s) exported from `app/components/icons`, following the existing component/export pattern; wired into the relevant lesson screens; no licensing questions (hand-authored only).
+- **Estimate:** Small
+
+### BL-034 — Multi-lesson topic navigation
+
+- **Description:** Replace the single hardcoded lesson in `app/page.tsx`/`ContinueLearningScreen` with a real topic-level flow across all Matter lessons: a list view showing each lesson's progress/lock state, and a way to move between lessons without losing place.
+- **Dependencies:** none (works with however many Matter lessons currently have content — no placeholder needed for lessons not yet written)
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** Topic list shows every Matter concept that has lesson content, in teaching order; lock state derived from each concept's existing `prerequisites` field (no new engine capability); completing a lesson returns to the topic list; "Back to Matter" available mid-lesson.
+- **Estimate:** Medium
+- **Notes:** `app/page.tsx` now builds an ordered `LessonEntry[]` from a fixed `MATTER_TOPIC_CONCEPT_IDS` list, skipping any concept without lesson content yet (so States of Matter simply won't appear until BL-032 lands — no placeholder). `ContinueLearningScreen` rewritten to manage a `topic | in-lesson | done` screen state instead of a single `idle | in-lesson | done` state, with per-lesson mastery/completion tracked in maps keyed by lesson id. `LessonPlayer` itself required zero changes. Built directly by Claude (not delegated) since it touches the shared app shell.
+
+### BL-035 — UI polish pass: visual hierarchy, colour, mobile/iPad
+
+- **Description:** Audit every screen against the Sprint 5 Definition of Done: "every screen has appropriate colour and visual hierarchy," "mobile/iPad experience polished." Fix anything that doesn't hold up, especially on small viewports.
+- **Dependencies:** BL-032, BL-033, BL-034 (needs final content and navigation in place first)
+- **Priority:** P0
+- **Status:** Not started
+- **Estimate:** Medium
+
+### BL-036 — Final QA: full live click-through, no placeholders/TODOs
+
+- **Description:** Click through every interaction across all 3 Matter lessons live (not just typecheck/lint/test), verify progress/XP tracking end-to-end across lessons, confirm nothing is a placeholder or has a TODO left in it.
+- **Dependencies:** BL-032, BL-033, BL-034, BL-035
+- **Priority:** P0
+- **Status:** Not started
+- **Estimate:** Medium
 
 ## Later / Deferred
 

@@ -7,54 +7,73 @@ import { CelebrationIllustration, StatesOfMatterIllustration } from "./icons";
 import { LessonPlayer } from "./LessonPlayer";
 import { Badge, Button, Card, ProgressBar } from "./ui";
 
-interface ContinueLearningScreenProps {
+export interface LessonEntry {
   conceptId: string;
   conceptTitle: string;
   lessonId: string;
   lessonTitle: string;
   steps: ResolvedLessonStep[];
-  initialXp: number;
   initialMasteryScore: number;
   alreadyCompleted: boolean;
+  locked: boolean;
 }
 
-type ViewState = "idle" | "in-lesson" | "done";
+interface ContinueLearningScreenProps {
+  lessons: LessonEntry[];
+  initialXp: number;
+}
+
+type Screen = "topic" | "in-lesson" | "done";
 
 /**
- * The one screen for Sprint 2: pick up the current concept, start its
- * lesson, and see progress update when it's finished. No maps, avatars,
- * coins, or achievement systems — but real color, so it reads as engaging
- * rather than a plain document (feedback from Aarshiya's first try).
+ * The "Matter" topic screen: a list of every lesson in the topic (in
+ * teaching order), each showing its own progress and lock state, plus the
+ * existing single-lesson play/answer/complete flow once one is selected.
+ * Locking is derived entirely from each concept's existing `prerequisites`
+ * field — no new engine capability, just reading data that already exists.
  */
-export function ContinueLearningScreen({
-  conceptId,
-  conceptTitle,
-  lessonId,
-  lessonTitle,
-  steps,
-  initialXp,
-  initialMasteryScore,
-  alreadyCompleted,
-}: ContinueLearningScreenProps) {
-  const [view, setView] = useState<ViewState>("idle");
+export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningScreenProps) {
+  const [screen, setScreen] = useState<Screen>("topic");
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [xp, setXp] = useState(initialXp);
-  const [masteryScore, setMasteryScore] = useState(initialMasteryScore);
-  const [completed, setCompleted] = useState(alreadyCompleted);
+  const [masteryByLesson, setMasteryByLesson] = useState<Record<string, number>>(() =>
+    Object.fromEntries(lessons.map((l) => [l.lessonId, l.initialMasteryScore])),
+  );
+  const [completedByLesson, setCompletedByLesson] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(lessons.map((l) => [l.lessonId, l.alreadyCompleted])),
+  );
+
+  const selected = selectedIndex !== null ? lessons[selectedIndex] : null;
+
+  function startLesson(index: number) {
+    setSelectedIndex(index);
+    setScreen("in-lesson");
+  }
+
+  function backToTopic() {
+    setSelectedIndex(null);
+    setScreen("topic");
+  }
 
   async function handleAnswer(input: { questionId: string; correct: boolean }) {
-    const { masteryScore: updated } = await submitAnswerAction({
-      conceptId,
+    if (!selected) return;
+    const { masteryScore } = await submitAnswerAction({
+      conceptId: selected.conceptId,
       questionId: input.questionId,
       correct: input.correct,
     });
-    setMasteryScore(updated);
+    setMasteryByLesson((prev) => ({ ...prev, [selected.lessonId]: masteryScore }));
   }
 
   async function handleComplete() {
-    const { xp: updated } = await completeLessonAction({ conceptId, lessonId });
-    setXp(updated);
-    setCompleted(true);
-    setView("done");
+    if (!selected) return;
+    const { xp: updatedXp } = await completeLessonAction({
+      conceptId: selected.conceptId,
+      lessonId: selected.lessonId,
+    });
+    setXp(updatedXp);
+    setCompletedByLesson((prev) => ({ ...prev, [selected.lessonId]: true }));
+    setScreen("done");
   }
 
   return (
@@ -64,47 +83,75 @@ export function ContinueLearningScreen({
           🔬 Science
         </h1>
 
-        {view === "idle" && (
-          <Card tone="brand">
-            <Badge tone="brand" icon="▶️">
-              Continue Learning
-            </Badge>
+        {screen === "topic" && (
+          <div className="flex flex-col gap-4">
             <StatesOfMatterIllustration className="h-20 w-full" aria-hidden />
-            <p className="text-heading font-bold text-zinc-900 dark:text-zinc-50">
-              {conceptTitle}
-            </p>
-            <ProgressBar value={masteryScore} />
+            <p className="text-heading font-bold text-zinc-900 dark:text-zinc-50">Matter</p>
             <p className="text-label font-medium text-warning-700 dark:text-warning-300">
-              ⭐ {xp} XP{completed && " · Lesson completed!"}
+              ⭐ {xp} XP
             </p>
-            <Button onClick={() => setView("in-lesson")}>Start Lesson 🚀</Button>
-          </Card>
+            {lessons.map((entry, index) => {
+              const completed = completedByLesson[entry.lessonId];
+              const mastery = masteryByLesson[entry.lessonId];
+              const tone = entry.locked ? "neutral" : completed ? "success" : "brand";
+              return (
+                <Card key={entry.lessonId} tone={tone}>
+                  <Badge tone={tone} icon={entry.locked ? "🔒" : completed ? "✓" : "▶️"}>
+                    {entry.locked ? "Locked" : completed ? "Completed" : "Ready"}
+                  </Badge>
+                  <p className="text-subheading font-bold text-zinc-900 dark:text-zinc-50">
+                    {entry.conceptTitle}
+                  </p>
+                  <p className="text-label text-zinc-600 dark:text-zinc-300">
+                    {entry.lessonTitle}
+                  </p>
+                  <ProgressBar value={mastery} />
+                  {entry.locked ? (
+                    <p className="text-label text-zinc-500 dark:text-zinc-400">
+                      Complete the previous lesson first.
+                    </p>
+                  ) : (
+                    <Button onClick={() => startLesson(index)}>
+                      {completed ? "Review Lesson" : "Start Lesson 🚀"}
+                    </Button>
+                  )}
+                </Card>
+              );
+            })}
+          </div>
         )}
 
-        {view === "in-lesson" && (
+        {screen === "in-lesson" && selected && (
           <div className="flex flex-col gap-4">
+            <button
+              type="button"
+              onClick={backToTopic}
+              className="self-start text-label text-info-600 underline hover:text-info-800 dark:text-info-400 dark:hover:text-info-200"
+            >
+              ← Back to Matter
+            </button>
             <p className="text-subheading font-semibold text-info-900 dark:text-info-100">
-              {lessonTitle}
+              {selected.lessonTitle}
             </p>
             <LessonPlayer
-              steps={steps}
+              steps={selected.steps}
               onAnswer={handleAnswer}
               onComplete={handleComplete}
             />
           </div>
         )}
 
-        {view === "done" && (
+        {screen === "done" && selected && (
           <Card tone="success">
             <CelebrationIllustration className="h-20 w-full" aria-hidden />
             <p className="text-heading font-bold text-success-700 dark:text-success-300">
               🎉 Lesson complete!
             </p>
-            <ProgressBar value={masteryScore} />
+            <ProgressBar value={masteryByLesson[selected.lessonId]} />
             <p className="text-label font-medium text-warning-700 dark:text-warning-300">
               ⭐ {xp} XP
             </p>
-            <Button onClick={() => setView("idle")}>Back</Button>
+            <Button onClick={backToTopic}>Back to Matter</Button>
           </Card>
         )}
       </div>
