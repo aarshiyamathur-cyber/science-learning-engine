@@ -36,6 +36,9 @@ yarn-error.log*
 # local learner progress database (per-machine runtime state, not source)
 /data/*.db
 
+# deploy script runtime logs (per-machine, not source)
+/scripts/deploy/*.log
+
 # vercel
 .vercel
 
