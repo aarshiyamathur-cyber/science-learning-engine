@@ -2,6 +2,30 @@
 
 Written at the end of every work cycle: what was completed, what's in progress, risks, questions for Product, and the recommended next action.
 
+## 2026-08-01 — Two parallel initiatives now running: Sprint 5 + Product Command Centre
+
+**Completed since the last entry**
+
+- BL-031 (Particle Model lesson) merged — OpenClaw-delegated, zero conflicts, reviewed in full (scientifically accurate, well-scaffolded difficulty, good hints).
+- BL-032 (States of Matter lesson, written entirely from scratch) merged — OpenClaw-delegated, zero conflicts. This was the biggest content gap in the Matter topic (the concept had zero lesson/assessment content before this) and the result correctly targets its "melting creates a new substance" misconception with a dedicated question.
+- BL-034 (multi-lesson topic navigation) built and merged — `app/page.tsx`/`ContinueLearningScreen` now shows all Matter lessons with real progress/lock state, derived entirely from existing schema fields (`prerequisites`, `lessonRefs`) rather than any new engine capability. Verified live: topic list, hint reveal, "Back to Matter" navigation, and mobile/tablet viewport (no horizontal overflow, 48px tap targets) all confirmed working against a rebuilt local server.
+
+**New directive received mid-flight:** Product Owner requested a separate "Product Command Centre" — a permanent internal dashboard app — built almost entirely via OpenClaw (80% automation target). Rather than pause Sprint 5 (due "tomorrow morning") to start this, a second OpenClaw managed worktree (`openclaw/command-centre`) was created so both initiatives run in genuinely parallel worktrees. See `management/COMMAND_CENTRE.md` for the full breakdown.
+
+**Currently in flight**
+
+- BL-033 (illustrations for Particle Model / States of Matter) — dispatched to OpenClaw in the `aarshiya-auto` worktree.
+- CC-001 (Command Centre framework/navigation/routing scaffold) — dispatched to OpenClaw in the new `command-centre` worktree.
+
+**Risks**
+
+- Two simultaneous OpenClaw delegations is a first for this project — watching for any resource contention (both are separate worktrees/processes, so expected to be fine, but unverified at this scale before).
+- Command Centre is open-ended in scope (6 pages, data integration, deployment) — will need its own multi-cycle plan; not expecting it to finish today alongside Sprint 5.
+
+**Recommended next action**
+
+Continue reviewing/merging both streams as their dispatched tasks land; Sprint 5's remaining items (BL-035 polish, BL-036 QA) come right after BL-033 merges.
+
 ## 2026-08-01 — Sprint 5 kickoff: "Complete the Matter topic" directive received
 
 **Completed**
