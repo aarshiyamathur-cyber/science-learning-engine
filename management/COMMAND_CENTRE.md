@@ -32,7 +32,7 @@ Product Owner directive (2026-08-01): build a "Product Command Centre" — an in
 | ----- | ----------------------------------------- | -------- | ---------- |
 | CC-001 | Framework, navigation, routing scaffold  | OpenClaw (Worker 1) | Done — merged |
 | CC-002 | Executive Dashboard + Roadmap + Progress cards | OpenClaw (Worker 2) | Done — merged (typed sample-data layer, "sample data" disclosure added by Claude on review) |
-| CC-003 | Sprint History + Release Centre + Question Bank dashboard | OpenClaw (Worker 3) | Not started |
+| CC-003 | Sprint History + Release Centre + Question Bank dashboard | OpenClaw (Worker 3) | Done — merged |
 | CC-004 | Engineering Dashboard + repository readers + metrics/automation stats | OpenClaw (Worker 4) | Not started |
 | CC-005 | Visual design, charts, responsive layout polish | OpenClaw (Worker 5) | Not started |
 | CC-006 | Deploy Command Centre with its own public URL | Claude (deployment/infra, same pattern as the learning app's Cloudflare tunnel) | Not started |
