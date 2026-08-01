@@ -1,0 +1,12 @@
+<svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- confetti -->
+  <circle cx="30" cy="30" r="5" fill="#10b981"/>
+  <circle cx="130" cy="25" r="4" fill="#f59e0b"/>
+  <circle cx="100" cy="95" r="5" fill="#0ea5e9"/>
+  <circle cx="35" cy="92" r="4" fill="#8b5cf6"/>
+  <rect x="68" y="12" width="8" height="8" fill="#f59e0b" transform="rotate(20 72 16)"/>
+  <rect x="118" y="68" width="8" height="8" fill="#10b981" transform="rotate(-15 122 72)"/>
+  <rect x="14" y="58" width="8" height="8" fill="#0ea5e9" transform="rotate(30 18 62)"/>
+  <!-- star -->
+  <polygon points="80,32 89,54 113,54 93,68 101,90 80,76 59,90 67,68 47,54 71,54" fill="#f59e0b"/>
+</svg>

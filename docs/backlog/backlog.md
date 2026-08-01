@@ -127,9 +127,10 @@ Sprint 3 goal: improve the learner experience — visuals, clarity of interactio
 - **Description:** `assets/{icons,illustrations,diagrams,animations,backgrounds}` with a small set of hand-authored inline SVGs (a science/lesson theme: beaker, atom, states-of-matter, celebration) in one consistent style. Hand-authored rather than downloaded, to avoid licensing ambiguity and any network dependency.
 - **Dependencies:** BL-020 (shares the same visual style/palette)
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** At least one illustration per step type (explanation/example/question/summary) and one for the completion screen; all SVG, no external asset downloads.
 - **Estimate:** Medium
+- **Notes:** Source SVGs live under `/assets` per the requested structure; `app/components/icons/` provides React-consumable copies (inline JSX, no SVGR/webpack loader needed) that mirror them exactly. 6 assets total: 4 step-type icons + 2 illustrations (states of matter, celebration).
 
 ### BL-022 — Apply design system to Continue Learning + Lesson Player
 
