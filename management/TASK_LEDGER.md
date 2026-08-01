@@ -1,0 +1,30 @@
+# Task Ledger
+
+_Last updated: 2026-08-01 by Claude Code_
+
+One row per engineering task. Tracking starts with Sprint 2 (the delegation-first directive was introduced mid-Sprint-2; Sprint 0/1 tasks aren't retroactively recorded here). `Owner` reflects who actually did the implementation, not who was assigned.
+
+| Task ID | Title                                                | Assigned By                   | Owner                                              | Status | Files changed                                                                                                                                                    | Reviewed                                                                                                                     | Accepted | Dependencies   |
+| ------- | ---------------------------------------------------- | ----------------------------- | -------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------- | -------------- |
+| BL-010  | Core domain models: Learner profile & attempt record | Claude (Sprint 1 breakdown)   | OpenClaw (attempted, hung 27h) → Claude (finished) | Done   | `packages/learning-engine/package.json`, `src/index.ts`, `src/index.test.ts`                                                                                     | Self-reviewed by Claude; typecheck/lint/test/build pass                                                                      | Yes      | BL-002         |
+| BL-015  | Concept Engine: `xpReward` field                     | Product Owner (Sprint 2 spec) | Claude                                             | Done   | `packages/curriculum-schema/src/index.ts`, `src/index.test.ts`, `curriculum/concepts/*.yaml`                                                                     | Self-reviewed by Claude; typecheck/lint/test pass                                                                            | Yes      | BL-002         |
+| BL-016  | Lesson Engine: step schema + generic renderer        | Product Owner (Sprint 2 spec) | Claude                                             | Done   | `packages/curriculum-schema/src/index.ts`, `src/loader.ts`, `src/loader.test.ts`, `app/components/LessonPlayer.tsx`, `curriculum/lessons/*.yaml`                 | Self-reviewed by Claude; typecheck/lint/test pass + real browser walkthrough                                                 | Yes      | BL-002, BL-003 |
+| BL-017  | Learner Progress: extend model + minimal persistence | Product Owner (Sprint 2 spec) | Claude                                             | Done   | `packages/learning-engine/src/index.ts`, `src/persistence.ts`, `src/persistence.test.ts`                                                                         | Self-reviewed by Claude; typecheck/lint/test pass; see ADR 0006 for `node:sqlite` choice                                     | Yes      | BL-010         |
+| BL-018  | Minimal "Continue Learning" screen                   | Product Owner (Sprint 2 spec) | Claude                                             | Done   | `app/page.tsx`, `app/components/ContinueLearningScreen.tsx`, `app/components/LessonPlayer.tsx`, `app/actions.ts`, `app/lib/curriculum.ts`, `app/lib/progress.ts` | Self-reviewed by Claude; full real-browser walkthrough on dev server + production build — 2 bugs found and fixed (see below) | Yes      | BL-016, BL-017 |
+| BL-019  | Sample content: "Matter" concept + lesson            | Product Owner (Sprint 2 spec) | Claude                                             | Done   | `curriculum/concepts/sci-y7-matter.yaml`, `curriculum/lessons/lesson-matter-intro.yaml`, `curriculum/assessments/assessment-matter-quiz.yaml`                    | Self-reviewed by Claude; passes `npm run validate:curriculum`, exercised via BL-018                                          | Yes      | BL-016         |
+
+## BL-018 browser walkthrough — bugs found and fixed
+
+The full lesson flow (start → explanation → example → 5 questions, mixed multiple-choice and short-answer → summary → finish) was exercised end to end in a real browser against the running dev server, then re-verified against a production build. Two real bugs surfaced that typecheck/lint/unit tests didn't catch:
+
+1. **Short-answer "Next" appeared before self-assessment.** `answered` was set true as soon as "Show reference answer" was clicked, letting a learner skip past a question without ever recording right/wrong. Fixed by splitting `revealed` (reference shown) from `answered` (outcome recorded) in `LessonPlayer.tsx`.
+2. **`/` was statically prerendered.** Next.js's build step froze the learner's progress at build time instead of reading it per request — every visitor in production would have seen stale progress. Fixed with `export const dynamic = "force-dynamic"` in `app/page.tsx`, since this route reads mutable learner state on every load.
+
+Neither would have been caught without actually running the app — this is the reasoning behind the "start the dev server and use the feature in a browser" step for any UI change.
+
+## Field definitions
+
+- **Assigned By** — who decided this task should happen (Product Owner via a sprint spec, or Claude during sprint breakdown).
+- **Owner** — who actually wrote the implementation.
+- **Reviewed** — what checks/review the work went through before being marked Done.
+- **Accepted** — whether the work is considered final (Yes) or still needs Product sign-off (Pending).
