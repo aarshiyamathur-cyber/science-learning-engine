@@ -252,9 +252,10 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Description:** New hand-authored SVG illustrations supporting BL-031/BL-032, matching the existing inline-SVG style (see `app/components/icons/Illustrations.tsx`, BL-021). No external/downloaded assets.
 - **Dependencies:** BL-032 (so the illustrations match the final lesson content)
 - **Priority:** P1
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** New illustration(s) exported from `app/components/icons`, following the existing component/export pattern; wired into the relevant lesson screens; no licensing questions (hand-authored only).
 - **Estimate:** Small
+- **Notes:** Added `ParticleModelIllustration` (magnifying glass zooming into a particle cluster) and `ChangesOfStateIllustration` (ice cube → droplet → rising steam wisps) to `app/components/icons/Illustrations.tsx`, hand-authored inline SVG in the existing token hex palette (`#0ea5e9`, `#8b5cf6`, `#f59e0b`, `#10b981`), no external assets. Exported both from `app/components/icons/index.ts`. Replaced the single shared `StatesOfMatterIllustration` banner atop the topic list in `ContinueLearningScreen.tsx` with a per-lesson `LESSON_ILLUSTRATIONS` lookup keyed by `conceptId` (`sci-y7-matter`, `sci-y7-particle-model`, `sci-y7-states-of-matter`), rendered inside each lesson's `Card`. Added render tests for both new components to `app/components/icons/index.test.tsx`. `typecheck`, `lint`, `vitest run` (64/64 tests, 10 files), and `build` all pass.
 
 ### BL-034 — Multi-lesson topic navigation
 

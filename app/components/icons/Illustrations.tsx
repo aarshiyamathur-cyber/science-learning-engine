@@ -28,6 +28,70 @@ export function StatesOfMatterIllustration(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** Magnifying glass zooming in on a cluster of particles. */
+export function ParticleModelIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g>
+        <circle cx="35" cy="45" r="6" fill="#8b5cf6" />
+        <circle cx="55" cy="40" r="6" fill="#8b5cf6" />
+        <circle cx="45" cy="62" r="6" fill="#8b5cf6" />
+        <circle cx="65" cy="58" r="6" fill="#8b5cf6" />
+        <circle cx="40" cy="80" r="6" fill="#8b5cf6" />
+        <circle cx="62" cy="78" r="6" fill="#8b5cf6" />
+      </g>
+      <circle
+        cx="95"
+        cy="55"
+        r="32"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="6"
+      />
+      <line
+        x1="118"
+        y1="78"
+        x2="150"
+        y2="110"
+        stroke="#0ea5e9"
+        strokeWidth="8"
+        strokeLinecap="round"
+      />
+      <circle cx="86" cy="46" r="8" fill="#10b981" />
+      <circle cx="106" cy="50" r="8" fill="#10b981" />
+      <circle cx="95" cy="68" r="8" fill="#10b981" />
+    </svg>
+  );
+}
+
+/** Ice cube melting into water, then rising as steam wisps. */
+export function ChangesOfStateIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect x="12" y="55" width="34" height="34" rx="4" fill="#0ea5e9" />
+      <path
+        d="M75 60 Q85 45 95 60 Q105 75 95 88 Q85 100 75 88 Q65 75 75 60 Z"
+        fill="#0ea5e9"
+      />
+      <path
+        d="M132 95 Q126 82 132 70 M144 95 Q138 78 144 62 M156 95 Q150 82 156 70"
+        fill="none"
+        stroke="#f59e0b"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="0"
+        y1="100"
+        x2="180"
+        y2="100"
+        stroke="#10b981"
+        strokeWidth="3"
+      />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (
