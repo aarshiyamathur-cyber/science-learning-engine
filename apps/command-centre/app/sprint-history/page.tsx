@@ -1,15 +1,16 @@
+import { PageHeader } from "../components/PageHeader";
 import { SampleDataNotice } from "../components/SampleDataNotice";
+import { TaskSplitBar } from "../components/TaskSplitBar";
 import { sprintHistory } from "../lib/sample-data";
 import { roadmapStatusToCardStatus, STATUS_COLORS } from "../lib/status-colors";
 
 export default function SprintHistoryPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900">Sprint History</h1>
-      <p className="mt-2 max-w-2xl text-base text-slate-600">
-        Sprint History — a record of completed sprints, what shipped in each, and how
-        work was split between OpenClaw and Claude.
-      </p>
+      <PageHeader
+        title="Sprint History"
+        description="Sprint History — a record of completed sprints, what shipped in each, and how work was split between OpenClaw and Claude."
+      />
       <SampleDataNotice />
 
       <ul className="mt-8 space-y-3">
@@ -32,6 +33,7 @@ export default function SprintHistoryPage() {
               <p className="mt-2 text-sm font-medium text-slate-700">
                 {sprint.openClawTasks} OpenClaw / {sprint.claudeTasks} Claude
               </p>
+              <TaskSplitBar openClawTasks={sprint.openClawTasks} claudeTasks={sprint.claudeTasks} />
             </li>
           );
         })}

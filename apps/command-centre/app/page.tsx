@@ -1,17 +1,16 @@
+import { PageHeader } from "./components/PageHeader";
 import { ProgressCard } from "./components/ProgressCard";
 import { SampleDataNotice } from "./components/SampleDataNotice";
+import { Section } from "./components/Section";
 import { blockers, programStatus, progressMetrics } from "./lib/sample-data";
 
 export default function ExecutiveDashboardPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-        Executive Dashboard
-      </h1>
-      <p className="mt-2 max-w-2xl text-base text-slate-600">
-        Executive Dashboard — high-level program status at a glance: current sprint,
-        automation ratio, and what&apos;s blocking.
-      </p>
+      <PageHeader
+        title="Executive Dashboard"
+        description="Executive Dashboard — high-level program status at a glance: current sprint, automation ratio, and what's blocking."
+      />
       <SampleDataNotice />
 
       <section className="mt-8">
@@ -19,11 +18,8 @@ export default function ExecutiveDashboardPage() {
         <p className="mt-1 text-sm text-slate-600">{programStatus.statusSummary}</p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          Key Metrics
-        </h2>
-        <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <Section title="Key Metrics">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {progressMetrics.map((metric) => (
             <ProgressCard
               key={metric.label}
@@ -33,13 +29,10 @@ export default function ExecutiveDashboardPage() {
             />
           ))}
         </div>
-      </section>
+      </Section>
 
-      <section className="mt-8">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          What&apos;s Blocking
-        </h2>
-        <div className="mt-3 rounded-lg bg-white p-4 shadow-sm">
+      <Section title="What's Blocking">
+        <div className="rounded-lg bg-white p-4 shadow-sm">
           {blockers.length === 0 ? (
             <p className="text-sm text-slate-600">No blockers.</p>
           ) : (
@@ -53,7 +46,7 @@ export default function ExecutiveDashboardPage() {
             </ul>
           )}
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

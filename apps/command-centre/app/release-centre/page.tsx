@@ -1,3 +1,4 @@
+import { PageHeader } from "../components/PageHeader";
 import { SampleDataNotice } from "../components/SampleDataNotice";
 import { releases } from "../lib/sample-data";
 import { releaseStatusToCardStatus, STATUS_COLORS } from "../lib/status-colors";
@@ -5,11 +6,10 @@ import { releaseStatusToCardStatus, STATUS_COLORS } from "../lib/status-colors";
 export default function ReleaseCentrePage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900">Release Centre</h1>
-      <p className="mt-2 max-w-2xl text-base text-slate-600">
-        Release Centre — tracks what has been built, reviewed, merged, and deployed,
-        and what is still pending release.
-      </p>
+      <PageHeader
+        title="Release Centre"
+        description="Release Centre — tracks what has been built, reviewed, merged, and deployed, and what is still pending release."
+      />
       <SampleDataNotice />
 
       <ul className="mt-8 space-y-3">

@@ -327,6 +327,16 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** Verified the numbers are real (not zero/frozen) by building and running a production server on a scratch port and fetching `/engineering` directly — confirmed matching the ledger's actual row counts (15 total, 8 OpenClaw, 7 Claude, 53% at time of verification) and that the route builds as `ƒ (Dynamic)`, not `○ (Static)` (first build was static and silently would have frozen the numbers at build time — the exact class of bug the `BL-018` browser-walkthrough note warns about). `typecheck`/`lint`/`build`/`vitest run` all pass inside `apps/command-centre` (22 tests across 9 files, up from 14 across 7); root `typecheck`/`lint`/`vitest run` still pass unchanged at 64/64 tests, 10 files (root `.next` build artifact excluded from root lint via its own `.gitignore`, not part of the repo).
 
+### CC-005 — Visual design, responsive layout, progress bars
+
+- **Description:** Presentation-layer polish pass across all six Command Centre pages. Extracted the repeated ad hoc heading/label Tailwind classes into shared components — `PageHeader` (title + description) and `Section` (uppercase label + content wrapper) — and applied them on every page in place of raw duplicated classes. Made the `Nav` sidebar responsive: below the `md:` breakpoint it collapses from a fixed `w-64` column into a horizontally-scrollable top bar instead of crowding a phone-width viewport, with `layout.tsx`'s body switching `flex-col`/`md:flex-row` to match. Added a small two-segment `TaskSplitBar` component (styled divs, no charting library) next to the existing OpenClaw/Claude text summary on the Sprint History page so the split is visible at a glance.
+- **Dependencies:** CC-001, CC-002, CC-003, CC-004
+- **Priority:** P1
+- **Status:** Done
+- **Acceptance criteria:** Every page (`/`, `/roadmap`, `/sprint-history`, `/release-centre`, `/question-bank`, `/engineering`) renders its title/description via `PageHeader` and its labeled sections via `Section` instead of raw repeated classes; `Nav` and the root layout use `md:` breakpoints so the app is usable at a 375px mobile width (verified by inspecting rendered markup); `TaskSplitBar` renders a two-color proportional bar (with an `aria-label` describing the split) beside each sprint's OpenClaw/Claude text on Sprint History; no data files (`sample-data.ts`, `repository-reader.ts`) or routes changed; no charting library added; new `PageHeader.test.tsx`, `Section.test.tsx`, `TaskSplitBar.test.tsx` cover the new components, existing page tests updated where needed and still pass.
+- **Estimate:** Small
+- **Notes:** `typecheck`/`lint`/`vitest run`/`build` all pass inside `apps/command-centre` (26 tests across 12 files, up from 22 across 9); manually ran the dev server and fetched every route's rendered HTML to confirm `PageHeader`/`Section`/`TaskSplitBar` markup and the responsive `Nav`/body classes are present after the refactor. Root `typecheck`/`lint`/`vitest run` still pass unchanged at 64/64 tests, 10 files (the `apps/command-centre/.next` build artifact from the local `npm run build` verification was removed before the root lint check, since it isn't part of the repo).
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine

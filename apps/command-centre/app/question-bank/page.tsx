@@ -1,22 +1,20 @@
+import { PageHeader } from "../components/PageHeader";
 import { ProgressCard } from "../components/ProgressCard";
 import { SampleDataNotice } from "../components/SampleDataNotice";
+import { Section } from "../components/Section";
 import { conceptQuestionBreakdown, questionBankSummary } from "../lib/sample-data";
 
 export default function QuestionBankPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight text-slate-900">Question Bank</h1>
-      <p className="mt-2 max-w-2xl text-base text-slate-600">
-        Question Bank — a browsable view of every assessment question in the
-        curriculum, by concept and question type.
-      </p>
+      <PageHeader
+        title="Question Bank"
+        description="Question Bank — a browsable view of every assessment question in the curriculum, by concept and question type."
+      />
       <SampleDataNotice />
 
-      <section className="mt-8">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          Summary
-        </h2>
-        <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <Section title="Summary">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <ProgressCard label="Total Questions" value={questionBankSummary.totalQuestions} status="good" />
           <ProgressCard
             label="Multiple Choice"
@@ -30,13 +28,10 @@ export default function QuestionBankPage() {
             status="good"
           />
         </div>
-      </section>
+      </Section>
 
-      <section className="mt-8">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-          Breakdown by Concept
-        </h2>
-        <div className="mt-3 overflow-hidden rounded-lg bg-white shadow-sm">
+      <Section title="Breakdown by Concept">
+        <div className="overflow-hidden rounded-lg bg-white shadow-sm">
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
               <tr>
@@ -58,7 +53,7 @@ export default function QuestionBankPage() {
             </tbody>
           </table>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

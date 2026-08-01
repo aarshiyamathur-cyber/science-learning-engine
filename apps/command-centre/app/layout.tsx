@@ -14,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-full">
+      <body className="flex min-h-full flex-col md:flex-row">
         <Nav />
-        <main className="flex-1 p-8">{children}</main>
+        <main className="flex-1 p-4 md:p-8">{children}</main>
       </body>
     </html>
   );
