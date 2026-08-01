@@ -31,6 +31,12 @@ The full lesson flow (start → explanation → example → 5 questions, mixed m
 
 Neither would have been caught without actually running the app — this is the reasoning behind the "start the dev server and use the feature in a browser" step for any UI change.
 
+## Sprint 5
+
+| Task ID | Title                                 | Assigned By                       | Owner                                              | Status | Files changed                                                                                                                                                | Reviewed                                                          | Accepted           | Dependencies |
+| ------- | -------------------------------------- | ---------------------------------- | --------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------- | ------------ |
+| BL-031  | Complete the Particle Model lesson    | Claude (Sprint 5 delegation)       | OpenClaw (headless Claude Code worker, delegated via cron) | Done   | `curriculum/lessons/lesson-particle-model-intro.yaml`, `curriculum/assessments/assessment-particle-model-quiz.yaml`, `curriculum/concepts/sci-y7-particle-model.yaml`, `docs/backlog/backlog.md` | Self-reviewed; validate:curriculum/typecheck/lint/test all pass | Pending Claude review | BL-030       |
+
 ## Field definitions
 
 - **Assigned By** — who decided this task should happen (Product Owner via a sprint spec, or Claude during sprint breakdown).
