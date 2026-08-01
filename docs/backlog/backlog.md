@@ -214,6 +214,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Acceptance criteria:** Real drag-and-release interaction (not click-only); standalone reusable component.
 - **Estimate:** Medium
 
+## Sprint 5
+
+### BL-031 — Complete the Particle Model lesson
+
+- **Description:** Turn the "Particle Model of Matter" lesson from placeholder example data into real, final content matching the quality bar of the "Matter" lesson: full explanation/example/interactive/question/summary flow, and an expanded assessment bank.
+- **Dependencies:** BL-030
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** `lesson-particle-model-intro.yaml` no longer marked as example data and reuses the existing `particle-state-explorer` widget via an interactive step; `assessment-particle-model-quiz.yaml` has 4-5 questions covering the concept's learning objectives and misconceptions, each with `hint` and `explanation`; `sci-y7-particle-model.yaml` no longer marked as example data; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` all pass.
+- **Estimate:** Small
+- **Notes:** Rewrote `curriculum/lessons/lesson-particle-model-intro.yaml` with a fuller explanation/example, an `interactive` step reusing the existing `particle-state-explorer` widget (no widget code touched), and 5 question steps. Expanded `curriculum/assessments/assessment-particle-model-quiz.yaml` from 2 to 5 questions — kept `q-particle-model-01`/`02` (revised wording) covering the "particles touch" and "particles stop moving" misconceptions, and added `q-particle-model-03` (liquid particle arrangement), `q-particle-model-04` (what actually changes between states), and `q-particle-model-05` (heat and particle speed), mixing multiple-choice and short-answer per `assessment-matter-quiz.yaml`'s style. Removed the "EXAMPLE curriculum data" comment headers from both the lesson and `curriculum/concepts/sci-y7-particle-model.yaml` now that this is real content. `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (62/62 tests, 10 files) all pass.
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine
