@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, type ComponentType, type SVGProps } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import { completeLessonAction, submitAnswerAction } from "../actions";
@@ -48,6 +49,7 @@ type Screen = "topic" | "in-lesson" | "done";
  * field — no new engine capability, just reading data that already exists.
  */
 export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningScreenProps) {
+  const router = useRouter();
   const [screen, setScreen] = useState<Screen>("topic");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [xp, setXp] = useState(initialXp);
@@ -89,6 +91,10 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
     setXp(updatedXp);
     setCompletedByLesson((prev) => ({ ...prev, [selected.lessonId]: true }));
     setScreen("done");
+    // Re-fetches the topic list's lock state server-side, so a newly-unlocked
+    // lesson (one whose prerequisite this completion just satisfied) shows as
+    // Ready immediately on return, without requiring a manual page reload.
+    router.refresh();
   }
 
   return (
