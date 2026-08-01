@@ -4,28 +4,31 @@ _Last updated: 2026-08-01 by Claude Code_
 
 ## Current Sprint
 
-Sprint 4 — "Interactive Science" (theme: replace reading with discovery)
+Sprint 5 — "Complete the Matter topic" — **CLOSED, stop condition reached**
 
 ## Status
 
-🟢 Stop condition reached — awaiting Product review
+🟢 Sprint 5 complete — Matter topic live and ready for Aarshiya. Product Command Centre initiative in progress (separate track, see `management/COMMAND_CENTRE.md`).
 
 ## Product
 
-- [x] Sprint 4 defined and approved (`management/CURRENT_SPRINT.md`)
-- [x] BL-026, BL-027, BL-028 reviewed and merged to `master`
-- [ ] BL-029 (Force Simulator) — awaiting Product direction (see `management/OUTBOX.md`)
+- [x] Sprint 5 defined and approved (`management/CURRENT_SPRINT.md`)
+- [x] BL-030 through BL-036 all Done — reviewed and merged/verified
+- [x] Full Product Owner Briefing written (`docs/product-owner-briefing.md`)
 
 ## Engineering
 
-- [x] BL-026 (interactive lesson step type) — Done. `InteractiveStepSchema` in the curriculum schema; `LessonPlayer` dispatches to widgets via a registry map.
-- [x] BL-027 (Particle State Explorer widget) — Done. Wired into the live "Matter" lesson; verified live against the production tunnel.
-- [x] BL-028 (Atom Builder widget) — Done. Standalone `AtomBuilder` component (`app/components/widgets/`) with live SVG atom model; 6 new unit tests; typecheck/lint/test/build all pass; verified interactively in a real browser. See `docs/backlog/backlog.md` and DEC-004.
-- [ ] BL-029 (Force Simulator) — not started; sprint's stop condition already met without it (see `management/CURRENT_SPRINT.md`).
+- [x] BL-030 (`hint` field + UI) — Done.
+- [x] BL-031 (Particle Model lesson complete) — Done, OpenClaw-delegated, zero conflicts.
+- [x] BL-032 (States of Matter lesson, written from scratch) — Done, OpenClaw-delegated, zero conflicts.
+- [x] BL-033 (illustrations) — Done, OpenClaw-delegated, zero conflicts.
+- [x] BL-034 (multi-lesson topic navigation) — Done.
+- [x] BL-035/BL-036 (UI polish + final live QA) — Done. Found and fixed 2 real bugs (stale lock state after unlocking a lesson; silent Scheduled Task crash).
 
 ## OpenClaw
 
-- [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed, continuous cron job running on branch `openclaw/aarshiya-auto`
+- [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed.
+- Two managed worktrees now active in parallel: `openclaw/aarshiya-auto` (Matter-topic content, currently idle — Sprint 5 closed) and `openclaw/command-centre` (Product Command Centre, CC-004 in flight). See ADR 0008 / DEC-005.
 
 ## Blockers
 
@@ -33,4 +36,4 @@ None currently.
 
 ## Next Decision
 
-None blocking BL-028. Sprint-level open questions (Sprint 4 sequencing, whether to delegate BL-026/027/029 to OpenClaw) remain in `docs/product-owner-briefing.md`.
+Awaiting Product review of the closed Sprint 5 (Matter topic) before starting Sprint 6. Command Centre continues independently in the background — see `management/COMMAND_CENTRE.md`.

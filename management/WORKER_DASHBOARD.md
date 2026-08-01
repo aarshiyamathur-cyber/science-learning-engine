@@ -8,32 +8,30 @@ Tracking starts with Sprint 2 (the delegation-first directive was introduced mid
 
 A second Product Owner directive launched the **Product Command Centre** (see `management/COMMAND_CENTRE.md`) while Sprint 5 (Matter topic) was still in flight. Rather than queue it behind Sprint 5, a second OpenClaw managed worktree (`openclaw/command-centre`) was created so both initiatives' delegated tasks run in genuinely parallel worktrees — each worktree is still one-task-at-a-time internally, but the two worktrees don't block each other.
 
-## Sprint 5 (in progress — "Complete the Matter topic")
+## Sprint 5 — CLOSED ("Complete the Matter topic")
 
 | Metric                      | Value                                                            |
 | ---------------------------- | ----------------------------------------------------------------- |
 | Number of Tasks              | 7 (BL-030–BL-036)                                                  |
-| Delegated Tasks              | 3 planned (BL-031, BL-032, BL-033)                                 |
-| Tasks Completed by OpenClaw  | 2 (BL-031 — Particle Model lesson; BL-032 — States of Matter lesson, written from scratch) |
-| Tasks Completed by Claude    | 2 (BL-030 — hint field + UI + LessonPlayer tests; BL-034 — multi-lesson topic navigation) |
-| Tasks In Progress            | 1 (BL-033 — illustrations, dispatched to OpenClaw)                 |
-| Tasks Not Started            | 2 (BL-035 UI polish, BL-036 final QA — both Claude, both depend on BL-033 landing) |
-| Idle Workers                 | 0 (`aarshiya-dev` busy on BL-033 in the `aarshiya-auto` worktree)  |
-| Busy Workers                 | 2 (one per worktree — see Command Centre section below)           |
+| Delegated Tasks              | 3 (BL-031, BL-032, BL-033) — all 3 succeeded                       |
+| Tasks Completed by OpenClaw  | 3 (BL-031 Particle Model lesson, BL-032 States of Matter lesson written from scratch, BL-033 illustrations) |
+| Tasks Completed by Claude    | 4 (BL-030 hint field/UI, BL-034 topic navigation, BL-035 UI/mobile polish, BL-036 final QA — found and fixed 2 real bugs) |
+| Sprint Automation Ratio      | 3 / 7 ≈ 43% (by task count) — all 3 delegated tasks succeeded on the first attempt, zero conflicts each time |
 
-Sprint 5 leans harder into delegation than any previous sprint: the two real content gaps (finishing the Particle Model lesson, writing States of Matter from scratch) and new illustrations are all standalone, self-contained file additions — the exact shape that's delegated cleanly twice before (BL-020, BL-028), and BL-031/BL-032 both merged with **zero conflicts** again. Claude is doing the schema/architecture work (BL-030), the multi-lesson navigation (BL-034, touches the shared app shell), UI polish (BL-035), and final QA (BL-036) directly, per the directive's "Claude reviews/integrates/maintains architecture" instruction.
+Sprint 5 leaned harder into delegation than any previous sprint: the two real content gaps (finishing the Particle Model lesson, writing States of Matter from scratch) and new illustrations were all standalone, self-contained file additions — the exact shape that delegates cleanly, and all 3 merged with **zero conflicts**. Claude did the schema/architecture work (BL-030), the multi-lesson navigation (BL-034, touches the shared app shell), and final QA (BL-035/036) directly, per the directive's "Claude reviews/integrates/maintains architecture" instruction — and that QA pass earned its keep, catching a real stale-lock-state bug and a real silent-server-crash bug that no automated check surfaced.
 
 ## Product Command Centre (in progress — see `management/COMMAND_CENTRE.md`)
 
 | Metric                      | Value                                                            |
 | ---------------------------- | ----------------------------------------------------------------- |
 | Number of Tasks              | 6 (CC-001–CC-006)                                                  |
-| Delegated Tasks              | 5 planned (CC-001 through CC-005) — 1 dispatched so far            |
-| Tasks Completed by OpenClaw  | 0 so far (CC-001 in flight)                                        |
-| Tasks Completed by Claude    | 0 (CC-006 deployment not started yet — no content to deploy)       |
-| Idle Workers                 | 0 (`aarshiya-dev` busy on CC-001 in the `command-centre` worktree) |
+| Delegated Tasks              | 5 planned (CC-001 through CC-005) — 4 dispatched so far            |
+| Tasks Completed by OpenClaw  | 3 (CC-001 framework/nav/routing, CC-002 Executive Dashboard/Roadmap/Progress cards, CC-003 Sprint History/Release Centre/Question Bank) |
+| Tasks Completed by Claude    | 0 direct implementation (CC-006 deployment not started yet); 1 integration fix applied during CC-002 review (sample-data disclosure banner) |
+| Tasks In Progress            | 1 (CC-004 — Engineering Dashboard + real repository reader, dispatched to OpenClaw) |
+| Current Automation Ratio     | 3 / 3 completed tasks so far = 100% OpenClaw-authored, all zero-conflict merges |
 
-This is an explicit 80%-automation-target initiative per its directive — heavier delegation than Sprint 5 even. CC-001 (framework/nav/routing scaffold) is dispatched first since everything else depends on it; CC-002 through CC-005 will dispatch sequentially after each prior task is reviewed and merged.
+This is an explicit 80%-automation-target initiative per its directive — heavier delegation than Sprint 5 even, and tracking well ahead of that target so far. CC-004 (the one page reading real data instead of sample data) is in flight; CC-005 (visual polish) and CC-006 (deployment) remain.
 
 ## Sprint 4 (closed — superseded by Sprint 5 directive)
 
@@ -77,11 +75,13 @@ BL-021–BL-025 were built directly rather than delegated: BL-021 (assets) and B
 
 ```
 Automation Ratio = Tasks completed by OpenClaw / Total implementation tasks
-                  = 4 / 24
-                  = ~16.7%
+                  = 8 / 31
+                  = ~25.8%
 ```
 
-Target per the engineering operating model: **70%** for implementation-heavy sprints (the Command Centre initiative has its own separate, higher 80% target — see above). Trending up consistently — four successful delegations now (BL-020, BL-028, BL-031, BL-032), every one a zero-conflict merge, every one a genuinely independent/standalone-scoped content or file addition. The pattern holds: delegation succeeds cleanly when a task can be scoped to its own new file(s) with no shared central file touched (no `LessonPlayer.tsx`, no shared enum); it's still impractical for tasks in a tight sequential chain with active same-sprint work (BL-026/BL-027, BL-034 here). This is exactly why the Command Centre's page-content tasks (CC-002 through CC-005) are scoped as separate route/page additions rather than one big shared-file change.
+(Counts every completed BL-/CC- task project-wide, both initiatives, through the close of Sprint 5 and CC-003.)
+
+Target per the engineering operating model: **70%** for implementation-heavy sprints (the Command Centre initiative has its own separate, higher 80% target, currently running at 100% — see above). Trending up consistently — eight successful delegations now (BL-020, BL-028, BL-031, BL-032, BL-033, CC-001, CC-002, CC-003), every single one a zero-conflict merge. The pattern holds: delegation succeeds cleanly when a task can be scoped to its own new file(s) with no shared central file touched; it's still impractical for tasks in a tight sequential chain with active work on the same files (BL-026/BL-027, BL-034 here). This is exactly why the Command Centre's page-content tasks (CC-002 through CC-005) are scoped as separate route/page additions rather than one big shared-file change — and why that initiative alone is running at 100% so far.
 
 ## Workers
 

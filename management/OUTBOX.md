@@ -2,6 +2,34 @@
 
 Written at the end of every work cycle: what was completed, what's in progress, risks, questions for Product, and the recommended next action.
 
+## 2026-08-01 — Sprint 5 CLOSED: Matter topic complete. Command Centre in progress (CC-004 dispatched)
+
+**Completed**
+
+- BL-033 (illustrations) merged — OpenClaw-delegated, zero conflicts. Two new hand-authored SVGs (Particle Model, Changes of State) wired per-lesson.
+- BL-034 (multi-lesson topic navigation), BL-035 (UI/mobile polish), BL-036 (final live QA) — all done directly.
+- **Full live end-to-end QA pass across all three Matter lessons**: Matter, Particle Model, and States of Matter (the newly-written lesson) all played through completely — explanation, example, interactive widget, all 5 questions each (mixed multiple-choice/short-answer), hints, retry, mastery scoring, and XP accumulation, all confirmed working. Mobile (375px) and tablet (768px) viewports checked: no horizontal overflow, 48px tap targets. Dark mode checked.
+- **Two real bugs found and fixed during QA, neither caught by typecheck/lint/61 unit tests:**
+  1. A lesson that had just unlocked a follow-on lesson (completing Particle Model unlocks States of Matter) kept showing "Locked" until a manual page reload — the topic list's lock state is computed server-side and the client never refetched it after completing a lesson. Fixed with `router.refresh()`.
+  2. The `AarshiyaAppServer` Scheduled Task was silently exiting seconds after every start — Task Scheduler reported success (exit 0) but nothing was ever listening on port 3000. Root cause: `start-server.ps1` had `$ErrorActionPreference = "Stop"`, which under Windows PowerShell 5.1 treats any stderr line from a native process (npm/next print benign warnings there) as fatal. Found live tonight when the public tunnel started 502ing after a routine restart. Fixed by removing that setting and adding transcript logging for future diagnosis.
+- Reset the learner-progress database to a clean state (0 XP, no lessons completed) before final handoff, since my own testing had completed all three lessons.
+- Product Command Centre: CC-002 (Executive Dashboard/Roadmap/Progress cards) and CC-003 (Sprint History/Release Centre/Question Bank) both merged, OpenClaw-delegated, zero conflicts. Caught one integration issue on CC-002 (fabricated-looking sample metrics with no on-screen "this isn't real" indication) and fixed it directly before merging. CC-004 (Engineering Dashboard + a real repository-reader that computes the actual automation ratio from `management/TASK_LEDGER.md`, not sample data) dispatched.
+
+**Sprint 5 stop condition reached.** The Matter topic is complete end-to-end — see `docs/product-owner-briefing.md` for the full Product Owner Briefing this directive required.
+
+**Currently in flight**
+
+- CC-004 (Engineering Dashboard / repository reader) — dispatched to OpenClaw.
+
+**Risks**
+
+- Command Centre's real-data page (CC-004) is inherently more complex than the sample-data pages before it (parsing markdown, resolving relative file paths correctly) — will need careful review, including actually running it and checking the numbers are real, not just typecheck/lint passing.
+- The two bugs found tonight (stale lock state, silent server crash) are both now fixed and verified, but are a reminder that this project's "typecheck/lint/test pass" bar, while necessary, has repeatedly not been sufficient on its own — every UI change and every infra change in this project has needed an actual live run to catch what static checks miss.
+
+**Recommended next action**
+
+Product review of the live demo (learner progress reset to a clean start) — this is the actual deliverable this directive asked for. Continue Command Centre (CC-004 review, then CC-005 visual polish, then CC-006 deployment) as a lower-priority background stream.
+
 ## 2026-08-01 — Two parallel initiatives now running: Sprint 5 + Product Command Centre
 
 **Completed since the last entry**

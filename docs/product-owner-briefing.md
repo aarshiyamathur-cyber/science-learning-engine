@@ -1,6 +1,6 @@
 # Product Owner Briefing
 
-_Last updated: 2026-08-01 — Sprint 4 (stop condition reached)_
+_Last updated: 2026-08-01 — Sprint 5 CLOSED (stop condition reached)_
 
 This file is the standing handoff document between the Engineering Lead (Claude Code, working in this repo) and the Product Owner (ChatGPT, supplying curriculum/gameplay specs). It is updated at the end of every sprint/milestone so it can be read on its own, without repo access, to know where things stand. There is no direct technical link between Claude Code and ChatGPT — this file, plus `management/*.md`, is the coordination channel; the user relays between the two.
 
@@ -8,59 +8,84 @@ If you are the Product Owner reading this for the first time: the full project v
 
 ---
 
-## Current status: Sprint 4 stop condition reached — a real interactive widget is live in the lesson
+## Sprint 5 Briefing: the "Matter" topic is complete
 
-Sprint 4's theme is "Interactive Science": replace reading with discovery, via reusable widgets a learner can touch, drag, build, or explore. Three of the sprint's four items are now built and merged:
+**Mission (per your directive):** finish the "Matter" topic end-to-end — all three concepts, not just the one polished lesson — and deliver something Aarshiya can comfortably complete tomorrow morning. **That mission is done.**
 
-- **Interactive lesson step type** (BL-026) — the lesson schema now supports a step that embeds a widget (`{ type: "interactive", widget: "<id>", prompt: "..." }`). `LessonPlayer` looks the widget up by id, so adding a new widget in future never requires touching the curriculum schema itself.
-- **Particle State Explorer** (BL-027) — a tap Solid/Liquid/Gas widget where the particles visibly rearrange and change motion speed (tight+barely-vibrating for a solid, up to spread+fast for a gas). **This one is live inside the real "Matter" lesson** — right after the Example step, before the first Question — so it's the first genuinely interactive moment inside an actual lesson, not just a standalone demo.
-- **Atom Builder widget** (BL-028) — +/- controls for protons, neutrons, and electrons, each starting at 0, with a live SVG atom model that updates on every click: protons and neutrons cluster into a nucleus (color-coded rose/zinc), electrons fill three simplified shells (2, then 8, then the remainder) as dashed rings of dots. A live "Mass number / Charge" readout is derived from the three counts. Built entirely from the existing design system, no new visual language introduced. Standalone and reusable — it takes no props and needs no lesson-specific data, so it can be dropped into any future atomic-structure lesson via BL-026's step type. It is **not** wired into the existing "Matter" lesson — that lesson is about states of matter, not atomic structure, so forcing it in would be incoherent (see DEC-004 in `management/DECISIONS.md`).
-- This is the **second successful OpenClaw delegation** the project has had (BL-028 was built by a headless OpenClaw worker while BL-026/027 were built directly, since they had a tight sequential dependency on each other). It merged into `master` with zero conflicts.
-- **BL-029 (Force Simulator, drag-based)** has not been started — the sprint's stop condition is already met without it (see below), so it's being left for explicit Product direction rather than assumed.
-- All 53 tests passing (up from 47 before this work — new tests cover both widgets); `typecheck`/`lint`/`build` all pass. Verified live against the actual production tunnel URL: tapping "Liquid" on the Particle State Explorer correctly swaps the caption to "Particles stay close together but slide and drift past each other," confirming the interaction genuinely works end-to-end, not just in local dev.
+**Live demo:** https://fine-housewares-birmingham-dose.trycloudflare.com — learner progress has been reset to a clean starting state (0 XP, no lessons completed) ahead of handoff.
 
-## Previously: Sprint 3 delivered — visual polish + fixed interaction, live for testing
+### What was completed
 
-**The live demo (still the same URL) now has real color, illustrations, an unambiguous way to answer every question, and immediate feedback:** https://fine-housewares-birmingham-dose.trycloudflare.com
+The Matter topic now has three finished lessons, in teaching order, each fully gated behind a topic-navigation screen with real progress/lock state:
 
-Sprint 3 was driven directly by Aarshiya's feedback on Sprint 2 ("needs colour," "needs graphics," "not obvious how to answer," "no box to type an answer," voice input needs to be explicit). Every item below traces to that feedback:
+1. **Matter** (`sci-y7-matter`) — what matter is, the three states, an interactive particle-state widget. (Already complete going into this sprint.)
+2. **The Particle Model of Matter** (`sci-y7-particle-model`) — was a thin placeholder (2 questions, no interaction) at the start of this sprint. Now: a full explanation/example/interactive/5-question/summary lesson matching the Matter lesson's quality bar.
+3. **States of Matter and Changes of State** (`sci-y7-states-of-matter`) — **had zero lesson content and zero questions at the start of this sprint.** Written entirely from scratch: melting, freezing, evaporation, and condensation, explained in terms of particle energy, with 5 questions that directly target the concept's listed misconception ("melting/freezing creates a new substance" — corrected explicitly).
 
-- **Visual design system** — semantic color tokens (`brand`/`accent`/`success`/`warning`/`danger`/`info`/`neutral`, each aliasing an existing Tailwind color ramp) and a shared `Card`/`Badge`/`Button`/`ProgressBar` primitives library, so the whole app draws from one consistent visual language — [ADR 0007](decisions/0007-semantic-design-tokens-and-ui-primitives.md).
-- **Icon and illustration library** — 6 hand-authored SVGs (no external downloads, no licensing questions): an icon per lesson-step type, plus illustrations for the concept card and the completion screen.
-- **Unambiguous answering** — multiple-choice is tap-to-answer; short-answer questions now have an actual text box (the Sprint 2 gap Aarshiya specifically flagged); and there's an explicit voice-answer option (Web Speech API) that clearly shows "🎤 Listening — say your answer now" while active, with a visible message on browsers that don't support it rather than a silently broken button.
-- **Immediate feedback** — every answer shows "✓ Nice work" or "✗ Not quite" plus a short explanation right away; a wrong answer gets a "Try again" that resets just that question for a fresh attempt (plus a lower-emphasis "Skip to next" so no one gets stuck).
+Every question across all three lessons (15 total) now has both a **hint** (shown on request, before answering — new this sprint) and an **explanation** (shown after answering, as before). Each lesson has its own distinct hand-drawn illustration on the topic screen. The topic screen shows real lock/unlock state driven by each concept's existing prerequisite data — completing Particle Model unlocks States of Matter, live, without a page reload.
 
-## What changed based on real feedback (Sprint 2 → Sprint 3)
+### What OpenClaw implemented (delegated, all merged with zero conflicts)
 
-Aarshiya's exact feedback: "needs colour," "needs graphics and illustrations," "not obvious how to answer questions," "there should be a visible text box for typed answers," "if voice input is supported, it must clearly tell the learner to speak," "needs to feel more engaging." All of it was addressed above and verified live (see Demo Instructions).
+- **BL-031** — Completed the Particle Model lesson (explanation, example, interactive widget reuse, 5 questions with hints).
+- **BL-032** — Wrote the States of Matter lesson and its 5-question assessment entirely from scratch.
+- **BL-033** — Two new hand-authored SVG illustrations (Particle Model, Changes of State), wired per-lesson.
+
+All three were reviewed in full before merging — content read end-to-end for scientific accuracy, not just typecheck/lint/test passing. Quality was consistently high; no corrections were needed to the content itself.
+
+### What Claude implemented directly
+
+- **BL-030** — Added the `hint` field to the question schema and its UI, and backfilled hints into every pre-existing question.
+- **BL-034** — Replaced the single hardcoded lesson with a real multi-lesson topic screen (list view, lock/unlock/completion state, "Back to Matter" navigation) — this touches the shared app shell, so it stayed off the delegation track.
+- **BL-035/BL-036** — UI/mobile polish and final QA: a full live click-through of all three lessons end-to-end (every question, both types, hints, retry, mastery, XP), plus mobile (375px) and tablet (768px) viewport checks and a dark-mode check.
+
+### Tests
+
+64 automated tests passing (up from 53 at the start of this sprint), across 10 test files — `typecheck`, `lint`, `build`, and `npm run validate:curriculum` all clean. The increase includes the first real test coverage `LessonPlayer` has ever had (8 tests) and extended illustration/schema tests.
+
+**Two real bugs were found only by actually running the app, not by any of the above:**
+
+1. **Stale lock state.** After completing a lesson that unlocks another (Particle Model → States of Matter), the newly-unlocked lesson kept showing "Locked" until a manual page reload — the topic list's lock flags are computed server-side and the client never refetched them. Fixed with a `router.refresh()` call after lesson completion. Confirmed fixed live.
+2. **Silent server crash.** The Scheduled Task that keeps the production server running was exiting seconds after every start — Task Scheduler reported a clean exit, but nothing was ever listening on port 3000. Root cause: a PowerShell setting that treats routine npm/Next.js console warnings as fatal errors. Found live tonight when the public link briefly 502'd after a routine restart; fixed and verified.
+
+Neither bug would have been caught by typecheck, lint, or the unit test suite — both were only found by actually clicking through the live app and actually restarting the live server, which continues to be the deciding factor for shipping confidence on this project.
+
+### Known issues / not done
+
+- Nothing outstanding against this sprint's Definition of Done — all items are checked off (see `management/CURRENT_SPRINT.md`).
+- The learner-progress database is per-machine local storage (`node:sqlite`), same as every prior sprint — this is still a local trial, not permanent hosting (see Hosting, below).
+
+## Recommendations for Sprint 6
+
+1. **Content:** the Matter topic is done. The natural next step is either a second full topic (using the same three-lesson pattern: intro concept → mechanism → applied concept) or deepening Matter with a 4th lesson if there's more NSW syllabus content to cover before moving on.
+2. **Delegation:** three consecutive successful OpenClaw delegations this sprint, all zero-conflict — the "standalone content/asset, no shared file" scoping pattern is now proven repeatedly. Sprint 6 should keep scoping delegated tasks this way rather than treating delegation as an afterthought.
+3. **Hosting:** still worth revisiting cloud hosting (previously scoped: libSQL/Turso + Vercel) if a Cloudflare quick tunnel's need for this exact machine to stay on and connected keeps being inconvenient — tonight's server-crash bug is exactly the kind of failure mode that goes away with real hosting.
+4. **Scoring model:** the deferred mastery-based "what's next" recommendation engine still needs Product input on the scoring model before it's built — carried over from earlier briefings, still unaddressed.
+5. **A second, parallel initiative is now underway:** a Product Command Centre internal dashboard (separate from Aarshiya's learning app) is being built via a second, parallel OpenClaw delegation stream — see `management/COMMAND_CENTRE.md` for its own status. It doesn't compete with Sprint 6 content work since it runs in a separate worktree.
 
 ## Demo instructions
 
 1. **Open:** https://fine-housewares-birmingham-dose.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
-2. **Click:** "Start Lesson," then step through explanation → example → **🧪 Try it yourself (new!)** → 5 questions → summary → finish.
-3. **On the new interactive step**, tap "Solid," "Liquid," and "Gas" and watch the particles change speed and spacing, and the caption update to match.
-4. **Try answering a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question (works on most Chrome/Edge/Safari; shows a clear message if your browser doesn't support it).
-5. **Expected behaviour:** progress bar, XP, and colored feedback update live; reloading the page keeps your progress (it's saved server-side, not just in the browser).
+2. **You'll see three lessons:** Matter, The Particle Model of Matter, and States of Matter and Changes of State (the last one unlocks once Particle Model is completed).
+3. **Try any lesson:** explanation → example → an interactive "🧪 Try it yourself" step → 5 questions (mixed multiple-choice/short-answer, each with an optional "💡 Need a hint?") → summary → finish.
+4. **Answer a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question.
+5. **Complete a lesson and watch the topic screen** — XP and mastery update, and completing Particle Model unlocks States of Matter immediately, no reload needed.
 6. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected to the internet. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
 
 ## Decisions since last briefing
 
-- **DEC-003 resolved.** The Sprint 2 27-hour delegation hang was confirmed to be the TPG network issue below, not a broken pipeline. A subsequent delegation (BL-020) completed successfully once the network was healthy — the first successful OpenClaw delegation this project has had.
-- **Network finding, now understood and worked around.** The dev machine's home ISP (TPG) blocks this specific Windows device at roughly the IPv4/DHCP level (a MacBook on the same network is unaffected); IPv6 still works, which is why the live tunnel kept working through the outage even when `git push` couldn't. Mobile hotspot is a reliable bypass when needed.
-- Increased the OpenClaw cron job's no-output timeout from 600s to 1500s — `--print` mode doesn't stream progress, so a substantial task can look silent for a while without actually being stuck.
-- "XP earned" in the per-question feedback is shown as encouragement text, not a fabricated new number — XP stays a lesson-completion-only mechanic (unchanged), per Sprint 3's explicit "no new game mechanics" constraint.
+- **ADR 0008 / DEC-005:** a second OpenClaw managed worktree was created (`openclaw/command-centre`) so the new Command Centre initiative could run in parallel with Sprint 5's in-flight delegations instead of queuing behind them, since the two initiatives touch entirely disjoint files.
+- **Sprint 5's `hint` field is required, not optional** — every question needs one, matching the sprint's explicit Definition of Done. All pre-existing content was backfilled in the same change that added the field, so the repo was never left in a state where some questions had hints and others didn't.
 
 ## Open questions for the Product Owner
 
-1. **Is BL-029 (Force Simulator) wanted before Sprint 5?** It's the one Sprint 4 item not attempted — a good delegation candidate (standalone, drag-based) if you'd like Sprint 4 fully closed out first.
-2. **A bigger delegation test:** two delegations have now succeeded cleanly (BL-020, BL-028) — both were standalone, self-contained tasks. Is there interest in delegating a larger, more independent feature next sprint as a further test, now that the pattern for what delegates well is clearer?
-3. **Hosting:** still a Cloudflare tunnel to the dev machine, per your "trial locally first" call. Revisit cloud hosting (previously scoped: libSQL/Turso + Vercel) if this needs to be more permanent than an ad hoc tunnel.
-4. **Content:** what's the first slice of real curriculum content beyond the single "Matter" demo concept? (Now especially relevant since Atom Builder is ready and waiting for an atomic-structure lesson to use it in.)
-5. **Scoring model:** the deferred progression engine (mastery-based "what's next" recommendation) still needs your input on the scoring model before it's built.
+1. **Sprint 6 direction:** a second full topic, or deepen Matter further? (See Recommendation 1 above.)
+2. **Hosting:** ready to move off the Cloudflare-tunnel trial to something more permanent? (See Recommendation 3.)
+3. **Scoring model:** still need your input on the mastery-based progression engine before it can be built.
+4. **Command Centre scope:** the current build covers Executive Dashboard, Roadmap, Sprint History, Release Centre, Question Bank, and (in progress) a real Engineering Dashboard reading live task data. Is this the intended final page set, or are there more views wanted?
 
 ## Status per the handoff protocol
 
-Sprint 4's stop condition ("a demonstrably more interactive lesson ready for Aarshiya to test") **is met**: BL-026 (interactive step type) and BL-027 (Particle State Explorer) are merged, live inside the real "Matter" lesson, and verified working against the production URL — a learner-driven interaction now sits between the Example and the first Question. BL-028 (Atom Builder) is also merged as a standalone widget ready for a future lesson. BL-029 (Force Simulator) was not started; the sprint could stop here or continue into it, per your call. Stopping here per instruction, awaiting review before BL-029 or Sprint 5.
+Sprint 5's stop condition ("stop only when the Matter topic is complete end-to-end and ready for Aarshiya to use") **is met.** All three lessons are live, tested, and verified end-to-end via a real browser walkthrough; the learner-progress database has been reset to a clean state for Aarshiya's actual first use. Stopping Sprint 5 here per instruction, awaiting Product review before Sprint 6. The Command Centre initiative continues in the background on its own track (see `management/COMMAND_CENTRE.md`) since it doesn't compete for the same review bandwidth as curriculum content.
 
 ## How to keep this current
 
