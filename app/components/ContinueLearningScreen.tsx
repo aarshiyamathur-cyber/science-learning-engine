@@ -18,10 +18,26 @@ interface ContinueLearningScreenProps {
 
 type ViewState = "idle" | "in-lesson" | "done";
 
+function ProgressBar({ value }: { value: number }) {
+  const pct = Math.round(value * 100);
+  return (
+    <div className="flex flex-col gap-1">
+      <div className="h-3 w-full overflow-hidden rounded-full bg-white/60 dark:bg-zinc-800">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-teal-400 to-emerald-500 transition-all"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+      <p className="text-sm font-medium text-teal-900 dark:text-teal-200">{pct}% mastered</p>
+    </div>
+  );
+}
+
 /**
  * The one screen for Sprint 2: pick up the current concept, start its
  * lesson, and see progress update when it's finished. No maps, avatars,
- * coins, or achievements — deliberately.
+ * coins, or achievement systems — but real color, so it reads as engaging
+ * rather than a plain document (feedback from Aarshiya's first try).
  */
 export function ContinueLearningScreen({
   conceptId,
@@ -55,59 +71,56 @@ export function ContinueLearningScreen({
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-md flex-col gap-6 px-6 py-16">
-      <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">Science</h1>
+    <div className="min-h-full w-full bg-gradient-to-br from-sky-100 via-teal-50 to-violet-100 dark:from-sky-950 dark:via-zinc-950 dark:to-violet-950">
+      <div className="mx-auto flex w-full max-w-md flex-col gap-6 px-6 py-16">
+        <h1 className="flex items-center gap-2 text-3xl font-bold text-sky-900 dark:text-sky-100">
+          🔬 Science
+        </h1>
 
-      {view === "idle" && (
-        <div className="flex flex-col gap-4 rounded border border-zinc-200 p-6 dark:border-zinc-800">
-          <p className="text-sm font-medium uppercase tracking-wide text-zinc-500">
-            Continue Learning
-          </p>
-          <p className="text-xl font-medium text-zinc-900 dark:text-zinc-50">
-            {conceptTitle}
-          </p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Progress: {Math.round(masteryScore * 100)}% · XP: {xp}
-            {completed && " · Lesson completed"}
-          </p>
-          <button
-            type="button"
-            onClick={() => setView("in-lesson")}
-            className="self-start rounded bg-zinc-900 px-4 py-2 text-sm font-medium text-white dark:bg-zinc-100 dark:text-zinc-900"
-          >
-            Start Lesson
-          </button>
-        </div>
-      )}
+        {view === "idle" && (
+          <div className="flex flex-col gap-4 rounded-2xl border-2 border-teal-200 bg-white/80 p-6 shadow-md dark:border-teal-900 dark:bg-zinc-900/80">
+            <p className="text-sm font-bold uppercase tracking-wide text-teal-700 dark:text-teal-300">
+              ▶️ Continue Learning
+            </p>
+            <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{conceptTitle}</p>
+            <ProgressBar value={masteryScore} />
+            <p className="text-sm font-medium text-amber-700 dark:text-amber-300">
+              ⭐ {xp} XP{completed && " · Lesson completed!"}
+            </p>
+            <button
+              type="button"
+              onClick={() => setView("in-lesson")}
+              className="self-start rounded-full bg-gradient-to-r from-teal-500 to-sky-500 px-6 py-3 text-base font-bold text-white shadow-md transition-transform hover:scale-105"
+            >
+              Start Lesson 🚀
+            </button>
+          </div>
+        )}
 
-      {view === "in-lesson" && (
-        <div className="flex flex-col gap-6 rounded border border-zinc-200 p-6 dark:border-zinc-800">
-          <p className="text-sm text-zinc-500">{lessonTitle}</p>
-          <LessonPlayer
-            steps={steps}
-            onAnswer={handleAnswer}
-            onComplete={handleComplete}
-          />
-        </div>
-      )}
+        {view === "in-lesson" && (
+          <div className="flex flex-col gap-4">
+            <p className="text-lg font-semibold text-sky-900 dark:text-sky-100">{lessonTitle}</p>
+            <LessonPlayer steps={steps} onAnswer={handleAnswer} onComplete={handleComplete} />
+          </div>
+        )}
 
-      {view === "done" && (
-        <div className="flex flex-col gap-4 rounded border border-zinc-200 p-6 dark:border-zinc-800">
-          <p className="text-xl font-medium text-zinc-900 dark:text-zinc-50">
-            Lesson complete
-          </p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Progress: {Math.round(masteryScore * 100)}% · XP: {xp}
-          </p>
-          <button
-            type="button"
-            onClick={() => setView("idle")}
-            className="self-start rounded border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700"
-          >
-            Back
-          </button>
-        </div>
-      )}
+        {view === "done" && (
+          <div className="flex flex-col gap-4 rounded-2xl border-2 border-emerald-300 bg-white/80 p-6 shadow-md dark:border-emerald-800 dark:bg-zinc-900/80">
+            <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-300">
+              🎉 Lesson complete!
+            </p>
+            <ProgressBar value={masteryScore} />
+            <p className="text-sm font-medium text-amber-700 dark:text-amber-300">⭐ {xp} XP</p>
+            <button
+              type="button"
+              onClick={() => setView("idle")}
+              className="self-start rounded-full bg-gradient-to-r from-teal-500 to-sky-500 px-6 py-3 text-base font-bold text-white shadow-md transition-transform hover:scale-105"
+            >
+              Back
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

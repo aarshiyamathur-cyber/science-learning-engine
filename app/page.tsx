@@ -25,7 +25,7 @@ export default function Home() {
   const mastery = getProgressStore().getMasteryState(DEMO_LEARNER_ID, DEMO_CONCEPT_ID);
 
   return (
-    <div className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-1 flex-col font-sans">
       <ContinueLearningScreen
         conceptId={concept.id}
         conceptTitle={concept.title}
