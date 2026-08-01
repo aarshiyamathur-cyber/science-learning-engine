@@ -1,4 +1,5 @@
 import { ProgressCard } from "./components/ProgressCard";
+import { SampleDataNotice } from "./components/SampleDataNotice";
 import { blockers, programStatus, progressMetrics } from "./lib/sample-data";
 
 export default function ExecutiveDashboardPage() {
@@ -11,6 +12,7 @@ export default function ExecutiveDashboardPage() {
         Executive Dashboard — high-level program status at a glance: current sprint,
         automation ratio, and what&apos;s blocking.
       </p>
+      <SampleDataNotice />
 
       <section className="mt-8">
         <h2 className="text-lg font-semibold text-slate-900">{programStatus.initiativeName}</h2>

@@ -1,3 +1,4 @@
+import { SampleDataNotice } from "../components/SampleDataNotice";
 import { roadmapItems } from "../lib/sample-data";
 import { roadmapStatusToCardStatus, STATUS_COLORS } from "../lib/status-colors";
 
@@ -9,6 +10,7 @@ export default function RoadmapPage() {
         Roadmap — the backlog laid out across sprints, showing what&apos;s planned, in
         progress, and done.
       </p>
+      <SampleDataNotice />
 
       <ul className="mt-8 space-y-3">
         {roadmapItems.map((item) => {
