@@ -305,6 +305,16 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** Added `app/lib/sample-data.ts` (typed sample data), `app/lib/status-colors.ts` (shared status→colour mapping used by both `ProgressCard` and the roadmap badges), `app/components/ProgressCard.tsx` + `.test.tsx`, rewrote `app/page.tsx` and `app/roadmap/page.tsx`, added `app/page.test.tsx` and `app/roadmap/page.test.tsx`. Did not touch `Nav.tsx` or any other route. `typecheck`/`lint`/`build`/`vitest run` all pass inside `apps/command-centre` (7 tests, up from 2 — Nav's 2 plus 5 new); root `typecheck`/`lint`/`vitest run` still pass unchanged at 62/62 tests, 10 files.
 
+### CC-003 — Sprint History, Release Centre, Question Bank dashboard
+
+- **Description:** Build real content for the three remaining Command Centre routes scaffolded by CC-001: Sprint History (`/sprint-history`) lists past sprints with a date range, one-line summary, status badge, and OpenClaw-vs-Claude task split; Release Centre (`/release-centre`) lists releases/deployments with a Live/In progress status badge, a one-line description, and an honest "not yet public" URL note (no fabricated URLs); Question Bank (`/question-bank`) summarizes the assessment question bank with top-line `ProgressCard` totals (total questions, multiple-choice count, short-answer count, concepts covered) and a per-concept breakdown table. Backed by typed sample data extending `app/lib/sample-data.ts`, same pattern as CC-002.
+- **Dependencies:** CC-001, CC-002
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** `app/lib/sample-data.ts` gains typed exports (`SprintHistoryEntry`/`sprintHistory`, `ReleaseStatus`/`ReleaseEntry`/`releases`, `QuestionBankSummary`/`questionBankSummary`, `ConceptQuestionBreakdown`/`conceptQuestionBreakdown`); `app/lib/status-colors.ts` gains a `releaseStatusToCardStatus` mapping reusing the existing `STATUS_COLORS` palette (no new colours introduced); all three pages follow the established h1 → descriptive paragraph → `SampleDataNotice` → sectioned h2 content structure; Sprint History and Release Centre render list items with colour-coded status badges; Question Bank renders `ProgressCard` summary tiles plus a concept breakdown table; Vitest + Testing Library tests cover all three pages asserting sprint names, release names, and concept breakdown numbers render; no network or filesystem access, sample data only.
+- **Estimate:** Small
+- **Notes:** Rewrote `app/sprint-history/page.tsx`, `app/release-centre/page.tsx`, `app/question-bank/page.tsx`; added matching `.test.tsx` for each; extended `app/lib/sample-data.ts` and `app/lib/status-colors.ts` only (no new data-fetching mechanism, no changes to `Nav.tsx` or any other route). Question Bank's sample numbers mirror the real current curriculum content (Matter/Particle Model/States of Matter, 5 questions each, 3 multiple-choice + 2 short-answer per concept) for realism, per the task's "realistic sample data" instruction — still static, not read from the filesystem. `typecheck`/`lint`/`build`/`vitest run` all pass inside `apps/command-centre` (14 tests across 7 files, up from 7 across 4); root `typecheck`/`lint`/`vitest run` still pass unchanged at 64/64 tests, 10 files.
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine

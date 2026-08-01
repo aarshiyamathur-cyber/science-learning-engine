@@ -48,6 +48,107 @@ export const progressMetrics: ProgressMetric[] = [
 
 export const blockers: Blocker[] = [];
 
+export interface SprintHistoryEntry {
+  name: string;
+  dateRange: string;
+  status: RoadmapStatus;
+  summary: string;
+  openClawTasks: number;
+  claudeTasks: number;
+}
+
+export type ReleaseStatus = "Live" | "In progress";
+
+export interface ReleaseEntry {
+  name: string;
+  status: ReleaseStatus;
+  description: string;
+  urlNote: string;
+}
+
+export interface QuestionBankSummary {
+  totalQuestions: number;
+  multipleChoice: number;
+  shortAnswer: number;
+  conceptsCovered: number;
+}
+
+export interface ConceptQuestionBreakdown {
+  concept: string;
+  total: number;
+  multipleChoice: number;
+  shortAnswer: number;
+}
+
+export const sprintHistory: SprintHistoryEntry[] = [
+  {
+    name: "Sprint 2",
+    dateRange: "2026-06-01 – 2026-06-12",
+    status: "Done",
+    summary: "Stood up the curriculum schema and shipped the first concept end-to-end.",
+    openClawTasks: 0,
+    claudeTasks: 6,
+  },
+  {
+    name: "Sprint 3",
+    dateRange: "2026-06-15 – 2026-06-26",
+    status: "Done",
+    summary: "Built the visual design system and applied it consistently across the lesson player.",
+    openClawTasks: 1,
+    claudeTasks: 5,
+  },
+  {
+    name: "Sprint 4",
+    dateRange: "2026-06-29 – 2026-07-10",
+    status: "Done",
+    summary: "Added interactive lesson widgets — the Particle State Explorer and Atom Builder.",
+    openClawTasks: 1,
+    claudeTasks: 2,
+  },
+  {
+    name: "Sprint 5",
+    dateRange: "2026-07-13 – present",
+    status: "In progress",
+    summary: "Completing the Matter topic: Particle Model and States of Matter lessons, new illustrations, and multi-lesson navigation.",
+    openClawTasks: 3,
+    claudeTasks: 2,
+  },
+];
+
+export const releases: ReleaseEntry[] = [
+  {
+    name: "Matter topic — live demo",
+    status: "Live",
+    description: "The Matter concept lesson, quiz, and progress tracking run end-to-end for Aarshiya.",
+    urlNote: "URL: internal only — not yet public",
+  },
+  {
+    name: "Particle Model & States of Matter lessons",
+    status: "In progress",
+    description: "New lessons and illustrations built by OpenClaw, pending final QA before joining the live topic flow.",
+    urlNote: "URL: not yet public",
+  },
+  {
+    name: "Product Command Centre",
+    status: "In progress",
+    description: "This internal dashboard — navigation and initial pages shipped, still being built out page by page.",
+    urlNote: "URL: not yet public",
+  },
+];
+
+export const questionBankSummary: QuestionBankSummary = {
+  totalQuestions: 15,
+  multipleChoice: 9,
+  shortAnswer: 6,
+  conceptsCovered: 3,
+};
+
+export const conceptQuestionBreakdown: ConceptQuestionBreakdown[] = [
+  { concept: "Matter", total: 5, multipleChoice: 3, shortAnswer: 2 },
+  { concept: "Particle Model", total: 5, multipleChoice: 3, shortAnswer: 2 },
+  { concept: "States of Matter", total: 5, multipleChoice: 3, shortAnswer: 2 },
+];
+
 export const roadmapItems: RoadmapItem[] = [
   {
     title: "Sprint 2 — First playable learning loop",
