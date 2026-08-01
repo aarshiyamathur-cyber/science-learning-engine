@@ -198,9 +198,10 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Description:** A reusable component: +/- controls for protons/neutrons/electrons, with a live-updating simple atom visualization (nucleus size/color, electron shells). Tactile, build-a-thing interaction.
 - **Dependencies:** BL-026
 - **Priority:** P1
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** Every control click immediately updates the visual; standalone reusable component (works with no lesson-specific data).
 - **Estimate:** Medium
+- **Notes:** `app/components/widgets/AtomBuilder.tsx` — a self-contained component with no required props (starts every count at 0, holds its own state), built entirely from the existing `app/components/ui` primitives (`Card`, `Badge`, `Button`) and tone system, matching Sprint 3's visual language. The visual is a live SVG: protons (rose/`danger`) and neutrons (zinc/`neutral`) pack into a nucleus cluster via a sunflower-spiral layout so any count avoids overlap; electrons (sky/`info`) fill three simplified shells (2, then 8, then the remainder) as dashed rings with evenly spaced dots. A derived "Mass number / Charge" line updates live from pure arithmetic on the three counts — no periodic-table or element-name data included, to stay curriculum-content-free. Not wired into the existing "Matter" lesson — that lesson covers states of matter, not atomic structure, so forcing it in would be incoherent (see DEC-004); it's ready to drop into any future lesson via BL-026's interactive step type once that lands. 6 new unit tests (Vitest + Testing Library) click every +/- control and assert the resulting counts, SVG circle counts by color, the live summary text, and shell overflow behavior. Verified interactively in a real browser (Playwright-driven click-through + screenshots of the 0-state and after 8 protons/8 neutrons/11 electrons) before removing the temporary preview route.
 
 ### BL-029 — Force Simulator widget
 

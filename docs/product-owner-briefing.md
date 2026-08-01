@@ -1,6 +1,6 @@
 # Product Owner Briefing
 
-_Last updated: 2026-08-01 — Sprint 3_
+_Last updated: 2026-08-01 — Sprint 4 (in progress)_
 
 This file is the standing handoff document between the Engineering Lead (Claude Code, working in this repo) and the Product Owner (ChatGPT, supplying curriculum/gameplay specs). It is updated at the end of every sprint/milestone so it can be read on its own, without repo access, to know where things stand. There is no direct technical link between Claude Code and ChatGPT — this file, plus `management/*.md`, is the coordination channel; the user relays between the two.
 
@@ -8,7 +8,16 @@ If you are the Product Owner reading this for the first time: the full project v
 
 ---
 
-## Current status: Sprint 3 delivered — visual polish + fixed interaction, live for testing
+## Current status: Sprint 4 in progress — first interactive widget shipped (Atom Builder, BL-028)
+
+Sprint 4's theme is "Interactive Science": replace reading with discovery, via reusable widgets a learner can touch, drag, build, or explore. This update covers just one scoped piece of that sprint, **BL-028 — Atom Builder**, done in isolation per explicit instruction (BL-026/027/029 are separate, not-yet-started work):
+
+- **Atom Builder widget** (`app/components/widgets/AtomBuilder.tsx`) — +/- controls for protons, neutrons, and electrons, each starting at 0, with a live SVG atom model that updates on every click: protons and neutrons cluster into a nucleus (color-coded rose/zinc), electrons fill three simplified shells (2, then 8, then the remainder) as dashed rings of dots. A live "Mass number / Charge" readout is derived from the three counts.
+- Built entirely from the existing design system (`Card`/`Badge`/`Button`, the `brand`/`danger`/`neutral`/`info` tone roles) — no new visual language introduced.
+- Standalone and reusable: it takes no props and needs no lesson-specific or curriculum data, so it can be dropped into any future lesson once BL-026 (interactive lesson step type) lands. It is **not** wired into the existing "Matter" lesson — that lesson is about states of matter, not atomic structure, so forcing it in would be incoherent (see DEC-004 in `management/DECISIONS.md`).
+- 6 new unit tests (Vitest + Testing Library) click every control and assert the resulting counts, SVG visual state (circle counts by color), and shell-overflow behavior; `typecheck`/`lint`/`test`/`build` all pass. Also verified interactively in a real browser (Playwright click-through + before/after screenshots) before removing the temporary preview route used for that check.
+
+## Previously: Sprint 3 delivered — visual polish + fixed interaction, live for testing
 
 **The live demo (still the same URL) now has real color, illustrations, an unambiguous way to answer every question, and immediate feedback:** https://divx-ips-resistance-acoustic.trycloudflare.com
 
@@ -48,7 +57,7 @@ Aarshiya's exact feedback: "needs colour," "needs graphics and illustrations," "
 
 ## Status per the handoff protocol
 
-Per `management/HANDOFF.md` and Sprint 3's explicit stop condition ("when there is a significantly improved visual lesson experience ready for Aarshiya to test, stop"): that condition is met. Stopping here, awaiting your review before Sprint 4.
+BL-028 was a single, explicitly scoped work item ("only BL-028, no other backlog item"), now complete and committed. Sprint 4's overall stop condition ("a demonstrably more interactive lesson ready for Aarshiya to test") is **not yet met** — Atom Builder is built and tested but not yet wired into a lesson (by design; see above), and BL-026/027/029 haven't started. Stopping here per instruction, awaiting review before further Sprint 4 work.
 
 ## How to keep this current
 
