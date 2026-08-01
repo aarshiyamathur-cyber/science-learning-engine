@@ -92,6 +92,52 @@ export function ChangesOfStateIllustration(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** Atom: nucleus of protons/neutrons with electrons orbiting on dashed shells. */
+export function AtomicStructureIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <ellipse
+        cx="90"
+        cy="60"
+        rx="78"
+        ry="32"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="2.5"
+        strokeDasharray="6 5"
+      />
+      <ellipse
+        cx="90"
+        cy="60"
+        rx="78"
+        ry="32"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="2.5"
+        strokeDasharray="6 5"
+        transform="rotate(60 90 60)"
+      />
+      <ellipse
+        cx="90"
+        cy="60"
+        rx="78"
+        ry="32"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="2.5"
+        strokeDasharray="6 5"
+        transform="rotate(120 90 60)"
+      />
+      <circle cx="82" cy="53" r="9" fill="#f43f5e" />
+      <circle cx="98" cy="53" r="9" fill="#a1a1aa" />
+      <circle cx="90" cy="68" r="9" fill="#a1a1aa" />
+      <circle cx="168" cy="60" r="5" fill="#0ea5e9" />
+      <circle cx="55" cy="20" r="5" fill="#0ea5e9" />
+      <circle cx="125" cy="100" r="5" fill="#0ea5e9" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (

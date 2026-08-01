@@ -5,6 +5,7 @@ import { useState, type ComponentType, type SVGProps } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import { completeLessonAction, submitAnswerAction } from "../actions";
 import {
+  AtomicStructureIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ParticleModelIllustration,
@@ -21,6 +22,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-matter": StatesOfMatterIllustration,
   "sci-y7-particle-model": ParticleModelIllustration,
   "sci-y7-states-of-matter": ChangesOfStateIllustration,
+  "sci-y7-atomic-structure": AtomicStructureIllustration,
 };
 
 export interface LessonEntry {

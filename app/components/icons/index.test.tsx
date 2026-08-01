@@ -2,6 +2,7 @@ import "@testing-library/jest-dom/vitest";
 import { render } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import {
+  AtomicStructureIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ExampleIcon,
@@ -22,6 +23,7 @@ describe("step icons and illustrations", () => {
     CelebrationIllustration,
     ParticleModelIllustration,
     ChangesOfStateIllustration,
+    AtomicStructureIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);

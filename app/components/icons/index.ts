@@ -1,4 +1,5 @@
 export {
+  AtomicStructureIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ParticleModelIllustration,

@@ -285,6 +285,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Medium
 - **Notes:** Full live click-through of all three lessons end-to-end: explanation → example → interactive widget → all 5 questions each (mixed multiple-choice/short-answer) → summary → finish, including hint reveal, wrong-answer retry, and self-assessment for short-answer questions. Confirmed mastery scoring and XP accumulate correctly (50 + 50 = 100 XP across two lessons). Repo-wide grep confirmed no TODOs/placeholders remain. Found and fixed two real bugs neither caught by typecheck/lint/64 unit tests: (1) a newly-unlocked lesson stayed "Locked" until a manual page reload — fixed with `router.refresh()` after lesson completion; (2) the `AarshiyaAppServer` Scheduled Task was silently exiting on every start due to `$ErrorActionPreference = "Stop"` treating benign npm/next stderr output as fatal under PowerShell 5.1 — fixed by removing that setting. Learner-progress database reset to a clean state before handoff.
 
+## Sprint 6
+
+### BL-041 — Atomic Structure illustration
+
+- **Description:** New hand-authored SVG illustration for the "Atomic Structure" topic (`sci-y7-atomic-structure`), currently being written in a parallel task, matching the existing inline-SVG style (see `app/components/icons/Illustrations.tsx`, BL-021/BL-033). No external/downloaded assets.
+- **Dependencies:** none
+- **Priority:** P1
+- **Status:** Done
+- **Acceptance criteria:** New illustration exported from `app/components/icons`, following the existing component/export pattern; wired into the topic-list card for `sci-y7-atomic-structure` via `LESSON_ILLUSTRATIONS`; covered by a render test; no licensing questions (hand-authored only).
+- **Estimate:** Small
+- **Notes:** Added `AtomicStructureIllustration` to `app/components/icons/Illustrations.tsx` — a small proton/neutron cluster nucleus (`#f43f5e` rose, `#a1a1aa` zinc, matching `AtomBuilder`'s neutron color) with three dashed orbital rings and electron dots (`#0ea5e9` sky), all in the existing token palette. Exported from `app/components/icons/index.ts`, wired into `ContinueLearningScreen.tsx`'s `LESSON_ILLUSTRATIONS` lookup keyed by `sci-y7-atomic-structure`, and covered by a new render test in `app/components/icons/index.test.tsx`. `typecheck`, `lint`, `vitest run` (65/65 tests, 10 files), and `build` all pass.
+
 ## Product Command Centre
 
 ### CC-001 — Command Centre framework, navigation, and routing
