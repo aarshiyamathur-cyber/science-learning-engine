@@ -51,3 +51,17 @@ The "Matter" lesson (BL-019) is about states of matter/particle behavior, not at
 
 **Impact**
 Future lessons can adopt Atom Builder via BL-026's interactive step type with zero component changes. If a "structure of the atom" concept/lesson is authored later, it should link to this widget rather than building a new one.
+
+## DEC-005
+
+**Decision**
+Created a second OpenClaw managed worktree (`openclaw/command-centre`) so the new Product Command Centre initiative can be delegated in parallel with the still-in-flight Sprint 5 (Matter topic) delegations, instead of queuing behind them in the existing `openclaw/aarshiya-auto` worktree.
+
+**Status**
+Accepted
+
+**Reason**
+Sprint 5 has an explicit "ready for Aarshiya tomorrow morning" deadline; Command Centre does not. The two initiatives touch entirely disjoint files (curriculum content + the existing app vs. a brand-new `apps/command-centre` app), so there's no technical reason to force them through one serial queue. A single worktree can only run one delegation at a time safely — see the project history of stale/divergent commits from overlapping worktree state — but two separate worktrees can run genuinely concurrently. See [ADR 0008](../docs/decisions/0008-parallel-openclaw-worktrees.md) for the full reasoning.
+
+**Impact**
+Both `openclaw/aarshiya-auto` and `openclaw/command-centre` are now active worktrees, each enforcing one-task-at-a-time internally. Future independent initiatives with no file overlap should follow the same pattern rather than assuming there's only one delegation lane.
