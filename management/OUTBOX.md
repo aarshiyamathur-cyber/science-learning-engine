@@ -22,13 +22,13 @@ Written at the end of every work cycle: what was completed, what's in progress, 
 - **OpenClaw delegation reliability (open, unresolved — DEC-003).** The one real delegation attempt this project has made hung for 27 hours before an outer timeout killed it, well past the configured 30-minute limit. The 70% delegation target can't be met safely until this is root-caused — re-delegating blind risks repeating the same multi-hour stall.
 - **Automation Ratio is 0%** against a 70% target. This reflects the two risks above, not a refusal to delegate — see `management/WORKER_DASHBOARD.md`.
 
-**Questions for Product Owner**
+**Questions for Product Owner — resolved**
 
-1. For the "public URL on Aarshiya's iPad" priority: is a tunnel exposing this machine's local server (e.g. Cloudflare Tunnel/ngrok — keeps all data on-device, consistent with "local-first") acceptable, or is actual cloud hosting expected? Cloud hosting would need a decision on where learner progress lives, since the current SQLite file assumes a persistent local disk that most serverless platforms don't provide.
-2. Should the public URL have any access control (e.g. a simple shared password), or is an unlisted/hard-to-guess URL sufficient given this is a single-family, non-commercial project?
+1. Public URL approach: Product Owner initially chose cloud hosting, then revised to **trial locally first via a tunnel, move to real hosting later if needed**. Decision: use Cloudflare's anonymous "quick tunnel" (`cloudflared tunnel --url`) — no account needed, no architecture change, keeps the existing `node:sqlite` local-file persistence exactly as built. Revisit cloud hosting (libSQL/Turso + Vercel, previously scoped) only if the trial needs to be more permanent/reliable than an ad hoc tunnel.
+2. Access control: unlisted URL is sufficient — no password layer.
 
 **Recommended next action**
 
-1. Get the dev machine's network working again (router/adapter issue — needs physical/local troubleshooting, not something fixable from this session).
-2. Once network is back: push all pending Sprint 2 commits, then investigate and fix the OpenClaw 27-hour-hang issue (DEC-003) before trusting it with unsupervised delegated work again.
-3. Then tackle the public-URL requirement per whichever answer comes back on the questions above.
+1. Get the dev machine's network working again (router/adapter issue — needs physical/local troubleshooting, not something fixable from this session). This blocks everything below.
+2. Once network is back: download `cloudflared`, run it against the local dev/prod server, hand Product the resulting `*.trycloudflare.com` URL for Aarshiya's iPad.
+3. Also once network is back: push all pending Sprint 2 commits, then investigate and fix the OpenClaw 27-hour-hang issue (DEC-003) before trusting it with unsupervised delegated work again.
