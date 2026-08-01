@@ -272,16 +272,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Description:** Audit every screen against the Sprint 5 Definition of Done: "every screen has appropriate colour and visual hierarchy," "mobile/iPad experience polished." Fix anything that doesn't hold up, especially on small viewports.
 - **Dependencies:** BL-032, BL-033, BL-034 (needs final content and navigation in place first)
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Estimate:** Medium
+- **Notes:** Verified via live browser walkthrough rather than needing new visual changes — BL-033's per-lesson illustrations plus the existing Sprint 3 design system already satisfied the bar. Checked: mobile (375px) and tablet (768px) viewports (no horizontal overflow, 48px tap targets), dark mode (correct contrast/colors), and the topic list's visual hierarchy (title → XP → per-lesson cards with illustration/badge/progress/action).
 
 ### BL-036 — Final QA: full live click-through, no placeholders/TODOs
 
 - **Description:** Click through every interaction across all 3 Matter lessons live (not just typecheck/lint/test), verify progress/XP tracking end-to-end across lessons, confirm nothing is a placeholder or has a TODO left in it.
 - **Dependencies:** BL-032, BL-033, BL-034, BL-035
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Estimate:** Medium
+- **Notes:** Full live click-through of all three lessons end-to-end: explanation → example → interactive widget → all 5 questions each (mixed multiple-choice/short-answer) → summary → finish, including hint reveal, wrong-answer retry, and self-assessment for short-answer questions. Confirmed mastery scoring and XP accumulate correctly (50 + 50 = 100 XP across two lessons). Repo-wide grep confirmed no TODOs/placeholders remain. Found and fixed two real bugs neither caught by typecheck/lint/64 unit tests: (1) a newly-unlocked lesson stayed "Locked" until a manual page reload — fixed with `router.refresh()` after lesson completion; (2) the `AarshiyaAppServer` Scheduled Task was silently exiting on every start due to `$ErrorActionPreference = "Stop"` treating benign npm/next stderr output as fatal under PowerShell 5.1 — fixed by removing that setting. Learner-progress database reset to a clean state before handoff.
 
 ## Product Command Centre
 
