@@ -10,6 +10,14 @@ All notable changes to this project are recorded here. Format loosely follows [K
 - `app/components/ui/` shared primitives library: `Card`, `Badge`, `Button`, `ProgressBar`, all driven by the new `tone` roles instead of raw color names.
 - `ContinueLearningScreen` reworked to use the new primitives (first real-screen usage).
 - ADR 0007 documenting the design-token/primitives approach.
+- Asset library (BL-021): 6 hand-authored SVGs under `/assets` (4 step-type icons, 2 illustrations) with React-consumable copies in `app/components/icons/`.
+- `LessonPlayer` migrated onto the design system (BL-022): illustrations on the Continue Learning and completion screens.
+- Explicit voice-answer mode for short-answer questions (BL-023), via the Web Speech API, with a visible "listening" state and a visible fallback message on unsupported browsers.
+- `explanation` field on `AssessmentQuestion` and immediate correct/incorrect feedback with a "Try again" retry path (BL-024).
+
+### Fixed
+
+- Short-answer questions previously had no way to actually type an answer before self-assessing — direct feedback from Aarshiya's first use of the app.
 
 ## [Unreleased] — Sprint 0: engineering foundation — 2026-07-30
 

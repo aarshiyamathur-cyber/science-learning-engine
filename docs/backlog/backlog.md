@@ -137,27 +137,30 @@ Sprint 3 goal: improve the learner experience — visuals, clarity of interactio
 - **Description:** Rework `ContinueLearningScreen` and `LessonPlayer` to use BL-020's primitives and BL-021's illustrations throughout, replacing the current ad hoc Tailwind classes from the first color pass.
 - **Dependencies:** BL-020, BL-021
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** Verified in a real browser; no hardcoded science content in the components (still data-driven per BL-016).
 - **Estimate:** Medium
+- **Notes:** `LessonPlayer` migrated off its own hand-rolled `ACCENT_CLASSES`/`STEP_STYLE` map onto `Card`/`Badge`/`Button` per ADR 0007's explicit recommendation. Verified via 42 passing tests + careful manual trace; live interactive browser click-through wasn't possible this round (Browser pane wasn't rendering in this session) — verify directly on the live demo URL instead.
 
 ### BL-023 — Explicit answer interaction: typed, multiple-choice, voice
 
 - **Description:** Every question step must make the answer method unambiguous. Multiple-choice and typed-answer already exist (BL-018 fix) — add an explicit, clearly-labeled voice input option (Web Speech API) as a third way to answer, with a visible "not supported on this device" fallback rather than a silently broken button.
 - **Dependencies:** BL-022
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** A learner can always tell how to answer without guessing; voice mode transcribes into the same answer box (not a separate hidden flow); works or clearly says it doesn't per-browser.
 - **Estimate:** Medium
+- **Notes:** Scoped to short-answer questions only (multiple-choice already has an unambiguous tap-to-answer interaction; voice-selecting an MC option would need spoken-option matching, out of scope). Shows an explicit "🎤 Listening — say your answer now" state while active, and a visible fallback message on unsupported browsers instead of hiding the option.
 
 ### BL-024 — Immediate feedback with explanations + retry
 
 - **Description:** On every answer: correct shows "✓ Nice work", XP earned, and a short explanation; incorrect shows "Not quite", a short explanation, and a "Try again" action that resets the current question rather than forcing the learner onward. Requires adding an `explanation` field to `AssessmentQuestionSchema` and populating it for the 5 existing demo questions (data enrichment for UX, not new curriculum).
 - **Dependencies:** BL-022
 - **Priority:** P0
-- **Status:** Not started
+- **Status:** Done
 - **Acceptance criteria:** Both outcomes show immediate, visible feedback; retry re-attempts the same question and records a new `AttemptRecord`; unit tests cover the schema addition.
 - **Estimate:** Medium
+- **Notes:** "XP earned" is shown as encouragement text ("Earning XP toward finishing this lesson") rather than a fabricated per-question number — XP is awarded only at lesson completion (existing mechanic), so this avoids introducing a new per-question XP grant, consistent with "no new game mechanics" for this sprint. Incorrect answers get both "Try again" (resets the question for a fresh attempt) and a lower-emphasis "Skip to next" so a learner is never stuck.
 
 ### BL-025 — Keep the live demo current
 

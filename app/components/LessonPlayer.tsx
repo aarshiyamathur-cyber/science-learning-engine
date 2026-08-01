@@ -1,7 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
+import { ExampleIcon, ExplanationIcon, QuestionIcon, SummaryIcon } from "./icons";
+import { Badge, Button, Card } from "./ui";
+import type { Tone } from "./ui/tone";
 
 interface LessonPlayerProps {
   steps: ResolvedLessonStep[];
@@ -9,46 +12,99 @@ interface LessonPlayerProps {
   onComplete: () => void;
 }
 
-const STEP_STYLE = {
-  explanation: { label: "Explanation", emoji: "💡", accent: "sky" },
-  example: { label: "Example", emoji: "🔍", accent: "violet" },
-  question: { label: "Question", emoji: "❓", accent: "amber" },
-  summary: { label: "Summary", emoji: "🎉", accent: "emerald" },
-} as const;
+const STEP_META: Record<
+  "explanation" | "example" | "question" | "summary",
+  { label: string; tone: Tone; Icon: typeof ExplanationIcon }
+> = {
+  explanation: { label: "Explanation", tone: "info", Icon: ExplanationIcon },
+  example: { label: "Example", tone: "accent", Icon: ExampleIcon },
+  question: { label: "Question", tone: "warning", Icon: QuestionIcon },
+  summary: { label: "Summary", tone: "success", Icon: SummaryIcon },
+};
 
-const ACCENT_CLASSES = {
-  sky: {
-    badge: "bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200",
-    button: "bg-sky-600 hover:bg-sky-700 text-white",
-    card: "border-sky-200 bg-sky-50 dark:border-sky-900 dark:bg-sky-950/40",
-  },
-  violet: {
-    badge: "bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200",
-    button: "bg-violet-600 hover:bg-violet-700 text-white",
-    card: "border-violet-200 bg-violet-50 dark:border-violet-900 dark:bg-violet-950/40",
-  },
-  amber: {
-    badge: "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
-    button: "bg-amber-600 hover:bg-amber-700 text-white",
-    card: "border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950/40",
-  },
-  emerald: {
-    badge: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
-    button: "bg-emerald-600 hover:bg-emerald-700 text-white",
-    card: "border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/40",
-  },
-} as const;
+/**
+ * This component only ever mounts client-side, after a user clicks "Start
+ * Lesson" — it is never part of the server-rendered initial HTML — so
+ * reading `window` directly at render time (not in an effect) is safe here.
+ */
+function isSpeechRecognitionSupported(): boolean {
+  if (typeof window === "undefined") return false;
+  const w = window as typeof window & {
+    SpeechRecognition?: unknown;
+    webkitSpeechRecognition?: unknown;
+  };
+  return Boolean(w.SpeechRecognition ?? w.webkitSpeechRecognition);
+}
 
-function StepBadge({ type }: { type: keyof typeof STEP_STYLE }) {
-  const style = STEP_STYLE[type];
-  const accent = ACCENT_CLASSES[style.accent];
+/** Minimal shape of the Web Speech API surface this component uses. */
+interface SpeechRecognitionLike {
+  lang: string;
+  interimResults: boolean;
+  maxAlternatives: number;
+  onresult:
+    ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void) | null;
+  onerror: (() => void) | null;
+  onend: (() => void) | null;
+  start: () => void;
+  stop: () => void;
+}
+
+function VoiceAnswerButton({ onTranscript }: { onTranscript: (text: string) => void }) {
+  const supported = isSpeechRecognitionSupported();
+  const [listening, setListening] = useState(false);
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+
+  if (!supported) {
+    return (
+      <p className="text-label text-zinc-400 dark:text-zinc-500">
+        🎤 Voice answers aren&apos;t supported on this browser — use the text box above.
+      </p>
+    );
+  }
+
+  function startListening() {
+    const w = window as typeof window & {
+      SpeechRecognition?: new () => SpeechRecognitionLike;
+      webkitSpeechRecognition?: new () => SpeechRecognitionLike;
+    };
+    const Recognition = w.SpeechRecognition ?? w.webkitSpeechRecognition;
+    if (!Recognition) return;
+
+    const recognition = new Recognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.onresult = (event) => {
+      const transcript = event.results[0]?.[0]?.transcript;
+      if (transcript) onTranscript(transcript);
+    };
+    recognition.onerror = () => setListening(false);
+    recognition.onend = () => setListening(false);
+    recognitionRef.current = recognition;
+    setListening(true);
+    recognition.start();
+  }
+
+  function stopListening() {
+    recognitionRef.current?.stop();
+    setListening(false);
+  }
+
   return (
-    <span
-      className={`inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-sm font-semibold ${accent.badge}`}
-    >
-      <span aria-hidden>{style.emoji}</span>
-      {style.label}
-    </span>
+    <div className="flex flex-col gap-1">
+      <Button
+        variant="solid"
+        tone={listening ? "danger" : "info"}
+        onClick={listening ? stopListening : startListening}
+      >
+        {listening ? "⏹ Stop" : "🎤 Answer out loud"}
+      </Button>
+      {listening && (
+        <p className="text-label font-semibold text-danger-700 dark:text-danger-300">
+          🎤 Listening — say your answer now
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -59,7 +115,7 @@ function StepBadge({ type }: { type: keyof typeof STEP_STYLE }) {
  */
 export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps) {
   const [index, setIndex] = useState(0);
-  const [answered, setAnswered] = useState(false);
+  const [outcome, setOutcome] = useState<"correct" | "incorrect" | null>(null);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [typedAnswer, setTypedAnswer] = useState("");
   const [checked, setChecked] = useState(false);
@@ -67,11 +123,15 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
   const step = steps[index];
   const isLast = index === steps.length - 1;
 
-  function goNext() {
-    setAnswered(false);
+  function resetQuestionState() {
+    setOutcome(null);
     setSelectedOption(null);
     setTypedAnswer("");
     setChecked(false);
+  }
+
+  function goNext() {
+    resetQuestionState();
     if (isLast) {
       onComplete();
     } else {
@@ -79,48 +139,37 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
     }
   }
 
-  if (step.type === "explanation" || step.type === "example") {
-    const accent = ACCENT_CLASSES[STEP_STYLE[step.type].accent];
-    return (
-      <div className={`flex flex-col gap-4 rounded-xl border-2 p-6 ${accent.card}`}>
-        <StepBadge type={step.type} />
-        <p className="text-lg text-zinc-800 dark:text-zinc-100">{step.body}</p>
-        <button
-          type="button"
-          onClick={goNext}
-          className={`self-start rounded-full px-5 py-2 text-sm font-semibold shadow-sm ${accent.button}`}
-        >
-          Next →
-        </button>
-      </div>
-    );
+  function tryAgain() {
+    setOutcome(null);
+    setSelectedOption(null);
+    setTypedAnswer("");
+    setChecked(false);
   }
 
-  if (step.type === "summary") {
-    const accent = ACCENT_CLASSES[STEP_STYLE.summary.accent];
+  if (step.type === "explanation" || step.type === "example" || step.type === "summary") {
+    const meta = STEP_META[step.type];
     return (
-      <div className={`flex flex-col gap-4 rounded-xl border-2 p-6 ${accent.card}`}>
-        <StepBadge type="summary" />
-        <p className="text-lg text-zinc-800 dark:text-zinc-100">{step.body}</p>
-        <button
-          type="button"
-          onClick={goNext}
-          className={`self-start rounded-full px-5 py-2 text-sm font-semibold shadow-sm ${accent.button}`}
-        >
-          Finish lesson 🎉
-        </button>
-      </div>
+      <Card tone={meta.tone}>
+        <Badge tone={meta.tone} icon={<meta.Icon className="h-4 w-4" />}>
+          {meta.label}
+        </Badge>
+        <p className="text-body text-zinc-800 dark:text-zinc-100">{step.body}</p>
+        <Button variant="solid" tone={meta.tone} onClick={goNext}>
+          {step.type === "summary" ? "Finish lesson 🎉" : "Next →"}
+        </Button>
+      </Card>
     );
   }
 
   const { question } = step;
-  const accent = ACCENT_CLASSES[STEP_STYLE.question.accent];
+  const meta = STEP_META.question;
 
   function submitMultipleChoice(option: string) {
-    if (answered) return;
+    if (outcome) return;
+    const correct = option === question.correctAnswer;
     setSelectedOption(option);
-    setAnswered(true);
-    onAnswer({ questionId: question.id, correct: option === question.correctAnswer });
+    setOutcome(correct ? "correct" : "incorrect");
+    onAnswer({ questionId: question.id, correct });
   }
 
   function checkTypedAnswer() {
@@ -129,18 +178,23 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
   }
 
   function submitShortAnswerSelfAssessment(correct: boolean) {
-    if (answered) return;
-    setAnswered(true);
+    if (outcome) return;
+    setOutcome(correct ? "correct" : "incorrect");
     onAnswer({ questionId: question.id, correct });
   }
 
   return (
-    <div className={`flex flex-col gap-4 rounded-xl border-2 p-6 ${accent.card}`}>
-      <StepBadge type="question" />
-      <p className="text-lg text-zinc-800 dark:text-zinc-100">{question.prompt}</p>
+    <Card tone={meta.tone}>
+      <Badge tone={meta.tone} icon={<meta.Icon className="h-4 w-4" />}>
+        {meta.label}
+      </Badge>
+      <p className="text-body text-zinc-800 dark:text-zinc-100">{question.prompt}</p>
 
       {question.type === "multiple-choice" && question.options && (
         <div className="flex flex-col gap-2">
+          <p className="text-label text-zinc-500 dark:text-zinc-400">
+            Tap the answer you think is right:
+          </p>
           {question.options.map((option) => {
             const isSelected = selectedOption === option;
             const isCorrectOption = option === question.correctAnswer;
@@ -148,14 +202,14 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
               <button
                 key={option}
                 type="button"
-                disabled={answered}
+                disabled={outcome !== null}
                 onClick={() => submitMultipleChoice(option)}
-                className={`rounded-lg border-2 px-4 py-3 text-left text-base font-medium transition-colors ${
-                  answered && isCorrectOption
-                    ? "border-emerald-500 bg-emerald-100 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-100"
-                    : answered && isSelected
-                      ? "border-rose-500 bg-rose-100 text-rose-900 dark:bg-rose-900 dark:text-rose-100"
-                      : "border-amber-300 bg-white hover:bg-amber-50 dark:border-amber-800 dark:bg-zinc-900 dark:hover:bg-amber-950"
+                className={`rounded-lg border-2 px-4 py-3 text-left text-body font-medium transition-colors ${
+                  outcome && isCorrectOption
+                    ? "border-success-500 bg-success-100 text-success-900 dark:bg-success-900 dark:text-success-100"
+                    : outcome && isSelected
+                      ? "border-danger-500 bg-danger-100 text-danger-900 dark:bg-danger-900 dark:text-danger-100"
+                      : "border-warning-300 bg-white hover:bg-warning-50 dark:border-warning-800 dark:bg-zinc-900 dark:hover:bg-warning-950"
                 }`}
               >
                 {option}
@@ -167,8 +221,11 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
 
       {question.type !== "multiple-choice" && !checked && (
         <div className="flex flex-col gap-2">
-          <label htmlFor="short-answer-input" className="text-sm text-zinc-600 dark:text-zinc-300">
-            Type your answer, then check it:
+          <label
+            htmlFor="short-answer-input"
+            className="text-label text-zinc-600 dark:text-zinc-300"
+          >
+            Type your answer, then check it — or answer out loud:
           </label>
           <textarea
             id="short-answer-input"
@@ -176,58 +233,89 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
             onChange={(e) => setTypedAnswer(e.target.value)}
             rows={2}
             placeholder="Write your answer here..."
-            className="rounded-lg border-2 border-amber-300 bg-white p-3 text-base text-zinc-900 focus:border-amber-500 focus:outline-none dark:border-amber-800 dark:bg-zinc-900 dark:text-zinc-100"
+            className="rounded-lg border-2 border-warning-300 bg-white p-3 text-body text-zinc-900 focus:border-warning-500 focus:outline-none dark:border-warning-800 dark:bg-zinc-900 dark:text-zinc-100"
           />
-          <button
-            type="button"
-            onClick={checkTypedAnswer}
-            disabled={!typedAnswer.trim()}
-            className={`self-start rounded-full px-5 py-2 text-sm font-semibold shadow-sm disabled:opacity-40 ${accent.button}`}
-          >
-            Check my answer
-          </button>
-        </div>
-      )}
-
-      {question.type !== "multiple-choice" && checked && !answered && (
-        <div className="flex flex-col gap-3 rounded-lg border-2 border-amber-300 bg-white p-4 dark:border-amber-800 dark:bg-zinc-900">
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">You wrote:</p>
-          <p className="rounded bg-zinc-100 p-2 text-base text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100">
-            {typedAnswer}
-          </p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Reference answer:</p>
-          <p className="text-base font-medium text-zinc-800 dark:text-zinc-100">
-            {String(question.correctAnswer)}
-          </p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-300">Did you get it right?</p>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => submitShortAnswerSelfAssessment(true)}
-              className="rounded-full bg-emerald-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              variant="solid"
+              tone="warning"
+              onClick={checkTypedAnswer}
+              disabled={!typedAnswer.trim()}
             >
-              ✅ I got it right
-            </button>
-            <button
-              type="button"
-              onClick={() => submitShortAnswerSelfAssessment(false)}
-              className="rounded-full bg-rose-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-700"
-            >
-              ❌ I got it wrong
-            </button>
+              Check my answer
+            </Button>
+            <VoiceAnswerButton onTranscript={(text) => setTypedAnswer(text)} />
           </div>
         </div>
       )}
 
-      {answered && (
-        <button
-          type="button"
-          onClick={goNext}
-          className={`self-start rounded-full px-5 py-2 text-sm font-semibold shadow-sm ${accent.button}`}
-        >
-          Next →
-        </button>
+      {question.type !== "multiple-choice" && checked && !outcome && (
+        <div className="flex flex-col gap-3 rounded-lg border-2 border-warning-300 bg-white p-4 dark:border-warning-800 dark:bg-zinc-900">
+          <p className="text-label text-zinc-500 dark:text-zinc-400">You wrote:</p>
+          <p className="rounded bg-zinc-100 p-2 text-body text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100">
+            {typedAnswer}
+          </p>
+          <p className="text-label text-zinc-500 dark:text-zinc-400">Reference answer:</p>
+          <p className="text-body font-medium text-zinc-800 dark:text-zinc-100">
+            {String(question.correctAnswer)}
+          </p>
+          <p className="text-label text-zinc-600 dark:text-zinc-300">
+            Did you get it right?
+          </p>
+          <div className="flex gap-2">
+            <Button
+              variant="solid"
+              tone="success"
+              onClick={() => submitShortAnswerSelfAssessment(true)}
+            >
+              ✅ I got it right
+            </Button>
+            <Button
+              variant="solid"
+              tone="danger"
+              onClick={() => submitShortAnswerSelfAssessment(false)}
+            >
+              ❌ I got it wrong
+            </Button>
+          </div>
+        </div>
       )}
-    </div>
+
+      {outcome === "correct" && (
+        <div className="flex flex-col gap-2 rounded-lg border-2 border-success-300 bg-success-50 p-4 dark:border-success-800 dark:bg-success-950/40">
+          <Badge tone="success">✓ Nice work</Badge>
+          <p className="text-label font-semibold text-warning-700 dark:text-warning-300">
+            ⭐ Earning XP toward finishing this lesson
+          </p>
+          <p className="text-body text-zinc-700 dark:text-zinc-200">
+            {question.explanation}
+          </p>
+          <Button variant="solid" tone="success" onClick={goNext} className="self-start">
+            Next →
+          </Button>
+        </div>
+      )}
+
+      {outcome === "incorrect" && (
+        <div className="flex flex-col gap-2 rounded-lg border-2 border-danger-300 bg-danger-50 p-4 dark:border-danger-800 dark:bg-danger-950/40">
+          <Badge tone="danger">✗ Not quite</Badge>
+          <p className="text-body text-zinc-700 dark:text-zinc-200">
+            {question.explanation}
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button variant="solid" tone="danger" onClick={tryAgain}>
+              🔁 Try again
+            </Button>
+            <button
+              type="button"
+              onClick={goNext}
+              className="text-label text-zinc-500 underline hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+            >
+              Skip to next →
+            </button>
+          </div>
+        </div>
+      )}
+    </Card>
   );
 }

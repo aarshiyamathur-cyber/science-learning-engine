@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import { completeLessonAction, submitAnswerAction } from "../actions";
+import { CelebrationIllustration, StatesOfMatterIllustration } from "./icons";
 import { LessonPlayer } from "./LessonPlayer";
 import { Badge, Button, Card, ProgressBar } from "./ui";
 
@@ -68,6 +69,7 @@ export function ContinueLearningScreen({
             <Badge tone="brand" icon="▶️">
               Continue Learning
             </Badge>
+            <StatesOfMatterIllustration className="h-20 w-full" aria-hidden />
             <p className="text-heading font-bold text-zinc-900 dark:text-zinc-50">
               {conceptTitle}
             </p>
@@ -94,6 +96,7 @@ export function ContinueLearningScreen({
 
         {view === "done" && (
           <Card tone="success">
+            <CelebrationIllustration className="h-20 w-full" aria-hidden />
             <p className="text-heading font-bold text-success-700 dark:text-success-300">
               🎉 Lesson complete!
             </p>
