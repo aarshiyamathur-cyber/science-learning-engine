@@ -60,11 +60,24 @@ export const SummaryStepSchema = z.object({
   body: z.string().min(1),
 });
 
+/**
+ * References a reusable interactive widget by id (e.g. "particle-state-explorer").
+ * The widget id isn't a closed enum here — widgets are registered and
+ * dispatched in the UI layer (LessonPlayer), not the schema — so adding a
+ * new widget never requires touching this package.
+ */
+export const InteractiveStepSchema = z.object({
+  type: z.literal("interactive"),
+  widget: z.string().min(1),
+  prompt: z.string().min(1),
+});
+
 export const LessonStepSchema = z.discriminatedUnion("type", [
   ExplanationStepSchema,
   ExampleStepSchema,
   QuestionStepSchema,
   SummaryStepSchema,
+  InteractiveStepSchema,
 ]);
 export type LessonStep = z.infer<typeof LessonStepSchema>;
 
@@ -93,10 +106,12 @@ export type ResolvedLessonStep =
   | ExplanationStep
   | ExampleStep
   | { type: "question"; question: AssessmentQuestion }
-  | SummaryStep;
+  | SummaryStep
+  | InteractiveStep;
 type ExplanationStep = z.infer<typeof ExplanationStepSchema>;
 type ExampleStep = z.infer<typeof ExampleStepSchema>;
 type SummaryStep = z.infer<typeof SummaryStepSchema>;
+type InteractiveStep = z.infer<typeof InteractiveStepSchema>;
 
 export class UnresolvedQuestionRefError extends Error {
   constructor(

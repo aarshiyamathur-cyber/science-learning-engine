@@ -13,6 +13,11 @@ steps:
       Water, air, and a wooden chair are all matter — even though they
       look and feel completely different, they all have mass and take up
       space.
+  - type: interactive
+    widget: particle-state-explorer
+    prompt: >
+      Tap Solid, Liquid, and Gas below and watch what the particles do in
+      each one.
   - type: question
     questionId: q-matter-01
   - type: question

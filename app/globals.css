@@ -111,3 +111,48 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Particle motion (BL-027) — amplitude/speed scale with the state being
+   simulated: barely-there vibration for a solid, up to fast, wide motion
+   for a gas. */
+@keyframes particle-jitter-solid {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(1px, -1px);
+  }
+}
+
+@keyframes particle-jitter-liquid {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(3px, 2px);
+  }
+  50% {
+    transform: translate(-2px, 3px);
+  }
+  75% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes particle-jitter-gas {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(6px, -5px);
+  }
+  50% {
+    transform: translate(-6px, 5px);
+  }
+  75% {
+    transform: translate(5px, 6px);
+  }
+}

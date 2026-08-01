@@ -5,6 +5,16 @@ import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import { ExampleIcon, ExplanationIcon, QuestionIcon, SummaryIcon } from "./icons";
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
+import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
+
+/**
+ * Registry of interactive widgets, keyed by the id a lesson's interactive
+ * step references (see InteractiveStepSchema). Adding a widget means adding
+ * one entry here — the schema doesn't need to know the closed set of ids.
+ */
+const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
+  "particle-state-explorer": ParticleStateExplorer,
+};
 
 interface LessonPlayerProps {
   steps: ResolvedLessonStep[];
@@ -156,6 +166,28 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
         <p className="text-body text-zinc-800 dark:text-zinc-100">{step.body}</p>
         <Button variant="solid" tone={meta.tone} onClick={goNext}>
           {step.type === "summary" ? "Finish lesson 🎉" : "Next →"}
+        </Button>
+      </Card>
+    );
+  }
+
+  if (step.type === "interactive") {
+    const Widget = WIDGET_REGISTRY[step.widget];
+    return (
+      <Card tone="accent">
+        <Badge tone="accent" icon="🧪">
+          Try it yourself
+        </Badge>
+        <p className="text-body text-zinc-800 dark:text-zinc-100">{step.prompt}</p>
+        {Widget ? (
+          <Widget />
+        ) : (
+          <p className="text-label text-danger-600 dark:text-danger-400">
+            Unknown widget &quot;{step.widget}&quot;.
+          </p>
+        )}
+        <Button variant="solid" tone="accent" onClick={goNext}>
+          Next →
         </Button>
       </Card>
     );

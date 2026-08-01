@@ -95,6 +95,26 @@ describe("LessonSchema", () => {
       }).success,
     ).toBe(false);
   });
+
+  it("accepts an interactive step", () => {
+    expect(
+      LessonSchema.safeParse({
+        ...validLesson,
+        steps: [
+          { type: "interactive", widget: "particle-state-explorer", prompt: "Try it!" },
+        ],
+      }).success,
+    ).toBe(true);
+  });
+
+  it("rejects an interactive step missing a widget id", () => {
+    expect(
+      LessonSchema.safeParse({
+        ...validLesson,
+        steps: [{ type: "interactive", prompt: "Try it!" }],
+      }).success,
+    ).toBe(false);
+  });
 });
 
 describe("resolveLessonSteps", () => {
