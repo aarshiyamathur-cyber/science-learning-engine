@@ -1,22 +1,36 @@
-# Sprint 2
+# Sprint 3
 
-_Sprint 1 status: BL-010 (core learner/attempt models) done; BL-011 and BL-014 deferred (not needed for a single-concept demo); BL-012 and BL-013 superseded by BL-016 and BL-017 below. See `docs/backlog/backlog.md`._
+_Sprint 2 status: Done — BL-015 through BL-019 shipped and live. See `docs/backlog/backlog.md`._
 
 ## Goal
 
-Build the first playable learning loop — one complete, reusable learning experience, not a science game and not multiple systems.
+Improve the learner experience based on Aarshiya's direct feedback on Sprint 2: the app needs color, illustrations, an unambiguous way to answer questions (including an explicit voice option), and immediate feedback with explanations. No new curriculum, no new game mechanics, no new infrastructure.
+
+## Feedback driving this sprint
+
+- The app needs colour.
+- It needs graphics and illustrations.
+- It is not obvious how to answer questions.
+- There should be a visible text box for typed answers.
+- If voice input is supported, it must clearly tell the learner to speak.
+- The overall experience needs to feel much more engaging.
 
 ## Deliverables
 
-1. **Concept Engine** — concept data model: id, title, description, learningObjectives, prerequisites, masteryThreshold, xpReward.
-2. **Lesson Engine** — generic, data-driven lesson renderer. Ordered steps; step types: explanation, example, question, summary. No hardcoded science content in the UI.
-3. **Learner Progress** — persist completed lessons, XP, score, attempts, mastery, last completed. Model must support future adaptive learning.
-4. **Minimal UI** — one screen only (Science / Continue Learning / Matter / Progress / Start Lesson). No animation, maps, avatars, coins, achievements, or polish.
-5. **Sample Content** — one concept ("Matter"), one lesson, five questions. Demonstration content only.
+1. **Visual design system** — color palette, typography, card components, icons, progress components, lesson components (BL-020).
+2. **Asset library** — `assets/{icons,illustrations,diagrams,animations,backgrounds}`, one consistent visual style (BL-021).
+3. **Apply the design system** to the existing Continue Learning screen and Lesson Player (BL-022).
+4. **Explicit answer interaction** — typed, multiple-choice, and an explicit voice mode; never leave the learner guessing how to answer (BL-023).
+5. **Immediate feedback** — correct (✓ Nice work / XP earned / explanation) and incorrect (Not quite / short explanation / Try again) (BL-024).
+6. **Keep the live demo current** after every meaningful milestone, not just at sprint end (BL-025).
 
-Engineering rules: build incrementally, keep the architecture clean, write tests, keep everything reusable, don't anticipate future features beyond this sprint.
+Working rule for every feature: "Will this make Aarshiya more likely to complete another lesson?" If no, don't build it.
 
-Approved by Product Owner. Do not begin Sprint 3 after this one — stop for Product review.
+OpenClaw: continue delegating implementation work whenever practical (tracked in `management/WORKER_DASHBOARD.md`).
+
+Reporting: update `management/OUTBOX.md`, `management/LIVE_FACTORY.md`, and `management/WORKER_DASHBOARD.md` after every meaningful milestone, not just at sprint end.
+
+**Stop condition:** when there is a significantly improved visual lesson experience ready for Aarshiya to test, stop, commit, update the dashboards, and wait for Product review.
 
 ## In Progress
 

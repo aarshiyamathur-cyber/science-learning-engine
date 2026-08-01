@@ -56,7 +56,7 @@ Each item: unique ID, title, description, dependencies, priority, status, accept
 - **Estimate:** TBD
 - **Notes:** Foundation for BL-013 and BL-014 (both since superseded — see below). Extended further in BL-017 for Sprint 2.
 
-## Next (Sprint 2 — approved by Product Owner via `management/CURRENT_SPRINT.md`)
+## Done (Sprint 2)
 
 Sprint 2 goal: the first playable learning loop — one complete, reusable learning experience (not a science game, not multiple systems).
 
@@ -106,6 +106,65 @@ Sprint 2 goal: the first playable learning loop — one complete, reusable learn
 - **Priority:** P0
 - **Status:** Done
 - **Acceptance criteria:** Passes `npm run validate:curriculum`; exercised end-to-end through BL-018.
+- **Estimate:** Small
+
+## Next (Sprint 3 — approved by Product Owner, driven by Aarshiya's Sprint 2 feedback)
+
+Sprint 3 goal: improve the learner experience — visuals, clarity of interaction, and immediate feedback. No new curriculum, no new game mechanics, no new infrastructure. Every item must pass: "Will this make Aarshiya more likely to complete another lesson?"
+
+### BL-020 — Visual design system foundation
+
+- **Description:** Reusable design tokens (color palette, typography scale, spacing) as Tailwind theme config, plus a small shared primitives library (`app/components/ui/`: Card, Badge, ProgressBar, Button) so every screen draws from one consistent visual language instead of ad hoc classes per component.
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** All colors/spacing/type sizes are tokens, not one-off hex/px values; primitives are used by at least one real screen; no visual regression in existing tests.
+- **Estimate:** Medium
+- **Notes:** Candidate for OpenClaw delegation — well-scoped, mechanical, low ambiguity.
+
+### BL-021 — Icon and illustration asset library
+
+- **Description:** `assets/{icons,illustrations,diagrams,animations,backgrounds}` with a small set of hand-authored inline SVGs (a science/lesson theme: beaker, atom, states-of-matter, celebration) in one consistent style. Hand-authored rather than downloaded, to avoid licensing ambiguity and any network dependency.
+- **Dependencies:** BL-020 (shares the same visual style/palette)
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** At least one illustration per step type (explanation/example/question/summary) and one for the completion screen; all SVG, no external asset downloads.
+- **Estimate:** Medium
+
+### BL-022 — Apply design system to Continue Learning + Lesson Player
+
+- **Description:** Rework `ContinueLearningScreen` and `LessonPlayer` to use BL-020's primitives and BL-021's illustrations throughout, replacing the current ad hoc Tailwind classes from the first color pass.
+- **Dependencies:** BL-020, BL-021
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** Verified in a real browser; no hardcoded science content in the components (still data-driven per BL-016).
+- **Estimate:** Medium
+
+### BL-023 — Explicit answer interaction: typed, multiple-choice, voice
+
+- **Description:** Every question step must make the answer method unambiguous. Multiple-choice and typed-answer already exist (BL-018 fix) — add an explicit, clearly-labeled voice input option (Web Speech API) as a third way to answer, with a visible "not supported on this device" fallback rather than a silently broken button.
+- **Dependencies:** BL-022
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** A learner can always tell how to answer without guessing; voice mode transcribes into the same answer box (not a separate hidden flow); works or clearly says it doesn't per-browser.
+- **Estimate:** Medium
+
+### BL-024 — Immediate feedback with explanations + retry
+
+- **Description:** On every answer: correct shows "✓ Nice work", XP earned, and a short explanation; incorrect shows "Not quite", a short explanation, and a "Try again" action that resets the current question rather than forcing the learner onward. Requires adding an `explanation` field to `AssessmentQuestionSchema` and populating it for the 5 existing demo questions (data enrichment for UX, not new curriculum).
+- **Dependencies:** BL-022
+- **Priority:** P0
+- **Status:** Not started
+- **Acceptance criteria:** Both outcomes show immediate, visible feedback; retry re-attempts the same question and records a new `AttemptRecord`; unit tests cover the schema addition.
+- **Estimate:** Medium
+
+### BL-025 — Keep the live demo current
+
+- **Description:** After each meaningful Sprint 3 milestone, rebuild and restart the production server behind the existing Cloudflare tunnel so the public demo always reflects the latest commit.
+- **Dependencies:** BL-022, BL-023, BL-024
+- **Priority:** P1
+- **Status:** Not started
+- **Acceptance criteria:** Tunnel URL serves the latest build after each milestone, not just at sprint end.
 - **Estimate:** Small
 
 ## Later / Deferred
