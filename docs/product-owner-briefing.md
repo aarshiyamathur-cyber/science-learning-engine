@@ -21,7 +21,7 @@ Sprint 4's theme is "Interactive Science": replace reading with discovery, via r
 
 ## Previously: Sprint 3 delivered — visual polish + fixed interaction, live for testing
 
-**The live demo (still the same URL) now has real color, illustrations, an unambiguous way to answer every question, and immediate feedback:** https://tattoo-hose-lexmark-marathon.trycloudflare.com
+**The live demo (still the same URL) now has real color, illustrations, an unambiguous way to answer every question, and immediate feedback:** https://pamela-andale-mai-proposals.trycloudflare.com
 
 Sprint 3 was driven directly by Aarshiya's feedback on Sprint 2 ("needs colour," "needs graphics," "not obvious how to answer," "no box to type an answer," voice input needs to be explicit). Every item below traces to that feedback:
 
@@ -36,7 +36,7 @@ Aarshiya's exact feedback: "needs colour," "needs graphics and illustrations," "
 
 ## Demo instructions
 
-1. **Open:** https://tattoo-hose-lexmark-marathon.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
+1. **Open:** https://pamela-andale-mai-proposals.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
 2. **Click:** "Start Lesson," then step through explanation → example → **🧪 Try it yourself (new!)** → 5 questions → summary → finish.
 3. **On the new interactive step**, tap "Solid," "Liquid," and "Gas" and watch the particles change speed and spacing, and the caption update to match.
 4. **Try answering a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question (works on most Chrome/Edge/Safari; shows a clear message if your browser doesn't support it).
