@@ -46,3 +46,7 @@ Tracked separately from the project-wide ratio in `management/WORKER_DASHBOARD.m
 ## Status
 
 In progress — CC-001 dispatched, awaiting completion.
+
+## Live URL
+
+https://used-starter-formation-trying.trycloudflare.com (ephemeral Cloudflare quick tunnel - see caveat in start-command-centre-tunnel.ps1)
