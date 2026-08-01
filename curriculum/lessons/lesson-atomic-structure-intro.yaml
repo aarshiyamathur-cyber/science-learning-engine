@@ -1,0 +1,61 @@
+id: lesson-atomic-structure-intro
+conceptId: sci-y7-atomic-structure
+title: Inside the Atom
+summary: What atoms are made of, how atomic number and mass number are worked out, and how electrons fill their shells.
+steps:
+  - type: explanation
+    body: >
+      Every atom is built from three even smaller particles: protons,
+      neutrons, and electrons. Protons and neutrons cluster together at the
+      very centre of the atom, in a tiny, dense region called the nucleus.
+      Protons carry a positive electric charge; neutrons carry no charge at
+      all — they're neutral, which is how they got their name. Electrons are
+      far lighter than protons and neutrons, and they don't sit in the
+      nucleus. Instead, they occupy shells — regions of space that surround
+      the nucleus like layers around a core. In a neutral atom, the number of
+      electrons always equals the number of protons, so the positive and
+      negative charges balance out. Two numbers describe every atom. The
+      atomic number is simply the number of protons — every atom of the same
+      element always has the same atomic number, because it's the number of
+      protons that decides which element an atom is. The mass number is the
+      total number of protons and neutrons added together (electrons are so
+      light they barely add any mass, so they aren't counted). Electrons fill
+      their shells in a fixed order: the first shell holds a maximum of 2
+      electrons, the second shell holds a maximum of 8, and any electrons
+      left over go into the third shell. An atom always fills the shell
+      closest to the nucleus first, before starting the next one out.
+  - type: example
+    body: >
+      Take a carbon atom. Carbon has 6 protons — that's its atomic number,
+      and it's what makes it carbon rather than any other element. A typical
+      carbon atom also has 6 neutrons, so its mass number is 6 + 6 = 12. To
+      stay neutral, it also has 6 electrons. Filling the shells in order: the
+      first shell fills up with 2 electrons, leaving 4 electrons for the
+      second shell (which can hold up to 8, so it isn't full). So carbon's
+      electrons are arranged as 2 in the first shell and 4 in the second
+      shell — written as 2, 4.
+  - type: interactive
+    widget: atom-builder
+    prompt: >
+      Build a sodium atom: 11 protons, 12 neutrons, and 11 electrons. Watch
+      the shells fill as you add electrons — the first shell should fill
+      with 2, the second with 8, leaving 1 electron alone in a third shell.
+      Check the readout: the mass number should read 23, and since protons
+      and electrons are equal, the charge should read neutral.
+  - type: question
+    questionId: q-atomic-structure-01
+  - type: question
+    questionId: q-atomic-structure-02
+  - type: question
+    questionId: q-atomic-structure-03
+  - type: question
+    questionId: q-atomic-structure-04
+  - type: question
+    questionId: q-atomic-structure-05
+  - type: summary
+    body: >
+      Atoms are made of protons and neutrons packed into a central nucleus,
+      with electrons in shells around the outside. The atomic number counts
+      protons only; the mass number counts protons and neutrons together.
+      Electrons fill the shell closest to the nucleus first — 2, then 8,
+      then whatever is left — until every electron has a home.
