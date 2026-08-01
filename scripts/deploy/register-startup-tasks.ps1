@@ -22,12 +22,18 @@ $serverAction = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$repoRoot\scripts\deploy\start-server.ps1`""
 $tunnelAction = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$repoRoot\scripts\deploy\start-tunnel.ps1`""
+$ccServerAction = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$repoRoot\scripts\deploy\start-command-centre-server.ps1`""
+$ccTunnelAction = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$repoRoot\scripts\deploy\start-command-centre-tunnel.ps1`""
 
-foreach ($name in @("AarshiyaAppServer", "AarshiyaTunnel")) {
+foreach ($name in @("AarshiyaAppServer", "AarshiyaTunnel", "AarshiyaCommandCentreServer", "AarshiyaCommandCentreTunnel")) {
     Unregister-ScheduledTask -TaskName $name -Confirm:$false -ErrorAction SilentlyContinue
 }
 
 Register-ScheduledTask -TaskName "AarshiyaAppServer" -Action $serverAction -Trigger $trigger -Settings $settings -Principal $principal | Out-Null
 Register-ScheduledTask -TaskName "AarshiyaTunnel" -Action $tunnelAction -Trigger $trigger -Settings $settings -Principal $principal | Out-Null
+Register-ScheduledTask -TaskName "AarshiyaCommandCentreServer" -Action $ccServerAction -Trigger $trigger -Settings $settings -Principal $principal | Out-Null
+Register-ScheduledTask -TaskName "AarshiyaCommandCentreTunnel" -Action $ccTunnelAction -Trigger $trigger -Settings $settings -Principal $principal | Out-Null
 
-Write-Output "Registered AarshiyaAppServer and AarshiyaTunnel (trigger: at logon for $user, restart on failure)."
+Write-Output "Registered AarshiyaAppServer, AarshiyaTunnel, AarshiyaCommandCentreServer, and AarshiyaCommandCentreTunnel (trigger: at logon for $user, restart on failure)."
