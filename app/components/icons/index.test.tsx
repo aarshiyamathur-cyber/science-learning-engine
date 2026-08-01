@@ -3,8 +3,10 @@ import { render } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import {
   CelebrationIllustration,
+  ChangesOfStateIllustration,
   ExampleIcon,
   ExplanationIcon,
+  ParticleModelIllustration,
   QuestionIcon,
   StatesOfMatterIllustration,
   SummaryIcon,
@@ -18,6 +20,8 @@ describe("step icons and illustrations", () => {
     SummaryIcon,
     StatesOfMatterIllustration,
     CelebrationIllustration,
+    ParticleModelIllustration,
+    ChangesOfStateIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);

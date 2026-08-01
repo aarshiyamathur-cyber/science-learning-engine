@@ -1,11 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ComponentType, type SVGProps } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import { completeLessonAction, submitAnswerAction } from "../actions";
-import { CelebrationIllustration, StatesOfMatterIllustration } from "./icons";
+import {
+  CelebrationIllustration,
+  ChangesOfStateIllustration,
+  ParticleModelIllustration,
+  StatesOfMatterIllustration,
+} from "./icons";
 import { LessonPlayer } from "./LessonPlayer";
 import { Badge, Button, Card, ProgressBar } from "./ui";
+
+/**
+ * Per-lesson topic-card illustration, keyed by conceptId, so each lesson in
+ * the Matter topic gets a distinct visual instead of sharing one image.
+ */
+const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
+  "sci-y7-matter": StatesOfMatterIllustration,
+  "sci-y7-particle-model": ParticleModelIllustration,
+  "sci-y7-states-of-matter": ChangesOfStateIllustration,
+};
 
 export interface LessonEntry {
   conceptId: string;
@@ -85,7 +100,6 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
 
         {screen === "topic" && (
           <div className="flex flex-col gap-4">
-            <StatesOfMatterIllustration className="h-20 w-full" aria-hidden />
             <p className="text-heading font-bold text-zinc-900 dark:text-zinc-50">Matter</p>
             <p className="text-label font-medium text-warning-700 dark:text-warning-300">
               ⭐ {xp} XP
@@ -94,8 +108,11 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
               const completed = completedByLesson[entry.lessonId];
               const mastery = masteryByLesson[entry.lessonId];
               const tone = entry.locked ? "neutral" : completed ? "success" : "brand";
+              const Illustration =
+                LESSON_ILLUSTRATIONS[entry.conceptId] ?? StatesOfMatterIllustration;
               return (
                 <Card key={entry.lessonId} tone={tone}>
+                  <Illustration className="h-16 w-full" aria-hidden />
                   <Badge tone={tone} icon={entry.locked ? "🔒" : completed ? "✓" : "▶️"}>
                     {entry.locked ? "Locked" : completed ? "Completed" : "Ready"}
                   </Badge>
