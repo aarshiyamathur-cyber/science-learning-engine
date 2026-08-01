@@ -126,6 +126,7 @@ describe("resolveLessonSteps", () => {
     options: ["Yes", "No"],
     correctAnswer: "Yes",
     difficulty: 0.2,
+    hint: "Think about whether water has mass and takes up space.",
     explanation: "Water has mass and takes up space, so it is matter.",
   };
   const lesson: Lesson = {
@@ -172,8 +173,24 @@ describe("AssessmentQuestionSchema", () => {
         options: ["Yes", "No"],
         correctAnswer: "Yes",
         difficulty: 0.2,
+        hint: "Think about whether water has mass and takes up space.",
         explanation: "Water has mass and takes up space, so it is matter.",
       }).success,
     ).toBe(true);
+  });
+
+  it("rejects a question missing a hint", () => {
+    expect(
+      AssessmentQuestionSchema.safeParse({
+        id: "q-matter-01",
+        conceptId: "sci-y7-matter",
+        prompt: "Is water matter?",
+        type: "multiple-choice",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes",
+        difficulty: 0.2,
+        explanation: "Water has mass and takes up space, so it is matter.",
+      }).success,
+    ).toBe(false);
   });
 });

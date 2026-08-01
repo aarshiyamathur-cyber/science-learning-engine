@@ -129,6 +129,7 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [typedAnswer, setTypedAnswer] = useState("");
   const [checked, setChecked] = useState(false);
+  const [hintShown, setHintShown] = useState(false);
 
   const step = steps[index];
   const isLast = index === steps.length - 1;
@@ -138,6 +139,7 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
     setSelectedOption(null);
     setTypedAnswer("");
     setChecked(false);
+    setHintShown(false);
   }
 
   function goNext() {
@@ -154,6 +156,7 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
     setSelectedOption(null);
     setTypedAnswer("");
     setChecked(false);
+    setHintShown(false);
   }
 
   if (step.type === "explanation" || step.type === "example" || step.type === "summary") {
@@ -221,6 +224,24 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
         {meta.label}
       </Badge>
       <p className="text-body text-zinc-800 dark:text-zinc-100">{question.prompt}</p>
+
+      {outcome === null && (
+        <div>
+          {hintShown ? (
+            <p className="rounded-lg border-2 border-info-300 bg-info-50 p-3 text-label text-info-800 dark:border-info-800 dark:bg-info-950/40 dark:text-info-200">
+              💡 {question.hint}
+            </p>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setHintShown(true)}
+              className="text-label text-info-600 underline hover:text-info-800 dark:text-info-400 dark:hover:text-info-200"
+            >
+              💡 Need a hint?
+            </button>
+          )}
+        </div>
+      )}
 
       {question.type === "multiple-choice" && question.options && (
         <div className="flex flex-col gap-2">

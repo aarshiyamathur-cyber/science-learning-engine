@@ -35,6 +35,7 @@ describe("loadCurriculumData", () => {
         "  options: [Yes, No]",
         "  correctAnswer: Yes",
         "  difficulty: 0.2",
+        "  hint: Think about whether water has mass and takes up space.",
         "  explanation: Water has mass and takes up space, so it is matter.",
       ].join("\n"),
     );

@@ -98,6 +98,9 @@ export const AssessmentQuestionSchema = z.object({
   options: z.array(z.string()).optional(),
   correctAnswer: z.union([z.string(), z.array(z.string())]),
   difficulty: z.number().min(0).max(1),
+  /** Shown to a learner who asks for a nudge before answering, distinct from
+   * `explanation` (shown only after answering, right or wrong). */
+  hint: z.string().min(1),
   explanation: z.string().min(1),
 });
 export type AssessmentQuestion = z.infer<typeof AssessmentQuestionSchema>;

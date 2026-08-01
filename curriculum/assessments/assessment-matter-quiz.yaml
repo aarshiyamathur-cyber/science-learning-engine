@@ -8,6 +8,7 @@
     - Anything you can see
   correctAnswer: Anything that has mass and takes up space
   difficulty: 0.2
+  hint: Think about the two properties every physical thing shares, no matter what state it's in.
   explanation: Matter is defined by having mass and taking up space — not by its state or whether it's visible.
 - id: q-matter-02
   conceptId: sci-y7-matter
@@ -15,6 +16,7 @@
   type: short-answer
   correctAnswer: "Yes — air has mass and takes up space, even though it can't be seen."
   difficulty: 0.4
+  hint: Think about what happens to a balloon when you blow air into it — did something with mass get added?
   explanation: Gases are matter too — you can't always see them, but they still have mass and take up space (that's why a balloon inflates).
 - id: q-matter-03
   conceptId: sci-y7-matter
@@ -27,6 +29,7 @@
     - Gas
   correctAnswer: Energy
   difficulty: 0.2
+  hint: Three of these describe how particles are packed together and moving; one of them is what causes those to change instead.
   explanation: Energy isn't a state of matter — it's what causes matter to change between solid, liquid, and gas.
 - id: q-matter-04
   conceptId: sci-y7-matter
@@ -34,6 +37,7 @@
   type: short-answer
   correctAnswer: "Any real object or substance with mass, e.g. water, a book, air."
   difficulty: 0.3
+  hint: Look around you — anything you could weigh, or that takes up space in the room, counts.
   explanation: Almost everything around you is matter — if it has mass and takes up space, it counts.
 - id: q-matter-05
   conceptId: sci-y7-matter
@@ -44,4 +48,5 @@
     - "False"
   correctAnswer: "True"
   difficulty: 0.1
+  hint: Ask yourself — do both of these have mass, and do both take up space?
   explanation: Both a solid rock and a liquid puddle have mass and take up space, so both are matter, even though one is solid and one is liquid.
