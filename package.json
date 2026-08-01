@@ -18,7 +18,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "validate:curriculum": "tsx scripts/validate-curriculum.ts"
+    "validate:curriculum": "tsx scripts/validate-curriculum.ts",
+    "log:execution": "tsx scripts/log-execution.ts"
   },
   "dependencies": {
     "next": "16.2.12",
