@@ -4,7 +4,22 @@ _Last updated: 2026-08-01 by Claude Code_
 
 Tracking starts with Sprint 2 (the delegation-first directive was introduced mid-Sprint-2).
 
-## Sprint 4 (in progress)
+## Sprint 5 (in progress — "Complete the Matter topic")
+
+| Metric                      | Value                                                            |
+| ---------------------------- | ----------------------------------------------------------------- |
+| Number of Tasks              | 7 (BL-030–BL-036)                                                  |
+| Delegated Tasks              | 3 planned (BL-031, BL-032, BL-033) — 1 dispatched so far           |
+| Tasks Completed by OpenClaw  | 0 so far (BL-031 in flight)                                        |
+| Tasks Completed by Claude    | 1 (BL-030 — hint field + UI + LessonPlayer tests)                  |
+| Tasks In Progress            | 2 (BL-031 dispatched to OpenClaw; BL-034 navigation, Claude)       |
+| Tasks Not Started            | 3 (BL-032, BL-033, BL-035, BL-036 — see note)                      |
+| Idle Workers                 | 0 (`aarshiya-dev` busy on BL-031)                                  |
+| Busy Workers                 | 1 (`aarshiya-dev`)                                                 |
+
+Sprint 5 leans harder into delegation than any previous sprint: the two real content gaps (finishing the Particle Model lesson, writing States of Matter from scratch) and new illustrations are all standalone, self-contained file additions — the exact shape that's delegated cleanly twice before (BL-020, BL-028). OpenClaw only has one managed worktree, so these three run **sequentially**, not in parallel, despite the directive's "Worker 1-5" framing being conceptual roles rather than five simultaneous agents. Claude is doing the schema/architecture work (BL-030), the multi-lesson navigation (BL-034, touches the shared app shell), UI polish (BL-035), and final QA (BL-036) directly, per the directive's "Claude reviews/integrates/maintains architecture" instruction.
+
+## Sprint 4 (closed — superseded by Sprint 5 directive)
 
 | Metric                      | Value                                             |
 | ---------------------------- | -------------------------------------------------- |

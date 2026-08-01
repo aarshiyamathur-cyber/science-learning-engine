@@ -2,6 +2,32 @@
 
 Written at the end of every work cycle: what was completed, what's in progress, risks, questions for Product, and the recommended next action.
 
+## 2026-08-01 — Sprint 5 kickoff: "Complete the Matter topic" directive received
+
+**Completed**
+
+- BL-030 (hint field + UI): `AssessmentQuestionSchema` now requires a `hint` field alongside `explanation`; `LessonPlayer` shows a "💡 Need a hint?" reveal before a question is answered. Backfilled hints into all 7 existing questions. Added the first real test coverage for `LessonPlayer` itself (8 tests — step navigation, both question types, retry flow, hint reveal), which had none before this.
+- Synced the OpenClaw worktree (`openclaw/aarshiya-auto`) — found and cleaned up stale leftover commits from an earlier, superseded BL-026/027 attempt that never got pushed; reset the branch to match `origin/master` and force-pushed, per the established practice for this branch.
+- Dispatched BL-031 (complete the "Particle Model" lesson, currently placeholder content) to OpenClaw as a scoped, standalone one-off delegation.
+
+**Currently being worked on**
+
+- BL-031 in flight on OpenClaw.
+- BL-034 (multi-lesson topic navigation) — starting now while BL-031 runs, since it's independent of the delegated content work.
+
+**Plan for the rest of Sprint 5**
+
+Sequential OpenClaw delegations (single worktree, one task at a time): BL-031 (Particle Model) → BL-032 (write States of Matter lesson + assessment from scratch — currently zero content exists for that concept) → BL-033 (new illustrations). Claude handles BL-034 (navigation), BL-035 (UI/mobile polish), and BL-036 (final live QA) directly, reviewing and merging each OpenClaw contribution as it lands.
+
+**Risks**
+
+- This is the largest content-authoring ask yet (a full lesson + assessment from scratch for States of Matter, on top of substantially expanding Particle Model) — delegated authoring quality needs real review, not just typecheck/lint/test passing, since these are headless Claude Code runs without a human in the loop during writing.
+- "Tomorrow morning" is a tight deadline for 3 sequential delegations plus navigation/polish/QA work. Will flag immediately if it looks like it won't land in time rather than shipping something half-finished.
+
+**Recommended next action**
+
+None yet — sprint is actively in progress. Next Outbox entry will follow BL-031 landing.
+
 ## 2026-08-01 — Sprint 4 implementation cycle (stop condition reached)
 
 **Completed**

@@ -1,41 +1,42 @@
-# Sprint 4
+# Sprint 5
 
-_Sprint 3 status: Done and accepted — see `docs/backlog/backlog.md`._
+_Sprint 4 status: superseded mid-flow by this directive. BL-026, BL-027, BL-028 (done and merged) carry forward as part of the finished "Matter" concept; BL-029 (Force Simulator) is explicitly dropped — it belongs to a future Forces topic, not Matter._
 
 ## Goal
 
-Theme: **Interactive Science.** Mission: replace reading with discovery. Build reusable interactive concept widgets, starting with Particle Theory, Atoms, and Forces. Every lesson should include at least one meaningful interaction.
+**Mission: complete the "Matter" topic.** Not just the one polished lesson — all three concepts that make up "Matter" per the knowledge graph: Matter (done), Particle Model of Matter (currently thin placeholder content), and States of Matter and Changes of State (does not exist yet — no lesson, no assessment). Deliver one finished topic Aarshiya can comfortably complete tomorrow morning.
 
-## Feedback driving this sprint
+Constraints: do not begin another science topic. Do not add infrastructure. Do not redesign the learning engine.
 
-- ✓ Liked the redesign.
-- Wants more illustrations.
-- Wants more interaction.
+## Definition of Done
 
-## Deliverables
+- [ ] All Matter lessons complete (Matter, Particle Model, States of Matter)
+- [ ] All questions complete
+- [x] Every question has explanations and hints (schema + UI landed; content backfill in progress per lesson)
+- [ ] Every screen has appropriate colour and visual hierarchy
+- [ ] Appropriate illustrations added where they improve understanding
+- [ ] Every interaction tested
+- [ ] Navigation polished (multi-lesson topic flow — currently the app hardcodes a single lesson)
+- [x] Progress tracking works (existing, per-concept mastery + per-lesson completion — needs re-verification across 3 lessons)
+- [x] XP works (existing — needs re-verification across 3 lessons)
+- [ ] Mobile/iPad experience polished
+- [ ] No placeholders
+- [ ] No TODOs
 
-1. **Interactive lesson step type** (BL-026) — schema capability for embedding a widget in a lesson.
-2. **Particle State Explorer** (BL-027) — reusable widget, wired into the existing "Matter" lesson.
-3. **Atom Builder** (BL-028) — reusable widget.
-4. **Force Simulator** (BL-029) — reusable widget, drag-based.
-5. Illustration library expansion using open-licensed assets where appropriate; custom graphics only where they improve learning; one consistent visual style (continuing Sprint 3's hand-authored SVG approach).
+## Engineering strategy
 
-Constraints: no new curriculum, no infrastructure, no complex game mechanics.
+Break remaining work into independent tasks. Delegate as much implementation as possible to OpenClaw (single worktree/agent — tasks run sequentially, not in parallel, despite the conceptual "Worker 1-5" framing). Claude's role: review, integrate, merge, maintain architecture and quality; implement directly only what carries real conflict/architecture risk if delegated.
 
-Filter for every feature: "Can Aarshiya touch, drag, build, experiment with, or explore this concept?" If no, redesign it.
+## Task breakdown
 
-Continue committing frequently; update `docs/product-owner-briefing.md` after each milestone.
+| Task   | Description                                                                 | Owner            | Status |
+| ------ | ---------------------------------------------------------------------------- | ---------------- | ------ |
+| BL-030 | `hint` field on questions (schema + UI) + backfill hints on existing 7 questions + first LessonPlayer test coverage | Claude           | Done   |
+| BL-031 | Complete the "Particle Model" lesson (currently placeholder) — real content, reuse `particle-state-explorer` widget, expand to 4-5 questions with hints | OpenClaw (delegated) | Dispatched |
+| BL-032 | Write "States of Matter and Changes of State" lesson + assessment from scratch (melting/freezing/evaporation/condensation) | OpenClaw (delegated) | Not started |
+| BL-033 | New illustrations supporting BL-031/032 (hand-authored SVG, matching existing style) | OpenClaw (delegated) | Not started |
+| BL-034 | Multi-lesson topic navigation — replace the single hardcoded lesson in `app/page.tsx`/`ContinueLearningScreen` with a real flow across all 3 Matter lessons | Claude           | In progress |
+| BL-035 | UI polish pass — visual hierarchy, colour, mobile/iPad responsive check across all screens | Claude           | Not started |
+| BL-036 | Final QA — live click-through of every interaction across all 3 lessons, verify progress/XP end-to-end, confirm no placeholders/TODOs | Claude           | Not started |
 
-**Stop condition:** when there is a demonstrably more interactive lesson ready for Aarshiya to test.
-
-## In Progress
-
-- BL-029 (Force Simulator) — not started.
-
-## Done
-
-- BL-026 (interactive lesson step type) — merged to `master`.
-- BL-027 (Particle State Explorer) — merged to `master`, verified live in the "Matter" lesson.
-- BL-028 (Atom Builder) — delegated to OpenClaw, merged to `master` with zero conflicts.
-
-**Stop condition reached (2026-08-01):** the "Matter" lesson now has a real, learner-driven interactive step (BL-027) between its Example and first Question, verified live against the production tunnel. Standing by for Product Owner review before BL-029 or Sprint 5.
+**Stop condition:** stop only when the Matter topic is complete end-to-end and ready for Aarshiya to use. Produce a Product Owner Briefing covering what was completed, OpenClaw's contributions vs. Claude's, tests, known issues, and Sprint 6 recommendations.

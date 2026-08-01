@@ -4,6 +4,15 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-01 — Sprint 5 directive: Complete the "Matter" topic (supersedes Sprint 4 remainder)
+
+- **Mission:** finish the "Matter" topic end-to-end — all three concepts (Matter, Particle Model, States of Matter), not just the one already-polished lesson. Do not begin another science topic. Do not add infrastructure. Do not redesign the learning engine.
+- **Definition of Done:** all Matter lessons and questions complete; every question has both explanations and hints; every screen has appropriate colour/visual hierarchy; illustrations where they help understanding; every interaction tested; navigation polished; progress tracking and XP work; mobile/iPad experience polished; no placeholders; no TODOs.
+- **Engineering strategy:** break work into independent tasks, delegate as much implementation as possible to OpenClaw. Claude's role: review, integrate, merge, maintain architecture and quality — not sole implementer.
+- **This explicitly drops BL-029 (Force Simulator)** from the active plan — it belongs to a future Forces topic, not Matter, and building it now would violate "do not begin another topic."
+- **Stop condition:** stop only when the Matter topic is complete and ready for Aarshiya to use end-to-end. Produce a Product Owner Briefing at the end covering what was completed, what OpenClaw implemented vs. Claude, tests, known issues, and Sprint 6 recommendations.
+- Status: in progress — see `management/CURRENT_SPRINT.md` for the live task breakdown.
+
 ### 2026-08-01 — Delegation-first operating model + public URL priority
 
 - Claude Code's role: Engineering Manager / Technical Lead, not sole implementer.
