@@ -5,6 +5,7 @@
 # Registered as a Scheduled Task ("AarshiyaTunnel") with restart-on-failure.
 $ErrorActionPreference = "Continue"
 $repoRoot = "D:\Projects\aarshiya-science-learning-system"
+Start-Transcript -Path (Join-Path $repoRoot "scripts\deploy\tunnel-script.log") -Force | Out-Null
 $cloudflaredExe = "C:\Users\Lenovo\bin\cloudflared.exe"
 $logFile = Join-Path $repoRoot "scripts\deploy\tunnel-current.log"
 $errFile = Join-Path $repoRoot "scripts\deploy\tunnel-current.err.log"
