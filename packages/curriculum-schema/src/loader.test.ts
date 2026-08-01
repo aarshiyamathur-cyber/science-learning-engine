@@ -35,6 +35,7 @@ describe("loadCurriculumData", () => {
         "  options: [Yes, No]",
         "  correctAnswer: Yes",
         "  difficulty: 0.2",
+        "  explanation: Water has mass and takes up space, so it is matter.",
       ].join("\n"),
     );
     writeFileSync(

@@ -106,6 +106,7 @@ describe("resolveLessonSteps", () => {
     options: ["Yes", "No"],
     correctAnswer: "Yes",
     difficulty: 0.2,
+    explanation: "Water has mass and takes up space, so it is matter.",
   };
   const lesson: Lesson = {
     id: "lesson-matter-intro",
@@ -151,6 +152,7 @@ describe("AssessmentQuestionSchema", () => {
         options: ["Yes", "No"],
         correctAnswer: "Yes",
         difficulty: 0.2,
+        explanation: "Water has mass and takes up space, so it is matter.",
       }).success,
     ).toBe(true);
   });

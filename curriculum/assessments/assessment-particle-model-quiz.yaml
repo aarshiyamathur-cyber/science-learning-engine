@@ -9,9 +9,11 @@
     - arranged in a fixed pattern
   correctAnswer: far apart with empty space between them
   difficulty: 0.3
+  explanation: Gas particles have lots of space between them and move freely, which is why gases spread out to fill their container.
 - id: q-particle-model-02
   conceptId: sci-y7-particle-model
   prompt: Do particles in a solid stop moving completely? Explain.
   type: short-answer
   correctAnswer: "No — they vibrate in place around a fixed position."
   difficulty: 0.5
+  explanation: Particles are always moving, even in a solid — in a solid they vibrate around a fixed spot rather than moving freely.

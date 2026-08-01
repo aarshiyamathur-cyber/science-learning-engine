@@ -85,6 +85,7 @@ export const AssessmentQuestionSchema = z.object({
   options: z.array(z.string()).optional(),
   correctAnswer: z.union([z.string(), z.array(z.string())]),
   difficulty: z.number().min(0).max(1),
+  explanation: z.string().min(1),
 });
 export type AssessmentQuestion = z.infer<typeof AssessmentQuestionSchema>;
 
