@@ -1,10 +1,10 @@
 # AI Factory Dashboard
 
-_Last updated: 2026-07-31 by Claude Code_
+_Last updated: 2026-08-01 by Claude Code_
 
 ## Current Sprint
 
-Sprint 1 — curriculum & learning engine foundation
+Sprint 4 — "Interactive Science" (theme: replace reading with discovery)
 
 ## Status
 
@@ -12,21 +12,22 @@ Sprint 1 — curriculum & learning engine foundation
 
 ## Product
 
-- [x] Sprint defined (`management/CURRENT_SPRINT.md`)
-- [ ] Review pending
+- [x] Sprint 4 defined and approved (`management/CURRENT_SPRINT.md`)
+- [ ] Review pending on BL-028
 
 ## Engineering
 
-- [x] In progress — backlog broken into BL-010..BL-014 (`docs/backlog/backlog.md`); BL-010 delegated to a headless Claude Code worker
+- [x] BL-028 (Atom Builder widget) — Done. Standalone `AtomBuilder` component (`app/components/widgets/`) with live SVG atom model; 6 new unit tests; typecheck/lint/test/build all pass; verified interactively in a real browser. See `docs/backlog/backlog.md` and DEC-004.
+- [ ] BL-026 (interactive lesson step type), BL-027 (Particle State Explorer), BL-029 (Force Simulator) — not started this session; out of scope for this work item per Product Owner instruction (BL-028 only).
 
 ## OpenClaw
 
-- [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed, continuous cron job running every 2h on branch `openclaw/aarshiya-auto`
+- [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed, continuous cron job running on branch `openclaw/aarshiya-auto`
 
 ## Blockers
 
-None currently. Historical: local Ollama models (llama3/qwen2.5:3b) proved too small/unreliable for the orchestration role once given a full tool-calling environment — the cron job now shells out directly to Claude Code instead of routing through a local-model decision step.
+None currently.
 
 ## Next Decision
 
-Scoring model for the progression engine (BL-014) needs Product Owner input before that item can be implemented — see `docs/backlog/backlog.md`.
+None blocking BL-028. Sprint-level open questions (Sprint 4 sequencing, whether to delegate BL-026/027/029 to OpenClaw) remain in `docs/product-owner-briefing.md`.

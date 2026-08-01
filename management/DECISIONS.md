@@ -37,3 +37,17 @@ The worker's own log showed `API Error: Response stalled mid-stream` on an earli
 
 **Impact**
 The OpenClaw delegation pipeline can now be trusted for real implementation work when the network is healthy. Still worth keeping an eye on: `--no-output-timeout-seconds` (600s) may be too tight for substantial tasks in `--print` mode, which doesn't stream intermediate progress — a legitimately time-consuming task can look identical to a hang until it either finishes or times out. Consider raising it (e.g. to 1200–1800s) rather than treating every no-output timeout as a real failure.
+
+## DEC-004
+
+**Decision**
+BL-028 (Atom Builder widget) was built and shipped as a standalone, reusable component (`app/components/widgets/AtomBuilder.tsx`) without wiring it into the existing "Matter" lesson, and uses a simplified 2/8/remainder electron-shell model rather than real quantum mechanics.
+
+**Status**
+Accepted
+
+**Reason**
+The "Matter" lesson (BL-019) is about states of matter/particle behavior, not atomic structure — inserting an Atom Builder step there would be topically incoherent, not a genuine interactive enhancement of that content. BL-028's own acceptance criteria only require a standalone reusable component that works with no lesson-specific data; real lesson integration is BL-026's job (the interactive step type) plus whichever future atomic-structure lesson actually needs it. The 2/8/remainder shell model (rather than full quantum orbital theory) matches the Year 7-10 target audience and mirrors the same "simplify for pedagogy, not full physical accuracy" precedent already set by the Particle State Explorer (BL-027) and the existing states-of-matter illustration.
+
+**Impact**
+Future lessons can adopt Atom Builder via BL-026's interactive step type with zero component changes. If a "structure of the atom" concept/lesson is authored later, it should link to this widget rather than building a new one.

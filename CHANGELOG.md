@@ -2,6 +2,12 @@
 
 All notable changes to this project are recorded here. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] — Sprint 4: interactive science — 2026-08-01
+
+### Added
+
+- `AtomBuilder` widget (BL-028): a standalone, reusable component with +/- controls for protons/neutrons/electrons and a live-updating SVG atom model (nucleus cluster colored by particle type, electrons filling three simplified shells of 2/8/remainder). Needs no lesson-specific or curriculum-specific data to use; built entirely from the existing `app/components/ui` primitives and tone system. Not wired into the existing "Matter" lesson — see DEC-004.
+
 ## [Unreleased] — Sprint 3: learner-experience polish — 2026-08-01
 
 ### Added
