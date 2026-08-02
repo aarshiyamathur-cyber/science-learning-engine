@@ -347,6 +347,28 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** Added `scripts/deploy/start-command-centre-server.ps1` and `start-command-centre-tunnel.ps1`, and extended `register-startup-tasks.ps1` to register `AarshiyaCommandCentreServer`/`AarshiyaCommandCentreTunnel` alongside the existing main-app tasks. This is explicitly **not** a permanent URL — per the Engineering Operating Agreement, a genuinely permanent address needs a Cloudflare account with a named tunnel on an owned domain, or a hosting-platform account (e.g. Vercel), both of which require the Sponsor to create an account; this automation doesn't do that on their behalf. The current URL is stable only for as long as the underlying process keeps running without crashing or the machine restarting — same durability characteristic the main app's URL has had all along. Done directly by Claude (not delegated), since deployment/infrastructure is always High Risk per the Operating Agreement's risk classification.
 
+**Command Centre MVP complete and frozen per Product Owner directive (2026-08-01) — no further Command Centre work without explicit approval.**
+
+## Sprint 6 (Atomic Structure — underway, per Product Owner directive 2026-08-01)
+
+### BL-040 — Atomic Structure lesson + assessment, written from scratch
+
+- **Description:** `sci-y7-atomic-structure` has no lesson/assessment content yet. Write it from scratch: protons/neutrons/electrons, atomic number vs. mass number, simplified electron shells, reusing the `atom-builder` widget (built Sprint 4, unused until now).
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Dispatched
+- **Acceptance criteria:** New `curriculum/lessons/lesson-atomic-structure-intro.yaml` and `curriculum/assessments/assessment-atomic-structure-quiz.yaml`; `sci-y7-atomic-structure.yaml`'s `lessonRefs`/`assessmentRefs` populated; interactive step reuses `atom-builder`; 4-5 questions with hints/explanations targeting both listed misconceptions; `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Medium
+
+### BL-041 — Atomic Structure illustration
+
+- **Description:** New hand-authored SVG illustration for the Atomic Structure topic card, matching the existing per-lesson illustration pattern.
+- **Dependencies:** none
+- **Priority:** P1
+- **Status:** Dispatched
+- **Acceptance criteria:** New illustration exported from `app/components/icons`, wired into `ContinueLearningScreen`'s per-conceptId lookup; hand-authored only, existing colour palette.
+- **Estimate:** Small
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine
