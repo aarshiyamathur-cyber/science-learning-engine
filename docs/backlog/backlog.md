@@ -285,6 +285,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Medium
 - **Notes:** Full live click-through of all three lessons end-to-end: explanation → example → interactive widget → all 5 questions each (mixed multiple-choice/short-answer) → summary → finish, including hint reveal, wrong-answer retry, and self-assessment for short-answer questions. Confirmed mastery scoring and XP accumulate correctly (50 + 50 = 100 XP across two lessons). Repo-wide grep confirmed no TODOs/placeholders remain. Found and fixed two real bugs neither caught by typecheck/lint/64 unit tests: (1) a newly-unlocked lesson stayed "Locked" until a manual page reload — fixed with `router.refresh()` after lesson completion; (2) the `AarshiyaAppServer` Scheduled Task was silently exiting on every start due to `$ErrorActionPreference = "Stop"` treating benign npm/next stderr output as fatal under PowerShell 5.1 — fixed by removing that setting. Learner-progress database reset to a clean state before handoff.
 
+## Sprint 6
+
+### BL-040 — Write the Atomic Structure lesson and assessment
+
+- **Description:** This concept (`sci-y7-atomic-structure`) currently has zero lesson content and zero questions. Write it from scratch: protons, neutrons, and electrons, where each is found (nucleus vs shells), atomic number vs mass number, and simplified electron shell filling (2, then 8, then remainder) — matching the quality bar of the Matter topic lessons, and reusing the already-registered `atom-builder` widget for an interactive step.
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** New `curriculum/lessons/lesson-atomic-structure-intro.yaml` and `curriculum/assessments/assessment-atomic-structure-quiz.yaml`; `sci-y7-atomic-structure.yaml`'s `lessonRefs`/`assessmentRefs` populated; reuses the existing `atom-builder` widget for an interactive step; 5 questions with hints and explanations covering the concept's learning objectives and directly targeting both misconceptions ("atoms are indivisible", "mass number is atomic number"); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Medium
+- **Notes:** Built `lesson-atomic-structure-intro.yaml` (explanation → example (carbon) → interactive `atom-builder` step (build sodium) → 5 questions → summary) covering nucleus/shell structure, atomic number, mass number, and simplified 2/8/remainder shell filling. `assessment-atomic-structure-quiz.yaml` has 5 questions (mixed multiple-choice/short-answer, difficulty 0.1-0.6): q-atomic-structure-01 targets the "atoms are indivisible" idea by describing internal structure, q-atomic-structure-03 directly targets "mass number is atomic number" by requiring the learner to add protons and neutrons, and q-atomic-structure-05 is a true/false question directly stating and correcting the indivisibility misconception. Populated `sci-y7-atomic-structure.yaml`'s `lessonRefs`/`assessmentRefs`; no other fields changed. `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (64/64 tests, 10 files) all pass.
+
 ## Product Command Centre
 
 ### CC-001 — Command Centre framework, navigation, and routing
