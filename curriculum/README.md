@@ -11,4 +11,4 @@ Year levels (7–10) are not represented here — they are a _view_ over the gra
 
 Run `npm run validate:curriculum` to check every file against its schema and confirm the graph only references concepts that exist.
 
-**The two concepts, one lesson, and one assessment currently in this folder are placeholder examples** to prove the schema and validation pipeline end-to-end. Real curriculum content is supplied by the Product Owner and will replace them.
+The Matter topic (Matter, Particle Model, States of Matter) is real, finished content, delivered in Sprint 5. Atomic Structure is the current in-progress topic. Real curriculum content is supplied by the Product Owner.

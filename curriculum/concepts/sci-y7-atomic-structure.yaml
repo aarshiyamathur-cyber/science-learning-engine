@@ -21,6 +21,8 @@ prerequisites:
 unlocks: []
 masteryThreshold: 0.8
 revisionStrategy: spaced-repetition
-lessonRefs: []
-assessmentRefs: []
+lessonRefs:
+  - lesson-atomic-structure-intro
+assessmentRefs:
+  - assessment-atomic-structure-quiz
 xpReward: 50

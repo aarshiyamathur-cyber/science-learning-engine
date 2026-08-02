@@ -1,0 +1,53 @@
+- id: q-atomic-structure-01
+  conceptId: sci-y7-atomic-structure
+  prompt: Which three particles make up an atom, and where is each one found?
+  type: multiple-choice
+  options:
+    - Protons and neutrons in the nucleus; electrons in shells around it
+    - Protons in the nucleus; neutrons and electrons in shells around it
+    - Protons, neutrons, and electrons all mixed together in the nucleus
+  correctAnswer: Protons and neutrons in the nucleus; electrons in shells around it
+  difficulty: 0.1
+  hint: Think about which particles are heavy and cluster in the centre, and which lighter particles surround the outside.
+  explanation: Protons and neutrons are much heavier than electrons, so they clump together at the atom's centre, forming the nucleus. Electrons are far lighter and occupy shells that surround the nucleus.
+- id: q-atomic-structure-02
+  conceptId: sci-y7-atomic-structure
+  prompt: An atom has 8 protons. What is its atomic number?
+  type: multiple-choice
+  options:
+    - "8"
+    - "16"
+    - It depends on how many neutrons it has
+  correctAnswer: "8"
+  difficulty: 0.2
+  hint: Atomic number counts just one type of particle — which one?
+  explanation: The atomic number is defined as the number of protons in an atom, so an atom with 8 protons has an atomic number of 8. This is true no matter how many neutrons or electrons it has.
+- id: q-atomic-structure-03
+  conceptId: sci-y7-atomic-structure
+  prompt: An atom has 11 protons and 12 neutrons. What is its mass number?
+  type: short-answer
+  correctAnswer: "23"
+  difficulty: 0.3
+  hint: Mass number adds two of the three particle counts together — which two?
+  explanation: Mass number is protons plus neutrons — 11 + 12 = 23. It's easy to mix this up with atomic number (which counts protons only, 11 in this case), but mass number always includes the neutrons too.
+- id: q-atomic-structure-04
+  conceptId: sci-y7-atomic-structure
+  prompt: >
+    An atom has 13 electrons. Using the simplified shell-filling rule (2,
+    then 8, then the rest), how many electrons are in each shell?
+  type: short-answer
+  correctAnswer: 2 in the first shell, 8 in the second shell, and 3 in the third shell
+  difficulty: 0.4
+  hint: Fill the shell closest to the nucleus first, then the next one, before anything goes further out.
+  explanation: The first shell fills first, taking its maximum of 2. The second shell fills next, taking its maximum of 8. That accounts for 10 electrons, leaving 13 − 10 = 3 electrons for the third shell.
+- id: q-atomic-structure-05
+  conceptId: sci-y7-atomic-structure
+  prompt: An atom is a solid, indivisible ball with nothing inside it.
+  type: multiple-choice
+  options:
+    - "True"
+    - "False"
+  correctAnswer: "False"
+  difficulty: 0.6
+  hint: Think about what you'd find if you could zoom in past the outer edge of an atom.
+  explanation: Atoms have internal structure — a nucleus made of protons and neutrons at the centre, surrounded by electrons in shells. Far from being a solid ball, an atom is mostly empty space between the nucleus and its electrons.

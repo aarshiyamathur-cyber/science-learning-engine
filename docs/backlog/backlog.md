@@ -287,9 +287,19 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 
 ## Sprint 6
 
+### BL-040 — Write the Atomic Structure lesson and assessment
+
+- **Description:** This concept (`sci-y7-atomic-structure`) currently has zero lesson content and zero questions. Write it from scratch: protons, neutrons, and electrons, where each is found (nucleus vs shells), atomic number vs mass number, and simplified electron shell filling (2, then 8, then remainder) — matching the quality bar of the Matter topic lessons, and reusing the already-registered `atom-builder` widget for an interactive step.
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** New `curriculum/lessons/lesson-atomic-structure-intro.yaml` and `curriculum/assessments/assessment-atomic-structure-quiz.yaml`; `sci-y7-atomic-structure.yaml`'s `lessonRefs`/`assessmentRefs` populated; reuses the existing `atom-builder` widget for an interactive step; 5 questions with hints and explanations covering the concept's learning objectives and directly targeting both misconceptions ("atoms are indivisible", "mass number is atomic number"); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Medium
+- **Notes:** Built `lesson-atomic-structure-intro.yaml` (explanation → example (carbon) → interactive `atom-builder` step (build sodium) → 5 questions → summary) covering nucleus/shell structure, atomic number, mass number, and simplified 2/8/remainder shell filling. `assessment-atomic-structure-quiz.yaml` has 5 questions (mixed multiple-choice/short-answer, difficulty 0.1-0.6): q-atomic-structure-01 targets the "atoms are indivisible" idea by describing internal structure, q-atomic-structure-03 directly targets "mass number is atomic number" by requiring the learner to add protons and neutrons, and q-atomic-structure-05 is a true/false question directly stating and correcting the indivisibility misconception. Populated `sci-y7-atomic-structure.yaml`'s `lessonRefs`/`assessmentRefs`; no other fields changed. `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (64/64 tests, 10 files) all pass.
+
 ### BL-041 — Atomic Structure illustration
 
-- **Description:** New hand-authored SVG illustration for the "Atomic Structure" topic (`sci-y7-atomic-structure`), currently being written in a parallel task, matching the existing inline-SVG style (see `app/components/icons/Illustrations.tsx`, BL-021/BL-033). No external/downloaded assets.
+- **Description:** New hand-authored SVG illustration for the "Atomic Structure" topic (`sci-y7-atomic-structure`), matching the existing inline-SVG style (see `app/components/icons/Illustrations.tsx`, BL-021/BL-033). No external/downloaded assets.
 - **Dependencies:** none
 - **Priority:** P1
 - **Status:** Done
@@ -358,6 +368,28 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Acceptance criteria:** Command Centre production server (port 3001) and a Cloudflare quick tunnel both run as Windows Scheduled Tasks with restart-on-failure, mirroring `AarshiyaAppServer`/`AarshiyaTunnel`; the tunnel script auto-records the current URL into `management/COMMAND_CENTRE.md` and commits/pushes it on every restart, since quick tunnels mint a new hostname each time; verified live.
 - **Estimate:** Small
 - **Notes:** Added `scripts/deploy/start-command-centre-server.ps1` and `start-command-centre-tunnel.ps1`, and extended `register-startup-tasks.ps1` to register `AarshiyaCommandCentreServer`/`AarshiyaCommandCentreTunnel` alongside the existing main-app tasks. This is explicitly **not** a permanent URL — per the Engineering Operating Agreement, a genuinely permanent address needs a Cloudflare account with a named tunnel on an owned domain, or a hosting-platform account (e.g. Vercel), both of which require the Sponsor to create an account; this automation doesn't do that on their behalf. The current URL is stable only for as long as the underlying process keeps running without crashing or the machine restarting — same durability characteristic the main app's URL has had all along. Done directly by Claude (not delegated), since deployment/infrastructure is always High Risk per the Operating Agreement's risk classification.
+
+**Command Centre MVP complete and frozen per Product Owner directive (2026-08-01) — no further Command Centre work without explicit approval.**
+
+## Sprint 6 (Atomic Structure — underway, per Product Owner directive 2026-08-01)
+
+### BL-040 — Atomic Structure lesson + assessment, written from scratch
+
+- **Description:** `sci-y7-atomic-structure` has no lesson/assessment content yet. Write it from scratch: protons/neutrons/electrons, atomic number vs. mass number, simplified electron shells, reusing the `atom-builder` widget (built Sprint 4, unused until now).
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Dispatched
+- **Acceptance criteria:** New `curriculum/lessons/lesson-atomic-structure-intro.yaml` and `curriculum/assessments/assessment-atomic-structure-quiz.yaml`; `sci-y7-atomic-structure.yaml`'s `lessonRefs`/`assessmentRefs` populated; interactive step reuses `atom-builder`; 4-5 questions with hints/explanations targeting both listed misconceptions; `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Medium
+
+### BL-041 — Atomic Structure illustration
+
+- **Description:** New hand-authored SVG illustration for the Atomic Structure topic card, matching the existing per-lesson illustration pattern.
+- **Dependencies:** none
+- **Priority:** P1
+- **Status:** Dispatched
+- **Acceptance criteria:** New illustration exported from `app/components/icons`, wired into `ContinueLearningScreen`'s per-conceptId lookup; hand-authored only, existing colour palette.
+- **Estimate:** Small
 
 ## Later / Deferred
 
