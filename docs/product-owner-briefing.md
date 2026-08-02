@@ -12,7 +12,7 @@ If you are the Product Owner reading this for the first time: the full project v
 
 **Mission (per your directive):** finish the "Matter" topic end-to-end — all three concepts, not just the one polished lesson — and deliver something Aarshiya can comfortably complete tomorrow morning. **That mission is done.**
 
-**Live demo:** https://fine-housewares-birmingham-dose.trycloudflare.com — learner progress has been reset to a clean starting state (0 XP, no lessons completed) ahead of handoff.
+**Live demo:** https://bacon-gratuit-debate-thumbnails.trycloudflare.com — learner progress has been reset to a clean starting state (0 XP, no lessons completed) ahead of handoff.
 
 ### What was completed
 
@@ -64,7 +64,7 @@ Neither bug would have been caught by typecheck, lint, or the unit test suite �
 
 ## Demo instructions
 
-1. **Open:** https://fine-housewares-birmingham-dose.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
+1. **Open:** https://bacon-gratuit-debate-thumbnails.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
 2. **You'll see three lessons:** Matter, The Particle Model of Matter, and States of Matter and Changes of State (the last one unlocks once Particle Model is completed).
 3. **Try any lesson:** explanation → example → an interactive "🧪 Try it yourself" step → 5 questions (mixed multiple-choice/short-answer, each with an optional "💡 Need a hint?") → summary → finish.
 4. **Answer a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question.
