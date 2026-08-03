@@ -4,6 +4,19 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-01 — Product Owner Directive: frozen roadmap (Sprint 5/6/7) + stop conditions
+
+- Architecture discussion closed; project priority is delivering curriculum.
+- **Roadmap frozen:** Sprint 5 (Matter, complete) → Sprint 6 (Atomic Structure) → Sprint 7 (Periodic Table). Do not change it without explicit approval.
+- Command Centre: finish MVP only, deploy it, then stop. (Done — see below.)
+- Engineering capacity: 80% learner-facing / 20% infrastructure (reaffirms the freeze directive below).
+- **Sprint 6 scope:** structure of the atom — protons, neutrons, electrons, atomic number, mass number, electron shells, simple atomic models. Learning interactions requested: build an atom, drag particles into place, place electrons into shells, identify atoms from atomic number.
+- **Question Bank policy:** every question needs concept/difficulty/correct answer/explanation/hint/curriculum reference; the bank should grow continuously.
+- OpenClaw remains the primary implementer; Claude limited to architecture/delegation/integration/review/merge/quality.
+- **Stop conditions:** (1) Command Centre MVP deployed, (2) Matter complete, (3) Atomic Structure underway. Then update the repository, the Product Roadmap, and the Engineering Dashboard, and wait for Product Review.
+- **Status: all three stop conditions met** as of 2026-08-02. Command Centre deployed (`management/COMMAND_CENTRE.md`). Matter complete (Sprint 5). Atomic Structure underway — BL-040 (lesson + assessment) and BL-041 (illustration) merged to master, 65/65 tests passing. See `management/ROADMAP.md` for full detail. **Stopped and awaiting Product Review** — do not begin Sprint 7 or resume paused infrastructure work without explicit approval.
+- **Open question carried into Sprint 6:** the requested "drag particles into place" / "place electrons into shells" interactions are NOT satisfied by the existing button-based `AtomBuilder` widget used in the shipped lesson — flagged in `management/ROADMAP.md` for a Product Owner decision, not unilaterally built.
+
 ### 2026-08-01 — Product Owner Decision: infrastructure freeze, curriculum-first
 
 Effective immediately:

@@ -1,3 +1,15 @@
+# Sprint 6 — Atomic Structure (underway; Sprint 5 below is CLOSED)
+
+_Frozen roadmap per Product Owner Directive (2026-08-01): Sprint 5 (Matter, complete) → Sprint 6 (Atomic Structure) → Sprint 7 (Periodic Table). See `management/ROADMAP.md` for the authoritative frozen roadmap and Sprint 6 scope/Definition of Done. Full detail below is Sprint 5's closed record, kept for history._
+
+## Sprint 6 status (2026-08-02)
+
+- BL-040 (Atomic Structure lesson + assessment) — Done, OpenClaw-delegated, merged.
+- BL-041 (Atomic Structure illustration) — Done, OpenClaw-delegated, merged.
+- Stop condition reached: "Atomic Structure underway" satisfied. **Stopped, awaiting Product Review** before continuing Sprint 6 further (the requested drag/place-electrons interactions are not yet built — open question for Product, see `management/ROADMAP.md`) or starting Sprint 7.
+
+---
+
 # Sprint 5 — CLOSED
 
 _Sprint 4 status: superseded mid-flow by this directive. BL-026, BL-027, BL-028 (done and merged) carry forward as part of the finished "Matter" concept; BL-029 (Force Simulator) is explicitly dropped — it belongs to a future Forces topic, not Matter._

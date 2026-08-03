@@ -1,14 +1,23 @@
 # AI Factory Dashboard
 
-_Last updated: 2026-08-01 by Claude Code_
+_Last updated: 2026-08-02 by Claude Code_
 
 ## Current Sprint
 
-Sprint 5 — "Complete the Matter topic" — **CLOSED, stop condition reached**
+Sprint 6 — "Atomic Structure" — **underway, stop condition reached ("Atomic Structure underway"), awaiting Product Review**
+
+(Sprint 5 — "Complete the Matter topic" — CLOSED, see below)
 
 ## Status
 
-🟢 Sprint 5 complete — Matter topic live and ready for Aarshiya. Product Command Centre initiative in progress (separate track, see `management/COMMAND_CENTRE.md`).
+🟢 Roadmap frozen per Product Owner Directive: Sprint 5 (Matter, done) → Sprint 6 (Atomic Structure, underway) → Sprint 7 (Periodic Table, not started). All three of the directive's stop conditions are met and verified live: Command Centre MVP deployed, Matter complete, Atomic Structure underway (BL-040 lesson+assessment, BL-041 illustration, both merged). **Stopped, awaiting Product Review** — see `management/ROADMAP.md` and `management/INBOX.md` for full detail. Do not start Sprint 7 or resume paused infrastructure work without explicit approval.
+
+## Sprint 6 (Atomic Structure)
+
+- [x] BL-040 — Atomic Structure lesson + assessment (OpenClaw-delegated, merged, reviewed)
+- [x] BL-041 — Atomic Structure illustration (OpenClaw-delegated, merged, reviewed)
+- [ ] Open question for Product: the directive's "drag particles into place" / "place electrons into shells" interactions are not satisfied by the existing button-based `AtomBuilder` widget used in the shipped lesson — flagged in `management/ROADMAP.md`, not unilaterally built.
+- [ ] Question Bank policy compliance check (per directive) — not yet audited against the new mandate.
 
 ## Product
 
