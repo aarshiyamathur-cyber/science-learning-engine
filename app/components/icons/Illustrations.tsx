@@ -485,6 +485,70 @@ export function EnergyTransformationIllustration(
   );
 }
 
+/** A single cell: outer membrane, an off-centre nucleus, and scattered organelles in the cytoplasm. */
+export function CellsHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <ellipse
+        cx="90"
+        cy="60"
+        rx="74"
+        ry="50"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="5"
+      />
+      <circle cx="60" cy="45" r="22" fill="#8b5cf6" />
+      <circle cx="125" cy="35" r="6" fill="#f59e0b" />
+      <circle cx="135" cy="60" r="5" fill="#10b981" />
+      <circle cx="115" cy="85" r="6" fill="#f43f5e" />
+      <circle cx="140" cy="90" r="4" fill="#10b981" />
+      <circle cx="45" cy="90" r="5" fill="#f59e0b" />
+    </svg>
+  );
+}
+
+/** Animal cell (rounded outline, membrane + nucleus) beside a plant cell (boxy walled outline, membrane, nucleus, chloroplasts, a large vacuole) - shape and contents contrast the two. */
+export function PlantVsAnimalCellIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M45,12 Q75,8 80,35 Q88,55 78,75 Q80,100 50,108 Q18,112 10,85 Q4,60 15,35 Q20,15 45,12 Z"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="4"
+      />
+      <circle cx="35" cy="55" r="15" fill="#8b5cf6" />
+      <rect
+        x="98"
+        y="12"
+        width="72"
+        height="96"
+        rx="4"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="5"
+      />
+      <rect
+        x="106"
+        y="20"
+        width="56"
+        height="80"
+        rx="3"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="3"
+      />
+      <circle cx="125" cy="42" r="13" fill="#8b5cf6" />
+      <ellipse cx="150" cy="35" rx="8" ry="5" fill="#10b981" />
+      <ellipse cx="118" cy="88" rx="8" ry="5" fill="#10b981" />
+      <ellipse cx="148" cy="80" rx="14" ry="12" fill="#f59e0b" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (

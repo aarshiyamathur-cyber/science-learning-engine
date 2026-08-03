@@ -2,6 +2,7 @@ export {
   AtomicStructureIllustration,
   BalancedUnbalancedForcesIllustration,
   CelebrationIllustration,
+  CellsHeroIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
@@ -10,6 +11,7 @@ export {
   ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
+  PlantVsAnimalCellIllustration,
   StatesOfMatterIllustration,
 } from "./Illustrations";
 export { ExampleIcon, ExplanationIcon, QuestionIcon, SummaryIcon } from "./StepIcons";
