@@ -461,6 +461,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** `q-matter-06`/`07` add a "which of these is matter" distractor question (shadow/sound/idea vs. steam) and a direct "name the three states" short-answer. `q-particle-model-06`/`07` add a gas-compressibility application question and a solid particle-arrangement (not just movement) short-answer. `q-states-of-matter-06`/`07` add a freezing-in-particle-energy-terms question (complementing the existing melting question) and a least-to-most particle-energy ordering short-answer. No lesson files, schema, or application code touched — pure curriculum-data addition within `curriculum/assessments/`. Delegated to and completed by an OpenClaw headless worker in a dedicated worktree; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (65/65 tests, 10 files) all pass.
 
+## Sprint 8 support
+
+### CE-002 — Chemical Reactions illustrations
+
+- **Description:** Per the 2026-08-03 permanent visual-learning standard, every lesson needs a hero illustration plus supporting diagrams rendered inside the lesson flow itself via the new `illustration` lesson-step type. Added two new hand-authored SVG illustrations for the in-flight "Chemical Reactions" lesson (Sprint 8), matching the existing inline-SVG style (see `app/components/icons/Illustrations.tsx`).
+- **Dependencies:** none
+- **Priority:** P1
+- **Status:** Done
+- **Acceptance criteria:** `ChemicalReactionHeroIllustration` (a flask mid-reaction: rising gas bubbles plus a colour shift through the liquid, teaching "something changed") and `ConservationOfMassIllustration` (before/after atom-dot clusters with an arrow between them, same count and colours on both sides, rearranged) added to `app/components/icons/Illustrations.tsx` and exported from `app/components/icons/index.ts` under those exact names; hand-authored inline SVG only, existing hex palette, no external assets; each is interpretable without its caption; render tests added; `typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Small
+- **Notes:** Built in a dedicated worktree, scoped strictly to `app/components/icons/`, in parallel with a second worker writing the actual "Chemical Reactions" lesson content — neither `curriculum/`, `LessonPlayer.tsx`, nor `ContinueLearningScreen.tsx` touched here; wiring into the `ILLUSTRATION_REGISTRY` and the lesson content itself is left for Claude's review, per the same pattern as every previous topic's illustrations (e.g. BL-041, BL-033). `ChemicalReactionHeroIllustration` uses two stacked liquid-colour trapezoids (sky blue lower, rose upper) inside a beaker outline, with amber/emerald bubbles rising through and above the neck — a two-tone liquid rather than an SVG gradient element, consistent with "no gradients or filters beyond what's already used". `ConservationOfMassIllustration` shows 2 sky + 2 violet dots loosely scattered on the left and the same 4 dots paired into two bonded-looking pairs on the right, joined by a line-and-triangle arrow; no text baked into the SVG. `typecheck`, `lint`, and `vitest run` (75/75 tests, 11 files) all pass.
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine

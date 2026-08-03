@@ -175,6 +175,61 @@ export function PeriodicTableIllustration(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** Flask mid-reaction: bubbles of gas rising and a colour shift through the liquid. */
+export function ChemicalReactionHeroIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M50,70 L130,70 L145,102 Q148,106 144,107 L36,107 Q32,106 35,102 Z"
+        fill="#0ea5e9"
+      />
+      <path d="M50,70 L130,70 L120,85 L60,85 Z" fill="#f43f5e" />
+      <path
+        d="M70,18 L70,45 L28,102 Q28,108 35,108 L145,108 Q152,108 152,102 L110,45 L110,18 Z"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+      <circle cx="85" cy="55" r="4" fill="#10b981" />
+      <circle cx="97" cy="34" r="5" fill="#f59e0b" />
+      <circle cx="78" cy="20" r="3" fill="#10b981" />
+      <circle cx="101" cy="9" r="3" fill="#f59e0b" />
+    </svg>
+  );
+}
+
+/** Before/after atom clusters: same dots, same colours, rearranged - mass is conserved. */
+export function ConservationOfMassIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="20" cy="35" r="8" fill="#0ea5e9" />
+      <circle cx="45" cy="48" r="8" fill="#8b5cf6" />
+      <circle cx="18" cy="70" r="8" fill="#8b5cf6" />
+      <circle cx="48" cy="85" r="8" fill="#0ea5e9" />
+      <line
+        x1="65"
+        y1="60"
+        x2="108"
+        y2="60"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <polygon points="108,50 128,60 108,70" fill="#a1a1aa" />
+      <circle cx="140" cy="35" r="8" fill="#0ea5e9" />
+      <circle cx="156" cy="35" r="8" fill="#8b5cf6" />
+      <circle cx="140" cy="80" r="8" fill="#8b5cf6" />
+      <circle cx="156" cy="80" r="8" fill="#0ea5e9" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (
