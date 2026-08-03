@@ -17,6 +17,10 @@ export const LearnerProfileSchema = z.object({
   xp: z.number().int().min(0).default(0),
   score: z.number().min(0).default(0),
   lastCompletedAt: z.string().datetime().optional(),
+  /** Set only when this profile's progress is explicitly reset, distinct
+   * from normal activity — lets the UI tell "progress was just wiped" apart
+   * from "a lesson was just completed" even though both touch xp/completedLessons. */
+  resetAt: z.string().datetime().optional(),
 });
 export type LearnerProfile = z.infer<typeof LearnerProfileSchema>;
 

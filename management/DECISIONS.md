@@ -135,3 +135,19 @@ This cron job predates the 2026-08-03 autonomous multi-sprint directive and inde
 
 **Impact**
 `openclaw cron disable 7614c9e2-8de6-4dfd-9ea4-a235de7b9aeb` was run directly (reversible via `openclaw cron enable`). Future sessions continuing the Sprint 8-12 pipeline should leave it disabled until the pipeline is no longer actively dispatching into that same worktree; re-enabling it earlier risks the same collision class recurring with worse timing.
+
+## DEC-011
+
+**Decision**
+Added named, switchable learner profiles with a self-service reset, replacing the single hardcoded `DEMO_LEARNER_ID`. Anyone using the app can type a name into a "Testing as" control on the topic screen to get their own independent progress track (XP, mastery, completed lessons), switch back to any previously-used name via quick-switch chips, and reset the *currently active* name's progress at any time via a two-step confirm — without touching any other name's data.
+
+**Status**
+Accepted — direct Product Owner request: testers were completing lessons during QA and it was marking topics complete against the real student's progress.
+
+**Reason**
+The persistence layer (`learner_profiles`/`mastery_states`/`attempt_records`, all keyed by `learnerId`) already supported multiple learners — only the UI and both server actions (`submitAnswerAction`/`completeLessonAction`) hardcoded a single id. The fix is additive: a `learnerId` derived from a free-text name (slugified, e.g. "QA Tester" → `learner-qa-tester`) stored in a cookie, read by both server actions instead of the constant, with `getOrCreateProfile`/`resetProfile`/`listProfiles` added to `LearnerProgressStore`. `DEMO_LEARNER_ID`/"Aarshiya" remains the default when no cookie is set, so the real student's experience is unchanged.
+
+A genuine bug surfaced during live verification and was fixed before shipping: switching learners via a same-route `redirect("/")` updates the Server Component's props correctly, but `ContinueLearningScreen`'s local `useState` (seeded once via lazy initializers) doesn't reset just because props changed — the UI kept showing the *previous* learner's XP/mastery/completed state after a switch. Fixed by adding a `resetAt` timestamp to `LearnerProfile` (set only by `resetProfile`, distinct from `lastCompletedAt` which normal lesson completion also touches) and keying `<ContinueLearningScreen key={`${learnerId}:${resetAt}`}>` in `page.tsx` — this forces a full remount exactly on switch or reset, and not on ordinary lesson completion (which still needs to keep its "done" screen state intact through the `router.refresh()` that follows).
+
+**Impact**
+`LearnerProfileSchema` gained a `resetAt` field; the SQLite schema migrates existing databases with `ALTER TABLE ... ADD COLUMN resetAt` at store-open time (deployed DBs pre-date this column). Verified live end-to-end: switching to a new name starts genuinely fresh (0 XP, all lessons "Ready"), completing a lesson under that name doesn't touch the real student's profile, and resetting only clears the active name's data. The test profile created during verification was deleted from the live database afterward so it doesn't linger in the quick-switch list.

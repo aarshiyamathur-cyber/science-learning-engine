@@ -21,7 +21,8 @@ const SCHEMA = `
     completedLessons TEXT NOT NULL,
     xp INTEGER NOT NULL,
     score REAL NOT NULL,
-    lastCompletedAt TEXT
+    lastCompletedAt TEXT,
+    resetAt TEXT
   );
   CREATE TABLE IF NOT EXISTS mastery_states (
     learnerId TEXT NOT NULL,
@@ -47,6 +48,11 @@ const SCHEMA = `
 export interface LearnerProgressStore {
   getProfile(id: string): LearnerProfile | undefined;
   upsertProfile(profile: LearnerProfile): void;
+  listProfiles(): LearnerProfile[];
+  /** Clears a learner's completed lessons, XP, score, mastery states, and attempt
+   * history, while keeping the same id/displayName/createdAt — a fresh start
+   * for that name, not a new identity. */
+  resetProfile(learnerId: string): void;
   getMasteryState(learnerId: string, conceptId: string): MasteryState | undefined;
   upsertMasteryState(state: MasteryState): void;
   recordAttempt(attempt: AttemptRecord): void;
@@ -58,6 +64,15 @@ export function openLearnerProgressStore(dbPath: string): LearnerProgressStore {
   const db = new DatabaseSync(dbPath);
   db.exec(SCHEMA);
 
+  // Migration: `resetAt` was added after `learner_profiles` already existed in
+  // deployed databases, so `CREATE TABLE IF NOT EXISTS` alone won't add it.
+  const existingColumns = (
+    db.prepare("PRAGMA table_info(learner_profiles)").all() as { name: string }[]
+  ).map((col) => col.name);
+  if (!existingColumns.includes("resetAt")) {
+    db.exec("ALTER TABLE learner_profiles ADD COLUMN resetAt TEXT");
+  }
+
   return {
     getProfile(id) {
       const row = db.prepare("SELECT * FROM learner_profiles WHERE id = ?").get(id) as
@@ -67,20 +82,22 @@ export function openLearnerProgressStore(dbPath: string): LearnerProgressStore {
         ...row,
         completedLessons: JSON.parse(row.completedLessons as string),
         lastCompletedAt: row.lastCompletedAt ?? undefined,
+        resetAt: row.resetAt ?? undefined,
       });
     },
 
     upsertProfile(profile) {
       const parsed = LearnerProfileSchema.parse(profile);
       db.prepare(
-        `INSERT INTO learner_profiles (id, displayName, createdAt, completedLessons, xp, score, lastCompletedAt)
-         VALUES (?, ?, ?, ?, ?, ?, ?)
+        `INSERT INTO learner_profiles (id, displayName, createdAt, completedLessons, xp, score, lastCompletedAt, resetAt)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT(id) DO UPDATE SET
            displayName = excluded.displayName,
            completedLessons = excluded.completedLessons,
            xp = excluded.xp,
            score = excluded.score,
-           lastCompletedAt = excluded.lastCompletedAt`,
+           lastCompletedAt = excluded.lastCompletedAt,
+           resetAt = excluded.resetAt`,
       ).run(
         parsed.id,
         parsed.displayName,
@@ -89,7 +106,32 @@ export function openLearnerProgressStore(dbPath: string): LearnerProgressStore {
         parsed.xp,
         parsed.score,
         parsed.lastCompletedAt ?? null,
+        parsed.resetAt ?? null,
       );
+    },
+
+    listProfiles() {
+      const rows = db
+        .prepare("SELECT * FROM learner_profiles ORDER BY createdAt")
+        .all() as Record<string, unknown>[];
+      return rows.map((row) =>
+        LearnerProfileSchema.parse({
+          ...row,
+          completedLessons: JSON.parse(row.completedLessons as string),
+          lastCompletedAt: row.lastCompletedAt ?? undefined,
+          resetAt: row.resetAt ?? undefined,
+        }),
+      );
+    },
+
+    resetProfile(learnerId) {
+      db.prepare("DELETE FROM attempt_records WHERE learnerId = ?").run(learnerId);
+      db.prepare("DELETE FROM mastery_states WHERE learnerId = ?").run(learnerId);
+      db.prepare(
+        `UPDATE learner_profiles
+         SET completedLessons = ?, xp = 0, score = 0, lastCompletedAt = NULL, resetAt = ?
+         WHERE id = ?`,
+      ).run(JSON.stringify([]), new Date().toISOString(), learnerId);
     },
 
     getMasteryState(learnerId, conceptId) {

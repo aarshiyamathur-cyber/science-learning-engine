@@ -3,7 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState, type ComponentType, type SVGProps } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
-import { completeLessonAction, submitAnswerAction } from "../actions";
+import {
+  completeLessonAction,
+  resetProgressAction,
+  submitAnswerAction,
+  switchLearnerAction,
+} from "../actions";
 import {
   AtomicStructureIllustration,
   CelebrationIllustration,
@@ -49,9 +54,112 @@ export interface LessonEntry {
 interface ContinueLearningScreenProps {
   lessons: LessonEntry[];
   initialXp: number;
+  /** Whose progress is currently shown — the real student by default, or any
+   * tester's own name once they've switched to it. */
+  learnerDisplayName: string;
+  /** Other names with existing progress on this browser, for quick switching. */
+  otherLearnerNames: string[];
 }
 
 type Screen = "topic" | "in-lesson" | "done";
+
+/**
+ * Lets whoever is using this browser switch to their own named progress
+ * track (so a tester's click-throughs don't land on the real student's
+ * progress) and reset that track at any time. Both actions navigate back to
+ * "/" server-side, so there's no stale client state to reconcile.
+ */
+function LearnerSwitcher({
+  learnerDisplayName,
+  otherLearnerNames,
+}: {
+  learnerDisplayName: string;
+  otherLearnerNames: string[];
+}) {
+  const [nameInput, setNameInput] = useState("");
+  const [isSwitching, setIsSwitching] = useState(false);
+  const [resetArmed, setResetArmed] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
+
+  async function switchTo(name: string) {
+    if (!name.trim() || isSwitching) return;
+    setIsSwitching(true);
+    await switchLearnerAction(name);
+  }
+
+  async function confirmReset() {
+    setIsResetting(true);
+    await resetProgressAction();
+  }
+
+  return (
+    <Card tone="neutral">
+      <p className="text-label text-zinc-600 dark:text-zinc-300">
+        Testing as <span className="font-bold text-zinc-900 dark:text-zinc-50">{learnerDisplayName}</span>
+      </p>
+
+      <div className="flex flex-wrap items-center gap-2">
+        <input
+          type="text"
+          value={nameInput}
+          onChange={(e) => setNameInput(e.target.value)}
+          placeholder="Switch to a name..."
+          className="min-w-0 flex-1 rounded-lg border-2 border-zinc-200 bg-white px-3 py-2 text-label text-zinc-900 focus:border-brand-500 focus:outline-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
+        />
+        <Button
+          variant="solid"
+          tone="neutral"
+          disabled={!nameInput.trim() || isSwitching}
+          onClick={() => switchTo(nameInput)}
+        >
+          Switch
+        </Button>
+      </div>
+
+      {otherLearnerNames.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {otherLearnerNames.map((name) => (
+            <button
+              key={name}
+              type="button"
+              disabled={isSwitching}
+              onClick={() => switchTo(name)}
+              className="rounded-full border-2 border-zinc-200 bg-white px-3 py-1 text-label text-zinc-700 hover:bg-zinc-50 disabled:opacity-40 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {resetArmed ? (
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="text-label text-danger-700 dark:text-danger-300">
+            Reset {learnerDisplayName}&apos;s progress? This can&apos;t be undone.
+          </p>
+          <Button variant="solid" tone="danger" disabled={isResetting} onClick={confirmReset}>
+            Yes, reset
+          </Button>
+          <button
+            type="button"
+            onClick={() => setResetArmed(false)}
+            className="text-label text-zinc-500 underline hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+          >
+            Cancel
+          </button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setResetArmed(true)}
+          className="self-start text-label text-danger-600 underline hover:text-danger-800 dark:text-danger-400 dark:hover:text-danger-200"
+        >
+          Reset progress
+        </button>
+      )}
+    </Card>
+  );
+}
 
 /**
  * The full science course screen: a list of every lesson across every topic
@@ -60,7 +168,12 @@ type Screen = "topic" | "in-lesson" | "done";
  * Locking is derived entirely from each concept's existing `prerequisites`
  * field — no new engine capability, just reading data that already exists.
  */
-export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningScreenProps) {
+export function ContinueLearningScreen({
+  lessons,
+  initialXp,
+  learnerDisplayName,
+  otherLearnerNames,
+}: ContinueLearningScreenProps) {
   const router = useRouter();
   const [screen, setScreen] = useState<Screen>("topic");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -122,6 +235,10 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
             <p className="text-label font-medium text-warning-700 dark:text-warning-300">
               ⭐ {xp} XP
             </p>
+            <LearnerSwitcher
+              learnerDisplayName={learnerDisplayName}
+              otherLearnerNames={otherLearnerNames}
+            />
             {lessons.map((entry, index) => {
               const completed = completedByLesson[entry.lessonId];
               const mastery = masteryByLesson[entry.lessonId];

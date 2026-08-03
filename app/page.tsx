@@ -1,7 +1,13 @@
+import { cookies } from "next/headers";
 import { resolveLessonSteps, type Concept } from "@aarshiya/curriculum-schema";
 import { ContinueLearningScreen, type LessonEntry } from "./components/ContinueLearningScreen";
 import { getCurriculum } from "./lib/curriculum";
-import { DEMO_LEARNER_ID, getOrCreateProfile, getProgressStore } from "./lib/progress";
+import {
+  ACTIVE_LEARNER_COOKIE,
+  DEMO_LEARNER_ID,
+  getOrCreateProfile,
+  getProgressStore,
+} from "./lib/progress";
 
 // Reads mutable learner progress on every request — must not be statically
 // prerendered, or every visitor would see whatever state existed at build time.
@@ -44,10 +50,17 @@ function isConceptLocked(
   });
 }
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  const learnerId = cookieStore.get(ACTIVE_LEARNER_COOKIE)?.value ?? DEMO_LEARNER_ID;
+
   const { concepts, lessons, questions } = getCurriculum();
-  const profile = getOrCreateProfile(DEMO_LEARNER_ID);
   const progressStore = getProgressStore();
+  const profile = getOrCreateProfile(learnerId);
+  const otherLearnerNames = progressStore
+    .listProfiles()
+    .map((p) => p.displayName)
+    .filter((name) => name !== profile.displayName);
 
   const lessonEntries: LessonEntry[] = SCIENCE_TOPIC_CONCEPT_IDS.flatMap((conceptId) => {
     const concept = concepts.get(conceptId);
@@ -56,7 +69,7 @@ export default function Home() {
     const lesson = lessons.get(concept.lessonRefs[0]);
     if (!lesson) return [];
 
-    const mastery = progressStore.getMasteryState(DEMO_LEARNER_ID, conceptId);
+    const mastery = progressStore.getMasteryState(learnerId, conceptId);
     return [
       {
         conceptId: concept.id,
@@ -73,7 +86,17 @@ export default function Home() {
 
   return (
     <div className="flex flex-1 flex-col font-sans">
-      <ContinueLearningScreen lessons={lessonEntries} initialXp={profile.xp} />
+      <ContinueLearningScreen
+        // Forces a full remount (discarding any stale client-side XP/mastery
+        // state) whenever the active learner changes or their progress is
+        // reset — but not on a normal lesson completion, since resetAt only
+        // changes via resetProfile(), never via completeLessonAction.
+        key={`${learnerId}:${profile.resetAt ?? "never-reset"}`}
+        lessons={lessonEntries}
+        initialXp={profile.xp}
+        learnerDisplayName={profile.displayName}
+        otherLearnerNames={otherLearnerNames}
+      />
     </div>
   );
 }

@@ -111,4 +111,98 @@ describe("LearnerProgressStore", () => {
       timeSpentMs: 4200,
     });
   });
+
+  it("lists every profile, in creation order", () => {
+    store.upsertProfile({
+      id: "learner-aarshiya",
+      displayName: "Aarshiya",
+      createdAt: "2026-08-01T00:00:00.000Z",
+      completedLessons: [],
+      xp: 0,
+      score: 0,
+    });
+    store.upsertProfile({
+      id: "learner-sudeep",
+      displayName: "Sudeep",
+      createdAt: "2026-08-02T00:00:00.000Z",
+      completedLessons: [],
+      xp: 0,
+      score: 0,
+    });
+
+    expect(store.listProfiles().map((p) => p.displayName)).toEqual(["Aarshiya", "Sudeep"]);
+  });
+
+  it("resetProfile clears completed lessons, XP, score, mastery, and attempts, keeping identity", () => {
+    store.upsertProfile({
+      id: "learner-sudeep",
+      displayName: "Sudeep",
+      createdAt: "2026-08-01T00:00:00.000Z",
+      completedLessons: ["lesson-matter-intro"],
+      xp: 50,
+      score: 5,
+      lastCompletedAt: "2026-08-01T00:05:00.000Z",
+    });
+    store.upsertMasteryState({
+      learnerId: "learner-sudeep",
+      conceptId: "sci-y7-matter",
+      masteryScore: 0.8,
+      status: "mastered",
+      attemptCount: 5,
+    });
+    store.recordAttempt({
+      id: "attempt-1",
+      learnerId: "learner-sudeep",
+      conceptId: "sci-y7-matter",
+      questionId: "q-matter-01",
+      correct: true,
+      score: 1,
+      attemptedAt: "2026-08-01T00:01:00.000Z",
+    });
+
+    store.resetProfile("learner-sudeep");
+
+    const reset = store.getProfile("learner-sudeep");
+    expect(reset).toMatchObject({
+      id: "learner-sudeep",
+      displayName: "Sudeep",
+      createdAt: "2026-08-01T00:00:00.000Z",
+      completedLessons: [],
+      xp: 0,
+      score: 0,
+      lastCompletedAt: undefined,
+    });
+    // resetAt is stamped with the current time so the UI can tell "just reset"
+    // apart from "has never been reset", distinct from normal activity.
+    expect(reset?.resetAt).toBeDefined();
+    expect(store.getMasteryState("learner-sudeep", "sci-y7-matter")).toBeUndefined();
+    expect(store.listAttempts("learner-sudeep")).toHaveLength(0);
+  });
+
+  it("resetProfile only affects the named learner", () => {
+    store.upsertProfile({
+      id: "learner-aarshiya",
+      displayName: "Aarshiya",
+      createdAt: "2026-08-01T00:00:00.000Z",
+      completedLessons: ["lesson-matter-intro"],
+      xp: 50,
+      score: 5,
+    });
+    store.upsertProfile({
+      id: "learner-sudeep",
+      displayName: "Sudeep",
+      createdAt: "2026-08-01T00:00:00.000Z",
+      completedLessons: ["lesson-matter-intro"],
+      xp: 50,
+      score: 5,
+    });
+
+    store.resetProfile("learner-sudeep");
+
+    expect(store.getProfile("learner-aarshiya")?.xp).toBe(50);
+    expect(store.getProfile("learner-aarshiya")?.completedLessons).toEqual([
+      "lesson-matter-intro",
+    ]);
+    expect(store.getProfile("learner-sudeep")?.xp).toBe(0);
+  });
 });
