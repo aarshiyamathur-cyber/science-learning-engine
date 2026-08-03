@@ -107,3 +107,17 @@ During Sprint 6 final QA (BL-043), a fresh `next build`/`next dev` failed for ev
 
 **Impact**
 `next build`/`next dev` work again. Verified via a full production build, typecheck/lint/vitest (65/65), and a live restart of `AarshiyaAppServer` with a real browser click-through confirming the rebuilt server serves correctly. Future sessions should be aware this machine's actual project directory is `D:\Projects\...` (capital P) — a mismatched-case working directory (e.g. `d:\projects\...`) can independently cause spurious `tsc` "differs only in casing" errors on the same `@aarshiya/*` symlinks; always operate from the correctly-cased path.
+
+## DEC-009
+
+**Decision**
+New standing content/design standard for all lessons, effective 2026-08-03: every lesson opens with a hero illustration; explanation text is broken into short sections with supporting graphics rather than long uninterrupted paragraphs; diagrams/SVG illustrations/labelled graphics are preferred wherever they improve understanding; no purely decorative visuals — every image must teach a concept.
+
+**Status**
+Accepted — Product Owner directive, 2026-08-03, based on user testing feedback (too much uninterrupted text in the current learning experience).
+
+**Reason**
+Direct feedback from Aarshiya's use of the app. Applies immediately to all new topics (Sprint 8 onward). Existing topics (Matter, Atomic Structure, Periodic Table) are retrofitted incrementally as engineering capacity allows — this is explicitly not an urgent blocking retrofit, so it must not compete with new-topic delivery under the 80/20 curriculum/infrastructure capacity split.
+
+**Impact**
+Affects lesson authoring going forward: `LessonStep`'s `explanation`/`example` step bodies should be written and reviewed against this bar (short sections, one hero illustration per lesson, graphics that teach rather than decorate), and any dispatch prompt for new lesson content should state these requirements explicitly. Does not require a schema change — `explanation`/`example` steps already carry free-form `body` text; "short sections with supporting graphics" is an authoring-quality bar, not a new step type, unless a future concept genuinely needs a new component to render inline diagrams within an explanation step.

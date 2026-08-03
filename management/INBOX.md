@@ -4,6 +4,18 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-03 — Product Owner Decision: visual/content design standard (less uninterrupted text)
+
+Based on user testing feedback. Effective immediately for all new topics; retrofitted into earlier topics incrementally, not urgently.
+
+- Every lesson must begin with a hero illustration.
+- Explanations broken into short sections with supporting graphics, not single long paragraphs.
+- Prefer diagrams, SVG illustrations, and labelled educational graphics wherever they improve understanding.
+- Reduce paragraph length generally.
+- **No decorative images** — every visual must teach a concept (consistent with the project's existing hand-authored-SVG, no-stock-imagery convention).
+- Apply to all new topics (Sprint 8 onward) immediately.
+- Improve earlier topics (Matter, Atomic Structure, Periodic Table) incrementally as engineering capacity allows — not a blocking retrofit.
+
 ### 2026-08-03 — Product Owner Directive: both worktrees dedicated to curriculum, explicit allocation
 
 - **Both OpenClaw worktrees dedicated to the Science Learning Engine.** No worktree allocated to engineering infrastructure, workflow optimisation, dashboard enhancements, or process improvements unless explicitly authorised.
