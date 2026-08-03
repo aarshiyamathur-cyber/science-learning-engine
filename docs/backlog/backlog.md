@@ -425,6 +425,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Medium
 - **Notes:** `PeriodicTableExplorer.tsx` renders all 18 groups as grid columns so groups 3-12 (transition metals, out of scope for this range) show as visible empty gaps rather than being silently compressed out of the layout — reinforces "these columns are skipped for now" visually. Boron and silicon are classed as metalloids in full chemistry but simplified to "non-metal" here (documented as a code comment only, not in learner-facing text) since this widget only offers a binary metal/non-metal choice, matching a typical simplified Year 7-10 treatment. `lesson-periodic-table-intro.yaml` follows the sibling Atomic Structure lesson's structure (explanation → example comparing sodium and potassium's shared group-1 behaviour → interactive `periodic-table-explorer` step → 5 questions → summary). `assessment-periodic-table-quiz.yaml`'s q-periodic-table-01 targets the alphabetical misconception directly, q-periodic-table-02 targets the group/period mix-up directly, and q-periodic-table-05 requires deriving both period and metal/non-metal classification from atomic number alone. 3 new unit tests (initial state, clicking a metal tile, clicking a non-metal tile). Delegated to and completed by an OpenClaw headless worker; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (68/68 tests, 11 files) all pass.
 
+### BL-045 — Register PeriodicTableExplorer widget, add topic illustration, final live QA
+
+- **Description:** Shared-file wiring BL-044's worker deliberately left for review: register `"periodic-table-explorer"` in `LessonPlayer`'s `WIDGET_REGISTRY`, add a topic-card illustration, then verify the full lesson live end-to-end.
+- **Dependencies:** BL-044
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** Widget registered and reachable from the real lesson flow; new illustration wired into the per-conceptId lookup; every interaction verified live in a real browser; mastery/XP and mobile confirmed; no placeholders/TODOs.
+- **Estimate:** Small
+- **Notes:** Added `PeriodicTableIllustration` (metal/non-metal tile grid, same token palette as the other topic illustrations) to `app/components/icons/Illustrations.tsx`, exported and wired into `ContinueLearningScreen.tsx`'s `LESSON_ILLUSTRATIONS` lookup, covered by a new render test. Full live Playwright click-through of all 9 lesson steps (explanation → example → widget tile interaction → 5 questions, including hint reveal and a deliberate wrong-answer retry → summary → finish): confirmed 100% mastery and 250 XP (200 carried over + 50 for this lesson), and no horizontal overflow at a 375px mobile viewport. `validate:curriculum`, `typecheck`, `lint`, `vitest run` (69/69 tests, 11 files), and `build` all pass. Live `AarshiyaAppServer` rebuilt and restarted; both this and BL-044's content verified live afterward.
+
+**Sprint 7 (Periodic Table) Definition of Done met 2026-08-03 — both Sprint 6 and Sprint 7 now complete. Stopped, awaiting Product Review per the 2026-08-03 worktree-allocation directive.**
+
 ## Curriculum Enhancement
 
 ### CE-001 — Grow question banks for the Matter topic

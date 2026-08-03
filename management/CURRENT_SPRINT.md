@@ -1,14 +1,14 @@
-# Sprint 6 — Atomic Structure (continuing; Sprint 5 below is CLOSED)
+# Sprint 7 — Periodic Table (Definition of Done met; Sprints 5/6 below are CLOSED)
 
-_Frozen roadmap per Product Owner Directive (2026-08-01), amended 2026-08-03: Sprint 5 (Matter, accepted) → Sprint 6 (Atomic Structure, continuing) → Sprint 7 (Periodic Table, authorised to begin immediately once Sprint 6's DoD is met — no review stop in between). See `management/ROADMAP.md` for the authoritative roadmap and DoD. Full detail below is Sprint 5's closed record, kept for history._
+_Frozen roadmap per Product Owner Directive (2026-08-01), amended 2026-08-03: Sprint 5 (Matter, accepted) → Sprint 6 (Atomic Structure, done) → Sprint 7 (Periodic Table, done). See `management/ROADMAP.md` for the authoritative roadmap and DoD. Full detail below is Sprints 5/6's closed record, kept for history._
 
-## Sprint 6 status (2026-08-03)
+## Sprint 7 status (2026-08-03)
 
 - Sprint 5 formally **accepted** by Product Owner.
-- BL-040 (Atomic Structure lesson + assessment) — Done, OpenClaw-delegated, merged.
-- BL-041 (Atomic Structure illustration) — Done, OpenClaw-delegated, merged.
-- **AtomBuilder (button-based) accepted for Version 1** — drag-and-drop not being built now (DEC-006). Question Bank stays a by-product of normal lesson work, no separate project (DEC-007).
-- **Sprint 6 authorised to continue** — no longer stopped for review. Remaining work: verify Sprint 6 against the full Definition of Done (live QA, navigation, mobile, XP, no placeholders — same bar as Sprint 5), then proceed immediately into Sprint 7 (Periodic Table) without a review stop.
+- Sprint 6 (Atomic Structure): BL-040/041/042 (lesson, illustration, question bank) + BL-043 (final QA, 2 real bugs found and fixed) — all Done, DoD met.
+- Sprint 7 (Periodic Table): BL-044 (lesson, assessment, new `PeriodicTableExplorer` widget, OpenClaw-delegated) + BL-045 (widget registration, illustration, final live QA) — all Done, DoD met.
+- **Both Sprint 6 and Sprint 7 complete. Stopped, awaiting Product Review** per the 2026-08-03 worktree-allocation directive (no review stop was taken between the two sprints).
+- **New standing content standard recorded (DEC-009, 2026-08-03):** every lesson opens with a hero illustration, explanations broken into short sections with supporting graphics, no decorative visuals. Applies to all new topics immediately; earlier topics (Matter, Atomic Structure, Periodic Table) retrofitted incrementally as capacity allows, not urgently — per explicit Product Owner confirmation.
 
 ---
 

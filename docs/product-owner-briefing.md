@@ -1,92 +1,105 @@
 # Product Owner Briefing
 
-_Last updated: 2026-08-01 — Sprint 5 CLOSED (stop condition reached)_
+_Last updated: 2026-08-03 — Sprints 6 and 7 CLOSED (stop condition reached)_
 
-This file is the standing handoff document between the Engineering Lead (Claude Code, working in this repo) and the Product Owner (ChatGPT, supplying curriculum/gameplay specs). It is updated at the end of every sprint/milestone so it can be read on its own, without repo access, to know where things stand. There is no direct technical link between Claude Code and ChatGPT — this file, plus `management/*.md`, is the coordination channel; the user relays between the two.
+This file is the standing handoff document between the Engineering Lead (Claude Code, working in this repo) and the Product Owner. It is updated at the end of every sprint/milestone so it can be read on its own, without repo access, to know where things stand. There is no direct technical link between Claude Code and the Product Owner — this file, plus `management/*.md`, is the coordination channel; the user relays between the two.
 
 If you are the Product Owner reading this for the first time: the full project vision and non-negotiable principles are in [docs/architecture/overview.md](architecture/overview.md). This file only covers **current status, decisions since the last briefing, and what's needed from you next.**
 
 ---
 
-## Sprint 5 Briefing: the "Matter" topic is complete
+## Sprints 6 + 7 Briefing: Atomic Structure and Periodic Table are both complete
 
-**Mission (per your directive):** finish the "Matter" topic end-to-end — all three concepts, not just the one polished lesson — and deliver something Aarshiya can comfortably complete tomorrow morning. **That mission is done.**
+**Directive (2026-08-03):** complete Atomic Structure to the existing Definition of Done, then proceed immediately into Periodic Table with no review stop in between, only stopping once both reach the same review point. **Both are done.**
 
-**Live demo:** https://hughes-exercises-fourth-queens.trycloudflare.com — learner progress has been reset to a clean starting state (0 XP, no lessons completed) ahead of handoff.
+**Live demo:** https://hughes-exercises-fourth-queens.trycloudflare.com — the app now covers four topics end-to-end: Matter, Atomic Structure, and The Periodic Table (Particle Model and States of Matter are the other two Matter-topic lessons).
 
 ### What was completed
 
-The Matter topic now has three finished lessons, in teaching order, each fully gated behind a topic-navigation screen with real progress/lock state:
+**Sprint 6 — Atomic Structure** (`sci-y7-atomic-structure`): protons/neutrons/electrons and where each is found, atomic number vs. mass number, simplified electron-shell filling. One lesson (explanation → example (carbon) → interactive `atom-builder` widget (build sodium) → 5 questions → summary), an 8-question reusable question bank (grown from 5 during close-out), and a hand-authored topic illustration.
 
-1. **Matter** (`sci-y7-matter`) — what matter is, the three states, an interactive particle-state widget. (Already complete going into this sprint.)
-2. **The Particle Model of Matter** (`sci-y7-particle-model`) — was a thin placeholder (2 questions, no interaction) at the start of this sprint. Now: a full explanation/example/interactive/5-question/summary lesson matching the Matter lesson's quality bar.
-3. **States of Matter and Changes of State** (`sci-y7-states-of-matter`) — **had zero lesson content and zero questions at the start of this sprint.** Written entirely from scratch: melting, freezing, evaporation, and condensation, explained in terms of particle energy, with 5 questions that directly target the concept's listed misconception ("melting/freezing creates a new substance" — corrected explicitly).
+**Sprint 7 — Periodic Table** (`sci-y7-periodic-table`, gated behind completing Atomic Structure): elements ordered by atomic number (not alphabetically), groups vs. periods, metals vs. non-metals, reading properties from position. One lesson (explanation → example (sodium/potassium vs. chlorine) → interactive step → 5 questions → summary), a **new reusable widget** (`PeriodicTableExplorer`: the first 20 elements laid out in their real period/group grid, with transition-metal columns left as visible gaps; tapping a tile reveals name, atomic number, and metal/non-metal classification), and a matching topic illustration.
 
-Every question across all three lessons (15 total) now has both a **hint** (shown on request, before answering — new this sprint) and an **explanation** (shown after answering, as before). Each lesson has its own distinct hand-drawn illustration on the topic screen. The topic screen shows real lock/unlock state driven by each concept's existing prerequisite data — completing Particle Model unlocks States of Matter, live, without a page reload.
+Both topics are fully wired into the same topic-navigation screen as Matter — locked until their prerequisite is complete, unlocking live with no reload, tracked in the same mastery/XP system.
+
+### Two Product Owner decisions resolved mid-sprint (2026-08-03)
+
+1. **AtomBuilder (button-based) accepted for Version 1.** The original Sprint 6 ask included "drag particles into place" / "place electrons into shells" as distinct interactions; the shipped `AtomBuilder` widget uses +/- buttons instead. You accepted this as-is for V1 — drag-and-drop is recorded as a future enhancement, not built now (DEC-006).
+2. **No separate Question Bank project.** Reusable questions continue to be produced as a normal by-product of lesson authoring, not a dedicated initiative (DEC-007). Question Bank growth is now tracked as a secondary KPI alongside the primary "completed curriculum topics" KPI.
 
 ### What OpenClaw implemented (delegated, all merged with zero conflicts)
 
-- **BL-031** — Completed the Particle Model lesson (explanation, example, interactive widget reuse, 5 questions with hints).
-- **BL-032** — Wrote the States of Matter lesson and its 5-question assessment entirely from scratch.
-- **BL-033** — Two new hand-authored SVG illustrations (Particle Model, Changes of State), wired per-lesson.
+- **BL-040** — Atomic Structure lesson + assessment, written from scratch.
+- **BL-041** — Atomic Structure illustration.
+- **BL-042** — Grew the Atomic Structure question bank from 5 to 8 questions.
+- **BL-044** — Periodic Table lesson, assessment, and the new `PeriodicTableExplorer` widget, written from scratch.
+- **CE-001** (parallel worktree, repurposed from the now-superseded Command Centre initiative to "Curriculum Enhancement" per your 2026-08-03 worktree-allocation directive) — grew question banks for all three Matter-topic lessons (+2 questions each).
 
-All three were reviewed in full before merging — content read end-to-end for scientific accuracy, not just typecheck/lint/test passing. Quality was consistently high; no corrections were needed to the content itself.
+All were reviewed in full before merging — content read end-to-end for scientific accuracy (all 20 periodic-table element classifications independently checked), not just typecheck/lint/test passing.
 
 ### What Claude implemented directly
 
-- **BL-030** — Added the `hint` field to the question schema and its UI, and backfilled hints into every pre-existing question.
-- **BL-034** — Replaced the single hardcoded lesson with a real multi-lesson topic screen (list view, lock/unlock/completion state, "Back to Matter" navigation) — this touches the shared app shell, so it stayed off the delegation track.
-- **BL-035/BL-036** — UI/mobile polish and final QA: a full live click-through of all three lessons end-to-end (every question, both types, hints, retry, mastery, XP), plus mobile (375px) and tablet (768px) viewport checks and a dark-mode check.
+- **BL-045** — Registered the new `periodic-table-explorer` widget (shared registry file, kept off the delegation track per established practice) and its topic illustration.
+- **BL-043 / final QA for both sprints** — Full live browser click-through of every lesson step in both topics (explanation, example, interactive widget, all questions including a deliberate wrong-answer/retry and a hint reveal, summary, finish), mobile viewport (375px, no overflow) and mastery/XP verification.
+
+**Two real bugs were found only by actually running the app, neither caught by typecheck/lint/69 unit tests:**
+
+1. **Hardcoded "Matter" labels.** The topic-list heading and "Back to Matter" navigation text were left over from before the list grew to span multiple topics. Fixed to topic-agnostic "Science Course" / "Back to topic list."
+2. **A pre-existing, unrelated build failure.** A fresh `next build`/`next dev` failed repo-wide with "Unknown module type" for every internal workspace package — this predates this session's work and was unrelated to any curriculum content. It mattered because the live server's on-disk build had gone stale relative to source; without a fix, **no future code change could have been redeployed at all.** Fixed via Next.js's documented `transpilePackages` config (DEC-008), verified with a full rebuild and a live server restart.
 
 ### Tests
 
-64 automated tests passing (up from 53 at the start of this sprint), across 10 test files — `typecheck`, `lint`, `build`, and `npm run validate:curriculum` all clean. The increase includes the first real test coverage `LessonPlayer` has ever had (8 tests) and extended illustration/schema tests.
-
-**Two real bugs were found only by actually running the app, not by any of the above:**
-
-1. **Stale lock state.** After completing a lesson that unlocks another (Particle Model → States of Matter), the newly-unlocked lesson kept showing "Locked" until a manual page reload — the topic list's lock flags are computed server-side and the client never refetched them. Fixed with a `router.refresh()` call after lesson completion. Confirmed fixed live.
-2. **Silent server crash.** The Scheduled Task that keeps the production server running was exiting seconds after every start — Task Scheduler reported a clean exit, but nothing was ever listening on port 3000. Root cause: a PowerShell setting that treats routine npm/Next.js console warnings as fatal errors. Found live tonight when the public link briefly 502'd after a routine restart; fixed and verified.
-
-Neither bug would have been caught by typecheck, lint, or the unit test suite — both were only found by actually clicking through the live app and actually restarting the live server, which continues to be the deciding factor for shipping confidence on this project.
+69 automated tests passing (up from 64 at the last briefing), across 11 test files — `typecheck`, `lint`, `build`, and `npm run validate:curriculum` all clean.
 
 ### Known issues / not done
 
-- Nothing outstanding against this sprint's Definition of Done — all items are checked off (see `management/CURRENT_SPRINT.md`).
-- The learner-progress database is per-machine local storage (`node:sqlite`), same as every prior sprint — this is still a local trial, not permanent hosting (see Hosting, below).
+Nothing outstanding against either sprint's Definition of Done. The learner-progress database remains per-machine local storage (`node:sqlite`) — still a local trial, not permanent hosting (carried over from the last briefing, still unaddressed).
 
-## Recommendations for Sprint 6
+## New: content/design standard (DEC-009, 2026-08-03)
 
-1. **Content:** the Matter topic is done. The natural next step is either a second full topic (using the same three-lesson pattern: intro concept → mechanism → applied concept) or deepening Matter with a 4th lesson if there's more NSW syllabus content to cover before moving on.
-2. **Delegation:** three consecutive successful OpenClaw delegations this sprint, all zero-conflict — the "standalone content/asset, no shared file" scoping pattern is now proven repeatedly. Sprint 6 should keep scoping delegated tasks this way rather than treating delegation as an afterthought.
-3. **Hosting:** still worth revisiting cloud hosting (previously scoped: libSQL/Turso + Vercel) if a Cloudflare quick tunnel's need for this exact machine to stay on and connected keeps being inconvenient — tonight's server-crash bug is exactly the kind of failure mode that goes away with real hosting.
-4. **Scoring model:** the deferred mastery-based "what's next" recommendation engine still needs Product input on the scoring model before it's built — carried over from earlier briefings, still unaddressed.
-5. **A second, parallel initiative is now underway:** a Product Command Centre internal dashboard (separate from Aarshiya's learning app) is being built via a second, parallel OpenClaw delegation stream — see `management/COMMAND_CENTRE.md` for its own status. It doesn't compete with Sprint 6 content work since it runs in a separate worktree.
+Based on your user-testing feedback, effective immediately for all new topics (retrofitted into Matter/Atomic Structure/Periodic Table incrementally, not urgently, per your explicit confirmation):
+
+- Every lesson opens with a hero illustration.
+- Explanations broken into short sections with supporting graphics, not long uninterrupted paragraphs.
+- Diagrams/SVG illustrations/labelled graphics preferred wherever they improve understanding.
+- No decorative visuals — every image must teach a concept.
+
+This will shape how the next topic's lesson content is authored and reviewed.
+
+## Recommendations for the next sprint
+
+1. **Content:** no new topic has been approved beyond Periodic Table. The natural next NSW-syllabus topic (chemical reactions, or a Forces topic reusing the previously-dropped BL-029 Force Simulator concept) is a candidate, but needs your explicit direction before scoping.
+2. **DEC-009 rollout:** the two OpenClaw worktrees are proven at handling parallel, disjoint-file curriculum work — one lane could start applying the new visual standard to a new topic while the other begins the incremental retrofit of earlier lessons, once you confirm priority between the two.
+3. **Hosting:** still worth revisiting real hosting — the Cloudflare quick-tunnel URL changes on every restart and depends on this exact machine staying on, which is exactly the class of fragility DEC-008's build-failure discovery illustrates (a stale build silently blocking redeployment could just as easily have blocked a real hosting deploy).
+4. **Scoring model:** the deferred mastery-based "what's next" recommendation engine still needs your input on the scoring model — carried over from earlier briefings, still unaddressed.
 
 ## Demo instructions
 
-1. **Open:** https://hughes-exercises-fourth-queens.trycloudflare.com on any device (phone, iPad, laptop) — no install needed.
-2. **You'll see three lessons:** Matter, The Particle Model of Matter, and States of Matter and Changes of State (the last one unlocks once Particle Model is completed).
-3. **Try any lesson:** explanation → example → an interactive "🧪 Try it yourself" step → 5 questions (mixed multiple-choice/short-answer, each with an optional "💡 Need a hint?") → summary → finish.
-4. **Answer a question wrong on purpose** to see the "Try again" flow, and try the 🎤 voice button on a short-answer question.
-5. **Complete a lesson and watch the topic screen** — XP and mastery update, and completing Particle Model unlocks States of Matter immediately, no reload needed.
-6. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected to the internet. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
+1. **Open:** https://hughes-exercises-fourth-queens.trycloudflare.com on any device — no install needed.
+2. **You'll see five lessons:** Matter, The Particle Model of Matter, States of Matter and Changes of State, Atomic Structure, and The Periodic Table (each unlocks once its prerequisite is completed).
+3. **Try the Periodic Table lesson specifically:** explanation → example (sodium/potassium vs. chlorine) → tap through the new periodic-table grid widget → 5 questions (try a wrong answer to see "Try again", and reveal a hint) → summary → finish.
+4. **Watch the topic screen** after finishing — XP and mastery update, and the newly-unlocked lesson (if any) shows as "Ready" immediately, no reload needed.
+5. **If the link is down:** it's an ephemeral tunnel to the dev machine, not permanent hosting — it only works while that machine is on and connected. Fallback: run locally with `npm install && npm run build && npm run start`, then open `http://localhost:3000`.
 
 ## Decisions since last briefing
 
-- **ADR 0008 / DEC-005:** a second OpenClaw managed worktree was created (`openclaw/command-centre`) so the new Command Centre initiative could run in parallel with Sprint 5's in-flight delegations instead of queuing behind them, since the two initiatives touch entirely disjoint files.
-- **Sprint 5's `hint` field is required, not optional** — every question needs one, matching the sprint's explicit Definition of Done. All pre-existing content was backfilled in the same change that added the field, so the repo was never left in a state where some questions had hints and others didn't.
+- **DEC-006:** AtomBuilder (button-based) accepted for Version 1; drag-and-drop deferred as a future enhancement.
+- **DEC-007:** No separate Question Bank project authorised; it remains a by-product of normal lesson authoring, now tracked as a secondary KPI.
+- **DEC-008:** Fixed a pre-existing Turbopack/workspace-symlink build failure via `transpilePackages` — a real deployability blocker found during Sprint 6 QA, not a discretionary infrastructure change.
+- **DEC-009:** New content/design standard — hero illustrations, short sections with supporting graphics, no decorative visuals. Applies to new topics immediately; earlier topics retrofitted incrementally.
+- Both OpenClaw worktrees are now dedicated exclusively to curriculum work (one continuing new-topic development, one repurposed from the now-superseded Command Centre initiative to ongoing "Curriculum Enhancement" — question bank growth and improvements to already-shipped lessons).
 
 ## Open questions for the Product Owner
 
-1. **Sprint 6 direction:** a second full topic, or deepen Matter further? (See Recommendation 1 above.)
-2. **Hosting:** ready to move off the Cloudflare-tunnel trial to something more permanent? (See Recommendation 3.)
-3. **Scoring model:** still need your input on the mastery-based progression engine before it can be built.
-4. **Command Centre scope:** the current build covers Executive Dashboard, Roadmap, Sprint History, Release Centre, Question Bank, and (in progress) a real Engineering Dashboard reading live task data. Is this the intended final page set, or are there more views wanted?
+1. **What's the next topic** after Periodic Table, if any — no new topic has been approved yet.
+2. **DEC-009 rollout priority:** new topics first, or start the incremental retrofit of Matter/Atomic Structure/Periodic Table now that both worktrees are free?
+3. **Hosting:** ready to move off the Cloudflare-tunnel trial to something more permanent?
+4. **Scoring model:** still need your input on the mastery-based progression engine before it can be built.
 
 ## Status per the handoff protocol
 
-Sprint 5's stop condition ("stop only when the Matter topic is complete end-to-end and ready for Aarshiya to use") **is met.** All three lessons are live, tested, and verified end-to-end via a real browser walkthrough; the learner-progress database has been reset to a clean state for Aarshiya's actual first use. Stopping Sprint 5 here per instruction, awaiting Product review before Sprint 6. The Command Centre initiative continues in the background on its own track (see `management/COMMAND_CENTRE.md`) since it doesn't compete for the same review bandwidth as curriculum content.
+The 2026-08-03 directive's stop condition ("continue uninterrupted through Sprint 6 and Sprint 7... produce a consolidated Product Briefing only after both topics reach the Definition of Done") **is met.** Both topics are live, tested, and verified end-to-end via real browser walkthroughs. Stopping here per instruction, awaiting Product Review before starting any new topic.
 
 ## How to keep this current
 
-This file is meant to be re-read periodically rather than re-derived from scratch. The Engineering Lead updates it at the end of every sprint/milestone (see `CLAUDE.md`). If you're setting up a recurring read (e.g. a scheduled prompt to ChatGPT), point it at this file — not the full repo — as the primary status source.
+This file is meant to be re-read periodically rather than re-derived from scratch. The Engineering Lead updates it at the end of every sprint/milestone (see `CLAUDE.md`). If you're setting up a recurring read, point it at this file — not the full repo — as the primary status source.

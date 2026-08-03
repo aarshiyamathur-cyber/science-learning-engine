@@ -4,41 +4,36 @@ _Last updated: 2026-08-03 by Claude Code_
 
 ## Current Sprint
 
-Sprint 6 — "Atomic Structure" — **continuing, authorised by Product Owner 2026-08-03; will proceed straight into Sprint 7 (Periodic Table) with no review stop between them**
+Sprint 7 — "Periodic Table" — **Definition of Done met. Both Sprint 6 and Sprint 7 complete — stopped, awaiting Product Review** (per the 2026-08-03 directive: no review stop between Sprint 6 and Sprint 7, only after Sprint 7).
 
 (Sprint 5 — "Complete the Matter topic" — CLOSED and formally **accepted** by Product Owner 2026-08-03)
 
 ## Status
 
-🟢 Roadmap frozen per Product Owner Directive (2026-08-01), amended 2026-08-03: Sprint 5 (Matter, accepted) → Sprint 6 (Atomic Structure, continuing) → Sprint 7 (Periodic Table, authorised to begin immediately after Sprint 6's DoD is met). Two open questions from Sprint 6 resolved by Product Owner decision: AtomBuilder (button-based) accepted for V1, drag-and-drop deferred as a future enhancement (DEC-006); no separate Question Bank project authorised (DEC-007). See `management/ROADMAP.md` and `management/INBOX.md` for full detail. Next stop-for-review point is after Sprint 7 reaches its Definition of Done.
+🟢 Roadmap frozen per Product Owner Directive (2026-08-01), amended 2026-08-03: Sprint 5 (Matter, accepted) → Sprint 6 (Atomic Structure, **done**) → Sprint 7 (Periodic Table, **done**). Both worktrees dedicated exclusively to curriculum per the 2026-08-03 worktree-allocation directive. Two open questions from Sprint 6 resolved by Product Owner decision: AtomBuilder (button-based) accepted for V1, drag-and-drop deferred as a future enhancement (DEC-006); no separate Question Bank project authorised (DEC-007). A real, pre-existing build-tooling issue was found and fixed during Sprint 6 QA (DEC-008) — without it, no future code change could have been redeployed. See `management/ROADMAP.md`, `management/INBOX.md`, and `docs/product-owner-briefing.md` for full detail. **Stopped, awaiting Product Review** — do not start a new topic or resume paused infrastructure work without explicit approval.
 
-## Sprint 6 (Atomic Structure)
+## Sprint 6 (Atomic Structure) — Done
 
 - [x] BL-040 — Atomic Structure lesson + assessment (OpenClaw-delegated, merged, reviewed)
 - [x] BL-041 — Atomic Structure illustration (OpenClaw-delegated, merged, reviewed)
-- [x] AtomBuilder accepted for V1 (DEC-006) — resolved, no longer open
-- [x] Question Bank — no separate project authorised (DEC-007) — resolved, no longer open
-- [ ] Full Definition of Done verification (live QA, navigation, mobile, XP, no placeholders) — in progress
+- [x] BL-042 — Grew question bank to 8 questions (OpenClaw-delegated, merged, reviewed)
+- [x] BL-043 — Final live QA; found and fixed 2 real bugs (hardcoded topic labels, Turbopack build failure) — Claude, not delegated
+- [x] AtomBuilder accepted for V1 (DEC-006); Question Bank stays a by-product of lesson work, no separate project (DEC-007)
 
-## Product
+## Sprint 7 (Periodic Table) — Done
 
-- [x] Sprint 5 defined and approved (`management/CURRENT_SPRINT.md`)
-- [x] BL-030 through BL-036 all Done — reviewed and merged/verified
-- [x] Full Product Owner Briefing written (`docs/product-owner-briefing.md`)
+- [x] BL-044 — Periodic Table lesson + assessment + new `PeriodicTableExplorer` widget (OpenClaw-delegated, merged, reviewed)
+- [x] BL-045 — Widget registration, topic illustration, full live QA (Claude, not delegated — shared-file wiring + QA judgment)
+- [x] Full Definition of Done verified: live click-through of all 9 lesson steps, mastery/XP (250 XP total), mobile (375px), no placeholders/TODOs
 
-## Engineering
+## Curriculum Enhancement (parallel worktree)
 
-- [x] BL-030 (`hint` field + UI) — Done.
-- [x] BL-031 (Particle Model lesson complete) — Done, OpenClaw-delegated, zero conflicts.
-- [x] BL-032 (States of Matter lesson, written from scratch) — Done, OpenClaw-delegated, zero conflicts.
-- [x] BL-033 (illustrations) — Done, OpenClaw-delegated, zero conflicts.
-- [x] BL-034 (multi-lesson topic navigation) — Done.
-- [x] BL-035/BL-036 (UI polish + final live QA) — Done. Found and fixed 2 real bugs (stale lock state after unlocking a lesson; silent Scheduled Task crash).
+- [x] CE-001 — Grew question banks for all 3 Matter-topic lessons (+2 questions each) — OpenClaw-delegated, merged, reviewed
 
 ## OpenClaw
 
 - [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed.
-- Two managed worktrees now active in parallel: `openclaw/aarshiya-auto` (curriculum content, available for Sprint 6 QA follow-ups and Sprint 7 dispatch) and `openclaw/command-centre` (frozen — no further work authorised).
+- Both managed worktrees dedicated to curriculum per the 2026-08-03 directive: `openclaw/aarshiya-auto` (Curriculum Development — Sprint 6/7, now idle and available for the next dispatch) and `openclaw/command-centre` (repurposed to Curriculum Enhancement, now idle and available for the next dispatch).
 
 ## Blockers
 
@@ -46,4 +41,4 @@ None currently.
 
 ## Next Decision
 
-None pending from Product. Engineering proceeding per the 2026-08-03 directive: finish verifying Sprint 6 against its Definition of Done, then continue straight into Sprint 7 (Periodic Table) with no review stop in between. Next Product touchpoint is after Sprint 7 reaches the same review point.
+Awaiting Product Review of Sprint 6 + Sprint 7 (both complete) before starting a new topic. See `docs/product-owner-briefing.md` for the consolidated briefing.
