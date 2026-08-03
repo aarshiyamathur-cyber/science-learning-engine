@@ -9,7 +9,7 @@ _Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Spri
 | Sprint 5 | Complete Matter | ✅ Done — accepted by Product Owner 2026-08-03 |
 | Sprint 6 | Atomic Structure | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 7 | Periodic Table | ✅ Done — Definition of Done met 2026-08-03 |
-| Sprint 8 | Chemical Reactions | 🔄 Underway |
+| Sprint 8 | Chemical Reactions | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 9 | Forces | ⬜ Not started |
 | Sprint 10 | Energy | ⬜ Not started |
 | Sprint 11 | Cells | ⬜ Not started |
@@ -82,11 +82,17 @@ Every lesson contributes reusable questions with concept, difficulty, correct an
 
 **Both Sprint 6 and Sprint 7 met the Definition of Done 2026-08-03 — that was the review stop point before the 2026-08-03 autonomous-execution directive superseded per-sprint review stops. Continuing directly into Sprint 8.**
 
-## Sprint 8 — Chemical Reactions (underway)
+## Sprint 8 — Chemical Reactions (Definition of Done met 2026-08-03)
 
 **Scope:** what a chemical reaction is (reactants → products), signs a reaction has happened (colour change, gas produced, precipitate, temperature change), conservation of mass, simple word equations — Year 7-10 appropriate, no balancing numeric equations or reaction-rate kinetics.
 
 **Prerequisite:** `sci-y7-atomic-structure` (a reaction rearranges atoms into new substances; mass is conserved because atom counts don't change).
+
+**First topic built under the new visual-learning standard and the 3-worktree pipeline:** `lesson-chemical-reactions-intro.yaml` opens with a hero illustration step, uses two short (2-3 sentence) explanation steps instead of one long paragraph, a second mid-lesson illustration step (conservation of mass), a short example, and a new `ReactionSimulator` widget (3 preset reactant pairs, each with a visual tied directly to its specific sign of reaction — bubbles for gas, a colour-shifting circle for rusting, a flickering flame for combustion). `assessment-chemical-reactions-quiz.yaml` directly targets both misconceptions.
+
+**Delegated across 3 worktrees for the first time:** Worktree 1 (BL-046) wrote the lesson/assessment/widget; Worktree 2 (CE-002) wrote the two new illustrations in parallel against ids specified up front; a new third worktree (`openclaw/reviewer`) independently reviewed both branches for scientific accuracy and conflicts, did the registry wiring, ran the full check suite including a production build, and merged to master itself — the first fully OpenClaw-reviewed-and-merged sprint, with Claude doing an independent re-verification (checks + content spot-check + live browser click-through) afterward rather than reviewing the original diff by hand.
+
+**Definition of Done met 2026-08-03:** independently re-verified by Claude — `validate:curriculum`/`typecheck`/`lint`/`vitest` (79/79)/`build` all pass, live click-through of all 12 lesson steps (hero illustration, 2 short explanations, mid-lesson illustration, example, widget interaction across all 3 reactant pairs, 5 questions, summary, finish), mastery/XP confirmed (300 XP total), mobile (375px, no overflow), no placeholders/TODOs.
 
 ## Engineering capacity
 
