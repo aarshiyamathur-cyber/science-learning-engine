@@ -1,0 +1,56 @@
+id: lesson-forces-intro
+conceptId: sci-y7-forces
+title: Forces
+summary: What a force is, how balanced and unbalanced forces differ, and how friction and gravity shape everyday motion.
+steps:
+  - type: illustration
+    illustration: forces-hero
+    caption: A force is a push or pull that changes how something moves.
+  - type: explanation
+    body: >
+      A force is simply a push or a pull. Forces can speed something up,
+      slow it down, change the direction it's moving in, or even change its
+      shape. Every time an object's motion changes, a force is behind it.
+  - type: explanation
+    body: >
+      When all the forces on an object cancel out, they're called balanced
+      forces, and the object's motion doesn't change at all. When the
+      forces don't cancel out, they're unbalanced, and the object speeds
+      up, slows down, or changes direction.
+  - type: illustration
+    illustration: balanced-unbalanced-forces
+    caption: Balanced forces cancel out; unbalanced forces change an object's motion.
+  - type: example
+    body: >
+      In a tug-of-war, if both teams pull equally hard, the forces are
+      balanced and the rope stays still. As soon as one team pulls harder,
+      the forces become unbalanced and the rope starts moving toward them.
+  - type: interactive
+    widget: force-friction-simulator
+    prompt: >
+      Try pushing the block across each surface below. Notice how far it
+      slides before friction stops it — and how that distance changes
+      depending on how rough the surface is.
+  - type: explanation
+    body: >
+      Gravity is a force that pulls every object toward Earth. Ignoring air
+      resistance, all objects fall at the same rate no matter how heavy
+      they are — a marble and a boulder dropped together would land at
+      exactly the same time.
+  - type: question
+    questionId: q-forces-01
+  - type: question
+    questionId: q-forces-02
+  - type: question
+    questionId: q-forces-03
+  - type: question
+    questionId: q-forces-04
+  - type: question
+    questionId: q-forces-05
+  - type: summary
+    body: >
+      A force is a push or pull that can change an object's speed,
+      direction, or shape. Balanced forces leave motion unchanged, while
+      unbalanced forces cause it to change. Friction opposes motion and is
+      stronger on rougher surfaces, and gravity pulls every object toward
+      Earth at the same rate, regardless of mass.

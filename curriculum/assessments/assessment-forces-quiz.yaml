@@ -1,0 +1,67 @@
+- id: q-forces-01
+  conceptId: sci-y7-forces
+  prompt: What is a force?
+  type: multiple-choice
+  options:
+    - A push or a pull that can change how something moves
+    - A type of energy stored inside an object
+    - The speed an object is travelling at
+    - A substance that makes objects heavier
+  correctAnswer: A push or a pull that can change how something moves
+  difficulty: 0.1
+  hint: Think about what you're doing to an object when you shove it or tug on it.
+  explanation: A force is a push or a pull. It can speed an object up, slow it down, change its direction, or change its shape — but it is not a type of energy, a speed, or a substance.
+- id: q-forces-02
+  conceptId: sci-y7-forces
+  prompt: >
+    True or False: A hockey puck sliding at a constant speed in a straight
+    line across frictionless ice needs a constant force pushing it to keep
+    it moving.
+  type: multiple-choice
+  options:
+    - "True"
+    - "False"
+  correctAnswer: "False"
+  difficulty: 0.4
+  hint: Ask yourself whether the forces on the puck are balanced or unbalanced while its speed and direction stay the same.
+  explanation: A force is needed to change motion, not to maintain it. With no friction, the forces on the puck are balanced (or zero), so it keeps moving at the same speed in the same direction without any ongoing push.
+- id: q-forces-03
+  conceptId: sci-y7-forces
+  prompt: A book sits still on a table. Are the forces acting on it balanced or unbalanced, and how do you know?
+  type: short-answer
+  correctAnswer: >
+    Balanced — the book's motion isn't changing (it stays still), and
+    balanced forces are what leave an object's motion unchanged.
+  difficulty: 0.3
+  hint: Look at whether the book's motion is changing at all, then match that to what balanced forces do.
+  explanation: The book stays perfectly still, so its motion isn't changing. That tells us the forces on it — gravity pulling it down and the table pushing it up — must be balanced, since balanced forces are exactly what leave motion unchanged.
+- id: q-forces-04
+  conceptId: sci-y7-forces
+  prompt: >
+    A student drops a heavy bowling ball and a light tennis ball from the
+    same height at the same time, with air resistance ignored. Which one
+    lands first, and why?
+  type: multiple-choice
+  options:
+    - The bowling ball, because it is heavier
+    - The tennis ball, because it is lighter
+    - They land at the same time, because gravity accelerates all objects equally regardless of mass
+    - Neither lands, because gravity only pulls on heavy objects
+  correctAnswer: They land at the same time, because gravity accelerates all objects equally regardless of mass
+  difficulty: 0.4
+  hint: Mass changes how hard gravity pulls on an object, but think about whether that also changes how fast it falls.
+  explanation: Ignoring air resistance, gravity accelerates every object at the same rate no matter its mass. A heavier object does feel a bigger pull, but it also takes more force to accelerate, so the two effects cancel out and both balls land together.
+- id: q-forces-05
+  conceptId: sci-y7-forces
+  prompt: >
+    You push a box across rough carpet and then across a smooth wood floor
+    with the same push each time. Explain why the box slides much further
+    on the wood floor.
+  type: short-answer
+  correctAnswer: >
+    The wood floor has less friction than the rough carpet, so it opposes
+    the box's motion less. With less opposing force, the box keeps sliding
+    for longer before it's brought to a stop.
+  difficulty: 0.5
+  hint: Friction is a force that opposes motion — think about which surface pushes back against the box more strongly.
+  explanation: Friction is a force that opposes motion between two surfaces, and rougher surfaces create more of it. Rough carpet opposes the box's sliding much more strongly than a smooth wood floor, so the box loses its motion faster on carpet and slides much further on wood.

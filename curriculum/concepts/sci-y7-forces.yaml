@@ -23,6 +23,6 @@ prerequisites:
 unlocks: []
 masteryThreshold: 0.8
 revisionStrategy: spaced-repetition
-lessonRefs: []
-assessmentRefs: []
+lessonRefs: ["lesson-forces-intro"]
+assessmentRefs: ["assessment-forces-quiz"]
 xpReward: 50
