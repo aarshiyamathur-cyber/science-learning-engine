@@ -8,8 +8,8 @@ _Updated 2026-08-03: Sprint 5 formally accepted; Sprint 6 authorised to continue
 | Sprint | Topic | Status |
 | --- | --- | --- |
 | Sprint 5 | Complete Matter | ✅ Done — accepted by Product Owner 2026-08-03 |
-| Sprint 6 | Atomic Structure | 🔄 Continuing — see below |
-| Sprint 7 | Periodic Table | 🔄 Authorised to begin immediately once Sprint 6 DoD is met, no review stop in between |
+| Sprint 6 | Atomic Structure | ✅ Done — Definition of Done met 2026-08-03 |
+| Sprint 7 | Periodic Table | 🔄 Underway — starting immediately per directive, no review stop |
 
 ## Sprint 5 — Definition of Done (all met)
 
@@ -40,7 +40,7 @@ _Updated 2026-08-03: Sprint 5 formally accepted; Sprint 6 authorised to continue
 
 **Resolved:** "Identify atoms from atomic number" is covered via assessment questions in BL-040 (e.g. `q-atomic-structure-02`/`03`), not a separate mechanic.
 
-**Remaining before Sprint 6 is marked complete:** live QA against the full Definition of Done (interaction/navigation/mobile/XP/no-placeholders, same bar as Sprint 5) — in progress.
+**Definition of Done met 2026-08-03 (BL-043):** live click-through of every interaction (hints, wrong-answer retry, atom-builder widget, all 5 questions, summary), 8-question bank, navigation lock/unlock and mobile (375px) confirmed, no placeholders/TODOs. Two real bugs found during QA and fixed — see `management/TASK_LEDGER.md` BL-043 and DEC-008. Sprint 6 is complete.
 
 ## Question Bank policy
 

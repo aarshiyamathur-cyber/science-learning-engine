@@ -317,6 +317,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** q-atomic-structure-06 asks which particle carries a negative charge; q-atomic-structure-07 requires deriving electron count (17) from atomic number using the neutral-atom rule; q-atomic-structure-08 applies the 2/8/remainder shell-filling rule to 17 electrons, distinct from q-atomic-structure-04's 13-electron example. Delegated to and completed by an OpenClaw headless worker; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (65/65 tests, 10 files) all pass.
 
+### BL-043 — Sprint 6 final QA: live click-through, 2 real bugs found and fixed
+
+- **Description:** Full live Playwright click-through of the Atomic Structure lesson (matching the BL-036 bar for Matter): explanation → example → atom-builder interactive → all 5 questions (deliberate wrong answer, retry, hint reveal) → summary → finish, plus a 375px mobile viewport check and topic-list unlock/XP verification.
+- **Dependencies:** BL-040, BL-041, BL-042
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** Every interaction verified live in a real browser; no placeholders/TODOs repo-wide; navigation, mobile, and XP/mastery tracking confirmed working.
+- **Estimate:** Medium
+- **Notes:** Found and fixed two real bugs neither typecheck/lint/65 unit tests caught: (1) `ContinueLearningScreen` still hardcoded "Matter"/"Back to Matter" as the topic-list heading and back-navigation label, left over from before the topic list grew to span multiple topics — changed to topic-agnostic "Science Course"/"Back to topic list". (2) A fresh `next build`/`next dev` failed repo-wide with "Unknown module type" for every `@aarshiya/*` workspace package, a pre-existing environment issue unrelated to any content change (reproduced on unmodified symlinks) — fixed via `transpilePackages` in `next.config.ts` (see DEC-008). This mattered because the live `AarshiyaAppServer`'s on-disk `.next` build had gone stale; without the fix no future code change could have been redeployed. Rebuilt, restarted the live server, and re-verified both fixes with a real browser click-through. `validate:curriculum`, `typecheck`, `lint`, `vitest run` (65/65 tests, 10 files), and `build` all pass.
+
+**Sprint 6 (Atomic Structure) Definition of Done met 2026-08-03 — proceeding immediately to Sprint 7 per Product Owner directive, no review stop in between.**
+
 ## Product Command Centre
 
 ### CC-001 — Command Centre framework, navigation, and routing

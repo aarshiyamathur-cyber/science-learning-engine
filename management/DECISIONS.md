@@ -93,3 +93,17 @@ Sprint 6 was not to be paused to redesign or formalise the Question Bank as its 
 
 **Impact**
 `management/ROADMAP.md`'s "Question Bank policy" section stands as previously documented (every question ships with concept/difficulty/correct answer/explanation/hint/curriculum reference). No new backlog items should be created for a standalone Question Bank initiative; the Command Centre's Question Bank page remains sample-data-backed per its existing scope freeze.
+
+## DEC-008
+
+**Decision**
+Added explicit `transpilePackages: ["@aarshiya/curriculum-schema", "@aarshiya/learning-engine", "@aarshiya/ollama-client"]` to `next.config.ts`.
+
+**Status**
+Accepted
+
+**Reason**
+During Sprint 6 final QA (BL-043), a fresh `next build`/`next dev` failed for every route with "Unknown module type" errors on all three `@aarshiya/*` workspace packages, reproduced even on completely unmodified `npm install`-generated symlinks — a pre-existing environment issue, not caused by any curriculum content or code change this session. Per Next.js's own docs, Turbopack is supposed to auto-transpile workspace packages, but in practice (this Next 16.2.12 + Windows npm-workspace-symlink combination) it did not until `transpilePackages` was set explicitly. This was discovered because the live `AarshiyaAppServer`'s on-disk `.next` build had drifted stale relative to source; without this fix, no future code change (curriculum-data-only changes are unaffected since they're read at runtime, but any `.tsx`/`.ts` change) could have been redeployed at all — this is a real deployability blocker, not a discretionary infrastructure improvement, so it was fixed directly rather than deferred under the infrastructure freeze.
+
+**Impact**
+`next build`/`next dev` work again. Verified via a full production build, typecheck/lint/vitest (65/65), and a live restart of `AarshiyaAppServer` with a real browser click-through confirming the rebuilt server serves correctly. Future sessions should be aware this machine's actual project directory is `D:\Projects\...` (capital P) — a mismatched-case working directory (e.g. `d:\projects\...`) can independently cause spurious `tsc` "differs only in casing" errors on the same `@aarshiya/*` symlinks; always operate from the correctly-cased path.
