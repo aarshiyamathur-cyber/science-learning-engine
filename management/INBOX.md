@@ -4,6 +4,22 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-04 — Product Owner Directive: Master Product Charter v2.0 (supersedes all previous sprint directives)
+
+- **Vision:** the best Year 9 Science learning experience possible for Aarshiya — the complete NSW Year 9 Science curriculum, understood, enjoyed, mastered. Everything else is secondary.
+- **Phase 1 mission:** complete every NSW Year 9 Science topic to production quality. Continue autonomously; do not stop after every sprint. Stop only for: a genuine curriculum ambiguity, a major architectural blocker, production blocked, or Phase 1 complete.
+- **Org (formalised):** Sponsor = Sudeep. Product Owner = Alex (ChatGPT). Engineering Lead = Claude (architecture/planning/delegation/review/integration/quality/product alignment — not primary implementer). Engineering Team = OpenClaw, target 80%+ of engineering work.
+- **Worktree allocation (confirms the existing 3-worktree pipeline, formalises Worktree 3's scope):** Worktree 1 = Curriculum (lessons, interactions, assessments, question bank). Worktree 2 = Learner Experience (illustrations, graphics, diagrams, UI polish, accessibility, revision experience). Worktree 3 = QA (testing, review, regression, bug fixing, integration) — broader than "review before merge" alone; going forward its dispatches should include live browser-based click-through testing itself, not just automated checks.
+- **Product standard per topic (reaffirms DEC-009 + existing DoD):** curriculum coverage, hero illustration, supporting graphics, readable explanations, meaningful interactions, assessment, feedback, hints, reusable Question Bank entries, curriculum mapping, mobile/iPad support.
+- **Question Bank:** grows continuously via normal lesson authoring, no separate project (reaffirms DEC-007).
+- **Engineering priority order:** Curriculum > Learner Experience > Visual Learning > Question Bank > QA.
+- **Explicitly frozen during Phase 1** (unless authorised): workflow redesign, dashboard enhancements, orchestration, infrastructure optimisation, startup features, monetisation, teacher portal, parent portal, analytics, gamification, achievements, badges, multiplayer, multi-subject support.
+- **Reporting:** Product Briefs only every 4 completed topics, a major milestone, an architectural blocker, or a production issue — not after every sprint.
+- **Phase 1 success:** all NSW Year 9 Science topics implemented, visuals across every lesson, Question Bank covers the curriculum, Aarshiya can complete the entire course.
+- **Phase 2 (does not begin automatically):** once Phase 1 is complete, prepare recommendations only — create `product/PHASE2.md` cataloguing future ideas (AI Tutor, voice, adaptive/personalised revision, gamification, virtual science lab, teacher/parent tools, analytics, accessibility, Year 10 expansion, commercial/deployment concerns), each with purpose/learner benefit/effort/priority/dependencies. Do not build any Phase 2 feature — maintain the backlog only.
+- **Final principle:** every engineering decision answers "does this help Aarshiya learn science better?" If yes, build it. If no, record it in `product/PHASE2.md` and keep building curriculum.
+- **Immediate implication for scope:** the previously-approved Sprint 8-12 list (Chemical Reactions, Forces, Energy, Cells, Body Systems) remains valid and unambiguous — proceed with Sprint 12 (Body Systems) immediately. What "every NSW Year 9 Science topic" requires beyond Sprint 12 will be assessed once Body Systems ships, flagging genuine scope ambiguity then rather than guessing now.
+
 ### 2026-08-03 — Product Owner Directive: autonomous multi-sprint execution, roadmap through Sprint 12
 
 Product vision, roadmap, and operating model now considered stable. Engineering authorised to continue building without waiting for Product approval after every sprint.

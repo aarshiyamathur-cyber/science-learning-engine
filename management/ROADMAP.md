@@ -1,6 +1,6 @@
 # Product Roadmap
 
-_Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Sprint 12 with standing autonomous-execution authorisation — see `management/INBOX.md`'s 2026-08-03 "autonomous multi-sprint execution" directive. Mission: complete the NSW Year 9 Science Learning Engine. Continue executing without a per-sprint approval stop; see Stop Conditions below._
+_Master Product Charter v2.0 (2026-08-04) supersedes all previous sprint directives — see `management/INBOX.md`. Vision: the best Year 9 Science learning experience possible for Aarshiya. **Phase 1 mission: complete every NSW Year 9 Science topic to production quality**, continuing autonomously — see Stop Conditions below. Phase 2 (product evolution beyond the curriculum) does not begin automatically; see the Phase 2 section at the end of this file._
 
 **KPI: completed science topics Aarshiya can learn from — not engineering progress. Secondary KPI: Question Bank growth.**
 
@@ -13,23 +13,36 @@ _Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Spri
 | Sprint 9 | Forces | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 10 | Energy | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 11 | Cells | ✅ Done — Definition of Done met 2026-08-04 |
-| Sprint 12 | Body Systems | ⬜ Not started — **stop condition reached, awaiting Product Brief / check-in per the 2026-08-03 directive** |
+| Sprint 12 | Body Systems | 🔄 Underway — pre-approved, no ambiguity, proceeding immediately per the 2026-08-04 charter |
 
-## Stop conditions (2026-08-03 directive — the only reasons to pause and ask)
+## Stop conditions (2026-08-04 charter — the only reasons to pause and ask)
 
-1. A genuine architectural blocker.
-2. A product decision that cannot reasonably be inferred.
-3. Four additional curriculum topics (i.e. Sprints 8-11) have reached the Definition of Done.
-4. A critical production issue.
+1. A genuine curriculum ambiguity (e.g. what exactly constitutes "every NSW Year 9 Science topic" beyond the pre-approved Sprint 8-12 list — to be assessed once Sprint 12 ships, not guessed at now).
+2. A major architectural blocker.
+3. Production is blocked.
+4. Phase 1 is complete.
 
-Otherwise: continue autonomously, update the repository continuously, and provide a concise Product Brief only at major milestones — not a full briefing after every sprint.
+Otherwise: continue autonomously, update the repository continuously, and provide a concise Product Brief only every 4 completed topics, a major milestone, an architectural blocker, or a production issue — not a full briefing after every sprint.
 
-## Worktree allocation (2026-08-03 directive)
+## Worktree allocation (2026-08-04 charter, formalising the existing 3-worktree pipeline)
 
-- **Worktree 1 (`openclaw/aarshiya-auto`) — primary curriculum implementation:** lessons, interactions, assessments, question bank entries.
-- **Worktree 2 (`openclaw/command-centre`, repurposed) — learner experience:** illustrations, educational graphics, diagrams, UI polish, accessibility, QA, revision questions.
+- **Worktree 1 (`openclaw/aarshiya-auto`) — Curriculum:** lessons, interactions, assessments, question bank entries.
+- **Worktree 2 (`openclaw/command-centre`, repurposed) — Learner Experience:** illustrations, educational graphics, diagrams, UI polish, accessibility, revision experience.
+- **Worktree 3 (`openclaw/reviewer`) — QA:** testing, review, regression, bug fixing, integration. Broader than "review before merge" — dispatches should include live browser click-through testing itself (Playwright), not just automated checks, so Claude's own post-merge QA can stay light (a spot-check, not a full re-run).
 
-OpenClaw is now the primary implementation team; Claude maximises delegation and only codes directly for architecture changes, when OpenClaw is blocked, or when integration can't be delegated.
+OpenClaw is the primary implementation team, target 80%+ of engineering work. Claude (Engineering Lead) maximises delegation and only codes directly for architecture changes, when OpenClaw is blocked, or when integration can't be delegated.
+
+## Engineering priority order (2026-08-04 charter)
+
+Curriculum > Learner Experience > Visual Learning > Question Bank > QA.
+
+## Explicitly frozen during Phase 1 (2026-08-04 charter, unless explicitly authorised)
+
+Workflow redesign, dashboard enhancements, orchestration, infrastructure optimisation, startup features, monetisation, teacher portal, parent portal, analytics, gamification, achievements, badges, multiplayer, multi-subject support.
+
+## Phase 2 (does not begin automatically)
+
+Once Phase 1 is complete (every NSW Year 9 topic implemented, visuals across every lesson, Question Bank covers the curriculum, Aarshiya can complete the entire course): create `product/PHASE2.md` cataloguing future ideas only (AI Tutor, voice, adaptive/personalised revision, gamification, virtual science lab, teacher/parent tools, analytics, accessibility, Year 10 expansion, commercial/deployment concerns) — purpose/learner benefit/effort/priority/dependencies per idea. Do not build any Phase 2 feature during Phase 1.
 
 ## Visual learning standard (DEC-009 — now a permanent product requirement, not a one-off decision)
 
