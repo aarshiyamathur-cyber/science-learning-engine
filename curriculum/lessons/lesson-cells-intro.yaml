@@ -1,0 +1,58 @@
+id: lesson-cells-intro
+conceptId: sci-y7-cells
+title: Cells
+summary: What a cell is, the structures common to most cells, how plant cells differ from animal cells, and how cells build up into tissues, organs, and organ systems.
+steps:
+  - type: illustration
+    illustration: cells-hero
+    caption: All living things are made of cells - the basic building blocks of life.
+  - type: explanation
+    body: >
+      Every living thing, from a single-celled bacterium to a giant tree, is
+      made up of cells. A cell is the smallest unit that can carry out the
+      processes needed to stay alive. Most organisms are built from many
+      cells working together, each carrying out its own job.
+  - type: explanation
+    body: >
+      Most cells share three key structures. The cell membrane controls
+      which substances enter and leave the cell. The cytoplasm is the
+      gel-like substance where the cell's processes happen. The nucleus
+      controls the cell's activities, a bit like a control centre.
+  - type: illustration
+    illustration: plant-vs-animal-cell
+    caption: Plant cells have a cell wall, chloroplasts, and a large vacuole that animal cells don't.
+  - type: example
+    body: >
+      A leaf cell has chloroplasts that capture sunlight so it can make its
+      own food, plus a rigid cell wall and a large vacuole. A skin cell has
+      none of these — no chloroplasts, no cell wall, and no large vacuole —
+      because it's an animal cell built for a different job.
+  - type: interactive
+    widget: cell-structure-explorer
+    prompt: >
+      Tap each structure below to see what it does. Notice which three
+      structures appear in both plant and animal cells, and which three
+      only appear in plant cells.
+  - type: explanation
+    body: >
+      In many-celled organisms, similar cells group together to form a
+      tissue, such as muscle tissue. Different tissues combine to form an
+      organ, such as the heart, and organs work together as an organ
+      system, such as the circulatory system.
+  - type: question
+    questionId: q-cells-01
+  - type: question
+    questionId: q-cells-02
+  - type: question
+    questionId: q-cells-03
+  - type: question
+    questionId: q-cells-04
+  - type: question
+    questionId: q-cells-05
+  - type: summary
+    body: >
+      All living things are made of cells, and most cells share a cell
+      membrane, cytoplasm, and nucleus. Plant cells also have a cell wall,
+      chloroplasts, and a large vacuole, which animal cells lack. Cells
+      group into tissues, tissues into organs, and organs into organ
+      systems.
