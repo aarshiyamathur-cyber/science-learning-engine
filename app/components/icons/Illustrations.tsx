@@ -138,6 +138,43 @@ export function AtomicStructureIllustration(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** A small grid of element tiles, coloured by metal (amber) vs non-metal (sky). */
+export function PeriodicTableIllustration(props: SVGProps<SVGSVGElement>) {
+  const tileColors = [
+    "#f59e0b",
+    "#f59e0b",
+    "#0ea5e9",
+    "#0ea5e9",
+    "#0ea5e9",
+    "#f59e0b",
+    "#f59e0b",
+    "#0ea5e9",
+    "#0ea5e9",
+    "#0ea5e9",
+    "#0ea5e9",
+    "#0ea5e9",
+  ];
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      {tileColors.map((color, index) => {
+        const col = index % 6;
+        const row = Math.floor(index / 6);
+        return (
+          <rect
+            key={index}
+            x={12 + col * 27}
+            y={25 + row * 40}
+            width="20"
+            height="20"
+            rx="3"
+            fill={color}
+          />
+        );
+      })}
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (

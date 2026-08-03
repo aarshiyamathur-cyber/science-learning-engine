@@ -9,6 +9,7 @@ import {
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ParticleModelIllustration,
+  PeriodicTableIllustration,
   StatesOfMatterIllustration,
 } from "./icons";
 import { LessonPlayer } from "./LessonPlayer";
@@ -23,6 +24,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-particle-model": ParticleModelIllustration,
   "sci-y7-states-of-matter": ChangesOfStateIllustration,
   "sci-y7-atomic-structure": AtomicStructureIllustration,
+  "sci-y7-periodic-table": PeriodicTableIllustration,
 };
 
 export interface LessonEntry {

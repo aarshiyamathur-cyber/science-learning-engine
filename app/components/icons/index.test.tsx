@@ -8,6 +8,7 @@ import {
   ExampleIcon,
   ExplanationIcon,
   ParticleModelIllustration,
+  PeriodicTableIllustration,
   QuestionIcon,
   StatesOfMatterIllustration,
   SummaryIcon,
@@ -24,6 +25,7 @@ describe("step icons and illustrations", () => {
     ParticleModelIllustration,
     ChangesOfStateIllustration,
     AtomicStructureIllustration,
+    PeriodicTableIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);

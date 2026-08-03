@@ -7,6 +7,7 @@ import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
+import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
 
 /**
  * Registry of interactive widgets, keyed by the id a lesson's interactive
@@ -16,6 +17,7 @@ import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "particle-state-explorer": ParticleStateExplorer,
   "atom-builder": AtomBuilder,
+  "periodic-table-explorer": PeriodicTableExplorer,
 };
 
 interface LessonPlayerProps {
