@@ -351,6 +351,140 @@ export function BalancedUnbalancedForcesIllustration(
   );
 }
 
+/** A lightbulb shining, with radiating light rays - energy actively producing light. */
+export function EnergyHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="90" cy="54" r="34" fill="#f59e0b" />
+      <rect x="76" y="82" width="28" height="16" rx="3" fill="#a1a1aa" />
+      <rect x="80" y="100" width="20" height="8" rx="2" fill="#a1a1aa" />
+      <path
+        d="M78,42 L90,68 L102,42"
+        fill="none"
+        stroke="#f43f5e"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="90"
+        y1="2"
+        x2="90"
+        y2="14"
+        stroke="#f59e0b"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="40"
+        y1="30"
+        x2="49"
+        y2="38"
+        stroke="#f59e0b"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="140"
+        y1="30"
+        x2="131"
+        y2="38"
+        stroke="#f59e0b"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="18"
+        y1="60"
+        x2="32"
+        y2="60"
+        stroke="#f59e0b"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <line
+        x1="162"
+        y1="60"
+        x2="148"
+        y2="60"
+        stroke="#f59e0b"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** Three linked stages - battery, lightning bolt, sun burst - showing energy changing from one form to another. */
+export function EnergyTransformationIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect x="10" y="42" width="30" height="36" rx="4" fill="#10b981" />
+      <rect x="18" y="34" width="14" height="8" rx="2" fill="#10b981" />
+      <line
+        x1="46"
+        y1="60"
+        x2="66"
+        y2="60"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <polygon points="66,50 84,60 66,70" fill="#a1a1aa" />
+      <polygon points="92,32 78,66 92,66 84,90 112,54 96,54 106,32" fill="#8b5cf6" />
+      <line
+        x1="118"
+        y1="60"
+        x2="138"
+        y2="60"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <polygon points="138,50 154,60 138,70" fill="#a1a1aa" />
+      <circle cx="160" cy="60" r="14" fill="#f59e0b" />
+      <line
+        x1="160"
+        y1="34"
+        x2="160"
+        y2="24"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="160"
+        y1="86"
+        x2="160"
+        y2="96"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="142"
+        y1="38"
+        x2="149"
+        y2="46"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="142"
+        y1="82"
+        x2="149"
+        y2="74"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (
