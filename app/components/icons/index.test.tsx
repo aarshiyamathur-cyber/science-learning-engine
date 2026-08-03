@@ -4,6 +4,7 @@ import { describe, expect, test } from "vitest";
 import {
   AtomicStructureIllustration,
   BalancedUnbalancedForcesIllustration,
+  BodySystemsHeroIllustration,
   CelebrationIllustration,
   CellsHeroIllustration,
   ChangesOfStateIllustration,
@@ -20,6 +21,7 @@ import {
   QuestionIcon,
   StatesOfMatterIllustration,
   SummaryIcon,
+  SystemsWorkingTogetherIllustration,
 } from "./index";
 
 describe("step icons and illustrations", () => {
@@ -42,6 +44,8 @@ describe("step icons and illustrations", () => {
     EnergyTransformationIllustration,
     CellsHeroIllustration,
     PlantVsAnimalCellIllustration,
+    BodySystemsHeroIllustration,
+    SystemsWorkingTogetherIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);
