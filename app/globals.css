@@ -225,3 +225,45 @@ body {
     opacity: 0;
   }
 }
+
+/* Energy (BL-048) — the pendulum bob swings between its two extremes while
+   the potential and kinetic bars trade height a quarter-period out of
+   phase, so the total (one bar's rise matching the other's fall) visibly
+   stays constant as it swings. */
+@keyframes pendulum-swing {
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+  25%,
+  75% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes pendulum-potential-bar {
+  0%,
+  50%,
+  100% {
+    transform: scaleY(1);
+  }
+  25%,
+  75% {
+    transform: scaleY(0.15);
+  }
+}
+
+@keyframes pendulum-kinetic-bar {
+  0%,
+  50%,
+  100% {
+    transform: scaleY(0.15);
+  }
+  25%,
+  75% {
+    transform: scaleY(1);
+  }
+}

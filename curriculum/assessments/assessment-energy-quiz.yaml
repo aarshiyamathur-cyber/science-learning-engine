@@ -1,0 +1,65 @@
+- id: q-energy-01
+  conceptId: sci-y7-energy
+  prompt: What does it mean to say that energy is "conserved"?
+  type: multiple-choice
+  options:
+    - Energy is never created or destroyed, only transformed from one form into another
+    - Energy should be saved up and used as rarely as possible
+    - Energy always stays in exactly the same form once it appears
+    - Energy can be destroyed, but only in special circumstances
+  correctAnswer: Energy is never created or destroyed, only transformed from one form into another
+  difficulty: 0.1
+  hint: Think about what happens to energy overall, not how carefully someone uses it.
+  explanation: Conservation of energy means the total amount of energy never changes — it's never created or destroyed. It's constantly transformed between forms, such as chemical energy becoming electrical and then light energy.
+- id: q-energy-02
+  conceptId: sci-y7-energy
+  prompt: >
+    A wind-up toy car is wound up, then released and rolls across the floor
+    until it eventually stops. A student says the energy in the toy "ran out"
+    and disappeared. Explain what actually happened to the energy.
+  type: short-answer
+  correctAnswer: >
+    The energy didn't disappear — it was transformed. The stored (elastic
+    potential) energy in the wound spring became kinetic energy as the car
+    moved, and that kinetic energy was gradually transformed into heat and
+    sound through friction, until none was left driving the car's motion.
+  difficulty: 0.4
+  hint: The car stopping doesn't mean the energy vanished — think about where friction and sound might have carried it.
+  explanation: Energy is never destroyed. The spring's stored energy became kinetic energy, which friction and sound gradually transformed into heat, so the total energy is still there — just spread out as heat rather than driving the car's motion.
+- id: q-energy-03
+  conceptId: sci-y7-energy
+  prompt: >
+    A ball is held still high above the ground. Does it have any energy,
+    even though it isn't moving? Explain your answer.
+  type: short-answer
+  correctAnswer: >
+    Yes — the ball has gravitational potential energy because of its height
+    above the ground, even though it isn't moving and has no kinetic energy.
+  difficulty: 0.3
+  hint: An object doesn't need to be moving to store energy — think about what its height above the ground lets it do if released.
+  explanation: A stationary object can still store energy. Because the ball is held up high, it has gravitational potential energy — energy that would become kinetic energy if it were released and allowed to fall.
+- id: q-energy-04
+  conceptId: sci-y7-energy
+  prompt: A toaster transforms electrical energy mainly into which form of energy?
+  type: multiple-choice
+  options:
+    - Thermal (heat) energy
+    - Gravitational potential energy
+    - Sound energy
+    - Chemical energy
+  correctAnswer: Thermal (heat) energy
+  difficulty: 0.2
+  hint: Think about what a toaster actually does to the bread — what change do you feel coming off it?
+  explanation: A toaster transforms electrical energy mainly into thermal (heat) energy, which browns the bread. Like almost every energy transformation, some of that energy also spreads out as heat that isn't put to use.
+- id: q-energy-05
+  conceptId: sci-y7-energy
+  prompt: >
+    A stretched spring on a table isn't moving. A student claims it has no
+    energy because "nothing is happening." Is the student correct? Explain.
+  type: short-answer
+  correctAnswer: >
+    No — the stretched spring has elastic potential energy stored in it,
+    even though it's sitting still and nothing appears to be moving.
+  difficulty: 0.3
+  hint: Stillness doesn't mean an object has no stored energy — think about what the spring would do if you let it go.
+  explanation: The student is incorrect. A stationary object can still hold energy — the stretched spring stores elastic potential energy, which would convert into kinetic energy the moment it's released and allowed to snap back.

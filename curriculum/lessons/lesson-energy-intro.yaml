@@ -1,0 +1,52 @@
+id: lesson-energy-intro
+conceptId: sci-y7-energy
+title: Energy
+summary: What energy is, the common forms it takes, and how it's transformed from one form to another without ever being created or destroyed.
+steps:
+  - type: illustration
+    illustration: energy-hero
+    caption: Energy makes things move, heat up, light up, and make sound.
+  - type: explanation
+    body: >
+      Energy is what makes things happen — it lets objects move, heat up,
+      light up, or make sound. It comes in many forms, including kinetic
+      (movement), potential (stored), thermal (heat), light, sound,
+      chemical, and electrical energy.
+  - type: explanation
+    body: >
+      Energy is never created or destroyed — it can only be transformed
+      from one form into another. Whenever energy changes form, some of it
+      is always released as heat, which is why no transformation is
+      perfectly efficient.
+  - type: illustration
+    illustration: energy-transformation
+    caption: Energy is never destroyed - it just changes from one form into another.
+  - type: example
+    body: >
+      A ball held up high has gravitational potential energy because of its
+      height. As it falls, that potential energy is transformed into
+      kinetic energy, so the ball speeds up the closer it gets to the
+      ground.
+  - type: interactive
+    widget: energy-transformation-explorer
+    prompt: >
+      Try each scenario below and follow the chain of energy forms it
+      shows. Notice how energy keeps changing form — and for the pendulum,
+      watch how it trades between potential and kinetic as it swings.
+  - type: question
+    questionId: q-energy-01
+  - type: question
+    questionId: q-energy-02
+  - type: question
+    questionId: q-energy-03
+  - type: question
+    questionId: q-energy-04
+  - type: question
+    questionId: q-energy-05
+  - type: summary
+    body: >
+      Energy comes in many forms — kinetic, potential, thermal, light,
+      sound, chemical, and electrical — and it is never created or
+      destroyed, only transformed from one form into another, always with
+      some released as heat. A stationary object can still store energy,
+      like a raised ball or a stretched spring.
