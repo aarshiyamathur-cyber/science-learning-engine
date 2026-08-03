@@ -8,6 +8,8 @@ import {
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  EnergyHeroIllustration,
+  EnergyTransformationIllustration,
   ExampleIcon,
   ExplanationIcon,
   ForcesHeroIllustration,
@@ -20,6 +22,7 @@ import {
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
+import { EnergyTransformationExplorer } from "./widgets/EnergyTransformationExplorer";
 import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
@@ -36,6 +39,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "periodic-table-explorer": PeriodicTableExplorer,
   "reaction-simulator": ReactionSimulator,
   "force-friction-simulator": ForceFrictionSimulator,
+  "energy-transformation-explorer": EnergyTransformationExplorer,
 };
 
 /**
@@ -56,6 +60,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "conservation-of-mass": ConservationOfMassIllustration,
   "forces-hero": ForcesHeroIllustration,
   "balanced-unbalanced-forces": BalancedUnbalancedForcesIllustration,
+  "energy-hero": EnergyHeroIllustration,
+  "energy-transformation": EnergyTransformationIllustration,
 };
 
 interface LessonPlayerProps {

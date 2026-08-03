@@ -9,6 +9,7 @@ import {
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
+  EnergyHeroIllustration,
   ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
@@ -29,6 +30,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-periodic-table": PeriodicTableIllustration,
   "sci-y7-chemical-reactions": ChemicalReactionHeroIllustration,
   "sci-y7-forces": ForcesHeroIllustration,
+  "sci-y7-energy": EnergyHeroIllustration,
 };
 
 export interface LessonEntry {
