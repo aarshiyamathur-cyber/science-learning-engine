@@ -198,3 +198,30 @@ body {
     filter: brightness(1.15);
   }
 }
+
+/* Friction (BL-047) — the block slides a distance set per-instance via the
+   --slide-distance custom property, inversely related to how strongly the
+   surface opposes motion; the push label pulses once to mark the push. */
+@keyframes friction-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--slide-distance));
+  }
+}
+
+@keyframes push-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
