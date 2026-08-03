@@ -4,14 +4,16 @@ _Last updated: 2026-08-03 by Claude Code_
 
 Tracking starts with Sprint 2 (the delegation-first directive was introduced mid-Sprint-2).
 
-## Two worktrees, both dedicated to curriculum (as of 2026-08-03)
+## Two worktrees, OpenClaw as primary implementation team (as of 2026-08-03, superseding the Curriculum-Development/Curriculum-Enhancement split below)
 
-Per the 2026-08-03 Product Owner directive, both managed worktrees are now dedicated exclusively to the Science Learning Engine — no infrastructure/workflow/dashboard work in either without explicit approval:
+Per the 2026-08-03 "autonomous multi-sprint execution" directive, OpenClaw is now the primary implementation team for the Sprint 8-12 roadmap (Chemical Reactions, Forces, Energy, Cells, Body Systems). Both worktrees dedicated to learner-facing development, target allocation:
 
-- **Worktree 1 — `openclaw/aarshiya-auto` (agent `aarshiya-dev`) — Curriculum Development.** Sprint 6 (Atomic Structure) close-out, then Sprint 7 (Periodic Table).
-- **Worktree 2 — `openclaw/command-centre` — Curriculum Enhancement** (repurposed from the now-superseded Product Command Centre initiative). Grows question banks and improves existing shipped lessons (Matter, Particle Model, States of Matter); supports Worktree 1 where required.
+- **Worktree 1 — `openclaw/aarshiya-auto` (agent `aarshiya-dev`) — Primary curriculum implementation.** Lessons, interactions, assessments, question bank entries for the current sprint's new topic.
+- **Worktree 2 — `openclaw/command-centre`, repurposed — Learner experience.** Illustrations, educational graphics, diagrams, UI polish, accessibility, QA, revision questions — including the new per-lesson `illustration` step content required by the visual learning standard (DEC-009).
 
-Dispatch mechanism for both: a task-specific prompt file under `~/.openclaw/`, run as a headless Claude Code worker (`claude --permission-mode bypassPermissions --print`) directly in the target worktree directory on its existing branch — the same mechanism established in DEC-002/DEC-003, proven reliable across BL-020, BL-028, BL-031–033, BL-040–041, and CC-001–004. Both worktrees are scoped to touch disjoint files (new topic files vs. existing assessment files) to avoid conflicts, per Claude's coordination responsibility.
+Claude maximises delegation; only becomes primary coder for architecture changes (e.g. the new `illustration` lesson-step type), when OpenClaw is blocked, or when integration can't be delegated. Dispatch mechanism for both: a task-specific prompt file under `~/.openclaw/`, run as a headless Claude Code worker (`claude --permission-mode bypassPermissions --print`) directly in the target worktree directory on its existing branch — the same mechanism established in DEC-002/DEC-003, proven reliable across BL-020, BL-028, BL-031–033, BL-040–041/044, and CC-001–004. Both worktrees are scoped to touch disjoint files to avoid conflicts, per Claude's coordination responsibility — for a brand-new topic, this means Worktree 1 writes new lesson/assessment files while Worktree 2 writes new illustration components against ids Claude specifies up front, so both can run in parallel with no shared-file risk.
+
+## Former: Curriculum Development / Curriculum Enhancement split (2026-08-03, superseded same day)
 
 ## Former: two parallel initiatives (2026-08-01 to 2026-08-03, superseded)
 

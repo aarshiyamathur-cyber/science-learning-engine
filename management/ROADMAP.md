@@ -1,15 +1,39 @@
 # Product Roadmap
 
-_Frozen 2026-08-01 per Product Owner directive. Do not change without explicit Product Owner approval._
-_Updated 2026-08-03: Sprint 5 formally accepted; Sprint 6 authorised to continue through Sprint 7 with no review stop between them — see `management/INBOX.md` 2026-08-03 directive and DEC-006/DEC-007._
+_Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Sprint 12 with standing autonomous-execution authorisation — see `management/INBOX.md`'s 2026-08-03 "autonomous multi-sprint execution" directive. Mission: complete the NSW Year 9 Science Learning Engine. Continue executing without a per-sprint approval stop; see Stop Conditions below._
 
-**KPI: completed science topics Aarshiya can learn from — not engineering progress.**
+**KPI: completed science topics Aarshiya can learn from — not engineering progress. Secondary KPI: Question Bank growth.**
 
 | Sprint | Topic | Status |
 | --- | --- | --- |
 | Sprint 5 | Complete Matter | ✅ Done — accepted by Product Owner 2026-08-03 |
 | Sprint 6 | Atomic Structure | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 7 | Periodic Table | ✅ Done — Definition of Done met 2026-08-03 |
+| Sprint 8 | Chemical Reactions | 🔄 Underway |
+| Sprint 9 | Forces | ⬜ Not started |
+| Sprint 10 | Energy | ⬜ Not started |
+| Sprint 11 | Cells | ⬜ Not started |
+| Sprint 12 | Body Systems | ⬜ Not started |
+
+## Stop conditions (2026-08-03 directive — the only reasons to pause and ask)
+
+1. A genuine architectural blocker.
+2. A product decision that cannot reasonably be inferred.
+3. Four additional curriculum topics (i.e. Sprints 8-11) have reached the Definition of Done.
+4. A critical production issue.
+
+Otherwise: continue autonomously, update the repository continuously, and provide a concise Product Brief only at major milestones — not a full briefing after every sprint.
+
+## Worktree allocation (2026-08-03 directive)
+
+- **Worktree 1 (`openclaw/aarshiya-auto`) — primary curriculum implementation:** lessons, interactions, assessments, question bank entries.
+- **Worktree 2 (`openclaw/command-centre`, repurposed) — learner experience:** illustrations, educational graphics, diagrams, UI polish, accessibility, QA, revision questions.
+
+OpenClaw is now the primary implementation team; Claude maximises delegation and only codes directly for architecture changes, when OpenClaw is blocked, or when integration can't be delegated.
+
+## Visual learning standard (DEC-009 — now a permanent product requirement, not a one-off decision)
+
+Every new lesson: a hero illustration, supporting diagrams/graphics, short readable text blocks, at least one meaningful interaction where appropriate. No long text-heavy lessons. Illustrations must teach a concept, never just decorate. Enabled by the new `illustration` lesson-step type (see `management/DECISIONS.md` and `management/TASK_LEDGER.md`).
 
 ## Sprint 5 — Definition of Done (all met)
 
@@ -56,11 +80,17 @@ Every lesson contributes reusable questions with concept, difficulty, correct an
 
 **Definition of Done met 2026-08-03:** full live click-through of all 9 lesson steps (explanation, example, widget interaction, 5 questions with hint/retry, summary, finish), mastery/XP confirmed (100% mastered, 250 XP total), mobile (375px, no overflow) confirmed, no placeholders/TODOs, `validate:curriculum`/`typecheck`/`lint`/`vitest` (69/69)/`build` all pass. Sprint 7 is complete.
 
-**Both Sprint 6 and Sprint 7 now meet the Definition of Done — this is the Product Review stop point per the 2026-08-03 directive.**
+**Both Sprint 6 and Sprint 7 met the Definition of Done 2026-08-03 — that was the review stop point before the 2026-08-03 autonomous-execution directive superseded per-sprint review stops. Continuing directly into Sprint 8.**
+
+## Sprint 8 — Chemical Reactions (underway)
+
+**Scope:** what a chemical reaction is (reactants → products), signs a reaction has happened (colour change, gas produced, precipitate, temperature change), conservation of mass, simple word equations — Year 7-10 appropriate, no balancing numeric equations or reaction-rate kinetics.
+
+**Prerequisite:** `sci-y7-atomic-structure` (a reaction rearranges atoms into new substances; mass is conserved because atom counts don't change).
 
 ## Engineering capacity
 
-~80% curriculum delivery, ~20% infrastructure/QA/maintenance. Curriculum wins any conflict. OpenClaw is the primary implementer; Claude's role is architecture, delegation, integration, review, merge, and quality — not primary implementation, except where a task genuinely can't be delegated (schema/shared-file changes, final QA).
+OpenClaw is now the primary implementation team (2026-08-03 directive) — both worktrees dedicated to learner-facing development (see Worktree allocation above). Claude's role is architecture, delegation, integration, review, merge, and quality — not primary implementation, except where a task genuinely can't be delegated (schema/shared-file changes, final QA, architectural blockers).
 
 ## Command Centre
 

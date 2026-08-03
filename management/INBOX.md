@@ -4,6 +4,22 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-03 — Product Owner Directive: autonomous multi-sprint execution, roadmap through Sprint 12
+
+Product vision, roadmap, and operating model now considered stable. Engineering authorised to continue building without waiting for Product approval after every sprint.
+
+- **Mission:** complete the NSW Year 9 Science Learning Engine. Roadmap approved; execute until instructed otherwise.
+- **Roadmap:** Sprint 8 Chemical Reactions → Sprint 9 Forces → Sprint 10 Energy → Sprint 11 Cells → Sprint 12 Body Systems → continue through remaining NSW Year 9 topics. Do not pause after each sprint.
+- **OpenClaw is now the primary implementation team.** Both worktrees dedicated to learner-facing development:
+  - Worktree 1 (`openclaw/aarshiya-auto`) — primary curriculum implementation: lessons, interactions, assessments, question bank entries.
+  - Worktree 2 (`openclaw/command-centre`, repurposed) — learner experience: illustrations, educational graphics, diagrams, UI polish, accessibility, QA, revision questions.
+  - Claude maximises delegation; only becomes primary coder for architecture changes, when OpenClaw is blocked, or when integration can't be delegated.
+- **Visual learning standard is now a permanent product requirement** (see DEC-009 below, elevated from a one-off decision to a standing requirement): every new lesson needs a hero illustration, supporting diagrams/graphics, short readable text blocks, at least one meaningful interaction where appropriate. No long text-heavy lessons. Illustrations must teach, never decorate.
+- **Question Bank:** keep growing with every lesson; no separate Question Bank project (reaffirms DEC-007).
+- **Frozen unless explicitly authorised:** Command Centre enhancements, orchestration redesign, workflow optimisation, infrastructure improvements.
+- **Stop conditions (only these):** (1) a genuine architectural blocker, (2) a product decision that cannot reasonably be inferred, (3) four additional curriculum topics reach the Definition of Done, (4) a critical production issue. Otherwise continue autonomously — do not interrupt for routine approvals.
+- **Reporting:** update the repository continuously; provide a concise Product Brief only at major milestones, not after every sprint.
+
 ### 2026-08-03 — Product Owner Decision: visual/content design standard (less uninterrupted text)
 
 Based on user testing feedback. Effective immediately for all new topics; retrofitted into earlier topics incrementally, not urgently.
