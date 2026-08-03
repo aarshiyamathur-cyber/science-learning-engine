@@ -1,0 +1,27 @@
+id: sci-y7-chemical-reactions
+title: Chemical Reactions
+description: >
+  Chemical reactions turn one or more starting substances (reactants) into
+  different substances (products) with new properties. Reactions can be
+  spotted by visible signs, and no atoms are ever created or destroyed
+  during one — they're only rearranged, which is why mass is conserved.
+learningObjectives:
+  - Explain that a chemical reaction turns reactants into products with different properties
+  - Identify signs that a chemical reaction has happened (colour change, gas produced, precipitate formed, temperature change)
+  - Explain the law of conservation of mass in terms of atoms rearranging, not disappearing
+  - Write a simple word equation for a reaction (reactants -> products)
+misconceptions:
+  - id: burning-destroys-matter
+    description: Students think burning or reacting something makes matter disappear.
+    correction: Matter is never destroyed in a reaction — the atoms in the reactants are rearranged into the products, so the total mass stays the same (conservation of mass).
+  - id: reaction-is-just-mixing
+    description: Students think any physical change (like dissolving or melting) is the same as a chemical reaction.
+    correction: A physical change doesn't create a new substance — melted ice is still water. A chemical reaction always produces at least one genuinely new substance with different properties from the reactants.
+prerequisites:
+  - sci-y7-atomic-structure
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50
