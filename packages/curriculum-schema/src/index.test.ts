@@ -115,6 +115,26 @@ describe("LessonSchema", () => {
       }).success,
     ).toBe(false);
   });
+
+  it("accepts an illustration step", () => {
+    expect(
+      LessonSchema.safeParse({
+        ...validLesson,
+        steps: [
+          { type: "illustration", illustration: "states-of-matter", caption: "A diagram." },
+        ],
+      }).success,
+    ).toBe(true);
+  });
+
+  it("rejects an illustration step missing a caption", () => {
+    expect(
+      LessonSchema.safeParse({
+        ...validLesson,
+        steps: [{ type: "illustration", illustration: "states-of-matter" }],
+      }).success,
+    ).toBe(false);
+  });
 });
 
 describe("resolveLessonSteps", () => {

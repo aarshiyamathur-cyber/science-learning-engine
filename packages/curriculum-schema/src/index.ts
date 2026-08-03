@@ -72,12 +72,27 @@ export const InteractiveStepSchema = z.object({
   prompt: z.string().min(1),
 });
 
+/**
+ * A standalone teaching diagram/illustration shown as its own step, distinct
+ * from the small per-topic card illustration. References a reusable
+ * illustration component by id (registered in LessonPlayer, same pattern as
+ * InteractiveStepSchema's widget id) so a lesson can break up explanation
+ * text with a diagram exactly where it teaches something, not just as page
+ * decoration. `caption` must describe what the illustration teaches.
+ */
+export const IllustrationStepSchema = z.object({
+  type: z.literal("illustration"),
+  illustration: z.string().min(1),
+  caption: z.string().min(1),
+});
+
 export const LessonStepSchema = z.discriminatedUnion("type", [
   ExplanationStepSchema,
   ExampleStepSchema,
   QuestionStepSchema,
   SummaryStepSchema,
   InteractiveStepSchema,
+  IllustrationStepSchema,
 ]);
 export type LessonStep = z.infer<typeof LessonStepSchema>;
 
@@ -110,11 +125,13 @@ export type ResolvedLessonStep =
   | ExampleStep
   | { type: "question"; question: AssessmentQuestion }
   | SummaryStep
-  | InteractiveStep;
+  | InteractiveStep
+  | IllustrationStep;
 type ExplanationStep = z.infer<typeof ExplanationStepSchema>;
 type ExampleStep = z.infer<typeof ExampleStepSchema>;
 type SummaryStep = z.infer<typeof SummaryStepSchema>;
 type InteractiveStep = z.infer<typeof InteractiveStepSchema>;
+type IllustrationStep = z.infer<typeof IllustrationStepSchema>;
 
 export class UnresolvedQuestionRefError extends Error {
   constructor(

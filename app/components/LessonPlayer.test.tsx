@@ -86,6 +86,41 @@ describe("LessonPlayer", () => {
     expect(screen.getByText(/Unknown widget/)).toBeInTheDocument();
   });
 
+  test("renders a registered illustration step with its caption", () => {
+    render(
+      <LessonPlayer
+        steps={buildSteps([
+          {
+            type: "illustration",
+            illustration: "states-of-matter",
+            caption: "Particles pack differently in each state of matter.",
+          },
+        ])}
+        onAnswer={vi.fn()}
+        onComplete={vi.fn()}
+      />,
+    );
+
+    expect(
+      screen.getByText("Particles pack differently in each state of matter."),
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Next →" }));
+  });
+
+  test("shows an unknown-illustration message for an unregistered illustration id", () => {
+    render(
+      <LessonPlayer
+        steps={buildSteps([
+          { type: "illustration", illustration: "not-a-real-illustration", caption: "Caption." },
+        ])}
+        onAnswer={vi.fn()}
+        onComplete={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText(/Unknown illustration/)).toBeInTheDocument();
+  });
+
   test("multiple-choice: correct answer shows feedback and reports the answer", () => {
     const onAnswer = vi.fn();
     render(

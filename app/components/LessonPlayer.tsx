@@ -1,8 +1,18 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type SVGProps } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
-import { ExampleIcon, ExplanationIcon, QuestionIcon, SummaryIcon } from "./icons";
+import {
+  AtomicStructureIllustration,
+  ChangesOfStateIllustration,
+  ExampleIcon,
+  ExplanationIcon,
+  ParticleModelIllustration,
+  PeriodicTableIllustration,
+  QuestionIcon,
+  StatesOfMatterIllustration,
+  SummaryIcon,
+} from "./icons";
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
@@ -18,6 +28,22 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "particle-state-explorer": ParticleStateExplorer,
   "atom-builder": AtomBuilder,
   "periodic-table-explorer": PeriodicTableExplorer,
+};
+
+/**
+ * Registry of standalone teaching illustrations, keyed by the id a lesson's
+ * illustration step references (see IllustrationStepSchema). Same pattern as
+ * WIDGET_REGISTRY: adding a diagram means adding one entry here, never
+ * touching the schema package. Existing per-topic-card illustrations are
+ * reusable here as a lesson's "hero" illustration; new diagrams for a
+ * specific explanation point get their own entry.
+ */
+const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGElement>>> = {
+  "states-of-matter": StatesOfMatterIllustration,
+  "particle-model": ParticleModelIllustration,
+  "changes-of-state": ChangesOfStateIllustration,
+  "atomic-structure": AtomicStructureIllustration,
+  "periodic-table": PeriodicTableIllustration,
 };
 
 interface LessonPlayerProps {
@@ -173,6 +199,30 @@ export function LessonPlayer({ steps, onAnswer, onComplete }: LessonPlayerProps)
         <p className="text-body text-zinc-800 dark:text-zinc-100">{step.body}</p>
         <Button variant="solid" tone={meta.tone} onClick={goNext}>
           {step.type === "summary" ? "Finish lesson 🎉" : "Next →"}
+        </Button>
+      </Card>
+    );
+  }
+
+  if (step.type === "illustration") {
+    const Illustration = ILLUSTRATION_REGISTRY[step.illustration];
+    return (
+      <Card tone="brand">
+        <Badge tone="brand" icon="🖼️">
+          Diagram
+        </Badge>
+        {Illustration ? (
+          <Illustration className="h-40 w-full" aria-hidden />
+        ) : (
+          <p className="text-label text-danger-600 dark:text-danger-400">
+            Unknown illustration &quot;{step.illustration}&quot;.
+          </p>
+        )}
+        <p className="text-center text-label font-medium text-zinc-600 dark:text-zinc-300">
+          {step.caption}
+        </p>
+        <Button variant="solid" tone="brand" onClick={goNext}>
+          Next →
         </Button>
       </Card>
     );
