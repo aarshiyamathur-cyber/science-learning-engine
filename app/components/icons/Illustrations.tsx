@@ -230,6 +230,127 @@ export function ConservationOfMassIllustration(
   );
 }
 
+/** A box pushed by a force: arrow drives it from its original (dashed) outline to a displaced position, with motion streaks showing the movement. */
+export function ForcesHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect
+        x="55"
+        y="43"
+        width="34"
+        height="34"
+        rx="4"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeDasharray="5 4"
+      />
+      <line
+        x1="90"
+        y1="50"
+        x2="122"
+        y2="50"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="4 4"
+      />
+      <line
+        x1="90"
+        y1="60"
+        x2="122"
+        y2="60"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="4 4"
+      />
+      <line
+        x1="90"
+        y1="70"
+        x2="122"
+        y2="70"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="4 4"
+      />
+      <rect x="125" y="43" width="34" height="34" rx="4" fill="#f59e0b" />
+      <line
+        x1="10"
+        y1="60"
+        x2="45"
+        y2="60"
+        stroke="#0ea5e9"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+      <polygon points="45,49 66,60 45,71" fill="#0ea5e9" />
+    </svg>
+  );
+}
+
+/** Same object, two force conditions side by side: equal opposing arrows keep it centred (balanced); unequal arrows push it off to one side (unbalanced). */
+export function BalancedUnbalancedForcesIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <line
+        x1="90"
+        y1="10"
+        x2="90"
+        y2="110"
+        stroke="#a1a1aa"
+        strokeWidth="2"
+        strokeDasharray="4 4"
+      />
+      <rect x="30" y="46" width="28" height="28" rx="4" fill="#f59e0b" />
+      <line
+        x1="6"
+        y1="60"
+        x2="22"
+        y2="60"
+        stroke="#0ea5e9"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <polygon points="22,52 34,60 22,68" fill="#0ea5e9" />
+      <line
+        x1="82"
+        y1="60"
+        x2="66"
+        y2="60"
+        stroke="#8b5cf6"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <polygon points="66,52 54,60 66,68" fill="#8b5cf6" />
+      <rect x="106" y="46" width="28" height="28" rx="4" fill="#f59e0b" />
+      <line
+        x1="93"
+        y1="60"
+        x2="100"
+        y2="60"
+        stroke="#0ea5e9"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <polygon points="100,52 110,60 100,68" fill="#0ea5e9" />
+      <line
+        x1="176"
+        y1="60"
+        x2="145"
+        y2="60"
+        stroke="#8b5cf6"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <polygon points="145,52 133,60 145,68" fill="#8b5cf6" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (
