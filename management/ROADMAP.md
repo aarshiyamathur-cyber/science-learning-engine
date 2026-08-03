@@ -10,7 +10,7 @@ _Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Spri
 | Sprint 6 | Atomic Structure | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 7 | Periodic Table | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 8 | Chemical Reactions | ✅ Done — Definition of Done met 2026-08-03 |
-| Sprint 9 | Forces | ⬜ Not started |
+| Sprint 9 | Forces | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 10 | Energy | ⬜ Not started |
 | Sprint 11 | Cells | ⬜ Not started |
 | Sprint 12 | Body Systems | ⬜ Not started |
@@ -93,6 +93,16 @@ Every lesson contributes reusable questions with concept, difficulty, correct an
 **Delegated across 3 worktrees for the first time:** Worktree 1 (BL-046) wrote the lesson/assessment/widget; Worktree 2 (CE-002) wrote the two new illustrations in parallel against ids specified up front; a new third worktree (`openclaw/reviewer`) independently reviewed both branches for scientific accuracy and conflicts, did the registry wiring, ran the full check suite including a production build, and merged to master itself — the first fully OpenClaw-reviewed-and-merged sprint, with Claude doing an independent re-verification (checks + content spot-check + live browser click-through) afterward rather than reviewing the original diff by hand.
 
 **Definition of Done met 2026-08-03:** independently re-verified by Claude — `validate:curriculum`/`typecheck`/`lint`/`vitest` (79/79)/`build` all pass, live click-through of all 12 lesson steps (hero illustration, 2 short explanations, mid-lesson illustration, example, widget interaction across all 3 reactant pairs, 5 questions, summary, finish), mastery/XP confirmed (300 XP total), mobile (375px, no overflow), no placeholders/TODOs.
+
+## Sprint 9 — Forces (Definition of Done met 2026-08-04)
+
+**Scope:** what a force is (push/pull), balanced vs. unbalanced forces, friction as a force opposing motion, gravity — Year 7-10 appropriate, no numeric force calculations or vector-magnitude formalism.
+
+**Prerequisite:** `sci-y7-chemical-reactions` (continuing the linear topic sequence).
+
+**Delivered via the 3-worktree pipeline:** `lesson-forces-intro.yaml` (hero illustration → 2 short explanations → mid-lesson illustration → tug-of-war example → `ForceFrictionSimulator` widget → gravity explanation → 5 questions → summary), `assessment-forces-quiz.yaml` (both misconceptions — "constant force needed to keep moving" and "heavier objects fall faster" — directly and correctly targeted), a new `ForceFrictionSimulator` widget (3 surfaces, each sliding a visibly different distance tied to its friction level), and two new illustrations. Reviewed, wired, and merged to master by the Worktree 3 reviewer, which also caught and corrected an inaccurate self-reported claim in the illustration worker's own notes rather than repeating it — independently re-verified by Claude afterward.
+
+**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (85/85)/`build` all pass, live click-through of all 12 lesson steps including all 3 friction surfaces (visibly different slide distances confirmed), mastery/XP confirmed (350 XP total), mobile (375px, no overflow), no placeholders/TODOs.
 
 ## Engineering capacity
 
