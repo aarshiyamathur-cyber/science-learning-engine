@@ -1,0 +1,63 @@
+- id: q-chemical-reactions-01
+  conceptId: sci-y7-chemical-reactions
+  prompt: "True or False: Melting ice into liquid water is an example of a chemical reaction."
+  type: multiple-choice
+  options:
+    - "True"
+    - "False"
+  correctAnswer: "False"
+  difficulty: 0.1
+  hint: Think about whether melting actually creates a new substance, or whether it's still the same substance in a different form.
+  explanation: Melting is a physical change — ice and liquid water are both just H2O, only in different states. A chemical reaction must produce at least one genuinely new substance with different properties, which melting never does.
+- id: q-chemical-reactions-02
+  conceptId: sci-y7-chemical-reactions
+  prompt: >
+    In the word equation "iron + oxygen -> iron oxide (rust)", which
+    substances are the reactants?
+  type: multiple-choice
+  options:
+    - Iron oxide (rust)
+    - Iron and oxygen
+    - Iron only
+    - Oxygen only
+  correctAnswer: Iron and oxygen
+  difficulty: 0.2
+  hint: Reactants are what you start with, before the reaction happens — look at which side of the arrow they sit on.
+  explanation: Reactants are the starting substances, written on the left of the arrow in a word equation. Iron and oxygen are the reactants here; iron oxide (rust) is the single product they combine to form.
+- id: q-chemical-reactions-03
+  conceptId: sci-y7-chemical-reactions
+  prompt: What are two things you might observe that suggest a chemical reaction has happened?
+  type: short-answer
+  correctAnswer: >
+    Any two of: a colour change, gas being produced (bubbles), a solid
+    (precipitate) forming, or the temperature changing.
+  difficulty: 0.3
+  hint: You don't need to see atoms to notice a reaction — think about what changes you could actually see, hear, or feel happening.
+  explanation: A chemical reaction can be spotted by visible signs even without seeing atoms rearrange — a colour change, gas bubbling out, a solid forming in a liquid, or a rise or drop in temperature are all strong clues that reactants have turned into products.
+- id: q-chemical-reactions-04
+  conceptId: sci-y7-chemical-reactions
+  prompt: When wood burns completely away to ash and smoke, what has actually happened to the atoms that made up the wood?
+  type: multiple-choice
+  options:
+    - They were destroyed and no longer exist
+    - They combined with oxygen to form new substances like carbon dioxide and water vapour
+    - They turned into pure energy with no mass at all
+    - They disappeared into the ash only
+  correctAnswer: They combined with oxygen to form new substances like carbon dioxide and water vapour
+  difficulty: 0.4
+  hint: Burning is a chemical reaction — think about what a chemical reaction actually does to atoms, rather than destroying them.
+  explanation: It looks like the wood "disappears", but its atoms aren't destroyed. They combine with oxygen from the air to form new substances — mostly carbon dioxide and water vapour — which float away as invisible gases. That's why burning seems to leave behind only a little ash, when most of the original mass has actually left as gas.
+- id: q-chemical-reactions-05
+  conceptId: sci-y7-chemical-reactions
+  prompt: >
+    A student burns 10 g of magnesium ribbon inside a sealed container full
+    of oxygen gas. Predict how the total mass inside the sealed container
+    compares before and after burning, and explain why.
+  type: short-answer
+  correctAnswer: >
+    The total mass stays exactly the same — the atoms are rearranged into
+    magnesium oxide, not created or destroyed, so nothing is added to or
+    lost from the sealed container.
+  difficulty: 0.6
+  hint: Because the container is sealed, nothing produced by the reaction can escape — think about what conservation of mass says happens to atoms during a reaction.
+  explanation: In a sealed container, none of the reactants or products can escape. Conservation of mass tells us atoms are only rearranged in a reaction, never created or destroyed, so the total mass measured before and after burning is exactly the same — even though the magnesium visibly changes into a white powder, magnesium oxide.
