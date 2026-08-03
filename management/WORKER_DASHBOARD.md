@@ -1,12 +1,21 @@
 # Worker Dashboard
 
-_Last updated: 2026-08-01 by Claude Code_
+_Last updated: 2026-08-03 by Claude Code_
 
 Tracking starts with Sprint 2 (the delegation-first directive was introduced mid-Sprint-2).
 
-## Two parallel initiatives (as of 2026-08-01)
+## Two worktrees, both dedicated to curriculum (as of 2026-08-03)
 
-A second Product Owner directive launched the **Product Command Centre** (see `management/COMMAND_CENTRE.md`) while Sprint 5 (Matter topic) was still in flight. Rather than queue it behind Sprint 5, a second OpenClaw managed worktree (`openclaw/command-centre`) was created so both initiatives' delegated tasks run in genuinely parallel worktrees — each worktree is still one-task-at-a-time internally, but the two worktrees don't block each other.
+Per the 2026-08-03 Product Owner directive, both managed worktrees are now dedicated exclusively to the Science Learning Engine — no infrastructure/workflow/dashboard work in either without explicit approval:
+
+- **Worktree 1 — `openclaw/aarshiya-auto` (agent `aarshiya-dev`) — Curriculum Development.** Sprint 6 (Atomic Structure) close-out, then Sprint 7 (Periodic Table).
+- **Worktree 2 — `openclaw/command-centre` — Curriculum Enhancement** (repurposed from the now-superseded Product Command Centre initiative). Grows question banks and improves existing shipped lessons (Matter, Particle Model, States of Matter); supports Worktree 1 where required.
+
+Dispatch mechanism for both: a task-specific prompt file under `~/.openclaw/`, run as a headless Claude Code worker (`claude --permission-mode bypassPermissions --print`) directly in the target worktree directory on its existing branch — the same mechanism established in DEC-002/DEC-003, proven reliable across BL-020, BL-028, BL-031–033, BL-040–041, and CC-001–004. Both worktrees are scoped to touch disjoint files (new topic files vs. existing assessment files) to avoid conflicts, per Claude's coordination responsibility.
+
+## Former: two parallel initiatives (2026-08-01 to 2026-08-03, superseded)
+
+A second Product Owner directive launched the **Product Command Centre** (see `management/COMMAND_CENTRE.md`) while Sprint 5 (Matter topic) was still in flight. Rather than queue it behind Sprint 5, a second OpenClaw managed worktree (`openclaw/command-centre`) was created so both initiatives' delegated tasks run in genuinely parallel worktrees — each worktree is still one-task-at-a-time internally, but the two worktrees don't block each other. **This worktree has since been repurposed to Curriculum Enhancement (2026-08-03) — see above.**
 
 ## Sprint 5 — CLOSED ("Complete the Matter topic")
 

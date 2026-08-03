@@ -1,14 +1,15 @@
 # Product Roadmap
 
 _Frozen 2026-08-01 per Product Owner directive. Do not change without explicit Product Owner approval._
+_Updated 2026-08-03: Sprint 5 formally accepted; Sprint 6 authorised to continue through Sprint 7 with no review stop between them — see `management/INBOX.md` 2026-08-03 directive and DEC-006/DEC-007._
 
 **KPI: completed science topics Aarshiya can learn from — not engineering progress.**
 
 | Sprint | Topic | Status |
 | --- | --- | --- |
-| Sprint 5 | Complete Matter | ✅ Done — 3 lessons (Matter, Particle Model, States of Matter), live and tested |
-| Sprint 6 | Atomic Structure | 🔄 Underway — see below |
-| Sprint 7 | Periodic Table | ⬜ Not started |
+| Sprint 5 | Complete Matter | ✅ Done — accepted by Product Owner 2026-08-03 |
+| Sprint 6 | Atomic Structure | 🔄 Continuing — see below |
+| Sprint 7 | Periodic Table | 🔄 Authorised to begin immediately once Sprint 6 DoD is met, no review stop in between |
 
 ## Sprint 5 — Definition of Done (all met)
 
@@ -35,13 +36,23 @@ _Frozen 2026-08-01 per Product Owner directive. Do not change without explicit P
 - `atom-builder` widget (built Sprint 4, unused until now) registered in `LessonPlayer`'s widget registry
 - New concept `sci-y7-atomic-structure` added to the knowledge graph and the app's topic sequence, gated behind completing Matter
 
-**Open question for Product Review — interaction mechanic gap:** the directive asks for "drag particles into place" and "place electrons into shells" as distinct interactions. The existing `AtomBuilder` widget (Sprint 4) uses +/- buttons to add/remove particles and auto-fills electron shells (2, then 8, then remainder) rather than letting the learner drag individual particles or manually place electrons into a chosen shell. BL-040 reuses `AtomBuilder` as-is, which satisfies "build an atom" but not literal drag-and-drop placement. Building a true drag-based interaction would be a new reusable widget (similar scope to `ParticleStateExplorer`/`AtomBuilder`) — not yet started, flagged here for a Product Owner call on whether it's required before Sprint 6 is considered complete, or whether the button-based `AtomBuilder` satisfies "build an atom" for now.
+**Resolved 2026-08-03 (DEC-006):** Product Owner accepted the existing button-based `AtomBuilder` widget as the Version 1 interaction for atomic structure. Drag-and-drop particle/electron placement is not being built now — recorded as a future enhancement only.
 
-**Not yet addressed:** "Identify atoms from atomic number" (a quiz-style interaction) is expected to be covered via assessment questions in BL-040 rather than a new mechanic — to be confirmed once BL-040 lands and is reviewed.
+**Resolved:** "Identify atoms from atomic number" is covered via assessment questions in BL-040 (e.g. `q-atomic-structure-02`/`03`), not a separate mechanic.
+
+**Remaining before Sprint 6 is marked complete:** live QA against the full Definition of Done (interaction/navigation/mobile/XP/no-placeholders, same bar as Sprint 5) — in progress.
 
 ## Question Bank policy
 
-Every lesson contributes reusable questions with concept, difficulty, correct answer, explanation, hint, and curriculum reference — already the standard for every question written since BL-030 (hint field became required). Not postponed; grows with each topic. Real counts visible on the Command Centre's Question Bank page (currently sample data — will move to reading real curriculum data in a later, explicitly-approved Command Centre task, not before).
+Every lesson contributes reusable questions with concept, difficulty, correct answer, explanation, hint, and curriculum reference — already the standard for every question written since BL-030 (hint field became required). Not postponed; grows with each topic. Real counts visible on the Command Centre's Question Bank page (currently sample data — will move to reading real curriculum data in a later, explicitly-approved Command Centre task, not before). **No standalone Question Bank project is authorised (DEC-007, 2026-08-03)** — this remains a by-product of normal lesson authoring, not a dedicated initiative.
+
+## Sprint 7 — Periodic Table (authorised to begin once Sprint 6 DoD is met)
+
+**Scope:** elements as organised by atomic number; groups and periods; metals vs. non-metals; using the periodic table to predict basic properties — Year 7-10 appropriate, no advanced chemistry (no orbital notation, no ionisation energy trends beyond a simple mention if it fits naturally).
+
+**Prerequisite:** `sci-y7-atomic-structure` (atomic number is the periodic table's ordering principle).
+
+**Directive:** proceed immediately after Sprint 6's Definition of Done is met — no Product Review stop between Sprint 6 and Sprint 7. Only stop once Sprint 7 reaches the same review point.
 
 ## Engineering capacity
 

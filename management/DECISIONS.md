@@ -65,3 +65,31 @@ Sprint 5 has an explicit "ready for Aarshiya tomorrow morning" deadline; Command
 
 **Impact**
 Both `openclaw/aarshiya-auto` and `openclaw/command-centre` are now active worktrees, each enforcing one-task-at-a-time internally. Future independent initiatives with no file overlap should follow the same pattern rather than assuming there's only one delegation lane.
+
+## DEC-006
+
+**Decision**
+The button-based `AtomBuilder` widget (BL-028, reused as-is in BL-040's shipped Atomic Structure lesson) is accepted as the Version 1 interaction for atomic structure. It will not be replaced with a drag-and-drop particle-placement widget at this time.
+
+**Status**
+Accepted — Product Owner directive, 2026-08-03
+
+**Reason**
+The original Sprint 6 directive asked for "drag particles into place" / "place electrons into shells" as distinct interactions, which the +/- button model doesn't literally satisfy (flagged as an open question in `management/ROADMAP.md`). Product Owner reviewed the gap and accepted the existing widget rather than authorising a new reusable component of `ParticleStateExplorer`/`AtomBuilder` scope, prioritising curriculum throughput over building a second atom-interaction widget.
+
+**Impact**
+Drag-and-drop particle/electron placement is recorded as a future enhancement, not scheduled. Do not build it without explicit Product Owner approval. Sprint 6's interaction-mechanic open question in `management/ROADMAP.md` is now resolved.
+
+## DEC-007
+
+**Decision**
+No separate "Question Bank" engineering project is authorised. Reusable questions (concept, difficulty, correct answer, explanation, hint, curriculum reference) continue to be produced as a normal by-product of each lesson's assessment authoring — the standing practice since BL-030 — rather than as a dedicated initiative.
+
+**Status**
+Accepted — Product Owner directive, 2026-08-03
+
+**Reason**
+Sprint 6 was not to be paused to redesign or formalise the Question Bank as its own workstream. The bank already grows correctly through ordinary lesson development; a separate project would be infrastructure work competing with the 80/20 curriculum-first capacity split for no additional benefit.
+
+**Impact**
+`management/ROADMAP.md`'s "Question Bank policy" section stands as previously documented (every question ships with concept/difficulty/correct answer/explanation/hint/curriculum reference). No new backlog items should be created for a standalone Question Bank initiative; the Command Centre's Question Bank page remains sample-data-backed per its existing scope freeze.

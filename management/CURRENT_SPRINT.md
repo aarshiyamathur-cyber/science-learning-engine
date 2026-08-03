@@ -1,12 +1,14 @@
-# Sprint 6 — Atomic Structure (underway; Sprint 5 below is CLOSED)
+# Sprint 6 — Atomic Structure (continuing; Sprint 5 below is CLOSED)
 
-_Frozen roadmap per Product Owner Directive (2026-08-01): Sprint 5 (Matter, complete) → Sprint 6 (Atomic Structure) → Sprint 7 (Periodic Table). See `management/ROADMAP.md` for the authoritative frozen roadmap and Sprint 6 scope/Definition of Done. Full detail below is Sprint 5's closed record, kept for history._
+_Frozen roadmap per Product Owner Directive (2026-08-01), amended 2026-08-03: Sprint 5 (Matter, accepted) → Sprint 6 (Atomic Structure, continuing) → Sprint 7 (Periodic Table, authorised to begin immediately once Sprint 6's DoD is met — no review stop in between). See `management/ROADMAP.md` for the authoritative roadmap and DoD. Full detail below is Sprint 5's closed record, kept for history._
 
-## Sprint 6 status (2026-08-02)
+## Sprint 6 status (2026-08-03)
 
+- Sprint 5 formally **accepted** by Product Owner.
 - BL-040 (Atomic Structure lesson + assessment) — Done, OpenClaw-delegated, merged.
 - BL-041 (Atomic Structure illustration) — Done, OpenClaw-delegated, merged.
-- Stop condition reached: "Atomic Structure underway" satisfied. **Stopped, awaiting Product Review** before continuing Sprint 6 further (the requested drag/place-electrons interactions are not yet built — open question for Product, see `management/ROADMAP.md`) or starting Sprint 7.
+- **AtomBuilder (button-based) accepted for Version 1** — drag-and-drop not being built now (DEC-006). Question Bank stays a by-product of normal lesson work, no separate project (DEC-007).
+- **Sprint 6 authorised to continue** — no longer stopped for review. Remaining work: verify Sprint 6 against the full Definition of Done (live QA, navigation, mobile, XP, no placeholders — same bar as Sprint 5), then proceed immediately into Sprint 7 (Periodic Table) without a review stop.
 
 ---
 

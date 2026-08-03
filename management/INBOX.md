@@ -4,6 +4,27 @@ Product Owner instructions land here. **Read this file before starting any work 
 
 ## Active directives (most recent first)
 
+### 2026-08-03 — Product Owner Directive: both worktrees dedicated to curriculum, explicit allocation
+
+- **Both OpenClaw worktrees dedicated to the Science Learning Engine.** No worktree allocated to engineering infrastructure, workflow optimisation, dashboard enhancements, or process improvements unless explicitly authorised.
+- **Worktree 1 (`openclaw/aarshiya-auto`, agent `aarshiya-dev`) — Curriculum Development.** Current focus: Sprint 6 — Atomic Structure (complete remaining lessons/assessments, illustrations, feedback, question bank entries, QA). When Sprint 6 is accepted, immediately begin Sprint 7 — Periodic Table.
+- **Worktree 2 (`openclaw/command-centre`, repurposed) — Curriculum Enhancement.** Improve existing lessons, add educational illustrations, improve learner experience/engagement/explanations, expand the reusable question bank, QA on completed topics. Supports Worktree 1 where required. Command Centre product work on this worktree is superseded — no further Command Centre features being built here.
+- **Explicitly frozen:** Command Centre enhancements, dashboard improvements, engineering workflow, task system redesign, YAML migration, infrastructure improvements, process optimisation.
+- **KPIs:** primary = completed curriculum topics; secondary = Question Bank growth. Engineering metrics no longer primary.
+- **Claude's role:** task allocation, preventing worktree conflicts (no two worktrees touching the same file concurrently), integration, code review, merge management. Maximise parallel curriculum delivery.
+- **Stop condition:** continue uninterrupted through Sprint 6 and Sprint 7. Produce one consolidated Product Briefing only after both topics reach the Definition of Done — no intermediate review stop.
+
+### 2026-08-03 — Product Owner Decision: Sprint 5 accepted, Sprint 6 authorised to continue through Sprint 7
+
+- **Sprint 5 formally accepted.**
+- **Sprint 6 authorised to continue** (was stopped awaiting review as of 2026-08-02).
+- **Decision 1 — AtomBuilder accepted for Version 1.** The existing button-based `AtomBuilder` widget (used in BL-040's shipped lesson) is accepted as-is. Do not replace it with drag-and-drop. Drag-and-drop is recorded as a future enhancement, not built now. See DEC-006.
+- **Decision 2 — no separate Question Bank project.** Do not pause Sprint 6 to redesign the Question Bank. Continue generating reusable questions, hints, explanations, and curriculum mappings as part of normal lesson development — this was already the standing practice since BL-030. No separate Question Bank initiative is authorised. See DEC-007.
+- **Engineering priority:** complete Atomic Structure to the existing Definition of Done, then proceed immediately to Sprint 7 (Periodic Table) with **no stop for Product Review between Sprint 6 and Sprint 7** — only stop once Sprint 7 reaches the same review point.
+- **Capacity reaffirmed:** 80% curriculum delivery / 20% infrastructure and maintenance. No further Command Centre enhancements authorised.
+- **KPI reaffirmed:** completed curriculum topics remains primary.
+- Continue updating `management/ROADMAP.md` and `management/DASHBOARD.md` throughout, not just at sprint end.
+
 ### 2026-08-01 — Product Owner Directive: frozen roadmap (Sprint 5/6/7) + stop conditions
 
 - Architecture discussion closed; project priority is delivering curriculum.

@@ -1,23 +1,24 @@
 # AI Factory Dashboard
 
-_Last updated: 2026-08-02 by Claude Code_
+_Last updated: 2026-08-03 by Claude Code_
 
 ## Current Sprint
 
-Sprint 6 — "Atomic Structure" — **underway, stop condition reached ("Atomic Structure underway"), awaiting Product Review**
+Sprint 6 — "Atomic Structure" — **continuing, authorised by Product Owner 2026-08-03; will proceed straight into Sprint 7 (Periodic Table) with no review stop between them**
 
-(Sprint 5 — "Complete the Matter topic" — CLOSED, see below)
+(Sprint 5 — "Complete the Matter topic" — CLOSED and formally **accepted** by Product Owner 2026-08-03)
 
 ## Status
 
-🟢 Roadmap frozen per Product Owner Directive: Sprint 5 (Matter, done) → Sprint 6 (Atomic Structure, underway) → Sprint 7 (Periodic Table, not started). All three of the directive's stop conditions are met and verified live: Command Centre MVP deployed, Matter complete, Atomic Structure underway (BL-040 lesson+assessment, BL-041 illustration, both merged). **Stopped, awaiting Product Review** — see `management/ROADMAP.md` and `management/INBOX.md` for full detail. Do not start Sprint 7 or resume paused infrastructure work without explicit approval.
+🟢 Roadmap frozen per Product Owner Directive (2026-08-01), amended 2026-08-03: Sprint 5 (Matter, accepted) → Sprint 6 (Atomic Structure, continuing) → Sprint 7 (Periodic Table, authorised to begin immediately after Sprint 6's DoD is met). Two open questions from Sprint 6 resolved by Product Owner decision: AtomBuilder (button-based) accepted for V1, drag-and-drop deferred as a future enhancement (DEC-006); no separate Question Bank project authorised (DEC-007). See `management/ROADMAP.md` and `management/INBOX.md` for full detail. Next stop-for-review point is after Sprint 7 reaches its Definition of Done.
 
 ## Sprint 6 (Atomic Structure)
 
 - [x] BL-040 — Atomic Structure lesson + assessment (OpenClaw-delegated, merged, reviewed)
 - [x] BL-041 — Atomic Structure illustration (OpenClaw-delegated, merged, reviewed)
-- [ ] Open question for Product: the directive's "drag particles into place" / "place electrons into shells" interactions are not satisfied by the existing button-based `AtomBuilder` widget used in the shipped lesson — flagged in `management/ROADMAP.md`, not unilaterally built.
-- [ ] Question Bank policy compliance check (per directive) — not yet audited against the new mandate.
+- [x] AtomBuilder accepted for V1 (DEC-006) — resolved, no longer open
+- [x] Question Bank — no separate project authorised (DEC-007) — resolved, no longer open
+- [ ] Full Definition of Done verification (live QA, navigation, mobile, XP, no placeholders) — in progress
 
 ## Product
 
@@ -37,7 +38,7 @@ Sprint 6 — "Atomic Structure" — **underway, stop condition reached ("Atomic 
 ## OpenClaw
 
 - [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed.
-- Two managed worktrees now active in parallel: `openclaw/aarshiya-auto` (Matter-topic content, currently idle — Sprint 5 closed) and `openclaw/command-centre` (Product Command Centre, CC-004 in flight). See ADR 0008 / DEC-005.
+- Two managed worktrees now active in parallel: `openclaw/aarshiya-auto` (curriculum content, available for Sprint 6 QA follow-ups and Sprint 7 dispatch) and `openclaw/command-centre` (frozen — no further work authorised).
 
 ## Blockers
 
@@ -45,4 +46,4 @@ None currently.
 
 ## Next Decision
 
-Awaiting Product review of the closed Sprint 5 (Matter topic) before starting Sprint 6. Command Centre continues independently in the background — see `management/COMMAND_CENTRE.md`.
+None pending from Product. Engineering proceeding per the 2026-08-03 directive: finish verifying Sprint 6 against its Definition of Done, then continue straight into Sprint 7 (Periodic Table) with no review stop in between. Next Product touchpoint is after Sprint 7 reaches the same review point.
