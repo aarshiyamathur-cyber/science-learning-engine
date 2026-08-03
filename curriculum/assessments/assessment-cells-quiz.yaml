@@ -1,0 +1,67 @@
+- id: q-cells-01
+  conceptId: sci-y7-cells
+  prompt: What is a cell?
+  type: multiple-choice
+  options:
+    - The smallest basic unit that makes up all living things
+    - A type of tissue found only in plants
+    - An organ found inside every living thing
+    - A chemical made only by muscle cells
+  correctAnswer: The smallest basic unit that makes up all living things
+  difficulty: 0.1
+  hint: Think about the smallest level a living thing can be broken down into.
+  explanation: A cell is the smallest unit that can carry out the processes needed to stay alive. All living things, from bacteria to humans, are made up of one or more cells.
+- id: q-cells-02
+  conceptId: sci-y7-cells
+  prompt: Which structure in a cell controls what substances can enter and leave it?
+  type: multiple-choice
+  options:
+    - Cell membrane
+    - Nucleus
+    - Cytoplasm
+    - Chloroplast
+  correctAnswer: Cell membrane
+  difficulty: 0.2
+  hint: Think about which structure forms the outer boundary of the cell.
+  explanation: The cell membrane surrounds the cell and controls which substances can enter and leave it.
+- id: q-cells-03
+  conceptId: sci-y7-cells
+  prompt: >
+    An elephant is much bigger than a mouse. A student says this is because
+    an elephant's cells are much bigger than a mouse's cells. Is the student
+    correct? Explain.
+  type: short-answer
+  correctAnswer: >
+    No — cell size stays roughly similar across most organisms. An elephant
+    is bigger than a mouse because it has many more cells, not because its
+    cells are bigger.
+  difficulty: 0.4
+  hint: Think about whether being bigger means having larger cells, or just having more of them.
+  explanation: The student is incorrect. Cell size is roughly similar across most organisms — a larger organism like an elephant simply has far more cells than a mouse, not bigger ones.
+- id: q-cells-04
+  conceptId: sci-y7-cells
+  prompt: >
+    A student says plant cells and animal cells have exactly the same
+    structures. Is this correct? Name at least one structure found in plant
+    cells but not in animal cells.
+  type: short-answer
+  correctAnswer: >
+    No — plant cells have structures animal cells don't have, such as a
+    cell wall, chloroplasts, or a large vacuole (any one of these is a
+    plant-only structure).
+  difficulty: 0.5
+  hint: Think about the structures a leaf cell has that a skin cell doesn't.
+  explanation: The student is incorrect. Plant cells have a cell wall, chloroplasts, and a large vacuole — none of which are found in animal cells.
+- id: q-cells-05
+  conceptId: sci-y7-cells
+  prompt: Which of these correctly orders the levels of organisation from smallest to largest?
+  type: multiple-choice
+  options:
+    - Cell → tissue → organ → organ system
+    - Organ → tissue → cell → organ system
+    - Tissue → cell → organ system → organ
+    - Organ system → organ → tissue → cell
+  correctAnswer: Cell → tissue → organ → organ system
+  difficulty: 0.3
+  hint: Start with the smallest building block and work upward.
+  explanation: Similar cells group together to form a tissue, tissues combine to form an organ, and organs work together as an organ system.
