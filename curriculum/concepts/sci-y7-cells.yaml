@@ -1,0 +1,27 @@
+id: sci-y7-cells
+title: Cells
+description: >
+  All living things are made of cells — the basic building blocks of life.
+  Every cell carries out the processes that keep it alive, and cells come
+  in different types with different structures depending on their job,
+  including some real differences between plant cells and animal cells.
+learningObjectives:
+  - Explain that all living things are made of cells, the basic unit of life
+  - Identify key cell structures common to most cells (cell membrane, cytoplasm, nucleus) and describe their function
+  - Distinguish plant cells from animal cells by structures unique to plant cells (cell wall, chloroplasts, a large vacuole)
+  - Describe how cells relate to tissues, organs, and organ systems (levels of organisation)
+misconceptions:
+  - id: bigger-organism-bigger-cells
+    description: Students think a larger organism (like an elephant) has bigger cells than a smaller organism (like a mouse).
+    correction: Cell size stays roughly similar across most organisms — a larger organism simply has many more cells, not bigger ones.
+  - id: plant-animal-cells-same
+    description: Students think plant and animal cells have identical structures.
+    correction: Plant cells have a cell wall, chloroplasts, and a large central vacuole that animal cells don't have; animal cells lack all three of these structures.
+prerequisites:
+  - sci-y7-energy
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50

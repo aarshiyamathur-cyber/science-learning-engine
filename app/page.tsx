@@ -23,6 +23,7 @@ const SCIENCE_TOPIC_CONCEPT_IDS = [
   "sci-y7-chemical-reactions",
   "sci-y7-forces",
   "sci-y7-energy",
+  "sci-y7-cells",
 ];
 
 function isConceptCompleted(concept: Concept, completedLessons: string[]): boolean {
