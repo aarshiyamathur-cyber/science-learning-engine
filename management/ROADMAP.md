@@ -12,8 +12,8 @@ _Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Spri
 | Sprint 8 | Chemical Reactions | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 9 | Forces | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 10 | Energy | ✅ Done — Definition of Done met 2026-08-04 |
-| Sprint 11 | Cells | ⬜ Not started |
-| Sprint 12 | Body Systems | ⬜ Not started |
+| Sprint 11 | Cells | ✅ Done — Definition of Done met 2026-08-04 |
+| Sprint 12 | Body Systems | ⬜ Not started — **stop condition reached, awaiting Product Brief / check-in per the 2026-08-03 directive** |
 
 ## Stop conditions (2026-08-03 directive — the only reasons to pause and ask)
 
@@ -112,7 +112,17 @@ Every lesson contributes reusable questions with concept, difficulty, correct an
 
 **Delivered via the 3-worktree pipeline:** `lesson-energy-intro.yaml` (hero illustration → forms of energy → conservation → transformation illustration → falling-ball example → `EnergyTransformationExplorer` widget → 5 questions → summary), `assessment-energy-quiz.yaml` (both misconceptions — "energy gets used up/disappears" and "a stationary object has no energy" — directly and correctly targeted), a new `EnergyTransformationExplorer` widget (3 scenarios including an animated pendulum showing the potential/kinetic trade-off), and two new illustrations. Reviewer specifically verified the pendulum's potential-at-top/kinetic-at-bottom physics was correct before merging (an easy place to get subtly wrong) — independently re-verified live by Claude afterward, including watching the animation.
 
-**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (91/91)/`build` all pass, live click-through of all 11 lesson steps including all 3 widget scenarios, mastery/XP confirmed (400 XP total), mobile (375px, no overflow), no placeholders/TODOs. **This is the 3rd of 4 additional topics toward the 2026-08-03 directive's stop condition — one more (Sprint 11, Cells) before the mandated check-in.**
+**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (91/91)/`build` all pass, live click-through of all 11 lesson steps including all 3 widget scenarios, mastery/XP confirmed (400 XP total), mobile (375px, no overflow), no placeholders/TODOs.
+
+## Sprint 11 — Cells (Definition of Done met 2026-08-04)
+
+**Scope:** all living things are made of cells; structures common to most cells (cell membrane, cytoplasm, nucleus); how plant cells differ from animal cells (cell wall, chloroplasts, large vacuole); levels of organisation (cells → tissues → organs → organ systems) — Year 7-10 appropriate, no organelle-level detail beyond what's listed, no cellular respiration/photosynthesis chemistry, no mitosis.
+
+**Prerequisite:** `sci-y7-energy` (continuing the linear topic sequence). First biology topic in the app — everything through Sprint 10 was chemistry/physics.
+
+**Delivered via the 3-worktree pipeline:** `lesson-cells-intro.yaml` (hero illustration → what a cell is → common structures → plant-vs-animal illustration → leaf/skin cell example → `CellStructureExplorer` widget → levels of organisation → 5 questions → summary), `assessment-cells-quiz.yaml` (both misconceptions — "bigger organisms have bigger cells" and "plant and animal cells are identical" — directly and precisely targeted), a new `CellStructureExplorer` widget (6 tappable structures, colour-coded blue-for-shared vs. green-for-plant-only with a legend and badge). Reviewer paid particular attention to biological accuracy as the first non-physics/chemistry topic, and correctly scoped out organelle/respiration/mitosis detail not in the concept file. Independently re-verified by Claude afterward.
+
+**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (98/98)/`build` all pass, live click-through of all 12 lesson steps including the widget's shared-vs-plant-only distinction, mastery/XP confirmed (450 XP total), mobile (375px, no overflow), no placeholders/TODOs. **This is the 4th of 4 additional topics — the 2026-08-03 directive's stop condition is now reached. See the Product Brief for the check-in summary.**
 
 ## Engineering capacity
 
