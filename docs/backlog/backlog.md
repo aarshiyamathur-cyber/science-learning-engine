@@ -391,6 +391,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Acceptance criteria:** New illustration exported from `app/components/icons`, wired into `ContinueLearningScreen`'s per-conceptId lookup; hand-authored only, existing colour palette.
 - **Estimate:** Small
 
+## Curriculum Enhancement
+
+### CE-001 — Grow question banks for the Matter topic
+
+- **Description:** Per the 2026-08-03 Product Owner directive, the reusable question bank is now a tracked secondary KPI that keeps growing even for already-shipped topics. Added 2 new bank-only questions (not new lesson steps) to each of the three Matter-topic assessment files — `assessment-matter-quiz.yaml`, `assessment-particle-model-quiz.yaml`, `assessment-states-of-matter-quiz.yaml` — covering learning-objective/misconception angles the existing 5 questions per file didn't yet test.
+- **Dependencies:** none
+- **Priority:** P1
+- **Status:** Done
+- **Acceptance criteria:** Each of the three assessment files gains exactly 2 new questions (ids continuing existing numbering, e.g. `q-matter-06`/`07`), mixing multiple-choice and short-answer, difficulty 0.1-0.7, each with `hint` and `explanation`; the three lesson files' 5-question flows are unchanged (bank-only additions); `validate:curriculum`, `typecheck`, `lint`, and `vitest run` all pass.
+- **Estimate:** Small
+- **Notes:** `q-matter-06`/`07` add a "which of these is matter" distractor question (shadow/sound/idea vs. steam) and a direct "name the three states" short-answer. `q-particle-model-06`/`07` add a gas-compressibility application question and a solid particle-arrangement (not just movement) short-answer. `q-states-of-matter-06`/`07` add a freezing-in-particle-energy-terms question (complementing the existing melting question) and a least-to-most particle-energy ordering short-answer. No lesson files, schema, or application code touched — pure curriculum-data addition within `curriculum/assessments/`. Delegated to and completed by an OpenClaw headless worker in a dedicated worktree; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (65/65 tests, 10 files) all pass.
+
 ## Later / Deferred
 
 ### BL-011 — Knowledge graph traversal engine

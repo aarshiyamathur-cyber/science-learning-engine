@@ -57,3 +57,23 @@
   difficulty: 0.6
   hint: Think about what you get if you melt the ice again — is it still water?
   explanation: Freezing is a physical change, not a chemical one. The water's particles don't change into anything new — they just lose energy and pack into a fixed arrangement. It's still the same substance, H2O, whether it's ice, water, or steam.
+- id: q-states-of-matter-06
+  conceptId: sci-y7-states-of-matter
+  prompt: A tray of water is left in the freezer and turns to ice. What happens to its particles as this happens?
+  type: multiple-choice
+  options:
+    - They lose energy, slow down, and lock into a fixed arrangement
+    - They gain energy and start moving fast enough to slide past each other
+    - They turn into a different kind of particle
+  correctAnswer: They lose energy, slow down, and lock into a fixed arrangement
+  difficulty: 0.3
+  hint: A freezer removes heat rather than adding it — think about what happens to particle energy when heat is taken away.
+  explanation: The freezer removes heat energy from the water. With less energy, its particles slow down until they lock into the fixed, regular arrangement of a solid — this is freezing.
+- id: q-states-of-matter-07
+  conceptId: sci-y7-states-of-matter
+  prompt: Put the three states of matter in order from least particle energy to most.
+  type: short-answer
+  correctAnswer: "Solid, then liquid, then gas."
+  difficulty: 0.5
+  hint: Think about which state's particles move the slowest, and which move the fastest.
+  explanation: Particles have the least energy in a solid, more in a liquid, and the most in a gas. This is why adding energy to a substance can carry it from solid to liquid to gas.
