@@ -5,6 +5,8 @@ export {
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  EnergyHeroIllustration,
+  EnergyTransformationIllustration,
   ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,

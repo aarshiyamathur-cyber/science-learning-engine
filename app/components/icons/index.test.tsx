@@ -8,6 +8,8 @@ import {
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  EnergyHeroIllustration,
+  EnergyTransformationIllustration,
   ExampleIcon,
   ExplanationIcon,
   ForcesHeroIllustration,
@@ -34,6 +36,8 @@ describe("step icons and illustrations", () => {
     ConservationOfMassIllustration,
     ForcesHeroIllustration,
     BalancedUnbalancedForcesIllustration,
+    EnergyHeroIllustration,
+    EnergyTransformationIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);
