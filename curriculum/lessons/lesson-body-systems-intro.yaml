@@ -1,0 +1,63 @@
+id: lesson-body-systems-intro
+conceptId: sci-y7-body-systems
+title: Body Systems
+summary: What an organ system is, the main function and key organs of the digestive, circulatory, and respiratory systems, how those systems work together, and why breathing isn't the same as respiration.
+steps:
+  - type: illustration
+    illustration: body-systems-hero
+    caption: Organs work together in systems to keep the body running.
+  - type: explanation
+    body: >
+      An organ system is a group of organs that work together to carry out a
+      major job the body needs. This lesson looks at three systems: the
+      digestive system, which breaks down food; the circulatory system,
+      which moves blood around the body; and the respiratory system, which
+      brings in oxygen and removes carbon dioxide. Each system relies on a
+      few key organs working as a team.
+  - type: explanation
+    body: >
+      No organ system works alone — they constantly cooperate with each
+      other. For example, the respiratory system takes in oxygen, and the
+      circulatory system carries that oxygen to every cell in the body. If
+      either system stopped working, the other couldn't do its job properly.
+  - type: illustration
+    illustration: systems-working-together
+    caption: The circulatory and respiratory systems work together to deliver oxygen to every cell.
+  - type: example
+    body: >
+      During exercise, your muscles need more oxygen than usual. Your lungs
+      work harder to bring in extra oxygen, and your heart beats faster to
+      pump that oxygen-rich blood to your muscles. Neither system could meet
+      the demand on its own — they work together.
+  - type: interactive
+    widget: body-system-explorer
+    prompt: >
+      Tap each organ system below to see its main job and the key organs
+      that make it happen. Notice how organs within a system work together
+      to get one big job done.
+  - type: explanation
+    body: >
+      Breathing and respiration are not the same thing, even though people
+      often mix them up. Breathing is simply the physical movement of air in
+      and out of your lungs. Respiration is the chemical process happening
+      inside your cells that releases energy from food, and it needs the
+      oxygen that breathing supplies.
+  - type: question
+    questionId: q-body-systems-01
+  - type: question
+    questionId: q-body-systems-02
+  - type: question
+    questionId: q-body-systems-03
+  - type: question
+    questionId: q-body-systems-04
+  - type: question
+    questionId: q-body-systems-05
+  - type: summary
+    body: >
+      An organ system is a group of organs working together to do a major
+      job, and this lesson covered the digestive, circulatory, and
+      respiratory systems. Organ systems constantly cooperate — for example,
+      the respiratory and circulatory systems work together to deliver
+      oxygen to every cell. Breathing is the physical movement of air, while
+      respiration is the chemical process inside cells that uses that
+      oxygen to release energy.

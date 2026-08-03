@@ -1,0 +1,67 @@
+- id: q-body-systems-01
+  conceptId: sci-y7-body-systems
+  prompt: What is an organ system?
+  type: multiple-choice
+  options:
+    - A group of organs working together to perform a major job for the body
+    - A single organ that works entirely on its own
+    - A type of cell found only in animals
+    - The smallest unit that makes up all living things
+  correctAnswer: A group of organs working together to perform a major job for the body
+  difficulty: 0.1
+  hint: Think about organs teaming up rather than working by themselves.
+  explanation: An organ system is a group of organs that work together to carry out a major job the body needs, such as digestion or moving blood.
+- id: q-body-systems-02
+  conceptId: sci-y7-body-systems
+  prompt: What is the main function of the respiratory system?
+  type: multiple-choice
+  options:
+    - Bringing oxygen into the body and removing carbon dioxide
+    - Breaking down food into nutrients
+    - Pumping blood around the body
+    - Storing energy for later use
+  correctAnswer: Bringing oxygen into the body and removing carbon dioxide
+  difficulty: 0.2
+  hint: Think about what happens when you breathe in and out.
+  explanation: The respiratory system's main job is to bring oxygen into the body and remove carbon dioxide, mainly through the lungs.
+- id: q-body-systems-03
+  conceptId: sci-y7-body-systems
+  prompt: Which organ absorbs nutrients from digested food?
+  type: multiple-choice
+  options:
+    - Small intestine
+    - Stomach
+    - Heart
+    - Lungs
+  correctAnswer: Small intestine
+  difficulty: 0.3
+  hint: This organ comes after the stomach in the digestive system.
+  explanation: The small intestine absorbs nutrients from digested food, while the stomach's job is to break the food down first.
+- id: q-body-systems-04
+  conceptId: sci-y7-body-systems
+  prompt: >
+    A student says the circulatory and respiratory systems work completely
+    separately and never interact. Is the student correct? Give an example
+    that shows otherwise.
+  type: short-answer
+  correctAnswer: >
+    No — they work together. For example, the lungs take in oxygen
+    (respiratory system) and the heart pumps blood to carry that oxygen to
+    every cell in the body (circulatory system).
+  difficulty: 0.5
+  hint: Think about what happens to the oxygen after it enters the lungs.
+  explanation: The student is incorrect. Organ systems constantly cooperate — the respiratory system supplies oxygen, and the circulatory system delivers it to every cell in the body.
+- id: q-body-systems-05
+  conceptId: sci-y7-body-systems
+  prompt: >
+    A student says breathing and respiration are exactly the same thing.
+    Explain why this is not correct.
+  type: short-answer
+  correctAnswer: >
+    No — breathing is just the physical movement of air in and out of the
+    lungs. Respiration is the chemical process inside cells that releases
+    energy from food using oxygen; breathing simply supplies the oxygen
+    respiration needs.
+  difficulty: 0.6
+  hint: Think about what happens inside your cells, not just in your lungs.
+  explanation: The student is incorrect. Breathing moves air in and out of the lungs, while respiration is the chemical process inside cells that uses oxygen to release energy from food.
