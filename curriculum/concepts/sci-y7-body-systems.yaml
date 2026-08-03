@@ -1,0 +1,27 @@
+id: sci-y7-body-systems
+title: Body Systems
+description: >
+  Cells group into tissues, tissues into organs, and organs work together as
+  organ systems, each carrying out a major job the body needs. No system
+  works alone — organ systems constantly cooperate to keep the whole body
+  running.
+learningObjectives:
+  - Explain that an organ system is a group of organs working together to perform a major body function
+  - Describe the main function of the digestive, circulatory, and respiratory systems
+  - Identify a few key organs within each of those systems and their role
+  - Explain that organ systems work together rather than in isolation
+misconceptions:
+  - id: systems-work-in-isolation
+    description: Students think organ systems work independently, without interacting with each other.
+    correction: Organ systems constantly work together — for example, the circulatory and respiratory systems cooperate to deliver oxygen to every cell in the body.
+  - id: breathing-is-respiration
+    description: Students think breathing and (cellular) respiration are the same thing.
+    correction: Breathing is the physical movement of air in and out of the lungs. Respiration is the chemical process inside cells that releases energy from food using oxygen — breathing just supplies the oxygen respiration needs.
+prerequisites:
+  - sci-y7-cells
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50
