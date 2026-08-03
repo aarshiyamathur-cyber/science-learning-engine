@@ -1,0 +1,28 @@
+id: sci-y7-forces
+title: Forces
+description: >
+  A force is a push or pull that can change how something moves — speeding
+  it up, slowing it down, changing its direction, or changing its shape.
+  Forces can be balanced (motion stays the same) or unbalanced (motion
+  changes), and everyday forces like friction and gravity shape how objects
+  around us actually behave.
+learningObjectives:
+  - Explain that a force is a push or pull that can change an object's speed, direction, or shape
+  - Distinguish balanced forces (no change in motion) from unbalanced forces (motion changes)
+  - Describe friction as a force that opposes motion between two surfaces, and how surface type changes its strength
+  - Explain that gravity pulls all objects toward Earth, and that all objects fall at the same rate regardless of mass (ignoring air resistance)
+misconceptions:
+  - id: constant-force-needed
+    description: Students think a moving object needs a constant force to keep moving at a steady speed.
+    correction: An object moving at a constant speed in a straight line has balanced (or zero) forces acting on it — a force is needed to change motion, not to maintain it.
+  - id: heavier-falls-faster
+    description: Students think a heavier object falls faster than a lighter one.
+    correction: Ignoring air resistance, gravity accelerates every object at the same rate regardless of its mass, so a heavy and a light object dropped together land at the same time.
+prerequisites:
+  - sci-y7-chemical-reactions
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50
