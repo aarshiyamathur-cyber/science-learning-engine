@@ -1,0 +1,54 @@
+- id: q-periodic-table-01
+  conceptId: sci-y7-periodic-table
+  prompt: The periodic table arranges elements in order of their symbol, from A to Z.
+  type: multiple-choice
+  options:
+    - "True"
+    - "False"
+  correctAnswer: "False"
+  difficulty: 0.1
+  hint: Think about what number every element has that's unique to it, and what that number counts.
+  explanation: Elements are ordered by atomic number — the number of protons — increasing left to right and top to bottom. It only looks a little like alphabetical order in places by coincidence; the real rule is proton count, not spelling.
+- id: q-periodic-table-02
+  conceptId: sci-y7-periodic-table
+  prompt: On the periodic table, is a "group" a row or a column?
+  type: multiple-choice
+  options:
+    - A row
+    - A column
+  correctAnswer: A column
+  difficulty: 0.2
+  hint: A "period" of time and a "period" on the table both suggest something that repeats in sequence — that's the row. A group is the other direction.
+  explanation: A group is a vertical column. Elements in the same group have the same number of electrons in their outer shell, which is why they tend to behave in similar ways.
+- id: q-periodic-table-03
+  conceptId: sci-y7-periodic-table
+  prompt: >
+    Sodium (Na) and potassium (K) are both in group 1 of the periodic table.
+    Based on their position, what would you predict about how they behave?
+  type: short-answer
+  correctAnswer: They behave similarly, because elements in the same group have similar properties
+  difficulty: 0.4
+  hint: Elements share a group because they share something about their outer electrons — what does that usually mean for how they react?
+  explanation: Elements in the same group have the same number of outer-shell electrons, so they tend to react in similar ways. Sodium and potassium are both soft, reactive metals that react vigorously with water, which is exactly what their shared group position predicts.
+- id: q-periodic-table-04
+  conceptId: sci-y7-periodic-table
+  prompt: An element is found on the left-hand side of the periodic table. Is it more likely to be a metal or a non-metal?
+  type: multiple-choice
+  options:
+    - Metal
+    - Non-metal
+  correctAnswer: Metal
+  difficulty: 0.3
+  hint: Most of the periodic table's elements are one of these two types — which type takes up the larger, left-and-centre portion?
+  explanation: Metals occupy the left and centre of the periodic table, while non-metals cluster on the right-hand side. Most known elements are metals, which is why they take up the larger share of the table.
+- id: q-periodic-table-05
+  conceptId: sci-y7-periodic-table
+  prompt: >
+    An element has the atomic number 8. Using only its position in the
+    periodic table (no other memorised facts), which row (period) is it in,
+    and is it a metal or a non-metal?
+  type: short-answer
+  correctAnswer: Period 2, and it is a non-metal
+  difficulty: 0.6
+  hint: Count along the first two periods by atomic number until you reach 8, then check which side of the table that column falls on.
+  explanation: Atomic number 8 is oxygen. Counting periods by atomic number, period 1 holds elements 1-2 and period 2 holds elements 3-10, so atomic number 8 falls in period 2. Its column is on the right-hand side of the table, which is where non-metals sit.

@@ -37,6 +37,12 @@ Architecture prerequisites for Sprint 6 (done directly by Claude, not delegated,
 
 **Resolved (2026-08-03, DEC-006):** Product Owner accepted the button-based `AtomBuilder` widget for Version 1; drag-and-drop is a deferred future enhancement, not an open gap. See `management/ROADMAP.md` and `management/DECISIONS.md`.
 
+## Sprint 7
+
+| Task ID | Title                                                                     | Assigned By                    | Owner                                                            | Status | Files changed                                                                                                                                                                                                                                                                       | Reviewed                                                        | Accepted               | Dependencies |
+| ------- | -------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------- | ------------ |
+| BL-044  | Write the Periodic Table lesson, assessment, and PeriodicTableExplorer widget | Claude (Sprint 7 breakdown)     | **OpenClaw** (headless Claude Code worker, delegated)            | Done   | `app/components/widgets/PeriodicTableExplorer.tsx` (new), `app/components/widgets/PeriodicTableExplorer.test.tsx` (new), `curriculum/lessons/lesson-periodic-table-intro.yaml` (new), `curriculum/assessments/assessment-periodic-table-quiz.yaml` (new), `curriculum/concepts/sci-y7-periodic-table.yaml`, `docs/backlog/backlog.md`, `management/TASK_LEDGER.md` | Self-reviewed; validate:curriculum/typecheck/lint/test all pass | Pending Claude review  | none         |
+
 ## Sprint 5
 
 | Task ID | Title                                                | Assigned By                    | Owner   | Status      | Files changed                                                                                                          | Reviewed                                                                 | Accepted | Dependencies |

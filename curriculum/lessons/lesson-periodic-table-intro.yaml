@@ -1,0 +1,73 @@
+id: lesson-periodic-table-intro
+conceptId: sci-y7-periodic-table
+title: The Periodic Table
+summary: How elements are ordered by atomic number, what groups and periods are, and how to read an element's properties from where it sits in the table.
+steps:
+  - type: explanation
+    body: >
+      Every known element has its own spot on the periodic table, and that
+      spot isn't chosen alphabetically. Elements are arranged in order of
+      their atomic number — the number of protons in each atom — starting
+      at 1 (hydrogen) and increasing left to right, then wrapping down to the
+      next row. That means the table is really just a very useful way of
+      organising atoms by proton count, not by name. The table's rows are
+      called periods. Moving along a period from left to right, atomic
+      number increases by one each step. The table's columns are called
+      groups. Elements in the same group are stacked directly on top of one
+      another, and they share something important: the same number of
+      electrons in their outermost shell. That shared outer-shell arrangement
+      is why elements in the same group tend to behave in similar ways —
+      reacting with similar substances, in similar conditions. Position in
+      the table also sorts elements into two broad families. Metals sit on
+      the left and in the centre of the table — most elements are metals.
+      Non-metals sit on the right-hand side. So just by looking at where an
+      element sits, you can already tell a great deal about it before ever
+      looking it up: roughly how reactive it might be, what family it
+      belongs to, and whether to expect metal-like or non-metal-like
+      behaviour.
+  - type: example
+    body: >
+      Sodium (atomic number 11) and potassium (atomic number 19) sit in the
+      same column — group 1 — one row apart. Because they're in the same
+      group, they both have a single electron in their outermost shell, and
+      that single outer electron is what drives how each of them reacts.
+      Sure enough, both are soft metals that react vigorously with water,
+      fizzing and releasing heat as they do. Potassium reacts even more
+      strongly than sodium, but the family resemblance is unmistakable. Now
+      compare sodium to chlorine (atomic number 17), which sits in the same
+      period as sodium but all the way over in group 17, close to the
+      non-metal side of the table. Chlorine behaves nothing like sodium —
+      it's a non-metal, and a greenish gas at room temperature. Same period,
+      completely different group, completely different behaviour. This is
+      the real power of the periodic table: its layout alone lets you
+      predict which elements will behave alike, long before you memorise a
+      single fact about any of them individually.
+  - type: interactive
+    widget: periodic-table-explorer
+    prompt: >
+      Explore the grid of the first 20 elements below. Click on a few tiles
+      and notice two things: the atomic numbers increase left to right and
+      top to bottom (never alphabetically), and the colour tells you whether
+      each element is a metal or a non-metal. Try clicking one element from
+      the left-hand side and one from the right-hand side, and compare their
+      classifications. Then click two elements in the same column — do they
+      end up with the same classification?
+  - type: question
+    questionId: q-periodic-table-01
+  - type: question
+    questionId: q-periodic-table-02
+  - type: question
+    questionId: q-periodic-table-03
+  - type: question
+    questionId: q-periodic-table-04
+  - type: question
+    questionId: q-periodic-table-05
+  - type: summary
+    body: >
+      The periodic table orders every element by atomic number, not
+      alphabetically. Its rows are periods; its columns are groups, and
+      elements in the same group share a similar outer-shell arrangement,
+      which is why they behave alike. Metals cluster on the left and centre
+      of the table; non-metals cluster on the right. Once you know where an
+      element sits, you already know a lot about how it behaves — before
+      you've looked up a single other fact about it.

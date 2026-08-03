@@ -413,6 +413,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Acceptance criteria:** New illustration exported from `app/components/icons`, wired into `ContinueLearningScreen`'s per-conceptId lookup; hand-authored only, existing colour palette.
 - **Estimate:** Small
 
+## Sprint 7
+
+### BL-044 — Write the Periodic Table lesson, assessment, and PeriodicTableExplorer widget
+
+- **Description:** `sci-y7-periodic-table` (already wired into the knowledge graph as a prerequisite-gated concept after Atomic Structure) had zero lesson content, zero questions, and no interactive widget. Write it from scratch: elements ordered by atomic number (not alphabetically), groups vs periods, metals vs non-metals, and a new reusable `PeriodicTableExplorer` widget covering the first 20 elements.
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** New `app/components/widgets/PeriodicTableExplorer.tsx` — a standalone, curriculum-agnostic widget with no required props, showing a period/group grid of the first 20 elements (H-Ca) that reveals name/atomic number/metal-or-non-metal on tap; new `curriculum/lessons/lesson-periodic-table-intro.yaml` and `curriculum/assessments/assessment-periodic-table-quiz.yaml`; `sci-y7-periodic-table.yaml`'s `lessonRefs`/`assessmentRefs` populated; lesson's interactive step references widget id `periodic-table-explorer` (registration in `LessonPlayer`'s `WIDGET_REGISTRY` left for Claude's review, per directive); 5 questions with hints and explanations covering the concept's learning objectives and directly targeting both misconceptions ("periodic-table-is-alphabetical", "groups-and-periods-reversed"); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass; new unit tests for the widget.
+- **Estimate:** Medium
+- **Notes:** `PeriodicTableExplorer.tsx` renders all 18 groups as grid columns so groups 3-12 (transition metals, out of scope for this range) show as visible empty gaps rather than being silently compressed out of the layout — reinforces "these columns are skipped for now" visually. Boron and silicon are classed as metalloids in full chemistry but simplified to "non-metal" here (documented as a code comment only, not in learner-facing text) since this widget only offers a binary metal/non-metal choice, matching a typical simplified Year 7-10 treatment. `lesson-periodic-table-intro.yaml` follows the sibling Atomic Structure lesson's structure (explanation → example comparing sodium and potassium's shared group-1 behaviour → interactive `periodic-table-explorer` step → 5 questions → summary). `assessment-periodic-table-quiz.yaml`'s q-periodic-table-01 targets the alphabetical misconception directly, q-periodic-table-02 targets the group/period mix-up directly, and q-periodic-table-05 requires deriving both period and metal/non-metal classification from atomic number alone. 3 new unit tests (initial state, clicking a metal tile, clicking a non-metal tile). Delegated to and completed by an OpenClaw headless worker; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (68/68 tests, 11 files) all pass.
+
 ## Curriculum Enhancement
 
 ### CE-001 — Grow question banks for the Matter topic
