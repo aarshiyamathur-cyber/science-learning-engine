@@ -44,8 +44,8 @@ interface ContinueLearningScreenProps {
 type Screen = "topic" | "in-lesson" | "done";
 
 /**
- * The "Matter" topic screen: a list of every lesson in the topic (in
- * teaching order), each showing its own progress and lock state, plus the
+ * The full science course screen: a list of every lesson across every topic
+ * (in teaching order), each showing its own progress and lock state, plus the
  * existing single-lesson play/answer/complete flow once one is selected.
  * Locking is derived entirely from each concept's existing `prerequisites`
  * field — no new engine capability, just reading data that already exists.
@@ -108,7 +108,7 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
 
         {screen === "topic" && (
           <div className="flex flex-col gap-4">
-            <p className="text-heading font-bold text-zinc-900 dark:text-zinc-50">Matter</p>
+            <p className="text-heading font-bold text-zinc-900 dark:text-zinc-50">Science Course</p>
             <p className="text-label font-medium text-warning-700 dark:text-warning-300">
               ⭐ {xp} XP
             </p>
@@ -153,7 +153,7 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
               onClick={backToTopic}
               className="self-start text-label text-info-600 underline hover:text-info-800 dark:text-info-400 dark:hover:text-info-200"
             >
-              ← Back to Matter
+              ← Back to topic list
             </button>
             <p className="text-subheading font-semibold text-info-900 dark:text-info-100">
               {selected.lessonTitle}
@@ -176,7 +176,7 @@ export function ContinueLearningScreen({ lessons, initialXp }: ContinueLearningS
             <p className="text-label font-medium text-warning-700 dark:text-warning-300">
               ⭐ {xp} XP
             </p>
-            <Button onClick={backToTopic}>Back to Matter</Button>
+            <Button onClick={backToTopic}>Back to topic list</Button>
           </Card>
         )}
       </div>
