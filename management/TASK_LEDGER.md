@@ -4,6 +4,12 @@ _Last updated: 2026-08-01 by Claude Code_
 
 One row per engineering task. Tracking starts with Sprint 2 (the delegation-first directive was introduced mid-Sprint-2; Sprint 0/1 tasks aren't retroactively recorded here). `Owner` reflects who actually did the implementation, not who was assigned.
 
+## Curriculum Enhancement
+
+| Task ID | Title                                        | Assigned By                                | Owner                                                            | Status | Files changed                                                                                                                                                     | Reviewed                                                                                    | Accepted            | Dependencies |
+| ------- | --------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ------------ |
+| CE-001  | Grow question banks for the Matter topic      | Claude (Curriculum Enhancement directive)    | **OpenClaw** (headless Claude Code worker, delegated)             | Done   | `curriculum/assessments/assessment-matter-quiz.yaml`, `curriculum/assessments/assessment-particle-model-quiz.yaml`, `curriculum/assessments/assessment-states-of-matter-quiz.yaml`, `docs/backlog/backlog.md`, `management/TASK_LEDGER.md` | Self-reviewed; validate:curriculum/typecheck/lint/test all pass                                | Pending Claude review | none         |
+
 ## Product Command Centre
 
 | Task ID | Title                                          | Assigned By                              | Owner                                                           | Status | Files changed                                                                                                                                                                                                                                                                                                                             | Reviewed                                                                                | Accepted            | Dependencies |

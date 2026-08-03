@@ -50,3 +50,24 @@
   difficulty: 0.1
   hint: Ask yourself — do both of these have mass, and do both take up space?
   explanation: Both a solid rock and a liquid puddle have mass and take up space, so both are matter, even though one is solid and one is liquid.
+- id: q-matter-06
+  conceptId: sci-y7-matter
+  prompt: Which of these things is matter?
+  type: multiple-choice
+  options:
+    - A shadow on the wall
+    - The sound of a bell
+    - A cloud of steam
+    - An idea in your head
+  correctAnswer: A cloud of steam
+  difficulty: 0.3
+  hint: A shadow, a sound, and an idea don't have mass or take up space of their own — which option does?
+  explanation: A cloud of steam is made of tiny water particles, so it has mass and takes up space, just like any gas. Shadows, sounds, and ideas aren't matter — they don't have mass or occupy space themselves.
+- id: q-matter-07
+  conceptId: sci-y7-matter
+  prompt: Name the three common states of matter.
+  type: short-answer
+  correctAnswer: "Solid, liquid, and gas."
+  difficulty: 0.2
+  hint: Think of ice, water, and steam — each one is a different one of these.
+  explanation: The three common states of matter are solid, liquid, and gas. The same substance can exist as any of them depending on how much energy its particles have.

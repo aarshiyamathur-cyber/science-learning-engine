@@ -49,3 +49,23 @@
   difficulty: 0.3
   hint: Think about what energy from heat actually does to something at the particle level.
   explanation: Adding heat gives particles more energy, so they move (or vibrate) faster — this is also why substances can change state when heated.
+- id: q-particle-model-06
+  conceptId: sci-y7-particle-model
+  prompt: Why can a gas be squeezed into a much smaller container far more easily than a liquid can?
+  type: multiple-choice
+  options:
+    - Gas particles have lots of empty space between them that can be squeezed out
+    - Gas particles are smaller in size than liquid particles
+    - Gas particles have less mass than liquid particles
+  correctAnswer: Gas particles have lots of empty space between them that can be squeezed out
+  difficulty: 0.4
+  hint: Think about how far apart gas particles are compared to liquid particles — what's mostly in that space?
+  explanation: Gas particles are spread far apart with lots of empty space between them, so pushing them closer together just squeezes out that empty space. Liquid particles are already close together, so there's much less room to compress.
+- id: q-particle-model-07
+  conceptId: sci-y7-particle-model
+  prompt: How are particles arranged in a solid?
+  type: short-answer
+  correctAnswer: "Tightly packed together in a fixed, regular pattern."
+  difficulty: 0.3
+  hint: Think about why a solid keeps its own shape instead of flowing or spreading out.
+  explanation: In a solid, particles are packed closely together in a fixed, regular arrangement, which is why a solid holds its shape — even though the particles themselves are still vibrating in place.
