@@ -22,6 +22,6 @@ prerequisites:
 unlocks: []
 masteryThreshold: 0.8
 revisionStrategy: spaced-repetition
-lessonRefs: []
-assessmentRefs: []
+lessonRefs: [lesson-chemical-reactions-intro]
+assessmentRefs: [assessment-chemical-reactions-quiz]
 xpReward: 50

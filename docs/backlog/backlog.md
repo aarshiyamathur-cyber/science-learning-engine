@@ -437,6 +437,18 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 
 **Sprint 7 (Periodic Table) Definition of Done met 2026-08-03 — both Sprint 6 and Sprint 7 now complete. Stopped, awaiting Product Review per the 2026-08-03 worktree-allocation directive.**
 
+## Sprint 8
+
+### BL-046 — Write the Chemical Reactions lesson, assessment, and ReactionSimulator widget
+
+- **Description:** `sci-y7-chemical-reactions` (already wired into the knowledge graph as a prerequisite-gated concept after Atomic Structure) had zero lesson content, zero questions, and no interactive widget. Write it from scratch per the new permanent visual-learning standard (hero illustration, short text blocks, supporting diagram, meaningful interaction): reactants vs products, signs of a reaction, conservation of mass, and a new reusable `ReactionSimulator` widget covering three preset reactions (vinegar + baking soda, iron + oxygen rusting, fuel + oxygen combustion).
+- **Dependencies:** none
+- **Priority:** P0
+- **Status:** Done
+- **Acceptance criteria:** New `app/components/widgets/ReactionSimulator.tsx` — a standalone, curriculum-agnostic widget with no required props, offering 3 tappable reactant pairs that each reveal a word equation, the sign of reaction demonstrated, and a visual tied directly to that sign (bubbles for gas, a colour-shifting circle for rusting, a flickering flame for combustion); new `curriculum/lessons/lesson-chemical-reactions-intro.yaml` (illustration → short explanation → short explanation → illustration → example → interactive `reaction-simulator` → 5 questions → summary) and `curriculum/assessments/assessment-chemical-reactions-quiz.yaml`; `sci-y7-chemical-reactions.yaml`'s `lessonRefs`/`assessmentRefs` populated; lesson references illustration ids `chemical-reaction-hero` and `conservation-of-mass` and widget id `reaction-simulator` (registration in `LessonPlayer`'s registries left for Claude's review, per directive); 5 questions with hints and explanations covering the concept's learning objectives and directly targeting both misconceptions ("burning-destroys-matter", "reaction-is-just-mixing"); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass; new unit tests for the widget.
+- **Estimate:** Medium
+- **Notes:** Every explanation/example step body is 2-4 sentences, noticeably shorter than earlier lessons' single long paragraphs, per the new visual-learning standard. `ReactionSimulator.tsx` reuses the existing `@keyframes` pattern from `ParticleStateExplorer` (BL-027), adding three new animations to `app/globals.css` (`bubble-rise`, `rust-shift`, `flame-flicker`) each tied directly to the specific sign of reaction being taught, not decorative motion. q-chemical-reactions-01 targets the reaction-is-just-mixing misconception (melting vs. reacting), q-chemical-reactions-04 and q-chemical-reactions-05 target the burning-destroys-matter misconception directly (where the "missing" mass actually goes, and a sealed-container mass-conservation prediction). 4 new unit tests (initial state, clicking each of the other two reactant pairs, aria-pressed toggling). Delegated to and completed by an OpenClaw headless worker; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (77/77 tests, 12 files) all pass.
+
 ## Curriculum Enhancement
 
 ### CE-001 — Grow question banks for the Matter topic

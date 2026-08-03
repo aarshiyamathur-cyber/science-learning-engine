@@ -1,0 +1,51 @@
+id: lesson-chemical-reactions-intro
+conceptId: sci-y7-chemical-reactions
+title: Chemical Reactions
+summary: What a chemical reaction is, the signs that tell you one has happened, and why mass is always conserved.
+steps:
+  - type: illustration
+    illustration: chemical-reaction-hero
+    caption: A chemical reaction turns reactants into new products.
+  - type: explanation
+    body: >
+      A chemical reaction happens when substances called reactants combine
+      and turn into different substances called products. The products have
+      new properties of their own — they aren't just the reactants mixed
+      together, but something genuinely new.
+  - type: explanation
+    body: >
+      You can often spot a reaction by its signs: a colour change, gas
+      bubbling out, a solid (precipitate) forming in a liquid, or a change
+      in temperature. Spotting any one of these is a strong clue that
+      reactants have become products.
+  - type: illustration
+    illustration: conservation-of-mass
+    caption: Atoms rearrange into new products - none are created or destroyed, so mass stays the same.
+  - type: example
+    body: >
+      When iron is left outside, it slowly reacts with oxygen in the air to
+      form iron oxide — rust. The shiny grey metal turns reddish-brown, a
+      clear colour change. No iron atoms disappear; they simply combine with
+      oxygen atoms to form a new substance.
+  - type: interactive
+    widget: reaction-simulator
+    prompt: >
+      Try each reactant pair in the simulator below. Notice how each one
+      shows a different sign of reaction — bubbles, a colour shift, or a
+      flame — even though every single one is a genuine chemical reaction.
+  - type: question
+    questionId: q-chemical-reactions-01
+  - type: question
+    questionId: q-chemical-reactions-02
+  - type: question
+    questionId: q-chemical-reactions-03
+  - type: question
+    questionId: q-chemical-reactions-04
+  - type: question
+    questionId: q-chemical-reactions-05
+  - type: summary
+    body: >
+      A chemical reaction turns reactants into products with new
+      properties, and you can spot one by signs like colour change, gas,
+      precipitate, or temperature change. Atoms are never created or
+      destroyed — only rearranged — which is why mass is always conserved.
