@@ -3,12 +3,14 @@ import { render } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import {
   AtomicStructureIllustration,
+  BalancedUnbalancedForcesIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
   ExampleIcon,
   ExplanationIcon,
+  ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   QuestionIcon,
@@ -30,6 +32,8 @@ describe("step icons and illustrations", () => {
     PeriodicTableIllustration,
     ChemicalReactionHeroIllustration,
     ConservationOfMassIllustration,
+    ForcesHeroIllustration,
+    BalancedUnbalancedForcesIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);

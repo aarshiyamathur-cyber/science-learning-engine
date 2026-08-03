@@ -1,9 +1,11 @@
 export {
   AtomicStructureIllustration,
+  BalancedUnbalancedForcesIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   StatesOfMatterIllustration,
