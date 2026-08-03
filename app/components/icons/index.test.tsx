@@ -5,6 +5,8 @@ import {
   AtomicStructureIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
+  ChemicalReactionHeroIllustration,
+  ConservationOfMassIllustration,
   ExampleIcon,
   ExplanationIcon,
   ParticleModelIllustration,
@@ -26,6 +28,8 @@ describe("step icons and illustrations", () => {
     ChangesOfStateIllustration,
     AtomicStructureIllustration,
     PeriodicTableIllustration,
+    ChemicalReactionHeroIllustration,
+    ConservationOfMassIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);

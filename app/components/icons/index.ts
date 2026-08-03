@@ -2,6 +2,8 @@ export {
   AtomicStructureIllustration,
   CelebrationIllustration,
   ChangesOfStateIllustration,
+  ChemicalReactionHeroIllustration,
+  ConservationOfMassIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   StatesOfMatterIllustration,
