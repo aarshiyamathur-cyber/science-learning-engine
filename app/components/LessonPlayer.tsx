@@ -5,6 +5,8 @@ import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import {
   AtomicStructureIllustration,
   ChangesOfStateIllustration,
+  ChemicalReactionHeroIllustration,
+  ConservationOfMassIllustration,
   ExampleIcon,
   ExplanationIcon,
   ParticleModelIllustration,
@@ -18,6 +20,7 @@ import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
+import { ReactionSimulator } from "./widgets/ReactionSimulator";
 
 /**
  * Registry of interactive widgets, keyed by the id a lesson's interactive
@@ -28,6 +31,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "particle-state-explorer": ParticleStateExplorer,
   "atom-builder": AtomBuilder,
   "periodic-table-explorer": PeriodicTableExplorer,
+  "reaction-simulator": ReactionSimulator,
 };
 
 /**
@@ -44,6 +48,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "changes-of-state": ChangesOfStateIllustration,
   "atomic-structure": AtomicStructureIllustration,
   "periodic-table": PeriodicTableIllustration,
+  "chemical-reaction-hero": ChemicalReactionHeroIllustration,
+  "conservation-of-mass": ConservationOfMassIllustration,
 };
 
 interface LessonPlayerProps {
