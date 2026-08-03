@@ -1,10 +1,10 @@
 # AI Factory Dashboard
 
-_Last updated: 2026-08-03 by Claude Code_
+_Last updated: 2026-08-04 by Claude Code_
 
 ## Current Sprint
 
-Sprint 8 — "Chemical Reactions" — **Definition of Done met. Continuing autonomously into Sprint 9 (Forces)** per the 2026-08-03 "autonomous multi-sprint execution" directive — no review stop between sprints; only pausing for a genuine architectural blocker, an uninferrable product decision, four additional topics reaching DoD, or a critical production issue.
+Sprint 9 — "Forces" — **Definition of Done met. Continuing autonomously into Sprint 10 (Energy)** per the 2026-08-03 "autonomous multi-sprint execution" directive — no review stop between sprints; only pausing for a genuine architectural blocker, an uninferrable product decision, four additional topics reaching DoD (2 of 4 done: Chemical Reactions, Forces), or a critical production issue.
 
 ## Status
 
