@@ -4,11 +4,13 @@ import { useRef, useState, type SVGProps } from "react";
 import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import {
   AtomicStructureIllustration,
+  BalancedUnbalancedForcesIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
   ExampleIcon,
   ExplanationIcon,
+  ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   QuestionIcon,
@@ -18,6 +20,7 @@ import {
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
+import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
 import { ReactionSimulator } from "./widgets/ReactionSimulator";
@@ -32,6 +35,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "atom-builder": AtomBuilder,
   "periodic-table-explorer": PeriodicTableExplorer,
   "reaction-simulator": ReactionSimulator,
+  "force-friction-simulator": ForceFrictionSimulator,
 };
 
 /**
@@ -50,6 +54,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "periodic-table": PeriodicTableIllustration,
   "chemical-reaction-hero": ChemicalReactionHeroIllustration,
   "conservation-of-mass": ConservationOfMassIllustration,
+  "forces-hero": ForcesHeroIllustration,
+  "balanced-unbalanced-forces": BalancedUnbalancedForcesIllustration,
 };
 
 interface LessonPlayerProps {
