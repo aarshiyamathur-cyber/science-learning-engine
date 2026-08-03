@@ -121,3 +121,17 @@ Direct feedback from Aarshiya's use of the app. Applies immediately to all new t
 
 **Impact**
 Affects lesson authoring going forward: `LessonStep`'s `explanation`/`example` step bodies should be written and reviewed against this bar (short sections, one hero illustration per lesson, graphics that teach rather than decorate), and any dispatch prompt for new lesson content should state these requirements explicitly. Does not require a schema change — `explanation`/`example` steps already carry free-form `body` text; "short sections with supporting graphics" is an authoring-quality bar, not a new step type, unless a future concept genuinely needs a new component to render inline diagrams within an explanation step.
+
+## DEC-010
+
+**Decision**
+Disabled the pre-existing recurring cron job "Aarshiya continuous dev cycle" (id `7614c9e2-...`, every 2h, runs in the same physical directory as `openclaw/aarshiya-auto`'s worktree) for the duration of the active Sprint 8-12 multi-worktree pipeline.
+
+**Status**
+Accepted
+
+**Reason**
+This cron job predates the 2026-08-03 autonomous multi-sprint directive and independently runs `claude --permission-mode bypassPermissions --print` in `C:\Users\Lenovo\.openclaw\worktrees\...\aarshiya-auto` — the exact same directory now used for every Sprint 8+ content dispatch. During Sprint 10 it fired while a manually-dispatched BL-048 worker was still mid-run in that directory, and it correctly saw an untracked in-progress file before declining to act (per its own idle-cycle safety instructions, it never commits/pushes when nothing matches its expected `## Next`/`Not started` backlog format — a format this project's `backlog.md` hasn't used since around Sprint 3/4). No damage occurred this time, but two independent `git`-invoking processes sharing one working directory is a real risk of `.git/index.lock` contention or worse if a future run's timing lines up differently. The cron is also functionally redundant now: it never finds matching work under the current `backlog.md` convention, so disabling it costs nothing.
+
+**Impact**
+`openclaw cron disable 7614c9e2-8de6-4dfd-9ea4-a235de7b9aeb` was run directly (reversible via `openclaw cron enable`). Future sessions continuing the Sprint 8-12 pipeline should leave it disabled until the pipeline is no longer actively dispatching into that same worktree; re-enabling it earlier risks the same collision class recurring with worse timing.

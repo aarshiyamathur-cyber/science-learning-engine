@@ -11,7 +11,7 @@ _Frozen 2026-08-01 per Product Owner directive; extended 2026-08-03 through Spri
 | Sprint 7 | Periodic Table | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 8 | Chemical Reactions | ✅ Done — Definition of Done met 2026-08-03 |
 | Sprint 9 | Forces | ✅ Done — Definition of Done met 2026-08-04 |
-| Sprint 10 | Energy | ⬜ Not started |
+| Sprint 10 | Energy | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 11 | Cells | ⬜ Not started |
 | Sprint 12 | Body Systems | ⬜ Not started |
 
@@ -103,6 +103,16 @@ Every lesson contributes reusable questions with concept, difficulty, correct an
 **Delivered via the 3-worktree pipeline:** `lesson-forces-intro.yaml` (hero illustration → 2 short explanations → mid-lesson illustration → tug-of-war example → `ForceFrictionSimulator` widget → gravity explanation → 5 questions → summary), `assessment-forces-quiz.yaml` (both misconceptions — "constant force needed to keep moving" and "heavier objects fall faster" — directly and correctly targeted), a new `ForceFrictionSimulator` widget (3 surfaces, each sliding a visibly different distance tied to its friction level), and two new illustrations. Reviewed, wired, and merged to master by the Worktree 3 reviewer, which also caught and corrected an inaccurate self-reported claim in the illustration worker's own notes rather than repeating it — independently re-verified by Claude afterward.
 
 **Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (85/85)/`build` all pass, live click-through of all 12 lesson steps including all 3 friction surfaces (visibly different slide distances confirmed), mastery/XP confirmed (350 XP total), mobile (375px, no overflow), no placeholders/TODOs.
+
+## Sprint 10 — Energy (Definition of Done met 2026-08-04)
+
+**Scope:** what energy is, common forms (kinetic, potential, thermal, light, sound, chemical, electrical), conservation of energy, everyday energy transformations — Year 7-10 appropriate, no joules/numeric calculations, no formal thermodynamics beyond "some energy always ends up as heat".
+
+**Prerequisite:** `sci-y7-forces` (continuing the linear topic sequence).
+
+**Delivered via the 3-worktree pipeline:** `lesson-energy-intro.yaml` (hero illustration → forms of energy → conservation → transformation illustration → falling-ball example → `EnergyTransformationExplorer` widget → 5 questions → summary), `assessment-energy-quiz.yaml` (both misconceptions — "energy gets used up/disappears" and "a stationary object has no energy" — directly and correctly targeted), a new `EnergyTransformationExplorer` widget (3 scenarios including an animated pendulum showing the potential/kinetic trade-off), and two new illustrations. Reviewer specifically verified the pendulum's potential-at-top/kinetic-at-bottom physics was correct before merging (an easy place to get subtly wrong) — independently re-verified live by Claude afterward, including watching the animation.
+
+**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (91/91)/`build` all pass, live click-through of all 11 lesson steps including all 3 widget scenarios, mastery/XP confirmed (400 XP total), mobile (375px, no overflow), no placeholders/TODOs. **This is the 3rd of 4 additional topics toward the 2026-08-03 directive's stop condition — one more (Sprint 11, Cells) before the mandated check-in.**
 
 ## Engineering capacity
 

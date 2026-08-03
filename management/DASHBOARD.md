@@ -4,7 +4,9 @@ _Last updated: 2026-08-04 by Claude Code_
 
 ## Current Sprint
 
-Sprint 9 — "Forces" — **Definition of Done met. Continuing autonomously into Sprint 10 (Energy)** per the 2026-08-03 "autonomous multi-sprint execution" directive — no review stop between sprints; only pausing for a genuine architectural blocker, an uninferrable product decision, four additional topics reaching DoD (2 of 4 done: Chemical Reactions, Forces), or a critical production issue.
+Sprint 10 — "Energy" — **Definition of Done met. Continuing autonomously into Sprint 11 (Cells)** per the 2026-08-03 "autonomous multi-sprint execution" directive — no review stop between sprints; only pausing for a genuine architectural blocker, an uninferrable product decision, four additional topics reaching DoD (3 of 4 done: Chemical Reactions, Forces, Energy — Cells is the last before the mandated check-in), or a critical production issue.
+
+**Note (DEC-010):** the pre-existing "Aarshiya continuous dev cycle" cron job has been disabled for the duration of this pipeline — it shared a worktree directory with the active Sprint dispatches and posed a real (if so-far harmless) git-lock collision risk. Reversible via `openclaw cron enable 7614c9e2-8de6-4dfd-9ea4-a235de7b9aeb`.
 
 ## Status
 
