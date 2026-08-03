@@ -1,0 +1,26 @@
+id: sci-y7-periodic-table
+title: The Periodic Table
+description: >
+  Elements are arranged in the periodic table in order of atomic number.
+  Its rows (periods) and columns (groups) reveal patterns in how elements
+  behave, including which elements are metals and which are non-metals.
+learningObjectives:
+  - Explain that the periodic table orders elements by increasing atomic number
+  - Describe what a group (column) and a period (row) are
+  - Identify whether an element is a metal or a non-metal from its position in the table
+  - Use the periodic table to look up basic properties of an element
+misconceptions:
+  - id: periodic-table-is-alphabetical
+    description: Students think elements are arranged alphabetically by name or symbol.
+    correction: Elements are arranged by atomic number (proton count), increasing left to right and top to bottom - not alphabetically.
+  - id: groups-and-periods-reversed
+    description: Students mix up which direction is a "group" and which is a "period".
+    correction: Groups are the vertical columns (elements in the same group share similar properties); periods are the horizontal rows.
+prerequisites:
+  - sci-y7-atomic-structure
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50

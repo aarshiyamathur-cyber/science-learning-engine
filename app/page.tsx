@@ -19,6 +19,7 @@ const SCIENCE_TOPIC_CONCEPT_IDS = [
   "sci-y7-particle-model",
   "sci-y7-states-of-matter",
   "sci-y7-atomic-structure",
+  "sci-y7-periodic-table",
 ];
 
 function isConceptCompleted(concept: Concept, completedLessons: string[]): boolean {

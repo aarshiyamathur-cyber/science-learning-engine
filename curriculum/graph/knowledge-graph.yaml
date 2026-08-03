@@ -3,10 +3,14 @@ nodes:
   - sci-y7-particle-model
   - sci-y7-states-of-matter
   - sci-y7-atomic-structure
+  - sci-y7-periodic-table
 edges:
   - from: sci-y7-particle-model
     to: sci-y7-states-of-matter
     relationship: prerequisite-of
   - from: sci-y7-states-of-matter
     to: sci-y7-atomic-structure
+    relationship: prerequisite-of
+  - from: sci-y7-atomic-structure
+    to: sci-y7-periodic-table
     relationship: prerequisite-of
