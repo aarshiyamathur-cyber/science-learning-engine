@@ -5,6 +5,7 @@ import {
   AtomicStructureIllustration,
   BalancedUnbalancedForcesIllustration,
   CelebrationIllustration,
+  CellsHeroIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
@@ -15,6 +16,7 @@ import {
   ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
+  PlantVsAnimalCellIllustration,
   QuestionIcon,
   StatesOfMatterIllustration,
   SummaryIcon,
@@ -38,6 +40,8 @@ describe("step icons and illustrations", () => {
     BalancedUnbalancedForcesIllustration,
     EnergyHeroIllustration,
     EnergyTransformationIllustration,
+    CellsHeroIllustration,
+    PlantVsAnimalCellIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);
