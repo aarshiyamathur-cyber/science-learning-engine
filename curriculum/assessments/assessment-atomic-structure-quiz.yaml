@@ -51,3 +51,33 @@
   difficulty: 0.6
   hint: Think about what you'd find if you could zoom in past the outer edge of an atom.
   explanation: Atoms have internal structure — a nucleus made of protons and neutrons at the centre, surrounded by electrons in shells. Far from being a solid ball, an atom is mostly empty space between the nucleus and its electrons.
+- id: q-atomic-structure-06
+  conceptId: sci-y7-atomic-structure
+  prompt: Which of the three particles in an atom carries a negative charge?
+  type: multiple-choice
+  options:
+    - Protons
+    - Neutrons
+    - Electrons
+  correctAnswer: Electrons
+  difficulty: 0.1
+  hint: Protons are positive and neutrons are neutral — that only leaves one particle for the negative charge.
+  explanation: Electrons carry a negative charge, protons carry a positive charge, and neutrons carry no charge at all. It's this balance of equal positive protons and negative electrons that keeps a neutral atom's overall charge at zero.
+- id: q-atomic-structure-07
+  conceptId: sci-y7-atomic-structure
+  prompt: A neutral atom has an atomic number of 17. How many electrons does it have?
+  type: short-answer
+  correctAnswer: "17"
+  difficulty: 0.3
+  hint: In a neutral atom, the number of electrons always matches one particular particle count — which one does atomic number track?
+  explanation: Atomic number is the number of protons, and in a neutral atom the number of electrons always equals the number of protons so the charges balance. An atomic number of 17 means 17 protons, so a neutral atom of it also has 17 electrons.
+- id: q-atomic-structure-08
+  conceptId: sci-y7-atomic-structure
+  prompt: >
+    An atom has 17 electrons. Using the simplified shell-filling rule (2,
+    then 8, then the rest), how many electrons are in each shell?
+  type: short-answer
+  correctAnswer: 2 in the first shell, 8 in the second shell, and 7 in the third shell
+  difficulty: 0.5
+  hint: Fill the first shell to its maximum, then the second shell to its maximum, and see how many electrons are left over for the third.
+  explanation: The first shell takes its maximum of 2, and the second shell takes its maximum of 8, using up 10 electrons in total. That leaves 17 − 10 = 7 electrons to go into the third shell.

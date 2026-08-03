@@ -307,6 +307,16 @@ Mission: replace reading with discovery. Every implementation must answer "Can A
 - **Estimate:** Small
 - **Notes:** Added `AtomicStructureIllustration` to `app/components/icons/Illustrations.tsx` — a small proton/neutron cluster nucleus (`#f43f5e` rose, `#a1a1aa` zinc, matching `AtomBuilder`'s neutron color) with three dashed orbital rings and electron dots (`#0ea5e9` sky), all in the existing token palette. Exported from `app/components/icons/index.ts`, wired into `ContinueLearningScreen.tsx`'s `LESSON_ILLUSTRATIONS` lookup keyed by `sci-y7-atomic-structure`, and covered by a new render test in `app/components/icons/index.test.tsx`. `typecheck`, `lint`, `vitest run` (65/65 tests, 10 files), and `build` all pass.
 
+### BL-042 — Grow the Atomic Structure question bank
+
+- **Description:** Per the 2026-08-03 Product Owner directive making the Question Bank a tracked secondary KPI, extend `assessment-atomic-structure-quiz.yaml`'s reusable question bank beyond the 5 questions written for BL-040: distinguishing protons/neutrons/electrons by charge, computing electron count from atomic number via the neutral-atom rule, and shell-filling applied to a different electron count. Bank-only additions for revision/spaced-repetition — the lesson's tested 5-question flow is unchanged.
+- **Dependencies:** BL-040
+- **Priority:** P1
+- **Status:** Done
+- **Acceptance criteria:** 3 new questions (`q-atomic-structure-06` through `08`) appended to `assessment-atomic-structure-quiz.yaml`, each with `hint` and `explanation`, mixed multiple-choice/short-answer, difficulty 0.1-0.5; `lesson-atomic-structure-intro.yaml` unchanged (still references only questions 01-05); `validate:curriculum`/`typecheck`/`lint`/`vitest run` all pass.
+- **Estimate:** Small
+- **Notes:** q-atomic-structure-06 asks which particle carries a negative charge; q-atomic-structure-07 requires deriving electron count (17) from atomic number using the neutral-atom rule; q-atomic-structure-08 applies the 2/8/remainder shell-filling rule to 17 electrons, distinct from q-atomic-structure-04's 13-electron example. Delegated to and completed by an OpenClaw headless worker; `validate:curriculum`, `typecheck`, `lint`, and `vitest run` (65/65 tests, 10 files) all pass.
+
 ## Product Command Centre
 
 ### CC-001 — Command Centre framework, navigation, and routing
