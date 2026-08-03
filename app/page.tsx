@@ -22,6 +22,7 @@ const SCIENCE_TOPIC_CONCEPT_IDS = [
   "sci-y7-periodic-table",
   "sci-y7-chemical-reactions",
   "sci-y7-forces",
+  "sci-y7-energy",
 ];
 
 function isConceptCompleted(concept: Concept, completedLessons: string[]): boolean {

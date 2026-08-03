@@ -6,6 +6,7 @@ nodes:
   - sci-y7-periodic-table
   - sci-y7-chemical-reactions
   - sci-y7-forces
+  - sci-y7-energy
 edges:
   - from: sci-y7-particle-model
     to: sci-y7-states-of-matter
@@ -21,4 +22,7 @@ edges:
     relationship: prerequisite-of
   - from: sci-y7-chemical-reactions
     to: sci-y7-forces
+    relationship: prerequisite-of
+  - from: sci-y7-forces
+    to: sci-y7-energy
     relationship: prerequisite-of

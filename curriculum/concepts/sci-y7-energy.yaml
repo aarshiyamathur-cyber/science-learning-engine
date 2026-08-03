@@ -1,0 +1,28 @@
+id: sci-y7-energy
+title: Energy
+description: >
+  Energy makes things happen — it lets objects move, heat up, light up, or
+  make sound. Energy comes in different forms and is constantly being
+  transformed from one form into another, but the total amount of energy
+  never changes: it's never created or destroyed, only moved around and
+  converted.
+learningObjectives:
+  - Explain that energy is never created or destroyed, only transformed from one form to another
+  - Identify common forms of energy (kinetic, potential, thermal, light, sound, chemical, electrical)
+  - Describe an everyday energy transformation as a chain of energy forms
+  - Explain that energy transformations always release some energy as heat, which is why they're never perfectly efficient
+misconceptions:
+  - id: energy-gets-used-up
+    description: Students think energy disappears or gets "used up" when something stops moving or a device turns off.
+    correction: Energy is never destroyed — it's transformed into other forms, usually including some heat that spreads out and becomes hard to use, but the total amount of energy is always conserved.
+  - id: stillness-means-no-energy
+    description: Students think an object that isn't moving has no energy.
+    correction: A stationary object can still store energy — for example, a ball held up high has gravitational potential energy, and a stretched spring has elastic potential energy — even though nothing is moving yet.
+prerequisites:
+  - sci-y7-forces
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50
