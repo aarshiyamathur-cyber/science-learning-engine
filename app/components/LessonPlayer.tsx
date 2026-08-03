@@ -5,6 +5,7 @@ import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import {
   AtomicStructureIllustration,
   BalancedUnbalancedForcesIllustration,
+  CellsHeroIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
@@ -15,6 +16,7 @@ import {
   ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
+  PlantVsAnimalCellIllustration,
   QuestionIcon,
   StatesOfMatterIllustration,
   SummaryIcon,
@@ -22,6 +24,7 @@ import {
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
+import { CellStructureExplorer } from "./widgets/CellStructureExplorer";
 import { EnergyTransformationExplorer } from "./widgets/EnergyTransformationExplorer";
 import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
@@ -40,6 +43,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "reaction-simulator": ReactionSimulator,
   "force-friction-simulator": ForceFrictionSimulator,
   "energy-transformation-explorer": EnergyTransformationExplorer,
+  "cell-structure-explorer": CellStructureExplorer,
 };
 
 /**
@@ -62,6 +66,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "balanced-unbalanced-forces": BalancedUnbalancedForcesIllustration,
   "energy-hero": EnergyHeroIllustration,
   "energy-transformation": EnergyTransformationIllustration,
+  "cells-hero": CellsHeroIllustration,
+  "plant-vs-animal-cell": PlantVsAnimalCellIllustration,
 };
 
 interface LessonPlayerProps {

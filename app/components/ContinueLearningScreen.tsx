@@ -7,6 +7,7 @@ import { completeLessonAction, submitAnswerAction } from "../actions";
 import {
   AtomicStructureIllustration,
   CelebrationIllustration,
+  CellsHeroIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   EnergyHeroIllustration,
@@ -31,6 +32,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-chemical-reactions": ChemicalReactionHeroIllustration,
   "sci-y7-forces": ForcesHeroIllustration,
   "sci-y7-energy": EnergyHeroIllustration,
+  "sci-y7-cells": CellsHeroIllustration,
 };
 
 export interface LessonEntry {
