@@ -1,0 +1,30 @@
+id: sci-y7-plate-tectonics
+title: Plate Tectonics
+description: >
+  Earth's outer shell is broken into large, rigid tectonic plates that rest
+  on a solid but slowly flowing mantle. Convection currents deep within the
+  Earth drive these plates to move a few centimetres per year, and the way
+  neighbouring plates interact at their boundaries explains why earthquakes,
+  volcanoes, and mountain ranges are concentrated in particular parts of the
+  world rather than scattered randomly.
+learningObjectives:
+  - Describe Earth's layered structure (crust, mantle, core) and that the crust is broken into large tectonic plates
+  - Explain that tectonic plates move slowly (a few centimetres per year) due to convection currents in the solid, slowly-flowing mantle
+  - Distinguish convergent (colliding), divergent (separating), and transform (sliding past) plate boundaries and the different effects each produces
+  - Explain why earthquakes and volcanoes are concentrated along plate boundaries rather than occurring randomly across the Earth's surface
+  - Describe evidence supporting plate tectonics, such as matching continent shapes and matching fossils/rock layers across continents now far apart
+misconceptions:
+  - id: mantle-is-liquid-plates-float
+    description: Students think the mantle is a liquid ocean of molten magma that tectonic plates float on top of, like boats on water.
+    correction: The mantle is solid rock, not liquid. It flows extremely slowly over millions of years because of heat from deep within the Earth (convection) — it's this very slow solid-rock flow that carries the rigid plates above it, not floating on a liquid.
+  - id: all-boundaries-same-effect
+    description: Students think every plate boundary produces the same effect (earthquakes and volcanoes wherever plates meet), rather than the effect depending on how the two plates are moving relative to each other.
+    correction: The effect depends on the boundary type. Convergent boundaries (plates colliding) push up mountains or force one plate under another, often producing volcanoes. Divergent boundaries (plates separating) create new crust, sometimes with volcanic activity. Transform boundaries (plates sliding past each other) mainly cause earthquakes, with little to no volcanic activity.
+prerequisites:
+  - sci-y7-genetics-reproduction
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: [lesson-plate-tectonics-intro]
+assessmentRefs: [assessment-plate-tectonics-quiz]
+xpReward: 50
