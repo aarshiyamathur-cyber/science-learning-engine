@@ -22,6 +22,6 @@ prerequisites:
 unlocks: []
 masteryThreshold: 0.8
 revisionStrategy: spaced-repetition
-lessonRefs: []
-assessmentRefs: []
+lessonRefs: [lesson-body-systems-intro]
+assessmentRefs: [assessment-body-systems-quiz]
 xpReward: 50
