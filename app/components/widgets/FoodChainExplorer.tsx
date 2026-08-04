@@ -8,7 +8,13 @@ interface TrophicLevel {
   name: string;
   role: string;
   example: string;
-  /** Percent of the previous level's energy that reaches this level; null for Producer, which has no previous step. */
+  /**
+   * Percent of the previous level's energy that reaches this level via
+   * predation; null for Producer (captures energy directly from sunlight,
+   * no previous step) and Decomposer (breaks down dead matter from every
+   * level of the chain, not a single 10%-transfer step from the level
+   * before it).
+   */
   energyPct: number | null;
 }
 
@@ -39,7 +45,7 @@ const LEVELS: TrophicLevel[] = [
     name: "Decomposer",
     role: "Breaks down dead organisms and waste, returning nutrients to the soil.",
     example: "Fungi and bacteria",
-    energyPct: 10,
+    energyPct: null,
   },
 ];
 
@@ -51,7 +57,7 @@ const LEVELS: TrophicLevel[] = [
  * here" visual instead of a comparison.
  */
 function EnergyFlowVisual({ level, previousName }: { level: TrophicLevel; previousName: string }) {
-  if (level.energyPct === null) {
+  if (level.id === "producer") {
     return (
       <div
         className="flex h-16 w-full items-center justify-center rounded-lg border-2 border-success-200 bg-success-50 dark:border-success-900 dark:bg-success-950"
@@ -65,27 +71,42 @@ function EnergyFlowVisual({ level, previousName }: { level: TrophicLevel; previo
     );
   }
 
-  const lostPct = 100 - level.energyPct;
+  if (level.id === "decomposer") {
+    return (
+      <div
+        className="flex h-16 w-full items-center justify-center rounded-lg border-2 border-zinc-200 bg-zinc-50 p-4 text-center dark:border-zinc-800 dark:bg-zinc-900"
+        role="img"
+        aria-label="Decomposers break down dead matter from every level of the food chain, not just one step before them, and return nutrients to the soil."
+      >
+        <span className="text-label font-semibold text-zinc-700 dark:text-zinc-200">
+          ♻️ Breaks down dead matter from every level, returning nutrients to the soil
+        </span>
+      </div>
+    );
+  }
+
+  const energyPct = level.energyPct as number;
+  const lostPct = 100 - energyPct;
 
   return (
     <div
       className="flex flex-col gap-2 rounded-lg border-2 border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
       role="img"
-      aria-label={`Energy bar shrinks to about ${level.energyPct}% of the ${previousName}'s energy — the rest is lost as heat.`}
+      aria-label={`Energy bar shrinks to about ${energyPct}% of the ${previousName}'s energy — the rest is lost as heat.`}
     >
       <div className="flex flex-col gap-1">
         <span className="text-label text-zinc-500 dark:text-zinc-400">
           Energy in the {previousName.toLowerCase()}
         </span>
-        <div className="h-4 w-full rounded-full bg-warning-400" />
+        <div className="h-4 w-full rounded-full bg-warning-500" />
       </div>
       <div className="flex flex-col gap-1">
         <span className="text-label text-zinc-500 dark:text-zinc-400">
-          Energy passed on (~{level.energyPct}%) — ~{lostPct}% lost as heat
+          Energy passed on (~{energyPct}%) — ~{lostPct}% lost as heat
         </span>
         <div
-          className="h-4 rounded-full bg-warning-400"
-          style={{ width: `${level.energyPct}%` }}
+          className="h-4 rounded-full bg-warning-500"
+          style={{ width: `${energyPct}%` }}
         />
       </div>
     </div>
@@ -144,9 +165,11 @@ export function FoodChainExplorer() {
           {selected.role}
         </p>
         <p data-testid="energy-note" className="text-label text-zinc-600 dark:text-zinc-300">
-          {selected.energyPct === null
+          {selected.id === "producer"
             ? "Producers don't receive energy from a previous step — they capture it directly from sunlight."
-            : `Only about ${selected.energyPct}% of the energy in the ${previous?.name.toLowerCase()} passes on to the ${selected.name.toLowerCase()}. The rest is lost as heat.`}
+            : selected.id === "decomposer"
+              ? "Decomposers break down dead matter from every level of the food chain — not just the level before them — recycling nutrients back into the soil."
+              : `Only about ${selected.energyPct}% of the energy in the ${previous?.name.toLowerCase()} passes on to the ${selected.name.toLowerCase()}. The rest is lost as heat.`}
         </p>
       </div>
     </Card>
