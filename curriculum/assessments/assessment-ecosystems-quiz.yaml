@@ -1,0 +1,67 @@
+- id: q-ecosystems-01
+  conceptId: sci-y7-ecosystems
+  prompt: What does an ecosystem include?
+  type: multiple-choice
+  options:
+    - Living things (biotic) and non-living things (abiotic), interacting together
+    - Only the living things in an area
+    - Only the non-living surroundings, like soil and water
+    - A single species living alone
+  correctAnswer: Living things (biotic) and non-living things (abiotic), interacting together
+  difficulty: 0.1
+  hint: Think about both the plants and animals, AND things like sunlight and soil.
+  explanation: An ecosystem includes biotic (living) parts like plants and animals, and abiotic (non-living) parts like sunlight, water, and soil, all interacting together.
+- id: q-ecosystems-02
+  conceptId: sci-y7-ecosystems
+  prompt: What is the role of a decomposer in a food chain?
+  type: multiple-choice
+  options:
+    - Breaking down dead organisms and waste, returning nutrients to the soil
+    - Making its own food using sunlight
+    - Eating producers directly
+    - Eating other consumers only
+  correctAnswer: Breaking down dead organisms and waste, returning nutrients to the soil
+  difficulty: 0.2
+  hint: Think about what happens to a plant or animal after it dies.
+  explanation: Decomposers, like fungi and bacteria, break down dead organisms and waste, returning nutrients to the soil so producers can use them again.
+- id: q-ecosystems-03
+  conceptId: sci-y7-ecosystems
+  prompt: >
+    A student says plants aren't really part of a food chain because they
+    don't eat anything. Which statement corrects this?
+  type: multiple-choice
+  options:
+    - Producers like plants make their own food using sunlight, and are the essential starting point of every food chain
+    - The student is correct — food chains only include animals
+    - Plants are only decomposers, not producers
+    - Food chains can exist without any producers at all
+  correctAnswer: Producers like plants make their own food using sunlight, and are the essential starting point of every food chain
+  difficulty: 0.3
+  hint: Think about where the energy in a food chain comes from in the first place.
+  explanation: Producers like plants make their own food using sunlight and are the starting point of every food chain — without them, there would be no energy for anything else in the chain to use.
+- id: q-ecosystems-04
+  conceptId: sci-y7-ecosystems
+  prompt: >
+    A student says that when a fox eats a rabbit, all of the energy in the
+    rabbit passes completely to the fox. Is the student correct? Explain
+    your answer.
+  type: short-answer
+  correctAnswer: >
+    No — only a small amount of energy (around 10%) passes on to the fox.
+    Most of the energy (around 90%) is lost as heat at each step of a food
+    chain.
+  difficulty: 0.5
+  hint: Think about what happens to most of the energy at each step of a food chain, not just a small fraction of it.
+  explanation: The student is incorrect. Most energy (around 90%) is lost as heat at each step of a food chain — only a small fraction passes on to the next organism, which is why food chains rarely have more than four or five links.
+- id: q-ecosystems-05
+  conceptId: sci-y7-ecosystems
+  prompt: >
+    Explain how a cactus's thick, waxy skin is an adaptation that helps it
+    survive in a desert environment.
+  type: short-answer
+  correctAnswer: >
+    A cactus's thick, waxy skin reduces the amount of water it loses, which
+    helps it survive in a desert where water is scarce.
+  difficulty: 0.6
+  hint: Think about what a desert environment lacks, and how the cactus's skin might help with that.
+  explanation: The cactus's thick, waxy skin reduces water loss, which is a crucial adaptation for surviving in a desert environment where water is scarce.
