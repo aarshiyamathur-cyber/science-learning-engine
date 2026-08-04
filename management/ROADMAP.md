@@ -56,11 +56,12 @@ Sprint 8-12 covered the Chemical World and Physical World strands plus two Livin
 
 Otherwise: continue autonomously, update the repository continuously, and provide a concise Product Brief only every 4 completed topics, a major milestone, an architectural blocker, or a production issue — not a full briefing after every sprint.
 
-## Worktree allocation (2026-08-04 charter, formalising the existing 3-worktree pipeline)
+## Worktree allocation (2026-08-04 charter, formalising the existing pipeline; updated 2026-08-05 per DEC-014)
 
 - **Worktree 1 (`openclaw/aarshiya-auto`) — Curriculum:** lessons, interactions, assessments, question bank entries.
 - **Worktree 2 (`openclaw/command-centre`, repurposed) — Learner Experience:** illustrations, educational graphics, diagrams, UI polish, accessibility, revision experience.
-- **Worktree 3 (`openclaw/reviewer`) — QA:** testing, review, regression, bug fixing, integration. Broader than "review before merge" — dispatches should include live browser click-through testing itself (Playwright), not just automated checks, so Claude's own post-merge QA can stay light (a spot-check, not a full re-run).
+- **Worktree 3 (`openclaw/qa`) — QA:** testing, review, regression, bug fixing, integration. Broader than "review before merge" — dispatches should include live browser click-through testing itself (Playwright), not just automated checks. Replaces the retired, unregistered `openclaw/reviewer` worktree (see DEC-012/013/014 — the unregistered worktree was the confirmed root cause of the recurring file-deletion pattern).
+- **Worktree 4 (`openclaw/engineering-manager`) — Orchestration:** runs the full sprint loop (scope → dispatch Worktree 1+2 → dispatch Worktree 3 → verify → close out docs) autonomously per `management/ENGINEERING_MANAGER_PLAYBOOK.md`. Claude is now fallback only for this loop — see DEC-014 and `management/HANDOFF.md`.
 
 OpenClaw is the primary implementation team, target 80%+ of engineering work. Claude (Engineering Lead) maximises delegation and only codes directly for architecture changes, when OpenClaw is blocked, or when integration can't be delegated.
 

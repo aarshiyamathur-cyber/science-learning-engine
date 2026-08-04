@@ -179,3 +179,19 @@ On noticing the QA worker's session had ended without a final report, Claude che
 
 **Impact**
 No work was ultimately lost, but this was closer to a real loss than DEC-012's first two instances. Establishes a concrete response pattern for future occurrences: if a dispatched worker's session ends without a clear "merged" or "did not merge, here's why" report, treat it as interrupted, check the worktree directly, and push any unpushed local commits immediately before investigating further or restoring the working tree — protecting the commits is strictly higher priority than diagnosing the cause in the moment. The underlying disk-space/cleanup-tool root cause from DEC-012 remains unresolved and increasingly urgent given the escalation.
+
+## DEC-014
+
+**Decision**
+Root-caused DEC-012/013 (the recurring QA-worktree mass file deletion): `openclaw worktrees list` showed only 2 of the 3 active worktrees (`aarshiya-auto`, `command-centre`) were registered in OpenClaw's own managed-worktree system — the `openclaw/reviewer` (QA) worktree had been created manually via plain `git worktree add`, never through `openclaw worktrees create`, and was therefore invisible to whatever lifecycle/cleanup process OpenClaw runs against its own managed worktree directories. Fixed by creating a properly-registered replacement (`openclaw worktrees create ... --name qa --base-ref master`, now at `C:\Users\Lenovo\.openclaw\worktrees\874e3c6b018fa7d1\qa` on branch `openclaw/qa`) and confirming via `openclaw worktrees list` that all worktrees now show `active`.
+
+Separately and at the same time: created a 4th managed worktree, `engineering-manager` (branch `openclaw/engineering-manager`), and a new operating document, `management/ENGINEERING_MANAGER_PLAYBOOK.md`, that lets an OpenClaw worker run the entire sprint orchestration loop autonomously — scoping, dispatching Worktree 1 + 2, dispatching QA, syncing, merging, and closing out docs — the work Claude had been doing by hand every sprint this session. Claude Code is now invoked only as a fallback: the Engineering Manager worker must never self-escalate to Claude — if it hits anything it can't resolve via the playbook's documented failure modes, it stops and sends the Sponsor a Telegram message describing the blocker and 1-2 concrete alternate approaches, and waits for the Sponsor to decide whether to redirect it or bring Claude in.
+
+**Status**
+Accepted — direct Sponsor request, 2026-08-05 ("I want a third worker to work as engineering manager in place of claude" — clarified as the full orchestration loop, with Claude used only when the new worker cannot operate and always at the Sponsor's discretion, never self-invoked).
+
+**Reason**
+Two separate problems converged in the same session: (1) the DEC-012/013 file-deletion pattern had a findable root cause once the Sponsor was at the machine to help investigate, rather than remaining an accepted background risk; (2) the Sponsor wants the routine, well-understood parts of the sprint cycle (which by this point had run identically 9 times — Sprints 5-13) running without Claude in the loop, reserving Claude's judgement for genuine architecture/curriculum/blocker decisions rather than mechanical dispatch-and-merge cycles.
+
+**Impact**
+`management/HANDOFF.md`'s Operating model section now points to the Engineering Manager as the default path for routine sprint work. All future sessions (Claude or otherwise) should check whether the Engineering Manager is already running the current sprint before duplicating its work. The old ad-hoc `openclaw/reviewer` worktree (`C:\Users\Lenovo\.openclaw\worktrees\reviewer`) is superseded by the newly-registered `qa` worktree and should be retired via `git worktree remove` once nothing is relying on it. First live proof-of-loop run: Sprint 15 (Plate Tectonics), dispatched immediately after this decision was recorded — see `management/ROADMAP.md` for its outcome.
