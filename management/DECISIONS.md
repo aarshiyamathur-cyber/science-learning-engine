@@ -194,4 +194,18 @@ Accepted — direct Sponsor request, 2026-08-05 ("I want a third worker to work 
 Two separate problems converged in the same session: (1) the DEC-012/013 file-deletion pattern had a findable root cause once the Sponsor was at the machine to help investigate, rather than remaining an accepted background risk; (2) the Sponsor wants the routine, well-understood parts of the sprint cycle (which by this point had run identically 9 times — Sprints 5-13) running without Claude in the loop, reserving Claude's judgement for genuine architecture/curriculum/blocker decisions rather than mechanical dispatch-and-merge cycles.
 
 **Impact**
-`management/HANDOFF.md`'s Operating model section now points to the Engineering Manager as the default path for routine sprint work. All future sessions (Claude or otherwise) should check whether the Engineering Manager is already running the current sprint before duplicating its work. The old ad-hoc `openclaw/reviewer` worktree (`C:\Users\Lenovo\.openclaw\worktrees\reviewer`) is superseded by the newly-registered `qa` worktree and should be retired via `git worktree remove` once nothing is relying on it. First live proof-of-loop run: Sprint 15 (Plate Tectonics), dispatched immediately after this decision was recorded — see `management/ROADMAP.md` for its outcome.
+`management/HANDOFF.md`'s Operating model section now points to the Engineering Manager as the default path for routine sprint work. All future sessions (Claude or otherwise) should check whether the Engineering Manager is already running the current sprint before duplicating its work. The old ad-hoc `openclaw/reviewer` worktree (`C:\Users\Lenovo\.openclaw\worktrees\reviewer`) is superseded by the newly-registered `qa` worktree and should be retired via `git worktree remove` once nothing is relying on it. First live proof-of-loop run: Sprint 14 (Genetics & Reproduction), dispatched immediately after this decision was recorded — see DEC-015 for a real bug the first run surfaced, and `management/ROADMAP.md` for both Sprint 14 and Sprint 15's outcome.
+
+## DEC-015
+
+**Decision**
+The Engineering Manager playbook originally told the worker to dispatch Worktree 1/2 as a background process and simply "wait for both to genuinely finish" in a later turn. Its own first live run (Sprint 14) exposed why that instruction was wrong: the Engineering Manager is itself a single-shot `claude --print` process with no persistent session and no notification mechanism to wake it up later. Backgrounding the dispatch and ending its turn left both `claude` worker processes orphaned — nothing was tracking them, and the sprint would have silently stalled with no one aware. Fixed by rewriting the playbook to require a single blocking shell command (`( claude ... & claude ... & wait )`) so the Engineering Manager's own tool call does not return until both dispatched processes have actually exited.
+
+**Status**
+Accepted — fixed directly in `management/ENGINEERING_MANAGER_PLAYBOOK.md` (commit `ae0571e`) before Sprint 15's dispatch.
+
+**Reason**
+This is a mechanical process bug in the orchestration loop itself, not a curriculum or architecture decision — but it's exactly the kind of "first live run finds a real gap in the playbook" lesson that DEC-010/012/013 already established the pattern of recording, so future sessions don't rediscover it. The fix was safe and mechanical (a shell pattern change, no scope creep) and squarely within the Engineering Manager's own remit to self-correct, per the playbook's existing "known failure modes — handle these yourself" section.
+
+**Impact**
+Every dispatch since Sprint 15 (Worktree 1+2, then Worktree 3/QA) uses the blocking `&`/`wait` pattern; no recurrence. If any future dispatch prompt or tooling change reintroduces a "run in background and check back later" pattern, treat it as a regression of this same bug, not a new issue.

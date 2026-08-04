@@ -1,37 +1,39 @@
 # AI Factory Dashboard
 
-_Last updated: 2026-08-04 by Claude Code_
+_Last updated: 2026-08-05 by Engineering Manager (Worktree 4)_
 
 ## Current Sprint
 
-Sprint 13 — "Ecosystems" — **Definition of Done met.** Product Owner confirmed 2026-08-04 that Phase 1 requires full 4-strand NSW coverage (Ecosystems, Genetics & Reproduction, Plate Tectonics, The Solar System & Universe — Sprints 13-16) beyond the original 5-sprint list. Named/switchable learner profiles + self-service progress reset shipped this session (DEC-011).
+Sprint 15 — "Plate Tectonics" — **Definition of Done met 2026-08-05.** Sprint 14 (Genetics & Reproduction) also shipped the same session — both were the first two sprints run end-to-end by the new Engineering Manager orchestration loop (DEC-014), with Claude out of the routine dispatch/merge loop. **Sprint 16 (The Solar System & Universe) is next and is the last row in `management/ROADMAP.md`'s table** — once it closes, Phase 1 completion must be assessed against the charter's actual success criteria and reported to the Sponsor, not self-certified (see the playbook's "Phase 1 completion" section).
 
 **Note (DEC-010):** the pre-existing "Aarshiya continuous dev cycle" cron job remains disabled (real git-lock collision risk with the active worktree pipeline). Reversible via `openclaw cron enable 7614c9e2-8de6-4dfd-9ea4-a235de7b9aeb`.
 
-**Escalated (DEC-012 → DEC-013, needs Sponsor attention):** the recurring QA-worktree file-deletion issue happened a third time during Sprint 13, and this time was more serious — the dispatched QA session ended before pushing its own real bug-fix commits, leaving them briefly at risk on one local disk. Claude caught it and pushed immediately, so nothing was lost, but the underlying cause (almost certainly low disk space on C:, ~21-36GB free of 238GB, fluctuating) is unresolved and the risk is clearly escalating with repeated exposure, not going away on its own.
+**DEC-012/013 (QA-worktree file deletion) — root-caused and mitigated (DEC-014):** the unregistered `openclaw/reviewer` worktree was the confirmed cause (invisible to OpenClaw's own worktree lifecycle management). Replaced with a properly-registered `openclaw/qa` worktree; no recurrence during Sprint 14 or 15.
+
+**New (DEC-015):** the Engineering Manager's own first live dispatch (Sprint 14) backgrounded Worktree 1+2 and ended its turn instead of blocking on them — an orphaned-process risk, not a worker failure. Fixed in the playbook itself (shell-level `&`/`wait` inside one blocking tool call) before Sprint 15's dispatch; no recurrence since.
 
 ## Status
 
-🟢 Four topics delivered since the 2026-08-03 directive: Chemical Reactions, Forces, Energy, Cells — all live, all independently re-verified. Three OpenClaw worktrees now active: Worktree 1 (primary curriculum implementation), Worktree 2 (learner experience — illustrations, diagrams, accessibility, QA, revision questions), Worktree 3 (`openclaw/reviewer` — independently reviews, wires, and merges the other two workers' branches to master). The new visual-learning standard (DEC-009) has been applied to every one of the four new lessons: hero illustration first, short text sections broken up by mid-lesson diagrams, one meaningful interactive widget each. See `management/ROADMAP.md` for full per-sprint detail and `docs/product-owner-briefing.md` for the consolidated brief.
+🟢 Four more topics delivered since the last briefing (Sprints 8-11): Body Systems, Ecosystems, Genetics & Reproduction, Plate Tectonics — all live. Sprint 15 was the first Earth and Space strand topic (mantle/crust/plate boundaries), following Sprint 14 rounding out the Living World strand (genetics/reproduction). Worktree allocation unchanged: Worktree 1 (curriculum), Worktree 2 (learner experience/illustrations), Worktree 3 (`openclaw/qa` — independently reviews, wires, and merges), Worktree 4 (`openclaw/engineering-manager` — runs the full sprint loop autonomously per DEC-014). The visual-learning standard (DEC-009) has been applied to every new lesson. See `management/ROADMAP.md` for full per-sprint detail and `docs/product-owner-briefing.md` for the consolidated brief.
 
-## Sprints 8-11 (Chemical Reactions, Forces, Energy, Cells) — All Done
+## Sprints 12-15 (Body Systems, Ecosystems, Genetics & Reproduction, Plate Tectonics) — All Done
 
-- [x] **Sprint 8 — Chemical Reactions:** BL-046 (lesson/assessment/`ReactionSimulator` widget) + CE-002 (illustrations) — reviewed and merged by the new Worktree 3 reviewer, re-verified live (300 XP, 12 steps).
-- [x] **Sprint 9 — Forces:** BL-047 (lesson/assessment/`ForceFrictionSimulator` widget) + CE-003 (illustrations) — reviewer caught and corrected an inaccurate self-reported illustration claim rather than repeating it; re-verified live (350 XP, 12 steps, all 3 friction surfaces).
-- [x] **Sprint 10 — Energy:** BL-048 (lesson/assessment/`EnergyTransformationExplorer` widget, including an animated pendulum) + CE-004 (illustrations) — reviewer specifically verified the pendulum's potential/kinetic physics direction; re-verified live (400 XP, 11 steps).
-- [x] **Sprint 11 — Cells:** BL-049 (lesson/assessment/`CellStructureExplorer` widget) + CE-005 (illustrations) — first biology topic; reviewer specifically checked biological accuracy and scope; re-verified live (450 XP, 12 steps).
+- [x] **Sprint 12 — Body Systems:** digestive/circulatory/respiratory systems, breathing vs. cellular respiration — re-verified live (see `management/ROADMAP.md`).
+- [x] **Sprint 13 — Ecosystems:** BL-051 (lesson/assessment/`FoodChainExplorer` widget) + CE-007 (illustrations) — QA found and fixed 2 real bugs (undefined Tailwind token, decomposer model) before merge; see DEC-013 for the interrupted-session incident and its fix.
+- [x] **Sprint 14 — Genetics & Reproduction:** BL-052 (lesson/assessment/`InheritanceExplorer` widget) + CE-008 (illustrations) — first sprint run end-to-end by the Engineering Manager (Worktree 4); no bugs found.
+- [x] **Sprint 15 — Plate Tectonics:** BL-053 (lesson/assessment/`PlateBoundaryExplorer` widget) + CE-009 (illustrations) — first Earth and Space strand topic; no bugs found.
 
 Every sprint: both misconceptions from the concept file directly and correctly targeted by assessment questions, full check suite + production build passing, live browser click-through, mobile (375px) confirmed, no placeholders/TODOs.
 
 ## Earlier sprints — Done
 
-- [x] Sprint 5 (Matter), Sprint 6 (Atomic Structure), Sprint 7 (Periodic Table) — see `management/ROADMAP.md` for detail.
+- [x] Sprint 5 (Matter), Sprint 6 (Atomic Structure), Sprint 7 (Periodic Table), Sprints 8-11 (Chemical Reactions, Forces, Energy, Cells) — see `management/ROADMAP.md` for detail.
 - [x] Curriculum Enhancement CE-001 — grew question banks for all 3 Matter-topic lessons.
 
 ## OpenClaw
 
 - [x] Working — gateway healthy, Telegram notifications live, SSH deploy key push confirmed.
-- **Three worktrees active:** `openclaw/aarshiya-auto` (primary curriculum implementation), `openclaw/command-centre` (learner experience), `openclaw/reviewer` (independent review + merge). All idle and available for the next dispatch, pending Product direction on Sprint 12.
+- **Four worktrees active:** `openclaw/aarshiya-auto` (curriculum), `openclaw/command-centre` (learner experience), `openclaw/qa` (independent review + merge, replaces the retired unregistered `openclaw/reviewer` per DEC-014), `openclaw/engineering-manager` (orchestrates the full sprint loop per DEC-014). All idle and available for the next dispatch (Sprint 16).
 - Recurring cron job "Aarshiya continuous dev cycle" disabled for the duration of this pipeline (DEC-010) — reversible.
 
 ## Blockers
@@ -40,4 +42,4 @@ None currently.
 
 ## Next Decision
 
-**Awaiting Product direction on Sprint 12 (Body Systems)** — per the 2026-08-03 directive's own stop condition (four additional topics reached DoD), this is the mandated check-in point rather than an assumption to keep going. See `docs/product-owner-briefing.md` for the concise brief.
+**Sprint 16 (The Solar System & Universe)** is next — the last row in `management/ROADMAP.md`'s sprint table. Per the charter's own stop conditions, once it closes Phase 1 completion must be assessed against the actual success criteria and reported to the Sponsor as a milestone decision, not assumed automatically. See `docs/product-owner-briefing.md` for the concise brief.
