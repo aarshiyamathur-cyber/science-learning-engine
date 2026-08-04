@@ -784,6 +784,88 @@ export function FoodChainEnergyFlowIllustration(
   );
 }
 
+/** A twisted double helix - two intertwined strands linked by alternating cross-rungs, like base pairs - the genetic material passed between generations. */
+export function GeneticsHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M35,8 Q90,18.5 145,29 Q90,39.5 35,50 Q90,60.5 145,71 Q90,81.5 35,92 Q90,102.5 145,113"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M145,8 Q90,18.5 35,29 Q90,39.5 145,50 Q90,60.5 35,71 Q90,81.5 145,92 Q90,102.5 35,113"
+        fill="none"
+        stroke="#8b5cf6"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line x1="35" y1="8" x2="145" y2="8" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+      <line x1="145" y1="29" x2="35" y2="29" stroke="#10b981" strokeWidth="3" strokeLinecap="round" />
+      <line x1="35" y1="50" x2="145" y2="50" stroke="#f43f5e" strokeWidth="3" strokeLinecap="round" />
+      <line x1="145" y1="71" x2="35" y2="71" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
+      <line x1="35" y1="92" x2="145" y2="92" stroke="#10b981" strokeWidth="3" strokeLinecap="round" />
+      <line x1="145" y1="113" x2="35" y2="113" stroke="#f43f5e" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/** Split scene: one parent shape making an identical clone offspring (asexual) beside two differently-coloured parent shapes converging on one blended offspring (sexual) - the contrast reads without labels. */
+export function SexualVsAsexualReproductionIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <line
+        x1="90"
+        y1="8"
+        x2="90"
+        y2="112"
+        stroke="#a1a1aa"
+        strokeWidth="2"
+        strokeDasharray="4 4"
+      />
+      <circle cx="40" cy="24" r="15" fill="#8b5cf6" />
+      <line
+        x1="40"
+        y1="42"
+        x2="40"
+        y2="70"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <polygon points="32,70 40,84 48,70" fill="#a1a1aa" />
+      <circle cx="40" cy="100" r="15" fill="#8b5cf6" />
+      <circle cx="118" cy="20" r="12" fill="#f59e0b" />
+      <circle cx="152" cy="20" r="12" fill="#0ea5e9" />
+      <line
+        x1="118"
+        y1="32"
+        x2="131"
+        y2="80"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <line
+        x1="152"
+        y1="32"
+        x2="139"
+        y2="80"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="127,78 135,92 143,78" fill="#a1a1aa" />
+      <path d="M135,84 A16,16 0 0,0 135,116 Z" fill="#f59e0b" />
+      <path d="M135,84 A16,16 0 0,1 135,116 Z" fill="#0ea5e9" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (
