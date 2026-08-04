@@ -866,6 +866,154 @@ export function SexualVsAsexualReproductionIllustration(
   );
 }
 
+/** Earth cross-section: a rose core and an amber mantle drawn as nested filled discs, wrapped by a thin outer ring broken into four alternating sky/emerald arcs with visible gaps between them - the crust reads as a shell of separate rigid pieces sitting over the continuous inner layers. */
+export function PlateTectonicsHeroIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="90" cy="60" r="50" fill="#f59e0b" />
+      <circle cx="90" cy="60" r="22" fill="#f43f5e" />
+      <path
+        d="M144,60 A54,54 0 0,1 108,111"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="9"
+        strokeLinecap="round"
+      />
+      <path
+        d="M90,114 A54,54 0 0,1 39,78"
+        fill="none"
+        stroke="#10b981"
+        strokeWidth="9"
+        strokeLinecap="round"
+      />
+      <path
+        d="M36,60 A54,54 0 0,1 72,9"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="9"
+        strokeLinecap="round"
+      />
+      <path
+        d="M90,6 A54,54 0 0,1 141,42"
+        fill="none"
+        stroke="#10b981"
+        strokeWidth="9"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** Three side-by-side plate-boundary scenes told entirely through arrow direction: convergent arrows push toward each other into an uplifted amber ridge, divergent arrows pull apart around a wedge of new amber material filling the gap, and transform arrows run parallel to the boundary in opposite directions with no bump or gap at all. */
+export function PlateBoundaryTypesIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <line
+        x1="60"
+        y1="4"
+        x2="60"
+        y2="116"
+        stroke="#a1a1aa"
+        strokeWidth="2"
+        strokeDasharray="4 4"
+      />
+      <line
+        x1="120"
+        y1="4"
+        x2="120"
+        y2="116"
+        stroke="#a1a1aa"
+        strokeWidth="2"
+        strokeDasharray="4 4"
+      />
+
+      <rect x="6" y="76" width="20" height="36" fill="#0ea5e9" />
+      <rect x="32" y="82" width="20" height="30" fill="#10b981" />
+      <polygon points="20,76 44,76 32,50" fill="#f59e0b" />
+      <line
+        x1="10"
+        y1="60"
+        x2="22"
+        y2="60"
+        stroke="#0ea5e9"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="22,54 34,60 22,66" fill="#0ea5e9" />
+      <line
+        x1="54"
+        y1="60"
+        x2="42"
+        y2="60"
+        stroke="#10b981"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="42,54 30,60 42,66" fill="#10b981" />
+
+      <rect x="64" y="76" width="20" height="36" fill="#0ea5e9" />
+      <rect x="96" y="76" width="20" height="36" fill="#10b981" />
+      <polygon points="84,112 96,112 90,80" fill="#f59e0b" />
+      <line
+        x1="76"
+        y1="60"
+        x2="64"
+        y2="60"
+        stroke="#0ea5e9"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="64,54 52,60 64,66" fill="#0ea5e9" />
+      <line
+        x1="104"
+        y1="60"
+        x2="116"
+        y2="60"
+        stroke="#10b981"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="116,54 128,60 116,66" fill="#10b981" />
+
+      <rect x="124" y="76" width="24" height="36" fill="#0ea5e9" />
+      <rect x="152" y="76" width="24" height="36" fill="#10b981" />
+      <line
+        x1="150"
+        y1="76"
+        x2="150"
+        y2="112"
+        stroke="#a1a1aa"
+        strokeWidth="2"
+        strokeDasharray="3 3"
+      />
+      <line
+        x1="136"
+        y1="68"
+        x2="136"
+        y2="52"
+        stroke="#0ea5e9"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="130,52 136,42 142,52" fill="#0ea5e9" />
+      <line
+        x1="164"
+        y1="52"
+        x2="164"
+        y2="68"
+        stroke="#10b981"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="158,68 164,78 170,68" fill="#10b981" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (
