@@ -549,6 +549,87 @@ export function PlantVsAnimalCellIllustration(
   );
 }
 
+/** Simplified body outline with a heart, a pair of lungs, and an intestine loop glowing inside it - systems at work inside a body. */
+export function BodySystemsHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle
+        cx="90"
+        cy="18"
+        r="14"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+      />
+      <path
+        d="M60,34 Q90,26 120,34 L127,68 L118,110 Q90,118 62,110 L53,68 Z"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M76,45 Q63,50 65,68 Q67,84 79,87 Q83,71 81,56 Q79,49 76,45 Z"
+        fill="#0ea5e9"
+      />
+      <path
+        d="M104,45 Q117,50 115,68 Q113,84 101,87 Q97,71 99,56 Q101,49 104,45 Z"
+        fill="#0ea5e9"
+      />
+      <path
+        d="M90,82 C90,82 76,70 76,60 C76,52 83,49 90,57 C97,49 104,52 104,60 C104,70 90,82 90,82 Z"
+        fill="#f43f5e"
+      />
+      <path
+        d="M75,90 Q90,82 100,90 Q112,98 100,106 Q90,112 80,106 Q70,100 78,94"
+        fill="none"
+        stroke="#f59e0b"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** A lung and a heart linked by a vessel path, with dots travelling along it - oxygen moving from lungs to heart and on to the rest of the body. */
+export function SystemsWorkingTogetherIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M55,25 Q35,32 32,55 Q29,80 45,95 Q52,75 50,55 Q52,35 55,25 Z"
+        fill="#0ea5e9"
+      />
+      <path
+        d="M140,80 C140,80 118,64 118,50 C118,40 128,36 140,46 C152,36 162,40 162,50 C162,64 140,80 140,80 Z"
+        fill="#f43f5e"
+      />
+      <path
+        d="M58,55 Q88,38 114,52"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <polygon points="110,44 126,52 110,60" fill="#a1a1aa" />
+      <circle cx="68" cy="49" r="4" fill="#f59e0b" />
+      <circle cx="84" cy="42" r="4" fill="#f59e0b" />
+      <circle cx="100" cy="44" r="4" fill="#f59e0b" />
+      <path
+        d="M158,66 Q170,76 174,92"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <polygon points="166,86 175,98 158,96" fill="#a1a1aa" />
+      <circle cx="163" cy="74" r="4" fill="#f59e0b" />
+      <circle cx="171" cy="85" r="4" fill="#f59e0b" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (

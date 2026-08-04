@@ -1,6 +1,7 @@
 export {
   AtomicStructureIllustration,
   BalancedUnbalancedForcesIllustration,
+  BodySystemsHeroIllustration,
   CelebrationIllustration,
   CellsHeroIllustration,
   ChangesOfStateIllustration,
@@ -13,5 +14,6 @@ export {
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
   StatesOfMatterIllustration,
+  SystemsWorkingTogetherIllustration,
 } from "./Illustrations";
 export { ExampleIcon, ExplanationIcon, QuestionIcon, SummaryIcon } from "./StepIcons";
