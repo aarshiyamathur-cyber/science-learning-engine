@@ -21,6 +21,8 @@ import {
   ParticleModelIllustration,
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
+  PlateBoundaryTypesIllustration,
+  PlateTectonicsHeroIllustration,
   QuestionIcon,
   SexualVsAsexualReproductionIllustration,
   StatesOfMatterIllustration,
@@ -54,6 +56,8 @@ describe("step icons and illustrations", () => {
     SystemsWorkingTogetherIllustration,
     GeneticsHeroIllustration,
     SexualVsAsexualReproductionIllustration,
+    PlateTectonicsHeroIllustration,
+    PlateBoundaryTypesIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);

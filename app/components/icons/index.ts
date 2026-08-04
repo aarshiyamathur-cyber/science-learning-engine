@@ -16,6 +16,8 @@ export {
   ParticleModelIllustration,
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
+  PlateBoundaryTypesIllustration,
+  PlateTectonicsHeroIllustration,
   SexualVsAsexualReproductionIllustration,
   StatesOfMatterIllustration,
   SystemsWorkingTogetherIllustration,
