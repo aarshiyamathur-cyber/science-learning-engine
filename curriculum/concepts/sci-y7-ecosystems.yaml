@@ -1,0 +1,27 @@
+id: sci-y7-ecosystems
+title: Ecosystems
+description: >
+  An ecosystem is made up of living things interacting with each other and
+  with their non-living surroundings. Energy flows through an ecosystem
+  along food chains, starting with producers that capture energy from the
+  sun, and every organism is adapted to survive where it lives.
+learningObjectives:
+  - Explain that an ecosystem includes both living (biotic) and non-living (abiotic) parts interacting together
+  - Describe the roles of producers, consumers, and decomposers in a food chain
+  - Explain how energy flows through a food chain, and why most of it is lost as heat at each step
+  - Describe how an organism's features can be adaptations that help it survive in its environment
+misconceptions:
+  - id: energy-fully-transfers
+    description: Students think all the energy in one organism passes completely to the organism that eats it.
+    correction: Most energy (around 90%) is lost as heat at each step of a food chain — only a small fraction passes on to the next level, which is why food chains rarely have more than four or five links.
+  - id: producers-dont-count
+    description: Students think plants aren't really part of a food chain since they don't eat other organisms.
+    correction: Producers like plants make their own food using sunlight and are the starting point of every food chain — without them, there would be no energy for anything else in the chain to use.
+prerequisites:
+  - sci-y7-body-systems
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50

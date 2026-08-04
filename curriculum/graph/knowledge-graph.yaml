@@ -9,6 +9,7 @@ nodes:
   - sci-y7-energy
   - sci-y7-cells
   - sci-y7-body-systems
+  - sci-y7-ecosystems
 edges:
   - from: sci-y7-particle-model
     to: sci-y7-states-of-matter
@@ -33,4 +34,7 @@ edges:
     relationship: prerequisite-of
   - from: sci-y7-cells
     to: sci-y7-body-systems
+    relationship: prerequisite-of
+  - from: sci-y7-body-systems
+    to: sci-y7-ecosystems
     relationship: prerequisite-of
