@@ -630,6 +630,160 @@ export function SystemsWorkingTogetherIllustration(
   );
 }
 
+/** A sun, a tree, and a rabbit sharing one scene - living things and the energy source that sustains them, in miniature. */
+export function EcosystemHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="28" cy="26" r="14" fill="#f59e0b" />
+      <line
+        x1="28"
+        y1="2"
+        x2="28"
+        y2="12"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="4"
+        y1="26"
+        x2="14"
+        y2="26"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="9"
+        y1="7"
+        x2="16"
+        y2="14"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="47"
+        y1="7"
+        x2="40"
+        y2="14"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <line
+        x1="9"
+        y1="45"
+        x2="16"
+        y2="38"
+        stroke="#f59e0b"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <rect x="60" y="76" width="10" height="34" rx="2" fill="#a1a1aa" />
+      <circle cx="65" cy="60" r="20" fill="#10b981" />
+      <circle cx="48" cy="72" r="15" fill="#10b981" />
+      <circle cx="82" cy="72" r="15" fill="#10b981" />
+      <ellipse cx="140" cy="100" rx="22" ry="15" fill="#f43f5e" />
+      <circle cx="162" cy="88" r="11" fill="#f43f5e" />
+      <path d="M156,78 Q152,64 158,64 Q162,72 160,80 Z" fill="#f43f5e" />
+      <path d="M168,78 Q170,64 176,66 Q174,74 172,81 Z" fill="#f43f5e" />
+    </svg>
+  );
+}
+
+/** Left-to-right chain from sun to producer to herbivore to carnivore, each stage noticeably smaller than the last - most energy is lost at every step. */
+export function FoodChainEnergyFlowIllustration(
+  props: SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle cx="18" cy="58" r="13" fill="#f59e0b" />
+      <line
+        x1="18"
+        y1="40"
+        x2="18"
+        y2="32"
+        stroke="#f59e0b"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <line
+        x1="18"
+        y1="76"
+        x2="18"
+        y2="84"
+        stroke="#f59e0b"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <line
+        x1="8"
+        y1="48"
+        x2="2"
+        y2="42"
+        stroke="#f59e0b"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <line
+        x1="8"
+        y1="68"
+        x2="2"
+        y2="74"
+        stroke="#f59e0b"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <line
+        x1="34"
+        y1="58"
+        x2="44"
+        y2="58"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="44,51 58,58 44,65" fill="#a1a1aa" />
+      <rect x="68" y="68" width="6" height="10" rx="1" fill="#a1a1aa" />
+      <circle cx="71" cy="58" r="10" fill="#10b981" />
+      <line
+        x1="84"
+        y1="58"
+        x2="94"
+        y2="58"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="94,51 108,58 94,65" fill="#a1a1aa" />
+      <circle cx="114" cy="50" r="3" fill="#8b5cf6" />
+      <circle cx="122" cy="50" r="3" fill="#8b5cf6" />
+      <circle cx="118" cy="58" r="7" fill="#8b5cf6" />
+      <line
+        x1="128"
+        y1="58"
+        x2="136"
+        y2="58"
+        stroke="#a1a1aa"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <polygon points="136,52 146,58 136,64" fill="#a1a1aa" />
+      <polygon points="150,54 151,48 153,54" fill="#f43f5e" />
+      <polygon points="153,54 155,48 156,54" fill="#f43f5e" />
+      <circle cx="153" cy="58" r="4.5" fill="#f43f5e" />
+      <path
+        d="M157,60 Q163,63 160,68"
+        fill="none"
+        stroke="#f43f5e"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (

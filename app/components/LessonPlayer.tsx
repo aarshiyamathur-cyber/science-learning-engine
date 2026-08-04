@@ -10,10 +10,12 @@ import {
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  EcosystemHeroIllustration,
   EnergyHeroIllustration,
   EnergyTransformationIllustration,
   ExampleIcon,
   ExplanationIcon,
+  FoodChainEnergyFlowIllustration,
   ForcesHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
@@ -29,6 +31,7 @@ import { AtomBuilder } from "./widgets/AtomBuilder";
 import { BodySystemExplorer } from "./widgets/BodySystemExplorer";
 import { CellStructureExplorer } from "./widgets/CellStructureExplorer";
 import { EnergyTransformationExplorer } from "./widgets/EnergyTransformationExplorer";
+import { FoodChainExplorer } from "./widgets/FoodChainExplorer";
 import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
@@ -48,6 +51,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "energy-transformation-explorer": EnergyTransformationExplorer,
   "cell-structure-explorer": CellStructureExplorer,
   "body-system-explorer": BodySystemExplorer,
+  "food-chain-explorer": FoodChainExplorer,
 };
 
 /**
@@ -74,6 +78,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "plant-vs-animal-cell": PlantVsAnimalCellIllustration,
   "body-systems-hero": BodySystemsHeroIllustration,
   "systems-working-together": SystemsWorkingTogetherIllustration,
+  "ecosystem-hero": EcosystemHeroIllustration,
+  "food-chain-energy-flow": FoodChainEnergyFlowIllustration,
 };
 
 interface LessonPlayerProps {
