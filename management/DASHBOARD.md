@@ -4,9 +4,11 @@ _Last updated: 2026-08-04 by Claude Code_
 
 ## Current Sprint
 
-Sprint 11 — "Cells" — **Definition of Done met. Stop condition reached: four additional topics (Chemical Reactions, Forces, Energy, Cells) have all met the Definition of Done.** Per the 2026-08-03 "autonomous multi-sprint execution" directive, this is a mandated check-in point — see `docs/product-owner-briefing.md` for the concise Product Brief. Sprint 12 (Body Systems) has not been started; awaiting the Product Owner's go-ahead per the directive's own stop condition, rather than assuming continuation.
+Sprint 12 — "Body Systems" — **Definition of Done met.** Master Product Charter v2.0 (2026-08-04) superseded the previous per-4-topic check-in and reaffirmed autonomous continuation through Phase 1 (every NSW Year 9 Science topic). Named/switchable learner profiles + self-service progress reset also shipped this session (DEC-011), directly requested by the Sponsor after testers were marking real progress complete during QA.
 
 **Note (DEC-010):** the pre-existing "Aarshiya continuous dev cycle" cron job remains disabled (real git-lock collision risk with the active worktree pipeline). Reversible via `openclaw cron enable 7614c9e2-8de6-4dfd-9ea4-a235de7b9aeb`.
+
+**Flagged (DEC-012, needs Sponsor attention):** the OpenClaw QA worktree has had its files mass-deleted twice by something outside the dispatched worker's own commands — likely low disk space (~21GB free of 238GB on C:) triggering an automated cleanup tool. No data lost either time (git history intact), but this is a real, recurring risk worth addressing before it causes a worse-timed loss.
 
 ## Status
 

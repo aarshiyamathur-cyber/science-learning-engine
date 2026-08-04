@@ -13,7 +13,19 @@ _Master Product Charter v2.0 (2026-08-04) supersedes all previous sprint directi
 | Sprint 9 | Forces | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 10 | Energy | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 11 | Cells | ✅ Done — Definition of Done met 2026-08-04 |
-| Sprint 12 | Body Systems | 🔄 Underway — pre-approved, no ambiguity, proceeding immediately per the 2026-08-04 charter |
+| Sprint 12 | Body Systems | ✅ Done — Definition of Done met 2026-08-04 |
+
+## Sprint 12 — Body Systems (Definition of Done met 2026-08-04)
+
+**Scope:** organ systems as groups of organs working together; main function of the digestive, circulatory, and respiratory systems; key organs within each; systems working together rather than in isolation; breathing vs. cellular respiration — Year 7-10 appropriate, no biochemistry, no anatomy beyond the organs listed, no nervous/immune/excretory system detail.
+
+**Prerequisite:** `sci-y7-cells` (the Cells lesson's own summary already introduced "cells → tissues → organs → organ systems").
+
+**First sprint QA'd under the charter's expanded Worktree 3 scope:** the QA worker did its own live Playwright click-through of every lesson step (including all three BodySystemExplorer systems, a deliberate wrong answer, a hint reveal, both short-answer self-assessments) as part of its dispatch, not just automated checks — reducing Claude's own post-merge verification to a lighter spot-check (build + checks + a content read) rather than a full re-run, per the charter's intent.
+
+**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (111/111)/`build` all pass; QA worker's live click-through confirmed XP increment, completion state, no console errors, no mobile overflow; Claude's independent spot-check confirmed content accuracy and a clean production deploy. No placeholders/TODOs.
+
+**Note:** a real, recurring reliability risk was found and flagged (not fixed at the system level) during this sprint's QA pass — see DEC-012. The QA worktree has had its files mass-deleted twice now by something outside the dispatched worker's own commands, very likely low disk space (~21GB free of 238GB on C:) triggering an automated cleanup tool. No data was lost (git history intact both times), but this needs the Sponsor's attention before it causes a worse-timed loss.
 
 ## Stop conditions (2026-08-04 charter — the only reasons to pause and ask)
 

@@ -151,3 +151,17 @@ A genuine bug surfaced during live verification and was fixed before shipping: s
 
 **Impact**
 `LearnerProfileSchema` gained a `resetAt` field; the SQLite schema migrates existing databases with `ALTER TABLE ... ADD COLUMN resetAt` at store-open time (deployed DBs pre-date this column). Verified live end-to-end: switching to a new name starts genuinely fresh (0 XP, all lessons "Ready"), completing a lesson under that name doesn't touch the real student's profile, and resetting only clears the active name's data. The test profile created during verification was deleted from the live database afterward so it doesn't linger in the quick-switch list.
+
+## DEC-012
+
+**Decision**
+Flagging (not fixing at the system level — out of this project's scope) a recurring reliability risk: the machine's C: drive, which hosts all three OpenClaw worktrees (`C:\Users\Lenovo\.openclaw\worktrees\...`), is critically low on space (~21GB free of 238GB, ~91% used). The `openclaw/reviewer` (QA) worktree has had its working-tree files mass-deleted by something outside the dispatched worker's own commands **twice now** — once during Sprint 11's QA pass, once during Sprint 12's — both times self-recovered via `git restore .` + `npm install` since git history itself was never touched, but this is a real, recurring, unexplained data-loss pattern, not a one-off fluke.
+
+**Status**
+Accepted (as a flagged risk) — root cause not confirmed, but low disk space is the leading hypothesis (Windows Storage Sense, an antivirus low-disk sweep, or another automated cleanup tool reclaiming space from large recently-modified directories). The QA worktree does the heaviest disk I/O of the three (full `next build` + `next start` + Playwright + chromium), making it the most likely target if space-pressure cleanup is the cause.
+
+**Reason**
+Ran `npm cache clean --force` and cleared `.next/cache` in all three worktrees as a safe, fully-reclaimable, project-scoped cleanup (freed only ~1-2GB — not the underlying fix). Did not go further: deleting anything else on this drive requires knowing what else is on it and what's safe to remove, which isn't a call to make unilaterally on someone else's machine.
+
+**Impact**
+No data has been lost so far (git history is always intact; only working-tree/node_modules/build-output churn). But a worse-timed occurrence (e.g. mid-commit, before a worker's local changes are committed) could lose real in-progress work. Recommend to the Sponsor: free up general disk space on C:, or move the OpenClaw worktrees to D: (which has ~176GB free) if that's a supported reconfiguration in OpenClaw's own worktree/agent path config. Until addressed, treat this as an ongoing background risk on every QA-worktree dispatch, not something to keep silently re-explaining away.
