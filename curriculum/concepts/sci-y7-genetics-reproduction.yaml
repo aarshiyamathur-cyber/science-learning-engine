@@ -1,0 +1,28 @@
+id: sci-y7-genetics-reproduction
+title: Genetics & Reproduction
+description: >
+  Living things pass information to their offspring through genes, and the
+  way they reproduce shapes how much offspring vary from their parents.
+  Understanding inherited versus acquired characteristics, and sexual versus
+  asexual reproduction, explains why offspring resemble their parents in
+  some ways but not others.
+learningObjectives:
+  - Explain the difference between inherited characteristics (passed on via genes) and acquired characteristics (developed during an organism's life)
+  - Describe genes as units of inherited information, carried on chromosomes in the nucleus, passed from parents to offspring
+  - Distinguish sexual reproduction (two parents, genetically varied offspring) from asexual reproduction (one parent, genetically identical offspring)
+  - Explain why genetic variation within a species matters for its ability to survive changing conditions
+misconceptions:
+  - id: acquired-traits-inherited
+    description: Students think characteristics gained during an organism's lifetime (like a scar, or muscle built through exercise) can be passed on to its offspring.
+    correction: Only inherited characteristics, passed on via genes, are passed to offspring. Acquired characteristics come from an organism's environment or experience and are not passed on genetically.
+  - id: asexual-produces-variation
+    description: Students think asexual reproduction, like sexual reproduction, produces offspring that are genetically different from the parent.
+    correction: Asexual reproduction involves only one parent and produces offspring that are genetically identical clones of it. It's sexual reproduction, combining genes from two parents, that produces genetic variation.
+prerequisites:
+  - sci-y7-ecosystems
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: []
+assessmentRefs: []
+xpReward: 50
