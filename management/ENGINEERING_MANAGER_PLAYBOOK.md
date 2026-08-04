@@ -37,16 +37,22 @@ git fetch origin master && git reset --hard origin/master
 ```
 (run inside each worktree directory before dispatching into it — never dispatch into a worktree that's behind master, per the BL-042 lesson below).
 
-Dispatch each with:
-```
-claude --permission-mode bypassPermissions --print < promptfile
-```
-run as a background process from that worktree's directory. Write each prompt file fresh per sprint (don't reuse a stale one verbatim) — see "Dispatch prompt shape" below for what each must contain. Worktree 1 writes the lesson/assessment/widget; Worktree 2 writes the illustrations, against the exact ids you fixed in Step 2. Neither should touch the widget/illustration registries — that's QA's job in Step 4, so the two dispatches never conflict with each other.
+**Critical mechanical constraint — read this before dispatching anything.** You are yourself a single-shot `claude --print` process: you have no persistent session to return to, and no notification mechanism will ever wake you up later. Do not background a dispatch and end your turn expecting to "check back in 20 minutes" or "be notified when it finishes" — nothing exists to notify. If your process exits while a dispatch is still running, that dispatch becomes an orphaned process nobody is tracking, and the sprint silently stalls with no one aware.
 
-Wait for both to genuinely finish (a real commit pushed to their branch, not just process exit — see the DEC-013 protocol below for what to do if a session ends ambiguously).
+Dispatch each with a **single blocking shell command** so your own tool call does not return until both are actually done:
+```
+( claude --permission-mode bypassPermissions --print < w1-promptfile > w1.log 2>&1 & \
+  claude --permission-mode bypassPermissions --print < w2-promptfile > w2.log 2>&1 & \
+  wait )
+```
+run from a shell in this worktree, with each `claude` invocation's working directory set to the correct Worktree 1 / Worktree 2 path (e.g. via a `cd "<path>" &&` prefix inside each subshell, or `git -C`/absolute paths throughout each prompt's instructions). This runs both in parallel exactly as before, but the `wait` means your tool call itself blocks until both processes exit — so when you regain control, both are genuinely finished, not just started. Never invoke a dispatch with a tool-level "run in background and return immediately" option; only shell-level `&`/`wait` inside one blocking call, since that's the only mechanism that keeps your own process alive until the work is done.
+
+Write each prompt file fresh per sprint (don't reuse a stale one verbatim) — see "Dispatch prompt shape" below for what each must contain. Worktree 1 writes the lesson/assessment/widget; Worktree 2 writes the illustrations, against the exact ids you fixed in Step 2. Neither should touch the widget/illustration registries — that's QA's job in Step 4, so the two dispatches never conflict with each other.
+
+After the blocking call returns, verify both actually finished with real output (a real commit pushed to their branch, not just process exit — see the DEC-013 protocol below for what to do if a dispatch's log shows it ended ambiguously, e.g. "still running in background" as its last line, which now means the *dispatched* worker made the same mistake, not you).
 
 ### 4. Dispatch Worktree 3 (QA)
-`openclaw/reviewer`'s job (per `management/ROADMAP.md`'s Worktree allocation) is broader than code review: independently verify scientific accuracy and misconception targeting, do the registry wiring (`WIDGET_REGISTRY`/`ILLUSTRATION_REGISTRY` in `app/components/LessonPlayer.tsx`, `LESSON_ILLUSTRATIONS` in `app/components/ContinueLearningScreen.tsx`), run the full check suite (`validate:curriculum`, `typecheck`, `lint`, `vitest run`, `next build`), and do a genuine live Playwright click-through of the whole new lesson before deciding whether to push to master itself. Give it explicit instructions to check `git merge-base` against current master before merging `docs/backlog/backlog.md`/`management/TASK_LEDGER.md` wholesale (BL-042 lesson), and the DEC-013 push-immediately protocol if its own session risks running long. See "Dispatch prompt shape" for the full template — reuse the QA dispatch's structure, not its exact sprint-specific content.
+Use the same single blocking shell command pattern as Step 3 (`claude ... --print < promptfile > log 2>&1 & wait`, or simply run it without `&`/`wait` at all since there's only one dispatch this time — either way, your tool call must not return until this process has actually exited). `openclaw/qa`'s job (per `management/ROADMAP.md`'s Worktree allocation) is broader than code review: independently verify scientific accuracy and misconception targeting, do the registry wiring (`WIDGET_REGISTRY`/`ILLUSTRATION_REGISTRY` in `app/components/LessonPlayer.tsx`, `LESSON_ILLUSTRATIONS` in `app/components/ContinueLearningScreen.tsx`), run the full check suite (`validate:curriculum`, `typecheck`, `lint`, `vitest run`, `next build`), and do a genuine live Playwright click-through of the whole new lesson before deciding whether to push to master itself. Give it explicit instructions to check `git merge-base` against current master before merging `docs/backlog/backlog.md`/`management/TASK_LEDGER.md` wholesale (BL-042 lesson), and the DEC-013 push-immediately protocol if its own session risks running long. See "Dispatch prompt shape" for the full template — reuse the QA dispatch's structure, not its exact sprint-specific content.
 
 ### 5. Verify the outcome yourself before treating the sprint as done
 Do not just trust the QA worker's Telegram report. Check directly:
