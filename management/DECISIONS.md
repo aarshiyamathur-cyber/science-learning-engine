@@ -165,3 +165,17 @@ Ran `npm cache clean --force` and cleared `.next/cache` in all three worktrees a
 
 **Impact**
 No data has been lost so far (git history is always intact; only working-tree/node_modules/build-output churn). But a worse-timed occurrence (e.g. mid-commit, before a worker's local changes are committed) could lose real in-progress work. Recommend to the Sponsor: free up general disk space on C:, or move the OpenClaw worktrees to D: (which has ~176GB free) if that's a supported reconfiguration in OpenClaw's own worktree/agent path config. Until addressed, treat this as an ongoing background risk on every QA-worktree dispatch, not something to keep silently re-explaining away.
+
+## DEC-013
+
+**Decision**
+The DEC-012 pattern recurred a third time during Sprint 13's QA pass, this time more seriously: the QA worker's dispatched session ended (its last message was "still running in the background, will report back") before its own live-browser-test step and merge decision completed. Its local worktree had genuine, valuable committed work — a real bug fix (`FoodChainExplorer`'s decomposer model and an undefined `bg-warning-400` token) plus the merge and registry wiring — that existed ONLY in that one local worktree's `.git`, never pushed to `origin/openclaw/reviewer`. Unlike the first two occurrences (self-recovered harmlessly via `git restore .`), this time the interrupted session meant nothing would have protected that work if the same file-deletion issue struck the worktree again before a future dispatch happened to notice and push it.
+
+**Status**
+Accepted (mitigating action taken directly; root cause per DEC-012 still not fixed at the system level)
+
+**Reason**
+On noticing the QA worker's session had ended without a final report, Claude checked the worktree directly, found the local commits (`git log` showed real work; `git status` showed every tracked file deleted from the working tree — consistent with the DEC-012 pattern, not data loss in `.git` itself), and immediately ran `git push origin openclaw/reviewer` before doing anything else, to get the work off that one fragile local disk and onto the remote. Only after that push succeeded did Claude restore the working tree (`git checkout -- .`) and complete the interrupted verification manually: read the fix in full, ran the automated check suite, and did a live browser click-through (requiring direct SQLite manipulation of a test profile's `completedLessons` to skip a slow 10-lesson prerequisite chain, since the click-through-every-prior-lesson approach proved too slow and fragile for a from-scratch unlock) — confirming both the energy-bar rendering and the decomposer text fix work correctly before merging to master.
+
+**Impact**
+No work was ultimately lost, but this was closer to a real loss than DEC-012's first two instances. Establishes a concrete response pattern for future occurrences: if a dispatched worker's session ends without a clear "merged" or "did not merge, here's why" report, treat it as interrupted, check the worktree directly, and push any unpushed local commits immediately before investigating further or restoring the working tree — protecting the commits is strictly higher priority than diagnosing the cause in the moment. The underlying disk-space/cleanup-tool root cause from DEC-012 remains unresolved and increasingly urgent given the escalation.

@@ -14,7 +14,7 @@ _Master Product Charter v2.0 (2026-08-04) supersedes all previous sprint directi
 | Sprint 10 | Energy | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 11 | Cells | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 12 | Body Systems | ✅ Done — Definition of Done met 2026-08-04 |
-| Sprint 13 | Ecosystems | 🔄 Underway |
+| Sprint 13 | Ecosystems | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 14 | Genetics & Reproduction | ⬜ Not started |
 | Sprint 15 | Plate Tectonics | ⬜ Not started |
 | Sprint 16 | The Solar System & Universe | ⬜ Not started — last topic before Phase 1 completion is assessed |
@@ -34,6 +34,18 @@ Sprint 8-12 covered the Chemical World and Physical World strands plus two Livin
 **Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (111/111)/`build` all pass; QA worker's live click-through confirmed XP increment, completion state, no console errors, no mobile overflow; Claude's independent spot-check confirmed content accuracy and a clean production deploy. No placeholders/TODOs.
 
 **Note:** a real, recurring reliability risk was found and flagged (not fixed at the system level) during this sprint's QA pass — see DEC-012. The QA worktree has had its files mass-deleted twice now by something outside the dispatched worker's own commands, very likely low disk space (~21GB free of 238GB on C:) triggering an automated cleanup tool. No data was lost (git history intact both times), but this needs the Sponsor's attention before it causes a worse-timed loss.
+
+## Sprint 13 — Ecosystems (Definition of Done met 2026-08-04)
+
+**Scope:** ecosystems as biotic + abiotic parts interacting; producers/consumers/decomposers in a food chain; energy flow and loss at each step; adaptations for survival — Year 7-10 appropriate, no numeric energy-pyramid calculations beyond an illustrative "~10%" figure, no complex food web modelling.
+
+**Prerequisite:** `sci-y7-body-systems` (continuing the linear sequence).
+
+**Delivered via the 3-worktree pipeline, with a real QA-found bug fixed before merge:** `lesson-ecosystems-intro.yaml` (hero → biotic/abiotic → food chains → energy-flow illustration → grass/rabbit/fox example → `FoodChainExplorer` widget → adaptations → 5 questions → summary), `assessment-ecosystems-quiz.yaml` (both misconceptions directly targeted). The QA worker caught and fixed two real defects in `FoodChainExplorer` before merging: an undefined `bg-warning-400` Tailwind token that would have rendered the energy bars with no visible fill, and a conceptually wrong model where Decomposer reused the sequential "10% predation transfer" pattern from Secondary Consumer — decomposers break down dead matter from every trophic level, not a fixed share from the one level before them.
+
+**Incident during this sprint's QA pass (see DEC-013):** the QA worker's dispatched session ended (Telegram: "still running... will report back") before its own live-browser-test step and merge decision completed — a worse occurrence of the recurring file-deletion pattern (DEC-012) than the previous two, since this time real committed work existed only in the local worktree, unpushed anywhere. Claude found this, immediately pushed the branch to preserve it, then completed verification manually (automated checks + a full live click-through, requiring direct DB manipulation to unlock the prerequisite chain for a test profile) before merging to master.
+
+**Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (118/118)/`build` all pass, live click-through of all 12 lesson steps confirming both fixes render correctly (energy bars visibly proportioned, Decomposer's corrected "every level" text), mastery/XP confirmed, mobile (375px, no overflow), no placeholders/TODOs. Test profiles created during verification were deleted from the live database afterward.
 
 ## Stop conditions (2026-08-04 charter — the only reasons to pause and ask)
 

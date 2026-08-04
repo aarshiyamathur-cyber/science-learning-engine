@@ -4,11 +4,11 @@ _Last updated: 2026-08-04 by Claude Code_
 
 ## Current Sprint
 
-Sprint 12 — "Body Systems" — **Definition of Done met.** Master Product Charter v2.0 (2026-08-04) superseded the previous per-4-topic check-in and reaffirmed autonomous continuation through Phase 1 (every NSW Year 9 Science topic). Named/switchable learner profiles + self-service progress reset also shipped this session (DEC-011), directly requested by the Sponsor after testers were marking real progress complete during QA.
+Sprint 13 — "Ecosystems" — **Definition of Done met.** Product Owner confirmed 2026-08-04 that Phase 1 requires full 4-strand NSW coverage (Ecosystems, Genetics & Reproduction, Plate Tectonics, The Solar System & Universe — Sprints 13-16) beyond the original 5-sprint list. Named/switchable learner profiles + self-service progress reset shipped this session (DEC-011).
 
 **Note (DEC-010):** the pre-existing "Aarshiya continuous dev cycle" cron job remains disabled (real git-lock collision risk with the active worktree pipeline). Reversible via `openclaw cron enable 7614c9e2-8de6-4dfd-9ea4-a235de7b9aeb`.
 
-**Flagged (DEC-012, needs Sponsor attention):** the OpenClaw QA worktree has had its files mass-deleted twice by something outside the dispatched worker's own commands — likely low disk space (~21GB free of 238GB on C:) triggering an automated cleanup tool. No data lost either time (git history intact), but this is a real, recurring risk worth addressing before it causes a worse-timed loss.
+**Escalated (DEC-012 → DEC-013, needs Sponsor attention):** the recurring QA-worktree file-deletion issue happened a third time during Sprint 13, and this time was more serious — the dispatched QA session ended before pushing its own real bug-fix commits, leaving them briefly at risk on one local disk. Claude caught it and pushed immediately, so nothing was lost, but the underlying cause (almost certainly low disk space on C:, ~21-36GB free of 238GB, fluctuating) is unresolved and the risk is clearly escalating with repeated exposure, not going away on its own.
 
 ## Status
 
