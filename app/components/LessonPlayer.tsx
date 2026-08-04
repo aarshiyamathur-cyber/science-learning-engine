@@ -5,6 +5,7 @@ import type { ResolvedLessonStep } from "@aarshiya/curriculum-schema";
 import {
   AtomicStructureIllustration,
   BalancedUnbalancedForcesIllustration,
+  BodySystemsHeroIllustration,
   CellsHeroIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
@@ -20,10 +21,12 @@ import {
   QuestionIcon,
   StatesOfMatterIllustration,
   SummaryIcon,
+  SystemsWorkingTogetherIllustration,
 } from "./icons";
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
 import { AtomBuilder } from "./widgets/AtomBuilder";
+import { BodySystemExplorer } from "./widgets/BodySystemExplorer";
 import { CellStructureExplorer } from "./widgets/CellStructureExplorer";
 import { EnergyTransformationExplorer } from "./widgets/EnergyTransformationExplorer";
 import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
@@ -44,6 +47,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "force-friction-simulator": ForceFrictionSimulator,
   "energy-transformation-explorer": EnergyTransformationExplorer,
   "cell-structure-explorer": CellStructureExplorer,
+  "body-system-explorer": BodySystemExplorer,
 };
 
 /**
@@ -68,6 +72,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "energy-transformation": EnergyTransformationIllustration,
   "cells-hero": CellsHeroIllustration,
   "plant-vs-animal-cell": PlantVsAnimalCellIllustration,
+  "body-systems-hero": BodySystemsHeroIllustration,
+  "systems-working-together": SystemsWorkingTogetherIllustration,
 };
 
 interface LessonPlayerProps {

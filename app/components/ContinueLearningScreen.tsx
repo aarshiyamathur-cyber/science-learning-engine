@@ -11,6 +11,7 @@ import {
 } from "../actions";
 import {
   AtomicStructureIllustration,
+  BodySystemsHeroIllustration,
   CelebrationIllustration,
   CellsHeroIllustration,
   ChangesOfStateIllustration,
@@ -38,6 +39,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-forces": ForcesHeroIllustration,
   "sci-y7-energy": EnergyHeroIllustration,
   "sci-y7-cells": CellsHeroIllustration,
+  "sci-y7-body-systems": BodySystemsHeroIllustration,
 };
 
 export interface LessonEntry {
