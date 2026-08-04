@@ -1,0 +1,76 @@
+id: lesson-solar-system-intro
+conceptId: sci-y7-solar-system
+title: The Solar System and Universe
+summary: The Sun, the eight planets, their moons, and smaller bodies held in orbit by gravity; why Earth's spin and tilt cause day/night and the seasons; why the Moon's phases are caused by its orbit, not Earth's shadow; and where the Solar System sits within the wider Universe.
+steps:
+  - type: illustration
+    illustration: solar-system-hero
+    caption: The Sun at the centre, the eight planets in orbit around it, and smaller bodies like asteroids and comets.
+  - type: explanation
+    body: >
+      The Solar System is the Sun and everything that orbits it. The four
+      planets closest to the Sun are small, rocky worlds, while the four
+      outer planets are much larger gas giants. Each planet may have its own
+      moons, and countless smaller bodies — asteroids and comets — orbit the
+      Sun too. Gravity from the Sun is what holds everything in orbit.
+  - type: explanation
+    body: >
+      Earth spins on its axis once roughly every 24 hours, and it's this
+      spin that causes day and night — the side facing the Sun has day,
+      while the side facing away has night. Earth's axis is also tilted,
+      and as Earth orbits the Sun over the year, that tilt causes the
+      seasons. A hemisphere tilted toward the Sun gets more direct
+      sunlight and longer days; tilted away, it gets less direct sunlight
+      and shorter days.
+  - type: illustration
+    illustration: cosmic-scale
+    caption: The Solar System is part of the Milky Way galaxy, and the Universe holds billions of galaxies like it.
+  - type: example
+    body: >
+      In a NSW summer (December), the Southern Hemisphere is tilted toward
+      the Sun, so the Sun sits higher in the sky and days are long. In a
+      NSW winter (June), the Southern Hemisphere is tilted away, so the Sun
+      stays lower in the sky and days are much shorter — even though Earth
+      is about the same distance from the Sun both times.
+  - type: interactive
+    widget: earth-sun-moon-explorer
+    prompt: >
+      Tap through the four seasons and notice how the Southern Hemisphere's
+      tilt toward or away from the Sun changes, not Earth's distance from
+      it. Then switch to Moon Phases and tap each phase to see how much of
+      the Moon's sunlit half is visible from Earth at each point in its
+      orbit.
+  - type: explanation
+    body: >
+      The Moon doesn't produce its own light — we see it because sunlight
+      lights up half of it at all times, just like Earth. As the Moon
+      orbits Earth, we see different amounts of that sunlit half from
+      Earth, which is what causes its phases. This is different from a
+      lunar eclipse, a separate and much rarer event where Earth's shadow
+      actually falls on the Moon.
+  - type: explanation
+    body: >
+      The Solar System is just one small part of a much bigger picture.
+      The Sun and everything orbiting it sits inside the Milky Way galaxy,
+      which contains billions of other stars. The Universe is even larger
+      still — it contains billions of other galaxies besides the Milky Way.
+  - type: question
+    questionId: q-solar-system-01
+  - type: question
+    questionId: q-solar-system-02
+  - type: question
+    questionId: q-solar-system-03
+  - type: question
+    questionId: q-solar-system-04
+  - type: question
+    questionId: q-solar-system-05
+  - type: summary
+    body: >
+      The Solar System is the Sun and everything held in its gravity —
+      rocky inner planets, gas giant outer planets, moons, asteroids, and
+      comets. Earth's spin causes day and night, and Earth's tilted axis
+      combined with its orbit — not its distance from the Sun — causes the
+      seasons. The Moon's phases come from how much of its sunlit half we
+      can see as it orbits, not from Earth's shadow. And the Solar System
+      itself is just one small part of the Milky Way galaxy, inside a
+      Universe of billions of galaxies.

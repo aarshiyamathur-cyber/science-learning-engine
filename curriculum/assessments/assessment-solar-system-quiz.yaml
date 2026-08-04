@@ -1,0 +1,70 @@
+- id: q-solar-system-01
+  conceptId: sci-y7-solar-system
+  prompt: What is the main difference between the four inner planets and the four outer planets of the Solar System?
+  type: multiple-choice
+  options:
+    - The inner planets are small and rocky, while the outer planets are large gas giants
+    - The inner planets are gas giants, while the outer planets are small and rocky
+    - The inner planets have moons, while the outer planets have no moons
+    - There is no real difference between them
+  correctAnswer: The inner planets are small and rocky, while the outer planets are large gas giants
+  difficulty: 0.1
+  hint: Think about which planets are closest to the Sun, and what they're made of compared to the planets further out.
+  explanation: The four planets closest to the Sun are small, rocky worlds. The four outer planets are much larger gas giants. Together with their moons, asteroids, and comets, they're all held in orbit by the Sun's gravity.
+- id: q-solar-system-02
+  conceptId: sci-y7-solar-system
+  prompt: >
+    A student says that Earth has summer because it is closer to the Sun at
+    that time of year, and winter because it is farther away. Is the
+    student correct? Explain your answer.
+  type: short-answer
+  correctAnswer: >
+    No — Earth's distance from the Sun barely changes across the year.
+    Seasons are caused by Earth's tilted axis: when a hemisphere is tilted
+    toward the Sun it gets more direct sunlight and longer days (summer),
+    and when tilted away it gets more indirect sunlight and shorter days
+    (winter).
+  difficulty: 0.4
+  hint: Earth's distance from the Sun barely changes across the year — think about what does change as Earth orbits with its axis tilted.
+  explanation: The student is incorrect. Earth's distance from the Sun barely changes across the year. Seasons are caused by Earth's tilted axis — when a hemisphere is tilted toward the Sun it gets more direct sunlight and longer days (summer), and when tilted away it gets more indirect sunlight and shorter days (winter).
+- id: q-solar-system-03
+  conceptId: sci-y7-solar-system
+  prompt: What causes day and night on Earth?
+  type: multiple-choice
+  options:
+    - Earth spinning on its axis, so different sides face toward or away from the Sun
+    - Earth moving closer to and farther from the Sun
+    - The Moon blocking sunlight from reaching Earth
+    - The Sun switching on and off
+  correctAnswer: Earth spinning on its axis, so different sides face toward or away from the Sun
+  difficulty: 0.2
+  hint: Think about what Earth is doing roughly once every 24 hours.
+  explanation: Earth spins on its axis roughly once every 24 hours. The side facing the Sun has day, and the side facing away has night.
+- id: q-solar-system-04
+  conceptId: sci-y7-solar-system
+  prompt: >
+    A student says the Moon's phases happen because Earth's shadow covers
+    part of the Moon. Is the student correct? Explain your answer.
+  type: multiple-choice
+  options:
+    - "No — phases are caused by how much of the Moon's sunlit half is visible from Earth as it orbits, not by Earth's shadow"
+    - "Yes — Earth's shadow covers part of the Moon every night, and that's what causes the phases"
+    - "No — the Moon makes its own light, and phases happen when it turns that light on and off"
+    - "Yes — but only during a New Moon, not at any other phase"
+  correctAnswer: "No — phases are caused by how much of the Moon's sunlit half is visible from Earth as it orbits, not by Earth's shadow"
+  difficulty: 0.5
+  hint: Think about how much of the Moon is always lit by the Sun, and how much of that lit half we can actually see from Earth as it orbits.
+  explanation: The student is incorrect. Moon phases are caused by how much of the Moon's sunlit half we can see as it orbits Earth, not by Earth's shadow. Earth's shadow only covers the Moon during a lunar eclipse, which is a separate, much rarer event.
+- id: q-solar-system-05
+  conceptId: sci-y7-solar-system
+  prompt: How does the Solar System relate to the Milky Way galaxy and the wider Universe?
+  type: multiple-choice
+  options:
+    - The Solar System is one small part of the Milky Way galaxy, and the Universe contains billions of galaxies like it
+    - The Milky Way galaxy is one small part of the Solar System
+    - The Solar System and the Milky Way galaxy are the same thing
+    - The Universe contains only the Milky Way galaxy
+  correctAnswer: The Solar System is one small part of the Milky Way galaxy, and the Universe contains billions of galaxies like it
+  difficulty: 0.3
+  hint: Think about which is bigger — a galaxy, or the Solar System that sits inside it.
+  explanation: The Solar System is just one small part of the Milky Way galaxy, which contains billions of other stars. The Universe is even larger — it contains billions of other galaxies besides the Milky Way.
