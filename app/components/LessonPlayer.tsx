@@ -17,10 +17,12 @@ import {
   ExplanationIcon,
   FoodChainEnergyFlowIllustration,
   ForcesHeroIllustration,
+  GeneticsHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
   QuestionIcon,
+  SexualVsAsexualReproductionIllustration,
   StatesOfMatterIllustration,
   SummaryIcon,
   SystemsWorkingTogetherIllustration,
@@ -33,6 +35,7 @@ import { CellStructureExplorer } from "./widgets/CellStructureExplorer";
 import { EnergyTransformationExplorer } from "./widgets/EnergyTransformationExplorer";
 import { FoodChainExplorer } from "./widgets/FoodChainExplorer";
 import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
+import { InheritanceExplorer } from "./widgets/InheritanceExplorer";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
 import { ReactionSimulator } from "./widgets/ReactionSimulator";
@@ -52,6 +55,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "cell-structure-explorer": CellStructureExplorer,
   "body-system-explorer": BodySystemExplorer,
   "food-chain-explorer": FoodChainExplorer,
+  "inheritance-explorer": InheritanceExplorer,
 };
 
 /**
@@ -80,6 +84,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "systems-working-together": SystemsWorkingTogetherIllustration,
   "ecosystem-hero": EcosystemHeroIllustration,
   "food-chain-energy-flow": FoodChainEnergyFlowIllustration,
+  "genetics-hero": GeneticsHeroIllustration,
+  "sexual-vs-asexual-reproduction": SexualVsAsexualReproductionIllustration,
 };
 
 interface LessonPlayerProps {

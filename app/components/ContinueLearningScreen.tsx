@@ -19,6 +19,7 @@ import {
   EcosystemHeroIllustration,
   EnergyHeroIllustration,
   ForcesHeroIllustration,
+  GeneticsHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   StatesOfMatterIllustration,
@@ -42,6 +43,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-cells": CellsHeroIllustration,
   "sci-y7-body-systems": BodySystemsHeroIllustration,
   "sci-y7-ecosystems": EcosystemHeroIllustration,
+  "sci-y7-genetics-reproduction": GeneticsHeroIllustration,
 };
 
 export interface LessonEntry {
