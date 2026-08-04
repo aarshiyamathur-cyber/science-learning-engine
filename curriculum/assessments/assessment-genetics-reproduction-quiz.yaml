@@ -1,0 +1,69 @@
+- id: q-genetics-reproduction-01
+  conceptId: sci-y7-genetics-reproduction
+  prompt: What is a gene?
+  type: multiple-choice
+  options:
+    - A unit of inherited information, carried on chromosomes, passed from parents to offspring
+    - A scar or injury an organism develops during its life
+    - A type of cell found only in the nucleus
+    - A characteristic an organism develops from its environment
+  correctAnswer: A unit of inherited information, carried on chromosomes, passed from parents to offspring
+  difficulty: 0.1
+  hint: Think about where genes are found in a cell, and how they get from parent to offspring.
+  explanation: A gene is a unit of inherited information, carried on chromosomes in the nucleus, passed from parents to offspring.
+- id: q-genetics-reproduction-02
+  conceptId: sci-y7-genetics-reproduction
+  prompt: >
+    A student says that if they build a lot of muscle through exercise,
+    their future children will be born more muscular because of it. Is the
+    student correct? Explain your answer.
+  type: short-answer
+  correctAnswer: >
+    No — muscle built through exercise is an acquired characteristic,
+    developed during the student's own life. Only inherited characteristics,
+    passed on via genes, are passed to offspring.
+  difficulty: 0.4
+  hint: Think about whether muscle built through exercise changes the student's genes.
+  explanation: The student is incorrect. Muscle built through exercise is an acquired characteristic — it comes from the student's own experience, not their genes — so it is not passed on to their offspring.
+- id: q-genetics-reproduction-03
+  conceptId: sci-y7-genetics-reproduction
+  prompt: Which of these is an inherited characteristic, rather than an acquired one?
+  type: multiple-choice
+  options:
+    - Eye colour
+    - A scar from a childhood injury
+    - A suntan from time spent outdoors
+    - A pierced ear
+  correctAnswer: Eye colour
+  difficulty: 0.2
+  hint: Ask yourself which of these came from genes passed on by parents, rather than from something that happened during the person's life.
+  explanation: Eye colour is controlled by genes passed from parents to offspring, so it's inherited. A scar, a suntan, and a pierced ear all happen because of experiences during a person's life, so they're acquired, not inherited.
+- id: q-genetics-reproduction-04
+  conceptId: sci-y7-genetics-reproduction
+  prompt: >
+    A gardener grows a new plant from a runner off their strawberry plant.
+    Their friend says the new plant will be genetically different from the
+    parent plant, just like offspring from sexual reproduction. Is the
+    friend correct? Explain your answer.
+  type: short-answer
+  correctAnswer: >
+    No — a runner is asexual reproduction, involving only one parent. The
+    new plant is a genetically identical clone of the parent, not
+    genetically different. Genetic variation comes from sexual reproduction,
+    which mixes genes from two parents.
+  difficulty: 0.5
+  hint: Think about how many parents are involved when a plant grows from a runner, and whether genes get mixed from more than one source.
+  explanation: The friend is incorrect. A runner is asexual reproduction, involving only one parent, so the new plant is a genetically identical clone. It's sexual reproduction, combining genes from two parents, that produces genetically varied offspring.
+- id: q-genetics-reproduction-05
+  conceptId: sci-y7-genetics-reproduction
+  prompt: Why does genetic variation within a species matter for its ability to survive changing conditions?
+  type: multiple-choice
+  options:
+    - Because some individuals are more likely to have genes that help them survive a new condition, giving the species a better chance overall
+    - Because genetic variation makes every individual in the species identical
+    - Because genetic variation stops a species from reproducing
+    - Because genetic variation only matters for asexual reproduction
+  correctAnswer: Because some individuals are more likely to have genes that help them survive a new condition, giving the species a better chance overall
+  difficulty: 0.6
+  hint: Think about what happens to a population of genetically identical clones if a new disease or a change in climate arrives, compared to a genetically varied population.
+  explanation: Genetic variation matters because, when conditions change, some individuals in a varied population are more likely to have genes that help them survive — giving the species a better overall chance. A population of identical clones has no such backup.
