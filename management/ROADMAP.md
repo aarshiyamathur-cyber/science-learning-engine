@@ -14,6 +14,14 @@ _Master Product Charter v2.0 (2026-08-04) supersedes all previous sprint directi
 | Sprint 10 | Energy | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 11 | Cells | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 12 | Body Systems | ✅ Done — Definition of Done met 2026-08-04 |
+| Sprint 13 | Ecosystems | 🔄 Underway |
+| Sprint 14 | Genetics & Reproduction | ⬜ Not started |
+| Sprint 15 | Plate Tectonics | ⬜ Not started |
+| Sprint 16 | The Solar System & Universe | ⬜ Not started — last topic before Phase 1 completion is assessed |
+
+## Phase 1 scope confirmed 2026-08-04
+
+Sprint 8-12 covered the Chemical World and Physical World strands plus two Living World topics (Cells, Body Systems). Product Owner confirmed (2026-08-04) that Phase 1 requires full 4-strand NSW coverage, not just the original 5-sprint list: Sprint 13 (Ecosystems) and Sprint 14 (Genetics & Reproduction) round out Living World; Sprint 15 (Plate Tectonics) and Sprint 16 (The Solar System & Universe) cover Earth and Space, previously untouched. Phase 1 completion is assessed after Sprint 16 against the charter's success criteria (all topics implemented, visuals across every lesson, Question Bank covers the curriculum, Aarshiya can complete the entire course) — not assumed automatically.
 
 ## Sprint 12 — Body Systems (Definition of Done met 2026-08-04)
 
