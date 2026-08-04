@@ -1,0 +1,74 @@
+id: lesson-plate-tectonics-intro
+conceptId: sci-y7-plate-tectonics
+title: Plate Tectonics
+summary: How Earth's crust is broken into large tectonic plates that move on the solid, slowly-flowing mantle, why convergent, divergent, and transform boundaries produce different effects, and the evidence that supports plate tectonics.
+steps:
+  - type: illustration
+    illustration: plate-tectonics-hero
+    caption: Earth's crust, mantle, and core, with tectonic plates on top.
+  - type: explanation
+    body: >
+      Earth is made up of layers. At the very centre is the core, surrounded
+      by the mantle, and on the outside is a thin, rocky layer called the
+      crust — the layer we live on. The crust isn't one solid shell; it's
+      broken into large pieces called tectonic plates.
+  - type: explanation
+    body: >
+      The mantle beneath the plates is solid rock, not liquid — plates
+      aren't floating on an ocean of magma. Heat deep within the Earth makes
+      the solid mantle flow extremely slowly, over millions of years, in a
+      process called convection. This slow flow is what carries the
+      tectonic plates above it, moving them just a few centimetres a year.
+  - type: illustration
+    illustration: plate-boundary-types
+    caption: Convergent, divergent, and transform boundaries each produce a different effect.
+  - type: example
+    body: >
+      The Himalayas are a real example of a convergent boundary at work.
+      The India and Eurasia tectonic plates have been colliding for tens of
+      millions of years, and the collision keeps pushing the crust upward
+      rather than one plate sliding easily under the other. That's why the
+      Himalayas are still growing taller today.
+  - type: interactive
+    widget: plate-boundary-explorer
+    prompt: >
+      Tap each boundary type below. Notice how a collision, a separation,
+      and a sideways slide each produce a different effect — mountains and
+      volcanoes, new crust, or earthquakes.
+  - type: explanation
+    body: >
+      Earthquakes and volcanoes aren't scattered randomly across the Earth
+      — they're concentrated where neighbouring plates meet. That's because
+      it's the collision, separation, or sliding at a boundary that
+      produces the stress and volcanic activity behind most earthquakes and
+      eruptions. Far from any boundary, in the middle of a plate, both are
+      rare.
+  - type: explanation
+    body: >
+      Scientists have real evidence that today's continents once fit
+      together differently. The coastlines of South America and Africa
+      match up like puzzle pieces, and matching fossils and rock layers
+      appear on continents that are now separated by entire oceans. This is
+      strong evidence that the continents have drifted apart over millions
+      of years, carried by the plates beneath them.
+  - type: question
+    questionId: q-plate-tectonics-01
+  - type: question
+    questionId: q-plate-tectonics-02
+  - type: question
+    questionId: q-plate-tectonics-03
+  - type: question
+    questionId: q-plate-tectonics-04
+  - type: question
+    questionId: q-plate-tectonics-05
+  - type: summary
+    body: >
+      Earth's crust is broken into large tectonic plates that rest on the
+      solid, slowly-flowing mantle — driven by convection, not floating on
+      liquid magma. Convergent boundaries push up mountains or force one
+      plate under another, often with volcanoes; divergent boundaries
+      create new crust; transform boundaries mainly cause earthquakes.
+      This is why earthquakes and volcanoes concentrate at plate boundaries
+      rather than occurring randomly — and why matching continent shapes
+      and fossils across separated continents are strong evidence for
+      plate tectonics.

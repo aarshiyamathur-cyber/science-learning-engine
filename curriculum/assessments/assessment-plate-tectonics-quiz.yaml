@@ -1,0 +1,70 @@
+- id: q-plate-tectonics-01
+  conceptId: sci-y7-plate-tectonics
+  prompt: What is a tectonic plate?
+  type: multiple-choice
+  options:
+    - A large, rigid section of Earth's crust that moves slowly over the mantle
+    - A liquid pool of magma beneath the ocean
+    - "The three layers of the Earth: crust, mantle, and core"
+    - A crack that only appears during an earthquake
+  correctAnswer: A large, rigid section of Earth's crust that moves slowly over the mantle
+  difficulty: 0.1
+  hint: Think about what Earth's crust is broken into, and what those pieces rest on.
+  explanation: A tectonic plate is a large, rigid section of Earth's crust. The crust is broken into several of these plates, which move slowly over the mantle beneath them.
+- id: q-plate-tectonics-02
+  conceptId: sci-y7-plate-tectonics
+  prompt: >
+    A student says the mantle is a liquid ocean of magma that tectonic
+    plates float on top of, like boats on water. Is the student correct?
+    Explain your answer.
+  type: short-answer
+  correctAnswer: >
+    No — the mantle is solid rock, not liquid. It flows extremely slowly
+    over millions of years because of heat from deep within the Earth
+    (convection), and it's this slow solid-rock flow that carries the
+    plates, not floating on a liquid.
+  difficulty: 0.4
+  hint: Think about whether flowing very slowly, like solid rock does, is the same thing as being liquid.
+  explanation: The student is incorrect. The mantle is solid rock, not liquid. It flows extremely slowly over millions of years due to convection, and this slow solid-rock flow carries the plates above it — the plates aren't floating on a liquid.
+- id: q-plate-tectonics-03
+  conceptId: sci-y7-plate-tectonics
+  prompt: >
+    Which type of plate boundary mainly causes earthquakes, with little to
+    no volcanic activity, because the two plates are sliding past each
+    other rather than colliding or separating?
+  type: multiple-choice
+  options:
+    - Transform boundary
+    - Convergent boundary
+    - Divergent boundary
+    - All boundary types produce the same effect
+  correctAnswer: Transform boundary
+  difficulty: 0.3
+  hint: Think about the type of movement where two plates slide past each other, like at California's San Andreas Fault.
+  explanation: A transform boundary is where two plates slide past each other. This mainly causes earthquakes, with little to no volcanic activity — unlike convergent boundaries (mountains, volcanoes) or divergent boundaries (new crust, sometimes volcanic activity).
+- id: q-plate-tectonics-04
+  conceptId: sci-y7-plate-tectonics
+  prompt: Why are earthquakes and volcanoes concentrated along plate boundaries rather than scattered randomly across the Earth?
+  type: short-answer
+  correctAnswer: >
+    Because that's where neighbouring tectonic plates meet and interact —
+    colliding, separating, or sliding past each other — and it's this
+    interaction that produces the stress and volcanic activity behind most
+    earthquakes and eruptions. Far from a boundary, in the middle of a
+    plate, this interaction isn't happening, so both are rare there.
+  difficulty: 0.5
+  hint: Think about what's different about the middle of a plate compared to the edge, where it meets another plate.
+  explanation: Earthquakes and volcanoes concentrate at plate boundaries because that's where neighbouring plates collide, separate, or slide past each other — this interaction produces the stress and volcanic activity behind most earthquakes and eruptions. Away from boundaries, in the middle of a plate, both are rare.
+- id: q-plate-tectonics-05
+  conceptId: sci-y7-plate-tectonics
+  prompt: What is one piece of evidence that supports plate tectonics?
+  type: multiple-choice
+  options:
+    - Matching continent shapes and matching fossils or rock layers across continents that are now far apart
+    - Continents have always been in their current positions
+    - Volcanoes only occur in the middle of tectonic plates, never at their edges
+    - Earthquakes happen completely randomly across the Earth's surface, unrelated to plate boundaries
+  correctAnswer: Matching continent shapes and matching fossils or rock layers across continents that are now far apart
+  difficulty: 0.6
+  hint: Think about how the coastlines of South America and Africa look if you push them together on a map.
+  explanation: Matching continent shapes, like South America and Africa fitting together, along with matching fossils and rock layers on continents now separated by oceans, is strong evidence that continents have drifted apart over millions of years, carried by tectonic plates.
