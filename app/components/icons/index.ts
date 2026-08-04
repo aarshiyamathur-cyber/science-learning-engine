@@ -12,9 +12,11 @@ export {
   EnergyTransformationIllustration,
   FoodChainEnergyFlowIllustration,
   ForcesHeroIllustration,
+  GeneticsHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
+  SexualVsAsexualReproductionIllustration,
   StatesOfMatterIllustration,
   SystemsWorkingTogetherIllustration,
 } from "./Illustrations";

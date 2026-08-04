@@ -17,10 +17,12 @@ import {
   ExplanationIcon,
   FoodChainEnergyFlowIllustration,
   ForcesHeroIllustration,
+  GeneticsHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
   QuestionIcon,
+  SexualVsAsexualReproductionIllustration,
   StatesOfMatterIllustration,
   SummaryIcon,
   SystemsWorkingTogetherIllustration,
@@ -50,6 +52,8 @@ describe("step icons and illustrations", () => {
     PlantVsAnimalCellIllustration,
     BodySystemsHeroIllustration,
     SystemsWorkingTogetherIllustration,
+    GeneticsHeroIllustration,
+    SexualVsAsexualReproductionIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);
