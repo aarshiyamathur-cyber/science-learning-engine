@@ -22,6 +22,7 @@ import {
   GeneticsHeroIllustration,
   ParticleModelIllustration,
   PeriodicTableIllustration,
+  PlateTectonicsHeroIllustration,
   StatesOfMatterIllustration,
 } from "./icons";
 import { LessonPlayer } from "./LessonPlayer";
@@ -44,6 +45,7 @@ const LESSON_ILLUSTRATIONS: Record<string, ComponentType<SVGProps<SVGSVGElement>
   "sci-y7-body-systems": BodySystemsHeroIllustration,
   "sci-y7-ecosystems": EcosystemHeroIllustration,
   "sci-y7-genetics-reproduction": GeneticsHeroIllustration,
+  "sci-y7-plate-tectonics": PlateTectonicsHeroIllustration,
 };
 
 export interface LessonEntry {

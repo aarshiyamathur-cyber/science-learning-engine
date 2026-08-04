@@ -21,6 +21,8 @@ import {
   ParticleModelIllustration,
   PeriodicTableIllustration,
   PlantVsAnimalCellIllustration,
+  PlateBoundaryTypesIllustration,
+  PlateTectonicsHeroIllustration,
   QuestionIcon,
   SexualVsAsexualReproductionIllustration,
   StatesOfMatterIllustration,
@@ -38,6 +40,7 @@ import { ForceFrictionSimulator } from "./widgets/ForceFrictionSimulator";
 import { InheritanceExplorer } from "./widgets/InheritanceExplorer";
 import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
+import { PlateBoundaryExplorer } from "./widgets/PlateBoundaryExplorer";
 import { ReactionSimulator } from "./widgets/ReactionSimulator";
 
 /**
@@ -56,6 +59,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "body-system-explorer": BodySystemExplorer,
   "food-chain-explorer": FoodChainExplorer,
   "inheritance-explorer": InheritanceExplorer,
+  "plate-boundary-explorer": PlateBoundaryExplorer,
 };
 
 /**
@@ -86,6 +90,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "food-chain-energy-flow": FoodChainEnergyFlowIllustration,
   "genetics-hero": GeneticsHeroIllustration,
   "sexual-vs-asexual-reproduction": SexualVsAsexualReproductionIllustration,
+  "plate-tectonics-hero": PlateTectonicsHeroIllustration,
+  "plate-boundary-types": PlateBoundaryTypesIllustration,
 };
 
 interface LessonPlayerProps {
