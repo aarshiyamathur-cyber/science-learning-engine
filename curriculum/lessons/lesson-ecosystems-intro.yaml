@@ -1,0 +1,58 @@
+id: lesson-ecosystems-intro
+conceptId: sci-y7-ecosystems
+title: Ecosystems
+summary: What an ecosystem is, the biotic and abiotic parts that make it up, how energy flows through a food chain from producers to decomposers, and how adaptations help organisms survive.
+steps:
+  - type: illustration
+    illustration: ecosystem-hero
+    caption: An ecosystem is living things and their environment, all interacting.
+  - type: explanation
+    body: >
+      An ecosystem is made up of biotic (living) parts and abiotic
+      (non-living) parts, all interacting together. Biotic parts include
+      plants, animals, and fungi. Abiotic parts include things like
+      sunlight, water, soil, and temperature — the living parts of an
+      ecosystem couldn't survive without them.
+  - type: explanation
+    body: >
+      A food chain shows how energy moves between living things. Producers
+      make their own food, consumers eat other organisms, and decomposers
+      break down dead matter. Energy starts with the sun and flows from
+      producers through each consumer in the chain.
+  - type: illustration
+    illustration: food-chain-energy-flow
+    caption: Energy flows through a food chain, but most is lost as heat at each step.
+  - type: example
+    body: >
+      In a grassland food chain, grass is the producer — it makes its own
+      food using sunlight. A rabbit that eats the grass is the primary
+      consumer, and a fox that eats the rabbit is the secondary consumer.
+      Without the grass, neither animal would have any energy to start with.
+  - type: interactive
+    widget: food-chain-explorer
+    prompt: >
+      Tap each trophic level below to explore its role and example organism.
+      Notice how much energy is lost as heat at every single step.
+  - type: explanation
+    body: >
+      An adaptation is a feature that helps an organism survive in its
+      environment. A cactus has thick, waxy skin that reduces water loss in
+      the desert. A polar bear has thick fur and a layer of fat that
+      insulates it against the cold.
+  - type: question
+    questionId: q-ecosystems-01
+  - type: question
+    questionId: q-ecosystems-02
+  - type: question
+    questionId: q-ecosystems-03
+  - type: question
+    questionId: q-ecosystems-04
+  - type: question
+    questionId: q-ecosystems-05
+  - type: summary
+    body: >
+      An ecosystem is made up of biotic and abiotic parts interacting
+      together. Energy flows through a food chain from producers to
+      consumers to decomposers, but most is lost as heat at every step.
+      Adaptations, like a cactus's waxy skin or a polar bear's thick fur,
+      are features that help an organism survive in its environment.
