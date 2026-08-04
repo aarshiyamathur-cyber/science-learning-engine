@@ -1,0 +1,62 @@
+id: lesson-genetics-reproduction-intro
+conceptId: sci-y7-genetics-reproduction
+title: Genetics & Reproduction
+summary: How genes carry inherited information from parents to offspring, the difference between inherited and acquired characteristics, and how sexual and asexual reproduction differ in the genetic variation they produce.
+steps:
+  - type: illustration
+    illustration: genetics-hero
+    caption: Genes carry inherited information from parents to offspring.
+  - type: explanation
+    body: >
+      A gene is a unit of inherited information. Genes are carried on
+      chromosomes, found in the nucleus of a cell. Every offspring gets its
+      genes from its parents, which is why it tends to resemble them.
+  - type: explanation
+    body: >
+      An inherited characteristic, like eye colour, comes from the genes an
+      offspring receives from its parents. An acquired characteristic, like
+      a scar or muscle built through exercise, develops during an
+      organism's own life because of its environment or experience — it is
+      not passed on to offspring.
+  - type: illustration
+    illustration: sexual-vs-asexual-reproduction
+    caption: Asexual reproduction makes identical clones; sexual reproduction mixes genes from two parents.
+  - type: example
+    body: >
+      A spider plant grows small baby plants that are genetically identical
+      clones of it — that's asexual reproduction, needing only one parent.
+      Two rabbits, on the other hand, produce a litter of kits that are each
+      genetically different, since sexual reproduction mixes genes from both
+      parents.
+  - type: interactive
+    widget: inheritance-explorer
+    prompt: >
+      Tap each scenario below. Notice which traits are inherited versus
+      acquired, and which kinds of reproduction produce identical clones
+      versus genetically varied offspring.
+  - type: explanation
+    body: >
+      Genetic variation matters because no two offspring are exactly alike.
+      If conditions change, like a new disease or a shift in climate, some
+      individuals in a varied population are more likely to have genes that
+      help them survive. A population of identical clones has no such
+      backup.
+  - type: question
+    questionId: q-genetics-reproduction-01
+  - type: question
+    questionId: q-genetics-reproduction-02
+  - type: question
+    questionId: q-genetics-reproduction-03
+  - type: question
+    questionId: q-genetics-reproduction-04
+  - type: question
+    questionId: q-genetics-reproduction-05
+  - type: summary
+    body: >
+      Genes are units of inherited information, carried on chromosomes,
+      passed from parents to offspring. Inherited characteristics come from
+      genes; acquired characteristics come from an organism's environment or
+      experience and aren't passed on. Asexual reproduction produces
+      identical clones from one parent, while sexual reproduction mixes
+      genes from two parents to produce genetic variation, which helps a
+      species survive changing conditions.
