@@ -18,7 +18,7 @@ _This is the live status dashboard — updated after every meaningful milestone,
 
 ## Live demo
 
-**Public URL:** https://hughes-exercises-fourth-queens.trycloudflare.com
+**Public URL:** https://appears-hardcover-partners-insider.trycloudflare.com
 
 Rebuilt and redeployed with all of Sprint 4's merged changes (BL-026, BL-027, BL-028). Verified live via direct interaction against the production tunnel: the "What Is Matter?" lesson now includes a real "🧪 Try it yourself" interactive step (BL-026's new step type) between the Example and the first Question, showing the Particle State Explorer (BL-027) — tapping "Solid"/"Liquid"/"Gas" correctly swaps both the animation and the caption text (confirmed "Liquid" renders "Particles stay close together but slide and drift past each other."). The Atom Builder widget (BL-028, standalone, not yet wired into a lesson per DEC-004) was independently verified by its own delegated build.
 
