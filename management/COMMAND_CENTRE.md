@@ -56,4 +56,4 @@ CC-006 (deployment/infra) was Claude's per the Engineering Operating Agreement's
 
 ## Live URL
 
-https://after-rapid-simpson-procedures.trycloudflare.com (ephemeral Cloudflare quick tunnel, kept alive by a supervised Scheduled Task with restart-on-failure — see `scripts/deploy/start-command-centre-tunnel.ps1`. Stable as long as the underlying process doesn't crash or the machine doesn't restart; not a permanent address. A truly permanent URL needs a Cloudflare account + named tunnel on an owned domain, or a hosting platform account — both require the Sponsor to create an account, which this automation does not do.)
+https://cottage-toolbar-remedy-themes.trycloudflare.com (ephemeral Cloudflare quick tunnel, kept alive by a supervised Scheduled Task with restart-on-failure — see `scripts/deploy/start-command-centre-tunnel.ps1`. Stable as long as the underlying process doesn't crash or the machine doesn't restart; not a permanent address. A truly permanent URL needs a Cloudflare account + named tunnel on an owned domain, or a hosting platform account — both require the Sponsor to create an account, which this automation does not do.)
