@@ -1014,6 +1014,141 @@ export function PlateBoundaryTypesIllustration(
   );
 }
 
+/** The Sun at centre with orbit rings holding four small warm-toned rocky planets close in, a faint dotted asteroid-belt ring, then four larger cool-toned gas-giant planets (one with a ring) farther out - two visually distinct planet groups around one star. */
+export function SolarSystemHeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <ellipse cx="90" cy="60" rx="20" ry="11" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse cx="90" cy="60" rx="28" ry="15.4" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse cx="90" cy="60" rx="36" ry="19.8" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse cx="90" cy="60" rx="44" ry="24.2" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse
+        cx="90"
+        cy="60"
+        rx="51"
+        ry="28.05"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="2"
+        strokeDasharray="1 4"
+      />
+      <ellipse cx="90" cy="60" rx="58" ry="31.9" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse cx="90" cy="60" rx="68" ry="37.4" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse cx="90" cy="60" rx="78" ry="42.9" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+      <ellipse cx="90" cy="60" rx="87" ry="47.85" fill="none" stroke="#a1a1aa" strokeWidth="1" />
+
+      <circle cx="90" cy="60" r="9" fill="#f59e0b" />
+      <circle cx="90" cy="60" r="4.5" fill="#f43f5e" />
+
+      <circle cx="86.5" cy="49.2" r="4" fill="#f59e0b" />
+      <circle cx="111.5" cy="50.1" r="5.5" fill="#f59e0b" />
+      <circle cx="121.2" cy="69.9" r="5.5" fill="#f43f5e" />
+      <circle cx="82.4" cy="83.8" r="4.5" fill="#f43f5e" />
+
+      <circle cx="35.5" cy="70.9" r="9" fill="#0ea5e9" />
+      <ellipse
+        cx="26.1"
+        cy="47.2"
+        rx="13"
+        ry="4.5"
+        fill="none"
+        stroke="#8b5cf6"
+        strokeWidth="2"
+        transform="rotate(-20 26.1 47.2)"
+      />
+      <circle cx="26.1" cy="47.2" r="8" fill="#8b5cf6" />
+      <circle cx="129" cy="22.9" r="6.5" fill="#10b981" />
+      <circle cx="133.5" cy="101.4" r="6.5" fill="#0ea5e9" />
+    </svg>
+  );
+}
+
+/** A tiny Solar System icon nested at the core of a spiral Milky Way galaxy, itself one of several small spiral galaxies scattered inside a faint dashed boundary - the Solar System's place within a galaxy within the wider Universe. */
+export function CosmicScaleIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <circle
+        cx="90"
+        cy="60"
+        r="56"
+        fill="none"
+        stroke="#a1a1aa"
+        strokeWidth="1.5"
+        strokeDasharray="4 4"
+      />
+
+      <path
+        d="M60,60 Q80,50 88,68 Q92,80 76,86"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M60,60 Q40,70 32,52 Q28,38 46,30"
+        fill="none"
+        stroke="#0ea5e9"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <circle cx="60" cy="60" r="9" fill="#8b5cf6" />
+
+      <circle cx="60" cy="60" r="2.5" fill="#f59e0b" />
+      <circle cx="65" cy="58" r="1" fill="#f43f5e" />
+      <circle cx="55" cy="63" r="1" fill="#10b981" />
+      <circle cx="63" cy="65" r="1" fill="#0ea5e9" />
+
+      <path
+        d="M125,32 Q133,28 134,36"
+        fill="none"
+        stroke="#f43f5e"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M125,32 Q117,36 116,28"
+        fill="none"
+        stroke="#f43f5e"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <circle cx="125" cy="32" r="5" fill="#f43f5e" />
+
+      <path
+        d="M118,90 Q126,86 127,94"
+        fill="none"
+        stroke="#10b981"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M118,90 Q110,94 109,86"
+        fill="none"
+        stroke="#10b981"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <circle cx="118" cy="90" r="4.5" fill="#10b981" />
+
+      <path
+        d="M50,92 Q58,88 59,96"
+        fill="none"
+        stroke="#f59e0b"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M50,92 Q42,96 41,88"
+        fill="none"
+        stroke="#f59e0b"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <circle cx="50" cy="92" r="4" fill="#f59e0b" />
+    </svg>
+  );
+}
+
 /** Inline React version of assets/illustrations/celebration.svg. */
 export function CelebrationIllustration(props: SVGProps<SVGSVGElement>) {
   return (

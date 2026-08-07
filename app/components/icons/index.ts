@@ -7,6 +7,7 @@ export {
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  CosmicScaleIllustration,
   EcosystemHeroIllustration,
   EnergyHeroIllustration,
   EnergyTransformationIllustration,
@@ -19,6 +20,7 @@ export {
   PlateBoundaryTypesIllustration,
   PlateTectonicsHeroIllustration,
   SexualVsAsexualReproductionIllustration,
+  SolarSystemHeroIllustration,
   StatesOfMatterIllustration,
   SystemsWorkingTogetherIllustration,
 } from "./Illustrations";

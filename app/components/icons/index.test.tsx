@@ -10,6 +10,7 @@ import {
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
   ConservationOfMassIllustration,
+  CosmicScaleIllustration,
   EcosystemHeroIllustration,
   EnergyHeroIllustration,
   EnergyTransformationIllustration,
@@ -25,6 +26,7 @@ import {
   PlateTectonicsHeroIllustration,
   QuestionIcon,
   SexualVsAsexualReproductionIllustration,
+  SolarSystemHeroIllustration,
   StatesOfMatterIllustration,
   SummaryIcon,
   SystemsWorkingTogetherIllustration,
@@ -58,6 +60,8 @@ describe("step icons and illustrations", () => {
     SexualVsAsexualReproductionIllustration,
     PlateTectonicsHeroIllustration,
     PlateBoundaryTypesIllustration,
+    SolarSystemHeroIllustration,
+    CosmicScaleIllustration,
   })) {
     test(`${name} renders an svg element`, () => {
       const { container } = render(<Icon data-testid={name} />);
