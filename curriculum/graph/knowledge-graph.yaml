@@ -12,6 +12,7 @@ nodes:
   - sci-y7-ecosystems
   - sci-y7-genetics-reproduction
   - sci-y7-plate-tectonics
+  - sci-y7-solar-system
 edges:
   - from: sci-y7-particle-model
     to: sci-y7-states-of-matter
@@ -45,4 +46,7 @@ edges:
     relationship: prerequisite-of
   - from: sci-y7-genetics-reproduction
     to: sci-y7-plate-tectonics
+    relationship: prerequisite-of
+  - from: sci-y7-plate-tectonics
+    to: sci-y7-solar-system
     relationship: prerequisite-of

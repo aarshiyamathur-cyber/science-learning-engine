@@ -34,6 +34,7 @@ const SCIENCE_TOPIC_CONCEPT_IDS = [
   "sci-y7-ecosystems",
   "sci-y7-genetics-reproduction",
   "sci-y7-plate-tectonics",
+  "sci-y7-solar-system",
 ];
 
 function isConceptCompleted(concept: Concept, completedLessons: string[]): boolean {

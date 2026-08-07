@@ -1,0 +1,31 @@
+id: sci-y7-solar-system
+title: The Solar System and Universe
+description: >
+  The Solar System is the Sun and everything that orbits it: rocky inner
+  planets, gas giant outer planets, their moons, and smaller bodies like
+  asteroids and comets, all held in orbit by the Sun's gravity. Earth's own
+  spin and tilt explain everyday patterns we see in the sky — day and night,
+  the seasons, and the changing phases of the Moon — and the Solar System
+  itself is just one small part of a much larger Universe made of billions
+  of galaxies.
+learningObjectives:
+  - Describe the Solar System's structure — the Sun, the eight planets (rocky inner planets vs gas giant outer planets), their moons, and smaller bodies like asteroids and comets, all held in orbit by the Sun's gravity
+  - Explain that Earth's rotation on its axis causes day and night
+  - Explain that Earth's tilted axis, combined with its orbit around the Sun, causes the seasons — not Earth's distance from the Sun
+  - Explain that the Moon's phases are caused by how much of its sunlit half is visible from Earth as it orbits, not by Earth's shadow
+  - Describe the Solar System's place in a much larger scale — it is part of the Milky Way galaxy, and the Universe contains billions of other galaxies
+misconceptions:
+  - id: seasons-caused-by-distance-from-sun
+    description: Students think seasons happen because Earth is closer to the Sun in summer and farther away in winter.
+    correction: Earth's distance from the Sun barely changes across the year. Seasons are caused by Earth's tilted axis — when a hemisphere is tilted toward the Sun it gets more direct sunlight and longer days (summer), and when tilted away it gets more indirect sunlight and shorter days (winter).
+  - id: moon-phases-are-earths-shadow
+    description: Students think the Moon's phases are caused by Earth's shadow falling on the Moon, confusing ordinary phases with a lunar eclipse.
+    correction: Moon phases are caused by how much of the Moon's sunlit half we can see as it orbits Earth, not by Earth's shadow. Earth's shadow only covers the Moon during a lunar eclipse, which is a separate, much rarer event.
+prerequisites:
+  - sci-y7-plate-tectonics
+unlocks: []
+masteryThreshold: 0.8
+revisionStrategy: spaced-repetition
+lessonRefs: [lesson-solar-system-intro]
+assessmentRefs: [assessment-solar-system-quiz]
+xpReward: 50

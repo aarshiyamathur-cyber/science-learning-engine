@@ -15,8 +15,8 @@ _Master Product Charter v2.0 (2026-08-04) supersedes all previous sprint directi
 | Sprint 11 | Cells | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 12 | Body Systems | ✅ Done — Definition of Done met 2026-08-04 |
 | Sprint 13 | Ecosystems | ✅ Done — Definition of Done met 2026-08-04 |
-| Sprint 14 | Genetics & Reproduction | ⬜ Not started |
-| Sprint 15 | Plate Tectonics | ⬜ Not started |
+| Sprint 14 | Genetics & Reproduction | ✅ Done — Definition of Done met 2026-08-05 |
+| Sprint 15 | Plate Tectonics | ✅ Done — Definition of Done met 2026-08-05 |
 | Sprint 16 | The Solar System & Universe | ⬜ Not started — last topic before Phase 1 completion is assessed |
 
 ## Phase 1 scope confirmed 2026-08-04
@@ -46,6 +46,26 @@ Sprint 8-12 covered the Chemical World and Physical World strands plus two Livin
 **Incident during this sprint's QA pass (see DEC-013):** the QA worker's dispatched session ended (Telegram: "still running... will report back") before its own live-browser-test step and merge decision completed — a worse occurrence of the recurring file-deletion pattern (DEC-012) than the previous two, since this time real committed work existed only in the local worktree, unpushed anywhere. Claude found this, immediately pushed the branch to preserve it, then completed verification manually (automated checks + a full live click-through, requiring direct DB manipulation to unlock the prerequisite chain for a test profile) before merging to master.
 
 **Definition of Done met 2026-08-04:** `validate:curriculum`/`typecheck`/`lint`/`vitest` (118/118)/`build` all pass, live click-through of all 12 lesson steps confirming both fixes render correctly (energy bars visibly proportioned, Decomposer's corrected "every level" text), mastery/XP confirmed, mobile (375px, no overflow), no placeholders/TODOs. Test profiles created during verification were deleted from the live database afterward.
+
+## Sprint 14 — Genetics & Reproduction (Definition of Done met 2026-08-05)
+
+**Scope:** genetic material (DNA/genes/chromosomes) passed from parents to offspring; sexual reproduction (two parents, mixed traits) vs. asexual reproduction (one parent, identical clone); inherited vs. acquired characteristics — Year 7-10 appropriate, no molecular DNA structure/base-pairing mechanism, no Punnett squares/probability genetics, no meiosis detail.
+
+**Prerequisite:** `sci-y7-ecosystems` (continuing the linear topic sequence).
+
+**First sprint run under the new Engineering Manager orchestration loop (DEC-014):** delivered via the same 3-worktree pipeline, now dispatched and closed out by the Worktree 4 Engineering Manager rather than Claude by hand. `lesson-genetics-reproduction-intro.yaml` (hero illustration → genetic material explanation → sexual-vs-asexual illustration → inherited-vs-acquired example → `InheritanceExplorer` widget → 5 questions → summary), `assessment-genetics-reproduction-quiz.yaml` (both misconceptions — acquired characteristics being inheritable, and offspring being identical to a single parent regardless of reproduction type — directly and correctly targeted), a new `InheritanceExplorer` widget, and two new illustrations (`GeneticsHeroIllustration`, a double-helix; `SexualVsAsexualReproductionIllustration`, contrasting one-parent-identical-clone vs. two-parent-blended-offspring). Reviewed, registry-wired, and merged to master by the `openclaw/qa` worker via a live click-through of every lesson step on a scratch test learner; no real bugs found this sprint.
+
+**Definition of Done met 2026-08-05:** `validate:curriculum`/`typecheck`/`lint`/`vitest run` (127/127 at merge time)/`build` all pass, live click-through of all lesson steps confirming XP increment and completion state, no console errors, no mobile overflow, no placeholders/TODOs. Scratch test-learner rows deleted from the live database afterward.
+
+## Sprint 15 — Plate Tectonics (Definition of Done met 2026-08-05)
+
+**Scope:** Earth's layered structure (crust/mantle/core); tectonic plates moving on the solid, slowly-flowing mantle via convection (mantle is solid rock that flows, not a liquid plates float on); the three boundary types (convergent/divergent/transform) and their distinct effects; why earthquakes/volcanoes concentrate at boundaries; evidence for plate tectonics — Year 7-10 appropriate, plate speeds described only qualitatively ("a few centimetres a year", no numeric velocity), no isostasy/subduction-zone mechanism detail beyond what's listed.
+
+**Prerequisite:** `sci-y7-genetics-reproduction` (continuing the linear topic sequence). First Earth and Space strand topic — everything through Sprint 14 was Chemical/Physical/Living World.
+
+**Delivered via the Engineering Manager orchestration loop:** `lesson-plate-tectonics-intro.yaml` (hero illustration → crust/mantle/core explanation → convection explanation → boundary-types illustration → Himalayas example → `PlateBoundaryExplorer` widget → earthquakes/volcanoes-at-boundaries explanation → continental-drift-evidence explanation → 5 questions → summary), `assessment-plate-tectonics-quiz.yaml` (both misconceptions — "mantle-is-liquid-plates-float" and "all-boundaries-same-effect" — directly and correctly targeted), a new `PlateBoundaryExplorer` widget (3 tappable boundary types, each with a distinct arrow-direction visual, movement description, effect description, and real-world example), and two new illustrations (`PlateTectonicsHeroIllustration`, an Earth cross-section with a broken ring of crust-plate arcs; `PlateBoundaryTypesIllustration`, three boundary panels distinguished entirely by arrow direction). Reviewed, registry-wired, and merged to master by the `openclaw/qa` worker via a live click-through of every lesson step (all 3 boundary types tapped, one deliberate wrong answer, one hint revealed) on a scratch test learner; no real bugs found this sprint.
+
+**Definition of Done met 2026-08-05:** `validate:curriculum`/`typecheck`/`lint`/`vitest run` (130/130 at merge time)/`build` all pass, live click-through confirmed XP 0→50 and completion state, no console errors, no mobile overflow (375px), content re-verified directly against source (mantle correctly solid/convecting, three boundary types genuinely distinct), no placeholders/TODOs. Scratch test-learner rows deleted from the live database afterward.
 
 ## Stop conditions (2026-08-04 charter — the only reasons to pause and ask)
 
