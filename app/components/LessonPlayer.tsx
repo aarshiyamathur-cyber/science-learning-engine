@@ -9,6 +9,7 @@ import {
   CellsHeroIllustration,
   ChangesOfStateIllustration,
   ChemicalReactionHeroIllustration,
+  CosmicScaleIllustration,
   ConservationOfMassIllustration,
   EcosystemHeroIllustration,
   EnergyHeroIllustration,
@@ -28,6 +29,7 @@ import {
   StatesOfMatterIllustration,
   SummaryIcon,
   SystemsWorkingTogetherIllustration,
+  SolarSystemHeroIllustration,
 } from "./icons";
 import { Badge, Button, Card } from "./ui";
 import type { Tone } from "./ui/tone";
@@ -42,6 +44,7 @@ import { ParticleStateExplorer } from "./widgets/ParticleStateExplorer";
 import { PeriodicTableExplorer } from "./widgets/PeriodicTableExplorer";
 import { PlateBoundaryExplorer } from "./widgets/PlateBoundaryExplorer";
 import { ReactionSimulator } from "./widgets/ReactionSimulator";
+import { EarthSunMoonExplorer } from "./widgets/EarthSunMoonExplorer";
 
 /**
  * Registry of interactive widgets, keyed by the id a lesson's interactive
@@ -60,6 +63,7 @@ const WIDGET_REGISTRY: Record<string, React.ComponentType> = {
   "food-chain-explorer": FoodChainExplorer,
   "inheritance-explorer": InheritanceExplorer,
   "plate-boundary-explorer": PlateBoundaryExplorer,
+  "earth-sun-moon-explorer": EarthSunMoonExplorer,
 };
 
 /**
@@ -92,6 +96,8 @@ const ILLUSTRATION_REGISTRY: Record<string, React.ComponentType<SVGProps<SVGSVGE
   "sexual-vs-asexual-reproduction": SexualVsAsexualReproductionIllustration,
   "plate-tectonics-hero": PlateTectonicsHeroIllustration,
   "plate-boundary-types": PlateBoundaryTypesIllustration,
+  "solar-system-hero": SolarSystemHeroIllustration,
+  "cosmic-scale": CosmicScaleIllustration,
 };
 
 interface LessonPlayerProps {
